@@ -13,7 +13,7 @@ public class Main {
         mainPanel = new JPanel(cardLayout);
 
         schermataPrincipalePanel = new JPanel(new FlowLayout());
-        schermataFarmacistaPanel= new JPanel(new FlowLayout());
+        schermataFarmacistaPanel= new JPanel(new BorderLayout());
         schermataCorrierePanel = new JPanel(new FlowLayout());
 
 
