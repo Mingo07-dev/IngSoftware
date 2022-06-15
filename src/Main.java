@@ -3,7 +3,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Main {
-    private JFrame mainFrame;
     public static JPanel schermataPrincipalePanel;
     public static JPanel schermataFarmacistaPanel;
     public static JPanel schermataPrenotazionePanel;
@@ -14,23 +13,25 @@ public class Main {
         mainPanel = new JPanel(cardLayout);
 
         schermataPrincipalePanel = new JPanel(new FlowLayout());
-        schermataFarmacistaPanel= new JPanel(new BorderLayout());
-        schermataCorrierePanel = new JPanel(new BorderLayout());
-        schermataPrenotazionePanel = new JPanel(new BorderLayout());
+        schermataFarmacistaPanel= new JPanel(new FlowLayout());
+        schermataCorrierePanel = new JPanel(new FlowLayout());
 
-        mainPanel.add(schermataPrincipalePanel,"1");
-        mainPanel.add(schermataFarmacistaPanel,"2");
-        mainPanel.add(schermataPrenotazionePanel,"3");
-        mainPanel.add(schermataCorrierePanel, "4");
+
+        mainPanel.add(schermataPrincipalePanel,"SchermataPrincipale");
+        mainPanel.add(schermataFarmacistaPanel,"SchermataFarmacista");
+        mainPanel.add(schermataCorrierePanel, "SchermataCorriere");
+
 
         SchermataPrincipale schermataPrincipale = new SchermataPrincipale();
-        SchermataPrincipale.inizialize();
+        SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
+        SchermataCorriere schermataCorriere = new SchermataCorriere();
 
-        mainFrame = new JFrame("Login");
+        JFrame mainFrame = new JFrame("FarmaciePiùBelle");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLayout(new BorderLayout());
         mainFrame.add(mainPanel, BorderLayout.CENTER);
-        mainFrame.setSize(1000,720);
+        mainFrame.setSize(1080,720);
+        mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         mainFrame.setVisible(true);
     }
     public static void main(String[] args){
