@@ -2,19 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SchermataFarmacista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataPrincipale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IngSoftware.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IngSoftware.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataPrincipale$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataPrincipale$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataPrincipale.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataPrincipale.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataPrincipale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataPrincipale.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,14 +36,10 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
