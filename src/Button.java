@@ -3,7 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Button {
-    public static String lastView = "SchermataPrincipale";
+    public static String lastView = "SchermataAutenticazione";
 
     public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName){
 

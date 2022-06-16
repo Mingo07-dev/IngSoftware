@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Main {
-    public static JPanel schermataPrincipalePanel;
+    public static JPanel schermataAutenticazionePanel;
     public static JPanel schermataFarmacistaPanel;
     public static JPanel schermataCorrierePanel;
     public static JPanel schermataImpiegatoAziendaPanel;
@@ -14,19 +14,19 @@ public class Main {
     public Main(){
         mainPanel = new JPanel(cardLayout);
 
-        schermataPrincipalePanel = new JPanel(new FlowLayout());
+        schermataAutenticazionePanel = new JPanel(new FlowLayout());
         schermataFarmacistaPanel= new JPanel(new BorderLayout());
         schermataCorrierePanel = new JPanel(new FlowLayout());
         schermataImpiegatoAziendaPanel = new JPanel(new FlowLayout());
 
 
-        mainPanel.add(schermataPrincipalePanel,"SchermataPrincipale");
+        mainPanel.add(schermataAutenticazionePanel,"SchermataAutenticazione");
         mainPanel.add(schermataFarmacistaPanel,"SchermataFarmacista");
         mainPanel.add(schermataCorrierePanel, "SchermataCorriere");
         mainPanel.add(schermataImpiegatoAziendaPanel, "SchermataImpiegatoAzienda");
 
 
-        SchermataPrincipale schermataPrincipale = new SchermataPrincipale();
+        SchermataAutenticazione schermataAutenticazione = new SchermataAutenticazione();
         SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
         SchermataCorriere schermataCorriere = new SchermataCorriere();
         SchermataImpiegatoAzienda schermataImpiegatoAzienda = new SchermataImpiegatoAzienda();
