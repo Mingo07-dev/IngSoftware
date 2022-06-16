@@ -139,6 +139,7 @@ public class Main {
 
         //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
         JFrame mainFrame = new JFrame("FarmaciePiùBelleConNoi");
+
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

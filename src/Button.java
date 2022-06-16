@@ -4,7 +4,11 @@ import java.awt.event.ActionListener;
 
 //QUESTA CLASSE CONTIENE I METODI PER LA CREAZIONE DI OGNI TIPO DI BOTTONE
 public class Button {
+
+    //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
     public static String lastView = "SchermataAutenticazione";
+
+
 
     //QUESTO METODO PERMETTE LA CREAZIONE DI UN SEMPLICE BOTTONE CHE CAMBIA SCHERMATA DA QUELLA ATTUALE AD UNA A SCELTA
     //CHIEDE IN INPUT LA SCHERMATA CORRENTE, LA SCHERMATA SUL QUALE AGGIUNGERE IL BOTTONE
@@ -14,12 +18,15 @@ public class Button {
 
         //DICHIARA IL BOTTONE E LO INIZIALIZZA
         JButton buttonChangeView = new JButton(buttonName);
+
         //AGGIUNGE IL BOTTONE ALLA SCHERMATA
         viewToAddOn.add(buttonChangeView);
+
         //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
         buttonChangeView.addActionListener(e -> {
             //MOSTRA LA NUOVA SCHERMATA
             Main.cardLayout.show(Main.mainPanel, viewToShow);
+
             //SALVA IL NOME DELLA SCHERMATA CHE ABBIAMO APENNA LASCIATO, PER POTER EVENTUALMENTE
             //TORNARE INDIETRO TRAMITE APPOSITO BOTTONE
             lastView = "" + currentView;
@@ -34,8 +41,10 @@ public class Button {
 
         //DICHIARA IL BOTTONE E LO INIZIALIZZA
         JButton buttonChangeView = new JButton("Torna Indietro");
+
         //AGGIUNGE IL BOTTONE ALLA SCHERMATA
         viewToAddOn.add(buttonChangeView);
+
         //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
         buttonChangeView.addActionListener(e -> {
             //MOSTRA LA NUOVA SCHERMATA
