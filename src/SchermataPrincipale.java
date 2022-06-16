@@ -8,8 +8,8 @@ public class SchermataPrincipale {
     public SchermataPrincipale(){
 
 
-        Button.createButtonChangeView(Main.schermataPrincipalePanel,"SchermataFarmacista", "Schermata Farmacista");
-        Button.createButtonChangeView(Main.schermataPrincipalePanel,"SchermataCorriere", "Schermata Corriere");
+        Button.createButtonChangeView("SchermataPrincipale", Main.schermataPrincipalePanel,"SchermataFarmacista", "Schermata Farmacista");
+        Button.createButtonChangeView("SchermataPrincipale", Main.schermataPrincipalePanel,"SchermataCorriere", "Schermata Corriere");
     }
 
 

@@ -4,7 +4,8 @@ import java.awt.event.ActionListener;
 
 public class Button {
 
-    public static void createButtonChangeView(JPanel viewToAddOn,String viewToShow, String buttonName){
+    public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName){
+
 
         JButton buttonChangeView = new JButton(buttonName);
         viewToAddOn.add(buttonChangeView);
@@ -12,6 +13,7 @@ public class Button {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Main.cardLayout.show(Main.mainPanel, viewToShow);
+                Main.lastView = "" + currentView;
             }
         });
     }

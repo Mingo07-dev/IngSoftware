@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 public class SchermataFarmacista  {
     public SchermataFarmacista(){
 
-        Button.createButtonChangeView(Main.schermataFarmacistaPanel,"SchermataPrincipale", "Home");
+        Button.createButtonChangeView("SchermataFarmacista", Main.schermataFarmacistaPanel,"SchermataPrincipale", "Home");
 
     }
 
