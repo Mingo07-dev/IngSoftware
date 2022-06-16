@@ -2,17 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="added others views">
-      <change afterPath="$PROJECT_DIR$/src/SchermataConsegne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataListaOrdini.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataModificaOrdine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataModificaPrenotazioneAutomatica.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataPrenotazione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataRiepilogoOrdine.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataScorte.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataSegnalazioni.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchermataVisualizzaDettaglioOrdine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +57,21 @@
       <option name="presentableId" value="Default" />
       <updated>1654878557441</updated>
     </task>
+    <task id="LOCAL-00001" summary="added others views">
+      <created>1655408428139</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1655408428139</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added others views">
+      <created>1655408443136</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655408443137</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
