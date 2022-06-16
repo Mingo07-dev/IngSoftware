@@ -137,7 +137,7 @@ public class Main {
 
 
 
-        //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO
+        //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
         JFrame mainFrame = new JFrame("FarmaciePiùBelleConNoi");
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO
@@ -150,7 +150,7 @@ public class Main {
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //IMPOSTA LA MINIMA GRANDEZZA A CUI SI PUò RIDIMENSIONARE LA FINESTRA A 1080x720
         mainFrame.setMinimumSize(new Dimension(1080, 720));
-        //RENDE VISIBILE IL FRAME
+        //RENDE VISIBILE IL FRAME, LA PRIMA SCHERMATA MOSTRATA SARà LA SCHERMATA AUTENTICAZIONE
         mainFrame.setVisible(true);
     }
 

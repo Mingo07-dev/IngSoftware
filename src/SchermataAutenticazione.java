@@ -5,7 +5,8 @@ import java.awt.event.ActionListener;
 public class SchermataAutenticazione {
     public SchermataAutenticazione(){
 
-
+        //CREA I COSTRAINTS, OVVERO I DETTAGLI E LE CARATTERISTICHE CHE DOVREMO POI IMPOSTARE
+        //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
         GridBagConstraints c = new GridBagConstraints();
 
         JButton button1 = new JButton("logo");
