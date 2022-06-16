@@ -6,30 +6,45 @@ public class Main {
     public static JPanel schermataAutenticazionePanel;
     public static JPanel schermataFarmacistaPanel;
     public static JPanel schermataCorrierePanel;
+    public static JPanel schermataRegistrazionePanel;
+    public static JPanel schermataLoginPanel;
+    public static JPanel schermataRecuperoCredenzialiPanel;
+
+
     public static JPanel schermataImpiegatoAziendaPanel;
     public static JPanel mainPanel;
+
     public static CardLayout cardLayout = new CardLayout();
 
 
     public Main(){
         mainPanel = new JPanel(cardLayout);
 
-        schermataAutenticazionePanel = new JPanel(new FlowLayout());
+        schermataAutenticazionePanel = new JPanel(new BorderLayout());
         schermataFarmacistaPanel= new JPanel(new BorderLayout());
-        schermataCorrierePanel = new JPanel(new FlowLayout());
-        schermataImpiegatoAziendaPanel = new JPanel(new FlowLayout());
+        schermataCorrierePanel = new JPanel(new BorderLayout());
+        schermataImpiegatoAziendaPanel = new JPanel(new BorderLayout());
+        schermataRegistrazionePanel = new JPanel(new BorderLayout());
+        schermataLoginPanel = new JPanel(new BorderLayout());
+        schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
 
 
         mainPanel.add(schermataAutenticazionePanel,"SchermataAutenticazione");
         mainPanel.add(schermataFarmacistaPanel,"SchermataFarmacista");
         mainPanel.add(schermataCorrierePanel, "SchermataCorriere");
         mainPanel.add(schermataImpiegatoAziendaPanel, "SchermataImpiegatoAzienda");
+        mainPanel.add(schermataRegistrazionePanel, "SchermataRegistrazione");
+        mainPanel.add(schermataLoginPanel, "SchermataLogin");
+        mainPanel.add(schermataRecuperoCredenzialiPanel,"SchermataRecuperoCredenziali");
 
 
         SchermataAutenticazione schermataAutenticazione = new SchermataAutenticazione();
         SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
         SchermataCorriere schermataCorriere = new SchermataCorriere();
         SchermataImpiegatoAzienda schermataImpiegatoAzienda = new SchermataImpiegatoAzienda();
+        SchermataRegistrazione schermataRegistrazione= new SchermataRegistrazione();
+        SchermataLogin schermataLogin = new SchermataLogin();
+        SchermataRecuperoCredenziali schermataRecuperoCredenziali = new SchermataRecuperoCredenziali();
 
         JFrame mainFrame = new JFrame("FarmaciePiùBelle");
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
