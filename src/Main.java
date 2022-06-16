@@ -10,7 +10,7 @@ public class Main {
     public static JPanel mainPanel;
     public static CardLayout cardLayout = new CardLayout();
 
-    public static String lastView;
+
     public Main(){
         mainPanel = new JPanel(cardLayout);
 
