@@ -5,42 +5,50 @@ import java.awt.event.ActionListener;
 public class SchermataAutenticazione {
     public SchermataAutenticazione(){
 
-        JPanel nordBorderLayout = new JPanel(new BorderLayout());
-        JPanel sudBorderLayout = new JPanel(new BorderLayout());
 
-        Main.schermataAutenticazionePanel.add(nordBorderLayout, BorderLayout.NORTH);
-        Main.schermataAutenticazionePanel.add(sudBorderLayout, BorderLayout.SOUTH);
+        GridBagConstraints c = new GridBagConstraints();
 
-        JPanel nordBorderLayout_nordSection = new JPanel(new BorderLayout());
-        JPanel nordBorderLayout_sudSection = new JPanel(new BorderLayout());
-        JPanel sudBorderLayout_nordSection = new JPanel(new BorderLayout());
-        JPanel sudBorderLayout_sudSection = new JPanel(new BorderLayout());
-
-        JPanel nordFlowLayout_nordSection = new JPanel(new FlowLayout());
-        JPanel nordFlowLayout_sudSection = new JPanel(new FlowLayout());
-        JPanel sudFlowLayout_nordSection = new JPanel(new FlowLayout());
-        JPanel sudFlowLayout_sudSection = new JPanel(new FlowLayout());
-
-        nordBorderLayout.add(nordBorderLayout_nordSection, BorderLayout.NORTH);
-        nordBorderLayout.add(nordBorderLayout_sudSection, BorderLayout.SOUTH);
-        sudBorderLayout.add(sudBorderLayout_nordSection, BorderLayout.NORTH);
-        sudBorderLayout.add(sudBorderLayout_sudSection, BorderLayout.SOUTH);
+        JButton button1 = new JButton("logo");
+        JButton button2 = new JButton("login");
+        JButton button3 = new JButton("registrazione");
+        JButton button4 = new JButton("recuperoCredenziali");
 
 
-        nordBorderLayout_nordSection.add(nordFlowLayout_nordSection);
-        nordBorderLayout_sudSection.add(nordFlowLayout_sudSection);
-        sudBorderLayout_nordSection.add(sudFlowLayout_nordSection);
-        sudBorderLayout_sudSection.add(sudFlowLayout_sudSection);
 
-        JButton botton1 = new JButton("logo");
-        JButton botton2 = new JButton("login");
-        JButton botton3 = new JButton("registrazione");
-        JButton botton4 = new JButton("recuperoCredenziali");
+        c.fill = GridBagConstraints.NONE;
+        c.insets = new Insets(40,40,40,40);
+        c.ipady = 40;
+        c.ipadx = 80;
+        c.gridx = 0;
+        c.gridy = 0;
+        Main.schermataAutenticazionePanel.add(button1, c);
 
-        nordFlowLayout_nordSection.add(botton1);
-        nordFlowLayout_sudSection.add(botton2);
-        sudFlowLayout_nordSection.add(botton3);
-        sudFlowLayout_sudSection.add(botton4);
+        c.fill = GridBagConstraints.NONE;
+        c.insets = new Insets(40,40,40,40);
+        c.ipady = 40;
+        c.ipadx = 80;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 1;
+        Main.schermataAutenticazionePanel.add(button2, c);
+
+        c.fill = GridBagConstraints.NONE;
+        c.insets = new Insets(40,40,40,40);
+        c.ipady = 40;
+        c.ipadx = 80;
+        c.weightx = 0.5;
+        c.gridx = 0;
+        c.gridy = 2;
+        Main.schermataAutenticazionePanel.add(button3, c);
+
+        c.fill = GridBagConstraints.NONE;
+        c.insets = new Insets(40,40,40,40);
+        c.ipady = 40;
+        c.ipadx = 80;
+        c.weightx = 0.0;
+        c.gridx = 0;
+        c.gridy = 3;
+        Main.schermataAutenticazionePanel.add(button4, c);
     }
 
 

@@ -20,13 +20,13 @@ public class Main {
     public Main(){
         mainPanel = new JPanel(cardLayout);
 
-        schermataAutenticazionePanel = new JPanel(new BorderLayout());
-        schermataFarmacistaPanel= new JPanel(new BorderLayout());
-        schermataCorrierePanel = new JPanel(new BorderLayout());
-        schermataImpiegatoAziendaPanel = new JPanel(new BorderLayout());
-        schermataRegistrazionePanel = new JPanel(new BorderLayout());
-        schermataLoginPanel = new JPanel(new BorderLayout());
-        schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
+        schermataAutenticazionePanel = new JPanel(new GridBagLayout());
+        schermataFarmacistaPanel= new JPanel(new GridBagLayout());
+        schermataCorrierePanel = new JPanel(new GridBagLayout());
+        schermataImpiegatoAziendaPanel = new JPanel(new GridBagLayout());
+        schermataRegistrazionePanel = new JPanel(new GridBagLayout());
+        schermataLoginPanel = new JPanel(new GridBagLayout());
+        schermataRecuperoCredenzialiPanel = new JPanel(new GridBagLayout());
 
 
         mainPanel.add(schermataAutenticazionePanel,"SchermataAutenticazione");
@@ -52,6 +52,7 @@ public class Main {
         mainFrame.add(mainPanel, BorderLayout.CENTER);
         mainFrame.setSize(1080,720);
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        mainFrame.setMinimumSize(new Dimension(1080, 720));
         mainFrame.setVisible(true);
     }
     public static void main(String[] args){
