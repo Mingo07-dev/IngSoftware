@@ -64,8 +64,9 @@ public class Button extends JButton {
 
 
     //METODO PER CAMBIARE FONT E GRANDEZZA
-    public void changeFontButton(){
-        this.setFont(new Font("Arial", Font.BOLD, 25));
+    //ATTENZIONE: FONT STYLE --> 0 = PLAIN, 1 = BOLD, 2 = ITALIC
+    public void changeFontButton(String fontName,int style, int size){
+        this.setFont(new Font(fontName, style, size));
     }
 
 

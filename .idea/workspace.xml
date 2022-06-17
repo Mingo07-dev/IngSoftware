@@ -5,13 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataAutenticazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchermataLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataLogin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
