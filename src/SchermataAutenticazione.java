@@ -17,8 +17,9 @@ public class SchermataAutenticazione {
         GridBagConstraints c = new GridBagConstraints();
 
         InputStream imageStream = this.getClass().getResourceAsStream("res/logo.jpg");
-        BufferedImage image = null;
+        BufferedImage image;
         try {
+            assert imageStream != null;
             image = ImageIO.read(imageStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -26,8 +27,6 @@ public class SchermataAutenticazione {
         JLabel picLabel = new JLabel(new ImageIcon(image));
 
         c.fill = GridBagConstraints.NONE;
-        c.gridheight = 10;
-        c.gridheight = 10;
         c.gridx = 0;
         c.gridy = 0;
         Main.schermataAutenticazionePanel.add(picLabel, c);
