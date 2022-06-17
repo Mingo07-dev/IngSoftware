@@ -31,7 +31,7 @@ public class SchermataAutenticazione {
         JLabel picLabel = new JLabel(new ImageIcon(image));
         picLabel.setSize(320, 320);
 
-
+        //LOGO
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
@@ -42,9 +42,38 @@ public class SchermataAutenticazione {
 
         Main.schermataAutenticazionePanel.add(picLabel, c);
 
+        //LOGIN
+        c.fill= GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.insets= new Insets(50, 285, 50, 285);
+        c.anchor= GridBagConstraints.CENTER;
+        c.weightx=0.5;
+        c.weighty=0.5;
+
         Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
 
+        //REGISTRAZIONE
+        c.fill= GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 2;
+        c.insets= new Insets(50, 285, 50, 285);
+        c.anchor= GridBagConstraints.CENTER;
+        c.weightx=0.5;
+        c.weighty=0.5;
 
+        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 150,150, c);
+
+        //RECUPERO CREDENZIALI
+        c.fill= GridBagConstraints.BOTH;
+        c.gridx = 0;
+        c.gridy = 3;
+        c.insets= new Insets(50, 285, 50, 285);
+        c.anchor= GridBagConstraints.PAGE_END;
+        c.weightx=0.5;
+        c.weighty=0.5;
+
+        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 150,150, c);
 
 
 
