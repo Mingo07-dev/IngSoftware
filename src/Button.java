@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,11 +15,11 @@ public class Button {
     //CHIEDE IN INPUT LA SCHERMATA CORRENTE, LA SCHERMATA SUL QUALE AGGIUNGERE IL BOTTONE
     //(DOVREBBERO COINCIDERE, MA IL PRIMO DATO è UNA STRINGA, IL SECONDO è UN PANEL)
     //, LA SCHERMATA DA MOSTRARE E IL NOME DEL BOTTONE
-    public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName){
+    public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName, Integer width, Integer height){
 
         //DICHIARA IL BOTTONE E LO INIZIALIZZA
         JButton buttonChangeView = new JButton(buttonName);
-
+        buttonChangeView.setPreferredSize(new Dimension(width,  height));
         //AGGIUNGE IL BOTTONE ALLA SCHERMATA
         viewToAddOn.add(buttonChangeView);
 

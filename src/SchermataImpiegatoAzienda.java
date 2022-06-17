@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 public class SchermataImpiegatoAzienda {
     public SchermataImpiegatoAzienda(){
-        Button.createButtonGoBack("SchermataImpiegatoAzienda", Main.schermataImpiegatoAziendaPanel);
+
+
     }
 }

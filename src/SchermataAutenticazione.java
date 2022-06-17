@@ -1,55 +1,35 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
 public class SchermataAutenticazione {
-    public SchermataAutenticazione(){
+    public SchermataAutenticazione()  {
 
         //CREA I COSTRAINTS, OVVERO I DETTAGLI E LE CARATTERISTICHE CHE DOVREMO POI IMPOSTARE
         //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
         GridBagConstraints c = new GridBagConstraints();
 
-        JButton button1 = new JButton("logo");
-        JButton button2 = new JButton("login");
-        JButton button3 = new JButton("registrazione");
-        JButton button4 = new JButton("recuperoCredenziali");
 
+        ImageIcon logoImageFile = new ImageIcon("res/logo.jpg");
+        JLabel logoImage = new JLabel(logoImageFile);
+        logoImage.setSize(100,100);
 
+        JButton button = new JButton();
+        Main.schermataAutenticazionePanel.add(button, c);
 
-        c.fill = GridBagConstraints.NONE;
-        c.insets = new Insets(40,40,40,40);
+        //c.insets = new Insets(40,500,40,500);
+        c.fill = GridBagConstraints.BOTH;
         c.ipady = 40;
         c.ipadx = 80;
         c.gridx = 0;
         c.gridy = 0;
-        Main.schermataAutenticazionePanel.add(button1, c);
-
-        c.fill = GridBagConstraints.NONE;
-        c.insets = new Insets(40,40,40,40);
-        c.ipady = 40;
-        c.ipadx = 80;
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 1;
-        Main.schermataAutenticazionePanel.add(button2, c);
-
-        c.fill = GridBagConstraints.NONE;
-        c.insets = new Insets(40,40,40,40);
-        c.ipady = 40;
-        c.ipadx = 80;
-        c.weightx = 0.5;
-        c.gridx = 0;
-        c.gridy = 2;
-        Main.schermataAutenticazionePanel.add(button3, c);
-
-        c.fill = GridBagConstraints.NONE;
-        c.insets = new Insets(40,40,40,40);
-        c.ipady = 40;
-        c.ipadx = 80;
-        c.weightx = 0.0;
-        c.gridx = 0;
-        c.gridy = 3;
-        Main.schermataAutenticazionePanel.add(button4, c);
+        c.weightx = 0;
+        c.weighty = 0;
+        Main.schermataAutenticazionePanel.add(logoImage, c);
     }
 
 
