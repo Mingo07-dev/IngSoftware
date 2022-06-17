@@ -42,7 +42,7 @@ public class SchermataAutenticazione {
 
         Main.schermataAutenticazionePanel.add(picLabel, c);
 
-        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150);
+        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
 
 
 
