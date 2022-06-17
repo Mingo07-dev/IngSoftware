@@ -56,5 +56,24 @@ public class Button {
         });
     }
 
+    public static void loginButton(Integer width, Integer height, GridBagConstraints buttonConstraints){
+
+        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
+        JButton buttonChangeView = new JButton("Login");
+        buttonChangeView.setPreferredSize(new Dimension(width,  height));
+        //AGGIUNGE IL BOTTONE ALLA SCHERMATA
+        Main.schermataLoginPanel.add(buttonChangeView, buttonConstraints);
+
+        //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
+        buttonChangeView.addActionListener(e -> {
+            //MOSTRA LA NUOVA SCHERMATA
+            Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
+
+            //SALVA IL NOME DELLA SCHERMATA CHE ABBIAMO APENNA LASCIATO, PER POTER EVENTUALMENTE
+            //TORNARE INDIETRO TRAMITE APPOSITO BOTTONE
+            lastView = "" + "SchermataLogin";
+        });
+    }
+
 
 }
