@@ -4,76 +4,91 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 //QUESTA CLASSE CONTIENE I METODI PER LA CREAZIONE DI OGNI TIPO DI BOTTONE
-public class Button {
+public class Button extends JButton {
+
+    public String currentView;
+    private JPanel viewToAddOn;
+    public String viewToShow;
+    private String buttonName;
+    private final int width;
+    private final int height;
+    private final GridBagConstraints buttonConstraints;
 
     //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
     public static String lastView = "SchermataAutenticazione";
 
+    //COSTRUTTORE DEL BOTTONE PER CAMBIARE SCHERMATA
+    Button(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName, int width, int height, GridBagConstraints buttonConstraints){
+        this.currentView = currentView;
+        this.viewToAddOn = viewToAddOn;
+        this.viewToShow = viewToShow;
+        this.buttonName = buttonName;
+        this.width = width;
+        this.height = height;
+        this.buttonConstraints = buttonConstraints;
+
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+        this.setText(buttonName);
+        this.setPreferredSize(new Dimension(width,  height));
+        //aggiunge il bottone alla schermata
+        viewToAddOn.add(this, buttonConstraints);
+    };
+
+    //COSTRUTTORE DEL IL BOTTONRE "TORNA INDIETRO"
+    Button(String currentView, JPanel viewToAddOn, int width, int height, GridBagConstraints buttonConstraints){
+        this.currentView = currentView;
+        this.viewToAddOn = viewToAddOn;
+        this.width = width;
+        this.height = height;
+        this.buttonConstraints = buttonConstraints;
+
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+        this.setText("Torna Indietro");
+        this.setPreferredSize(new Dimension(width,  height));
+        //aggiunge il bottone alla schermata
+        viewToAddOn.add(this, buttonConstraints);
+    };
+
+    //COSTRUTTORE DEL BOTTONE LOGIN
+    Button(int width, int height, GridBagConstraints buttonConstraints){
+        this.width = width;
+        this.height = height;
+        this.buttonConstraints = buttonConstraints;
+        this.setText("LOGIN");
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+
+        this.setPreferredSize(new Dimension(width,  height));
+        //aggiunge il bottone alla schermata
+        Main.schermataLoginPanel.add(this, buttonConstraints);
+    };
 
 
-    //QUESTO METODO PERMETTE LA CREAZIONE DI UN SEMPLICE BOTTONE CHE CAMBIA SCHERMATA DA QUELLA ATTUALE AD UNA A SCELTA
-    //CHIEDE IN INPUT LA SCHERMATA CORRENTE, LA SCHERMATA SUL QUALE AGGIUNGERE IL BOTTONE
-    //(DOVREBBERO COINCIDERE, MA IL PRIMO DATO è UNA STRINGA, IL SECONDO è UN PANEL)
-    //, LA SCHERMATA DA MOSTRARE E IL NOME DEL BOTTONE
-    public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName, Integer width, Integer height, GridBagConstraints buttonConstraints){
 
-        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
-        JButton buttonChangeView = new JButton(buttonName);
-        buttonChangeView.setPreferredSize(new Dimension(width,  height));
-        //AGGIUNGE IL BOTTONE ALLA SCHERMATA
-        viewToAddOn.add(buttonChangeView, buttonConstraints);
 
-        //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
-        buttonChangeView.addActionListener(e -> {
-            //MOSTRA LA NUOVA SCHERMATA
-            Main.cardLayout.show(Main.mainPanel, viewToShow);
 
-            //SALVA IL NOME DELLA SCHERMATA CHE ABBIAMO APENNA LASCIATO, PER POTER EVENTUALMENTE
-            //TORNARE INDIETRO TRAMITE APPOSITO BOTTONE
-            lastView = "" + currentView;
+
+//CREAZIONE DEI LISTENERS
+
+    public  void createListenerButtonChangeView( ){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, this.viewToShow);
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
         });
     }
 
 
-    //QUESTO METODO PERMETTE LA CREAZIONE DI UN BOTTONE CHE PERMETTE DI TORNARE INDIETRO DALLA SCHERMATA ATTUALE A QUELLA PRECEDENTE
-    //CHIEDE IN INPUT COME PARAMETRI LA SCHERMATA ATTUALE E LA SCHERMATA SUL QUALE AGGIUNGERE IL BOTTONE
-    //(DOVREBBERO COINCIDERE, MA IL PRIMO DATO è UNA STRINGA, IL SECONDO è UN PANEL)
-    public static void createButtonGoBack(String currentView, JPanel viewToAddOn, Integer width, Integer height, GridBagConstraints buttonConstraints){
-
-        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
-        JButton buttonChangeView = new JButton("Torna Indietro");
-        buttonChangeView.setPreferredSize(new Dimension(width,  height));
-        //AGGIUNGE IL BOTTONE ALLA SCHERMATA
-        viewToAddOn.add(buttonChangeView, buttonConstraints);
-
-        //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
-        buttonChangeView.addActionListener(e -> {
-            //MOSTRA LA NUOVA SCHERMATA
-            Main.cardLayout.show(Main.mainPanel, lastView);
-            //SALVA IL NOME DELLA SCHERMATA CHE ABBIAMO APENNA LASCIATO, PER POTER EVENTUALMENTE
-            //TORNARE INDIETRO TRAMITE APPOSITO BOTTONE
-            lastView = "" + currentView;
-        });
-    }
-
-    public static void loginButton(Integer width, Integer height, GridBagConstraints buttonConstraints){
-
-        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
-        JButton buttonChangeView = new JButton("Login");
-        buttonChangeView.setPreferredSize(new Dimension(width,  height));
-        //AGGIUNGE IL BOTTONE ALLA SCHERMATA
-        Main.schermataLoginPanel.add(buttonChangeView, buttonConstraints);
-
-        //IMPOSTA UN LISTENER PER SAPERE QUANDO IL BOTTONE VIENE PREMUTO
-        buttonChangeView.addActionListener(e -> {
-            //MOSTRA LA NUOVA SCHERMATA
+    public void createListenerButtonLogin(){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
 
-            //SALVA IL NOME DELLA SCHERMATA CHE ABBIAMO APENNA LASCIATO, PER POTER EVENTUALMENTE
-            //TORNARE INDIETRO TRAMITE APPOSITO BOTTONE
-            lastView = "" + "SchermataLogin";
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
         });
     }
-
 
 }

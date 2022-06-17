@@ -66,7 +66,7 @@ public class Main {
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
-        schermataCorrierePanel = new JPanel(new GridBagLayout());
+        schermataCorrierePanel = new JPanel(new FlowLayout());
         schermataConsegnePanel = new JPanel(new GridBagLayout());
         //FINE
 

@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="comments added">
+    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/src/AlertMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataAutenticazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchermataFarmacista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataFarmacista.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchermataLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataLogin.java" afterDir="false" />
     </list>
@@ -134,7 +148,21 @@
       <option name="project" value="LOCAL" />
       <updated>1655479708425</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="mansione selection added">
+      <created>1655482795388</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1655482795388</updated>
+    </task>
+    <task id="LOCAL-00012" summary="mansione selection added">
+      <created>1655482815361</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1655482815361</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -152,7 +180,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added others views" />
     <MESSAGE value="comments added" />
-    <option name="LAST_COMMIT_MESSAGE" value="comments added" />
+    <MESSAGE value="mansione selection added" />
+    <option name="LAST_COMMIT_MESSAGE" value="mansione selection added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -161,6 +190,15 @@
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/SchermataCorriere.java</url>
+          <line>6</line>
+          <properties class="SchermataCorriere" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

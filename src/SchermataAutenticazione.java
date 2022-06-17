@@ -10,71 +10,78 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class SchermataAutenticazione {
-    public SchermataAutenticazione()  {
 
-        //CREA I COSTRAINTS, OVVERO I DETTAGLI E LE CARATTERISTICHE CHE DOVREMO POI IMPOSTARE
+    public static Button buttonSchermataLogin;
+    public static Button buttonSchermataRegistrazione;
+    public static Button buttonSchermataRecuperoCredenziali;
+
+    public SchermataAutenticazione()  {
+        //DICHIARA I COSTRAINTS, OVVERO I DETTAGLI E LE CARATTERISTICHE CHE DOVREMO POI IMPOSTARE
         //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
         GridBagConstraints c = new GridBagConstraints();
 
-        //immagine
+        //CREA L'IMMAGINE LOGO
         InputStream imageStream = this.getClass().getResourceAsStream("res/logo.jpg");
-
         BufferedImage image;
-
         try {
             assert imageStream != null;
             image = ImageIO.read(imageStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
         JLabel picLabel = new JLabel(new ImageIcon(image));
         picLabel.setSize(320, 320);
 
-        //LOGO
+        //seleziona i constraints per il l'immagine logo e la aggiunge alla schermata
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
         c.insets= new Insets(50, 200, 110, 200);
         c.anchor= GridBagConstraints.PAGE_START;
-        c.weightx=0.5;
-        c.weighty=0.5;
-
+        c.weightx=0.1;
+        c.weighty=0.1;
         Main.schermataAutenticazionePanel.add(picLabel, c);
+        //FINE IMMAGINE LOGO
 
-        //LOGIN
+        // BOTTONE LOGIN
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 1;
         c.insets= new Insets(50, 285, 50, 285);
         c.anchor= GridBagConstraints.CENTER;
-        c.weightx=0.5;
-        c.weighty=0.5;
+        c.weightx=0.1;
+        c.weighty=0.1;
+        buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
+        buttonSchermataLogin.createListenerButtonChangeView();
+        //FINE BOTTONE LOGIN
 
-        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
 
-        //REGISTRAZIONE
+
+        //BOTTONE REGISTRAZIONE
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 2;
         c.insets= new Insets(50, 285, 50, 285);
         c.anchor= GridBagConstraints.CENTER;
-        c.weightx=0.5;
-        c.weighty=0.5;
+        c.weightx=0.1;
+        c.weighty=0.1;
+        buttonSchermataRegistrazione = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 150,150, c);
+        buttonSchermataRegistrazione.createListenerButtonChangeView();
+        //FINE BOTTONE REGISTRAZIONE
 
-        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 150,150, c);
 
-        //RECUPERO CREDENZIALI
+
+        //BOTTONE RECUPERO CREDENZIALI
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 3;
         c.insets= new Insets(50, 285, 50, 285);
         c.anchor= GridBagConstraints.PAGE_END;
-        c.weightx=0.5;
-        c.weighty=0.5;
-
-        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 150,150, c);
-
+        c.weightx=0.1;
+        c.weighty=0.1;
+        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 150,150, c);
+        buttonSchermataRecuperoCredenziali.createListenerButtonChangeView();
+        //FINE BOTTONE RECUPERO CREDENZIALI
 
 
 
