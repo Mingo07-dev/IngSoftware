@@ -6,10 +6,9 @@ import java.awt.event.ActionListener;
 //QUESTA CLASSE CONTIENE I METODI PER LA CREAZIONE DI OGNI TIPO DI BOTTONE
 public class Button extends JButton {
 
-    public String currentView;
+    private String currentView;
     private JPanel viewToAddOn;
-    public String viewToShow;
-    private String buttonName;
+    private String viewToShow;
     private final int width;
     private final int height;
     private final GridBagConstraints buttonConstraints;
@@ -22,7 +21,6 @@ public class Button extends JButton {
         this.currentView = currentView;
         this.viewToAddOn = viewToAddOn;
         this.viewToShow = viewToShow;
-        this.buttonName = buttonName;
         this.width = width;
         this.height = height;
         this.buttonConstraints = buttonConstraints;
@@ -69,7 +67,7 @@ public class Button extends JButton {
 
 //CREAZIONE DEI LISTENERS
 
-    public  void createListenerButtonChangeView( ){
+    public void createListenerButtonChangeView( ){
         this.addActionListener(e -> {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, this.viewToShow);
@@ -79,6 +77,17 @@ public class Button extends JButton {
         });
     }
 
+
+    public void createListenerButtonGoBack(){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, Button.lastView);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
 
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {

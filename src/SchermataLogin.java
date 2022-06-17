@@ -8,14 +8,19 @@ public class SchermataLogin {
     public static String mansione;
     public SchermataLogin(){
 
+        //CREA IL MENU A TENDINA
         GridBagConstraints c = new GridBagConstraints();
         createMansioneMenu(c);
+        //FINE
 
+        //CREA IL BOTTONE LOGIN
         c.gridx = 0;
         c.gridy = 1;
         Button bottoneLogin = new Button(150,150,c);
         bottoneLogin.createListenerButtonLogin();
+        //FINE
     }
+
 
     private static void createMansioneMenu(GridBagConstraints c){
         JMenuBar menuBar = new JMenuBar();

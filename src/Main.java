@@ -4,6 +4,9 @@ import javax.swing.*;
 
 public class Main {
 
+    //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
+    public static JFrame mainFrame = new JFrame("FarmaciePiùBelleConNoi");
+
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
     public static JPanel schermataAutenticazionePanel;
     public static JPanel schermataRegistrazionePanel;
@@ -137,8 +140,6 @@ public class Main {
 
 
 
-        //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
-        JFrame mainFrame = new JFrame("FarmaciePiùBelleConNoi");
 
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO

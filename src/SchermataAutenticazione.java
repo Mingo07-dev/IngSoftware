@@ -16,8 +16,8 @@ public class SchermataAutenticazione {
     public static Button buttonSchermataRecuperoCredenziali;
 
     public SchermataAutenticazione()  {
-        //DICHIARA I COSTRAINTS, OVVERO I DETTAGLI E LE CARATTERISTICHE CHE DOVREMO POI IMPOSTARE
-        //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
+        //dichiara i constraints, ovvero i dettagli e le caratteristiche che dovremo poi impostare
+        //prr ogni elemento che aggiungeremo nella gridbag, in pratica nella schermata
         GridBagConstraints c = new GridBagConstraints();
 
         //CREA L'IMMAGINE LOGO
@@ -51,7 +51,7 @@ public class SchermataAutenticazione {
         c.anchor= GridBagConstraints.CENTER;
         c.weightx=0.1;
         c.weighty=0.1;
-        buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
+        Button buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
         buttonSchermataLogin.createListenerButtonChangeView();
         //FINE BOTTONE LOGIN
 
@@ -84,10 +84,8 @@ public class SchermataAutenticazione {
         //FINE BOTTONE RECUPERO CREDENZIALI
 
 
-
-
-
-
+        AlertMessage alert = new AlertMessage("OK", "Scemo Chi Legge");
+        alert.createListenerButtonOk();
     }
 
 
