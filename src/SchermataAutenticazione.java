@@ -16,20 +16,39 @@ public class SchermataAutenticazione {
         //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
         GridBagConstraints c = new GridBagConstraints();
 
+        //immagine
         InputStream imageStream = this.getClass().getResourceAsStream("res/logo.jpg");
+
         BufferedImage image;
+
         try {
             assert imageStream != null;
             image = ImageIO.read(imageStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        JLabel picLabel = new JLabel(new ImageIcon(image));
 
-        c.fill = GridBagConstraints.NONE;
+        JLabel picLabel = new JLabel(new ImageIcon(image));
+        picLabel.setSize(320, 320);
+
+
+        c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
+        c.insets= new Insets(50, 200, 110, 200);
+        c.anchor= GridBagConstraints.PAGE_START;
+        c.weightx=0.5;
+        c.weighty=0.5;
+
         Main.schermataAutenticazionePanel.add(picLabel, c);
+
+        Button.createButtonChangeView("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150);
+
+
+
+
+
+
 
 
 
