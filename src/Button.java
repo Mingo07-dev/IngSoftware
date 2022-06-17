@@ -17,7 +17,7 @@ public class Button {
     //, LA SCHERMATA DA MOSTRARE E IL NOME DEL BOTTONE
     public static void createButtonChangeView(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName, Integer width, Integer height){
 
-        //DICHIARA IL BOTTONE E LO INIZIALIZZA
+        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
         JButton buttonChangeView = new JButton(buttonName);
         buttonChangeView.setPreferredSize(new Dimension(width,  height));
         //AGGIUNGE IL BOTTONE ALLA SCHERMATA
@@ -38,11 +38,11 @@ public class Button {
     //QUESTO METODO PERMETTE LA CREAZIONE DI UN BOTTONE CHE PERMETTE DI TORNARE INDIETRO DALLA SCHERMATA ATTUALE A QUELLA PRECEDENTE
     //CHIEDE IN INPUT COME PARAMETRI LA SCHERMATA ATTUALE E LA SCHERMATA SUL QUALE AGGIUNGERE IL BOTTONE
     //(DOVREBBERO COINCIDERE, MA IL PRIMO DATO è UNA STRINGA, IL SECONDO è UN PANEL)
-    public static void createButtonGoBack(String currentView, JPanel viewToAddOn){
+    public static void createButtonGoBack(String currentView, JPanel viewToAddOn, Integer width, Integer height){
 
-        //DICHIARA IL BOTTONE E LO INIZIALIZZA
+        //DICHIARA IL BOTTONE E LO INIZIALIZZA CON UNA DIMENSIONE DA NOI SCELTA
         JButton buttonChangeView = new JButton("Torna Indietro");
-
+        buttonChangeView.setPreferredSize(new Dimension(width,  height));
         //AGGIUNGE IL BOTTONE ALLA SCHERMATA
         viewToAddOn.add(buttonChangeView);
 
