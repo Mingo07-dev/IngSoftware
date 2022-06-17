@@ -5,6 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 
 public class SchermataAutenticazione {
     public SchermataAutenticazione()  {
@@ -13,23 +16,24 @@ public class SchermataAutenticazione {
         //PER OGNI ELEMENTO CHE AGGIUNGEREMO NELLA GRIDBAG, IN PRATICA NELLA SCHERMATA
         GridBagConstraints c = new GridBagConstraints();
 
+        InputStream imageStream = this.getClass().getResourceAsStream("res/logo.jpg");
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(imageStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        JLabel picLabel = new JLabel(new ImageIcon(image));
 
-        ImageIcon logoImageFile = new ImageIcon("res/logo.jpg");
-        JLabel logoImage = new JLabel(logoImageFile);
-        logoImage.setSize(100,100);
-
-        JButton button = new JButton();
-        Main.schermataAutenticazionePanel.add(button, c);
-
-        //c.insets = new Insets(40,500,40,500);
-        c.fill = GridBagConstraints.BOTH;
-        c.ipady = 40;
-        c.ipadx = 80;
+        c.fill = GridBagConstraints.NONE;
+        c.gridheight = 10;
+        c.gridheight = 10;
         c.gridx = 0;
         c.gridy = 0;
-        c.weightx = 0;
-        c.weighty = 0;
-        Main.schermataAutenticazionePanel.add(logoImage, c);
+        Main.schermataAutenticazionePanel.add(picLabel, c);
+
+
+
     }
 
 

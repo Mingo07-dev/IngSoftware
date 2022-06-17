@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="comments added">
-      <change afterPath="$PROJECT_DIR$/src/res/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logo.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataAutenticazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchermataFarmacista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataFarmacista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchermataImpiegatoAzienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataImpiegatoAzienda.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655411540997</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="comments added">
+      <created>1655476344375</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1655476344375</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
