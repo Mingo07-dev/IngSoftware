@@ -27,6 +27,7 @@ public class Button extends JButton {
 
         //dichiara il bottone e lo inizializza con una dimensione da noi scelta
         this.setText(buttonName);
+
         this.setPreferredSize(new Dimension(width,  height));
         //aggiunge il bottone alla schermata
         viewToAddOn.add(this, buttonConstraints);
@@ -62,15 +63,23 @@ public class Button extends JButton {
 
 
 
+    //METODO PER CAMBIARE FONT E GRANDEZZA
+    public void changeFontButton(){
+        this.setFont(new Font("Arial", Font.BOLD, 25));
+    }
 
 
 
-//CREAZIONE DEI LISTENERS
+    //CREAZIONE DEI LISTENERS
 
     public void createListenerButtonChangeView( ){
         this.addActionListener(e -> {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, this.viewToShow);
+
+            AlertMessage alert = new AlertMessage("OK", "Scemo Chi Legge");
+            alert.createListenerButtonOk();
+
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
             Button.lastView = "" + this.currentView;
@@ -91,6 +100,8 @@ public class Button extends JButton {
 
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {
+            AlertMessage alert = new AlertMessage("OK", "Intelligente chi ha scritto");
+            alert.createListenerButtonOk();
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
 

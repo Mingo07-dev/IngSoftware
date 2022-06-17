@@ -30,16 +30,16 @@ public class SchermataAutenticazione {
             throw new RuntimeException(e);
         }
         JLabel picLabel = new JLabel(new ImageIcon(image));
-        picLabel.setSize(320, 320);
+        picLabel.setSize(400, 200);
 
         //seleziona i constraints per il l'immagine logo e la aggiunge alla schermata
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 0;
         c.gridy = 0;
-        c.insets= new Insets(50, 200, 110, 200);
+        c.insets= new Insets(40, 340, 60, 340);
         c.anchor= GridBagConstraints.PAGE_START;
-        c.weightx=0.1;
-        c.weighty=0.1;
+        c.weightx=1;
+        c.weighty=1;
         Main.schermataAutenticazionePanel.add(picLabel, c);
         //FINE IMMAGINE LOGO
 
@@ -47,11 +47,12 @@ public class SchermataAutenticazione {
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 1;
-        c.insets= new Insets(50, 285, 50, 285);
+        c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.CENTER;
-        c.weightx=0.1;
-        c.weighty=0.1;
-        Button buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 150,150, c);
+        c.weightx=1;
+        c.weighty=1;
+        Button buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 200,100, c);
+        buttonSchermataLogin.changeFontButton();
         buttonSchermataLogin.createListenerButtonChangeView();
         //FINE BOTTONE LOGIN
 
@@ -61,11 +62,12 @@ public class SchermataAutenticazione {
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 2;
-        c.insets= new Insets(50, 285, 50, 285);
+        c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.CENTER;
-        c.weightx=0.1;
-        c.weighty=0.1;
-        buttonSchermataRegistrazione = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 150,150, c);
+        c.weightx=1;
+        c.weighty=1;
+        buttonSchermataRegistrazione = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 200,100, c);
+        buttonSchermataRegistrazione.changeFontButton();
         buttonSchermataRegistrazione.createListenerButtonChangeView();
         //FINE BOTTONE REGISTRAZIONE
 
@@ -75,17 +77,17 @@ public class SchermataAutenticazione {
         c.fill= GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 3;
-        c.insets= new Insets(50, 285, 50, 285);
+        c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.PAGE_END;
-        c.weightx=0.1;
-        c.weighty=0.1;
-        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 150,150, c);
+        c.weightx=1;
+        c.weighty=1;
+        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 200,100, c);
+        buttonSchermataRecuperoCredenziali.changeFontButton();
         buttonSchermataRecuperoCredenziali.createListenerButtonChangeView();
         //FINE BOTTONE RECUPERO CREDENZIALI
 
 
-        AlertMessage alert = new AlertMessage("OK", "Scemo Chi Legge");
-        alert.createListenerButtonOk();
+
     }
 
 

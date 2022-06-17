@@ -8,6 +8,7 @@ public class SchermataLogin {
     public static String mansione;
     public SchermataLogin(){
 
+
         //CREA IL MENU A TENDINA
         GridBagConstraints c = new GridBagConstraints();
         createMansioneMenu(c);
