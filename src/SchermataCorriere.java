@@ -9,42 +9,27 @@ import java.io.InputStream;
 
 public class SchermataCorriere {
     public SchermataCorriere(){
-        GridBagConstraints c = new GridBagConstraints();
 
+        JPanel schermataCorriereNorthPanel = new JPanel(new BorderLayout());
         Image image = new Image("res/logo.jpg",150,70);
 
-        c.fill = GridBagConstraints.BOTH;
-        c.ipadx = 10;
-        c.ipady = 10;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        schermataCorriereNorthPanel.add(image, BorderLayout.WEST);
 
+        // BOTTONE LOG OUT E IMMAGINE DEL LOGO HANNO LA STESSA DIMENSIONE PER ORA
+        Button bottoneLogOut = new Button("SchermataCorriere","Log out", 150, 70);
 
-        Main.schermataCorrierePanel.add(image, c);
+        schermataCorriereNorthPanel.add(bottoneLogOut, BorderLayout.EAST);
 
-        Button bottoneTornaIndietro = new Button("SchermataCorriere","Torna Indietro", 150, 70);
-        bottoneTornaIndietro.createListenerButtonGoBack();
-        c.fill = GridBagConstraints.BOTH;
-        c.ipadx = 10;
-        c.ipady = 10;
-        c.gridx = 10;
-        c.gridy = 0;
-        c.anchor = GridBagConstraints.FIRST_LINE_END;
-        Main.schermataCorrierePanel.add(bottoneTornaIndietro, c);
-
-        Button bottoneVisualizzaElencoConsegne = new Button("SchermataCorriere", "Visualizza Elenco Consegne", 400,100);
+        //DA CAMBIARE IN BOX LAYOUT QUANDO SI DOVRANNO INTRODURRE GLI ALTRI PULSANTI
+        JPanel schermataCorriereCenterPanel = new JPanel(new FlowLayout());
+        Button bottoneVisualizzaElencoConsegne = new Button("SchermataCorriere", "Visualizza Elenco Consegne", 400,50);
         bottoneVisualizzaElencoConsegne.changeFontButton("Arial", 1,25);
         bottoneVisualizzaElencoConsegne.createListenerButtonChangeView("SchermataConsegne");
-        c.fill = GridBagConstraints.NONE;
-        c.ipadx = 10;
-        c.ipady = 10;
-        c.gridx = 4;
-        c.gridy = 8;
-        c.gridwidth = 3;
-        c.gridheight = 2;
-        c.anchor = GridBagConstraints.CENTER;
-        Main.schermataCorrierePanel.add(bottoneVisualizzaElencoConsegne, c);
+
+        schermataCorriereCenterPanel.add(bottoneVisualizzaElencoConsegne);
+
+        Main.schermataCorrierePanel.add(schermataCorriereNorthPanel, BorderLayout.NORTH);
+        Main.schermataCorrierePanel.add(schermataCorriereCenterPanel, BorderLayout.CENTER);
 
 
     }

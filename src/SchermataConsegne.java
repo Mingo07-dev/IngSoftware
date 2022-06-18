@@ -1,48 +1,36 @@
+import javax.swing.*;
 import java.awt.*;
 
 public class SchermataConsegne {
     public SchermataConsegne(){
-        GridBagConstraints c = new GridBagConstraints();
 
-        Image image = new Image("res/logo.jpg",125,63);
+        JPanel schermataConsegneNorthPanel = new JPanel(new BorderLayout());
+        Image image = new Image("res/logo.jpg",150,70);
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 657, 805);
-        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        schermataConsegneNorthPanel.add(image, BorderLayout.WEST);
 
-        Main.schermataConsegnePanel.add(image, c);
+        JPanel schermataConsegneNorthEastPanel = new JPanel(new FlowLayout());
 
-        Button bottoneTornaIndietro = new Button("SchermataConsegne","Torna Indietro", 150, 70);
+        Button bottoneTornaIndietro = new Button("SchermataConsegne","Torna Indietro", 150, 30);
+        bottoneTornaIndietro.changeFontButton("Arial", 1,15);
         bottoneTornaIndietro.createListenerButtonGoBack();
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 2;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 657, 0);
+        schermataConsegneNorthEastPanel.add(bottoneTornaIndietro);
 
-        Main.schermataConsegnePanel.add(bottoneTornaIndietro, c);
-
-        Button bottoneTornaAllaHome = new Button("SchermataConsegne","Home", 150, 70);
+        Button bottoneTornaAllaHome = new Button("SchermataConsegne","Home", 150, 30);
+        bottoneTornaAllaHome.changeFontButton("Arial", 1,15);
         bottoneTornaAllaHome.createListenerButtonHome();
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 3;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 657, 0);
+        schermataConsegneNorthEastPanel.add(bottoneTornaAllaHome);
 
-        Main.schermataConsegnePanel.add(bottoneTornaAllaHome, c);
+        Button bottoneLogOut = new Button("SchermataConsegne","Log out", 150, 30);
+        bottoneLogOut.changeFontButton("Arial", 1,15);
 
-        Button bottoneLogOut = new Button("SchermataConsegne","Log out", 150, 70);
+        schermataConsegneNorthEastPanel.add(bottoneLogOut);
 
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 4;
-        c.gridy = 0;
-        c.insets = new Insets(0, 0, 657, 0);
-        c.anchor = GridBagConstraints.FIRST_LINE_END;
+        schermataConsegneNorthPanel.add(schermataConsegneNorthEastPanel, BorderLayout.EAST);
 
-        Main.schermataConsegnePanel.add(bottoneLogOut, c);
+        Main.schermataConsegnePanel.add(schermataConsegneNorthPanel, BorderLayout.NORTH);
 
     }
 }
