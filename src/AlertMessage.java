@@ -11,6 +11,8 @@ public class AlertMessage {
     //POTREBBE TORNARE UTILE QUESTA RIGA:
     //JOptionPane.showMessageDialog(Main.mainFrame, "Welcome to Swing!");
 
+    //EXAMPLE: AlertMessage alert = new AlertMessage("OK", "Intelligente chi ha scritto");
+    //         alert.createListenerButtonOk();
 
     private JButton button_Conferma = new JButton();
     private JButton button_Annulla = new JButton();

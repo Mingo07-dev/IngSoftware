@@ -28,13 +28,11 @@ public class SchermataCorriere {
 
 
 
-        c.fill = GridBagConstraints.NONE;
-        c.weightx = 0.1;
-        c.weighty = 0.1;
+        c.fill = GridBagConstraints.BOTH;
         c.gridx = 0;
         c.gridy = 0;
         c.insets = new Insets(0, 0, 720 - picLabel.getWidth(), 1080 - picLabel.getHeight());
-        //c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
         Main.schermataCorrierePanel.add(picLabel, c);
 
     }

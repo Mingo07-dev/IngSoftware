@@ -8,57 +8,22 @@ public class Button extends JButton {
 
     private String currentView;
     private JPanel viewToAddOn;
-    private String viewToShow;
     private final int width;
     private final int height;
-    private final GridBagConstraints buttonConstraints;
 
     //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
     public static String lastView = "SchermataAutenticazione";
 
-    //COSTRUTTORE DEL BOTTONE PER CAMBIARE SCHERMATA
-    Button(String currentView, JPanel viewToAddOn,String viewToShow, String buttonName, int width, int height, GridBagConstraints buttonConstraints){
+    //COSTRUTTORE
+    Button(String currentView, String buttonName, int width, int height){
         this.currentView = currentView;
         this.viewToAddOn = viewToAddOn;
-        this.viewToShow = viewToShow;
         this.width = width;
         this.height = height;
-        this.buttonConstraints = buttonConstraints;
 
         //dichiara il bottone e lo inizializza con una dimensione da noi scelta
         this.setText(buttonName);
-
         this.setPreferredSize(new Dimension(width,  height));
-        //aggiunge il bottone alla schermata
-        viewToAddOn.add(this, buttonConstraints);
-    };
-
-    //COSTRUTTORE DEL IL BOTTONRE "TORNA INDIETRO"
-    Button(String currentView, JPanel viewToAddOn, int width, int height, GridBagConstraints buttonConstraints){
-        this.currentView = currentView;
-        this.viewToAddOn = viewToAddOn;
-        this.width = width;
-        this.height = height;
-        this.buttonConstraints = buttonConstraints;
-
-        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
-        this.setText("Torna Indietro");
-        this.setPreferredSize(new Dimension(width,  height));
-        //aggiunge il bottone alla schermata
-        viewToAddOn.add(this, buttonConstraints);
-    };
-
-    //COSTRUTTORE DEL BOTTONE LOGIN
-    Button(int width, int height, GridBagConstraints buttonConstraints){
-        this.width = width;
-        this.height = height;
-        this.buttonConstraints = buttonConstraints;
-        this.setText("LOGIN");
-        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
-
-        this.setPreferredSize(new Dimension(width,  height));
-        //aggiunge il bottone alla schermata
-        Main.schermataLoginPanel.add(this, buttonConstraints);
     };
 
 
@@ -66,20 +31,20 @@ public class Button extends JButton {
     //METODO PER CAMBIARE FONT E GRANDEZZA
     //ATTENZIONE: FONT STYLE --> 0 = PLAIN, 1 = BOLD, 2 = ITALIC
     public void changeFontButton(String fontName,int style, int size){
+
         this.setFont(new Font(fontName, style, size));
+
     }
 
 
 
     //CREAZIONE DEI LISTENERS
 
-    public void createListenerButtonChangeView( ){
+    public void createListenerButtonChangeView(String viewToShow ){
         this.addActionListener(e -> {
             //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, this.viewToShow);
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
 
-            AlertMessage alert = new AlertMessage("OK", "Scemo Chi Legge");
-            alert.createListenerButtonOk();
 
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
@@ -101,8 +66,6 @@ public class Button extends JButton {
 
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {
-            AlertMessage alert = new AlertMessage("OK", "Intelligente chi ha scritto");
-            alert.createListenerButtonOk();
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
 

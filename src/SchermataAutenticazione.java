@@ -47,9 +47,10 @@ public class SchermataAutenticazione {
         c.gridy = 1;
         c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.CENTER;
-        Button buttonSchermataLogin = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataLogin", "Login", 200,100, c);
+        Button buttonSchermataLogin = new Button("SchermataAutenticazione",  "Login", 200,100);
         buttonSchermataLogin.changeFontButton("Arial",1, 25);
-        buttonSchermataLogin.createListenerButtonChangeView();
+        buttonSchermataLogin.createListenerButtonChangeView("SchermataLogin");
+        Main.schermataAutenticazionePanel.add(buttonSchermataLogin, c);
         //FINE BOTTONE LOGIN
 
 
@@ -60,9 +61,10 @@ public class SchermataAutenticazione {
         c.gridy = 2;
         c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.CENTER;
-        buttonSchermataRegistrazione = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRegistrazione", "Registrazione", 200,100, c);
+        buttonSchermataRegistrazione = new Button("SchermataAutenticazione",  "Registrazione", 200,100);
         buttonSchermataRegistrazione.changeFontButton("Arial",1, 25);
-        buttonSchermataRegistrazione.createListenerButtonChangeView();
+        buttonSchermataRegistrazione.createListenerButtonChangeView("SchermataRegistrazione");
+        Main.schermataAutenticazionePanel.add(buttonSchermataRegistrazione, c);
         //FINE BOTTONE REGISTRAZIONE
 
 
@@ -73,9 +75,10 @@ public class SchermataAutenticazione {
         c.gridy = 3;
         c.insets= new Insets(0, 440, 40, 440);
         c.anchor= GridBagConstraints.PAGE_END;
-        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione", Main.schermataAutenticazionePanel, "SchermataRecuperoCredenziali", "Recupero Credenziali", 200,100, c);
+        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione",  "Recupero Credenziali", 200,100);
         buttonSchermataRecuperoCredenziali.changeFontButton("Arial",1, 25);
-        buttonSchermataRecuperoCredenziali.createListenerButtonChangeView();
+        buttonSchermataRecuperoCredenziali.createListenerButtonChangeView("SchermataRecuperoCredenziali");
+        Main.schermataAutenticazionePanel.add(buttonSchermataRecuperoCredenziali, c);
         //FINE BOTTONE RECUPERO CREDENZIALI
 
 

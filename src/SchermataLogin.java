@@ -17,8 +17,9 @@ public class SchermataLogin {
         //CREA IL BOTTONE LOGIN
         c.gridx = 0;
         c.gridy = 1;
-        Button bottoneLogin = new Button(150,150,c);
-        bottoneLogin.createListenerButtonLogin();
+        Button buttoneLogin = new Button("SchermataLogin","LOGIN",150,150);
+        buttoneLogin.createListenerButtonLogin();
+        Main.schermataLoginPanel.add(buttoneLogin);
         //FINE
     }
 
