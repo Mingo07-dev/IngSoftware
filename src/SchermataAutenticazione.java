@@ -32,53 +32,48 @@ public class SchermataAutenticazione {
         JLabel picLabel = new JLabel(new ImageIcon(image));
         picLabel.setSize(400, 200);
 
-        //seleziona i constraints per il l'immagine logo e la aggiunge alla schermata
-        c.fill = GridBagConstraints.BOTH;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.insets= new Insets(40, 340, 60, 340);
-        c.anchor= GridBagConstraints.PAGE_START;
-        Main.schermataAutenticazionePanel.add(picLabel, c);
+        JPanel border = new JPanel(new BorderLayout());
+        JPanel flowImage = new JPanel(new FlowLayout());
+        flowImage.add(picLabel);
+        border.add(flowImage, BorderLayout.NORTH);
+
+        Main.schermataAutenticazionePanel.add(border, BorderLayout.NORTH);
         //FINE IMMAGINE LOGO
 
         // BOTTONE LOGIN
-        c.fill= GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 1;
-        c.insets= new Insets(0, 440, 40, 440);
-        c.anchor= GridBagConstraints.CENTER;
-        Button buttonSchermataLogin = new Button("SchermataAutenticazione",  "Login", 200,100);
+        Button buttonSchermataLogin = new Button("SchermataAutenticazione",  "Login", 300,50);
         buttonSchermataLogin.changeFontButton("Arial",1, 25);
         buttonSchermataLogin.createListenerButtonChangeView("SchermataLogin");
-        Main.schermataAutenticazionePanel.add(buttonSchermataLogin, c);
+        JPanel border1 = new JPanel(new BorderLayout(440,40));
+        border1.setSize(200,100);
+        JPanel flowLogin = new JPanel(new FlowLayout());
+        flowLogin.add(buttonSchermataLogin);
+        border1.add(flowLogin, BorderLayout.NORTH);
         //FINE BOTTONE LOGIN
 
 
 
         //BOTTONE REGISTRAZIONE
-        c.fill= GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 2;
-        c.insets= new Insets(0, 440, 40, 440);
-        c.anchor= GridBagConstraints.CENTER;
-        buttonSchermataRegistrazione = new Button("SchermataAutenticazione",  "Registrazione", 200,100);
+        buttonSchermataRegistrazione = new Button("SchermataAutenticazione",  "Registrazione", 300,50);
         buttonSchermataRegistrazione.changeFontButton("Arial",1, 25);
         buttonSchermataRegistrazione.createListenerButtonChangeView("SchermataRegistrazione");
-        Main.schermataAutenticazionePanel.add(buttonSchermataRegistrazione, c);
+        JPanel flowRegistrazione = new JPanel(new FlowLayout());
+        flowRegistrazione.add(buttonSchermataRegistrazione);
+        border1.add(flowRegistrazione, BorderLayout.CENTER);
         //FINE BOTTONE REGISTRAZIONE
 
 
 
         //BOTTONE RECUPERO CREDENZIALI
-        c.fill= GridBagConstraints.HORIZONTAL;
-        c.gridx = 0;
-        c.gridy = 3;
-        c.insets= new Insets(0, 440, 40, 440);
-        c.anchor= GridBagConstraints.PAGE_END;
-        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione",  "Recupero Credenziali", 200,100);
+        buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione",  "Recupero Credenziali", 300,50);
         buttonSchermataRecuperoCredenziali.changeFontButton("Arial",1, 25);
         buttonSchermataRecuperoCredenziali.createListenerButtonChangeView("SchermataRecuperoCredenziali");
-        Main.schermataAutenticazionePanel.add(buttonSchermataRecuperoCredenziali, c);
+
+        JPanel flowRecupero = new JPanel(new FlowLayout());
+        flowRecupero.add(buttonSchermataRecuperoCredenziali);
+        border1.add(flowRecupero, BorderLayout.SOUTH);
+
+        Main.schermataAutenticazionePanel.add(border1, BorderLayout.CENTER);
         //FINE BOTTONE RECUPERO CREDENZIALI
 
 

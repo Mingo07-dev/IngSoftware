@@ -5,7 +5,7 @@ import javax.swing.*;
 public class Main {
 
     //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
-    public static JFrame mainFrame = new JFrame("FarmaciePiùBelleConNoi");
+    public static JFrame mainFrame = new JFrame("FarmacieMiglioriConNoi");
 
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
     public static JPanel schermataAutenticazionePanel;
@@ -51,7 +51,7 @@ public class Main {
         mainPanel = new JPanel(cardLayout);
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
-        schermataAutenticazionePanel = new JPanel(new GridBagLayout());
+        schermataAutenticazionePanel = new JPanel(new BorderLayout(340,40));
         schermataRegistrazionePanel = new JPanel(new GridBagLayout());
         schermataLoginPanel = new JPanel(new GridBagLayout());
         schermataRecuperoCredenzialiPanel = new JPanel(new GridBagLayout());
