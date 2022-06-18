@@ -13,19 +13,18 @@ public class SchermataCorriere {
 
         InputStream imageStream = this.getClass().getResourceAsStream("res/logo.jpg");
         BufferedImage image;
+        BufferedImage resizedImage;
         try {
             assert imageStream != null;
             image = ImageIO.read(imageStream);
-            //resizedImage = resizeImage(image, 250, 125);
+            resizedImage = resizeImage(image, 125, 63);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        JLabel picLabel = new JLabel(new ImageIcon(image));
+        JLabel picLabel = new JLabel(new ImageIcon(resizedImage));
         picLabel.setSize(125, 63);
-        image.getScaledInstance(picLabel.getWidth(), picLabel.getHeight(),
-                Image.SCALE_SMOOTH);
-        BufferedImage resizedImage;
+
 
 
 
