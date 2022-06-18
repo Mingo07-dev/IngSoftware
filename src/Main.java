@@ -51,7 +51,7 @@ public class Main {
         mainPanel = new JPanel(cardLayout);
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
-        schermataAutenticazionePanel = new JPanel(new BorderLayout(340,40));
+        schermataAutenticazionePanel = new JPanel(new BorderLayout(0,50));
         schermataRegistrazionePanel = new JPanel(new GridBagLayout());
         schermataLoginPanel = new JPanel(new GridBagLayout());
         schermataRecuperoCredenzialiPanel = new JPanel(new GridBagLayout());
