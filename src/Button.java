@@ -75,4 +75,15 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonHome(){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
 }
