@@ -10,21 +10,18 @@ public class SchermataLogin {
 
 
         //CREA IL MENU A TENDINA
-        GridBagConstraints c = new GridBagConstraints();
-        createMansioneMenu(c);
+        createMansioneMenu();
         //FINE
 
         //CREA IL BOTTONE LOGIN
-        c.gridx = 0;
-        c.gridy = 1;
         Button buttoneLogin = new Button("SchermataLogin","LOGIN",150,150);
         buttoneLogin.createListenerButtonLogin();
-        Main.schermataLoginPanel.add(buttoneLogin);
+        Main.schermataLoginPanel.add(buttoneLogin,BorderLayout.SOUTH);
         //FINE
     }
 
 
-    private static void createMansioneMenu(GridBagConstraints c){
+    private static void createMansioneMenu(){
         JMenuBar menuBar = new JMenuBar();
         JMenu mansioneButtonMenu = new JMenu("Mansione");
         JRadioButtonMenuItem buttonFarmacista = new JRadioButtonMenuItem("Farmacista");
@@ -45,10 +42,8 @@ public class SchermataLogin {
         buttonCorriere.addActionListener(new CorriereButtonActionListener());
         buttonImpiegatoAzienda.addActionListener(new ImpiegatoAziendaActionListener());
 
-        c.gridx = 0;
-        c.gridy = 0;
 
-        Main.schermataLoginPanel.add(pannello,c);
+        Main.schermataLoginPanel.add(pannello,BorderLayout.NORTH);
     }
 
     private static class FarmacistaButtonActionListener implements ActionListener {

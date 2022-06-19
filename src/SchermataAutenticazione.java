@@ -18,7 +18,6 @@ public class SchermataAutenticazione {
     public SchermataAutenticazione()  {
         //dichiara i constraints, ovvero i dettagli e le caratteristiche che dovremo poi impostare
         //per ogni elemento che aggiungeremo nella gridbag, in pratica nella schermata
-        GridBagConstraints c = new GridBagConstraints();
 
         //CREA L'IMMAGINE LOGO
         Image picLabel = new Image("res/logo.jpg",400,200);

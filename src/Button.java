@@ -17,7 +17,15 @@ public class Button extends JButton {
     //COSTRUTTORE
     Button(String currentView, String buttonName, int width, int height){
         this.currentView = currentView;
-        this.viewToAddOn = viewToAddOn;
+        this.width = width;
+        this.height = height;
+
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+        this.setText(buttonName);
+        this.setPreferredSize(new Dimension(width,  height));
+    };
+
+    Button(String buttonName, int width, int height){
         this.width = width;
         this.height = height;
 

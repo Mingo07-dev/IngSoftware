@@ -2,9 +2,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.sql.SQLException;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class Main {
     public static DBMS dbms_Azienda;
+    public static DBMS dbms_Farmacia;
 
     //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
     public static JFrame mainFrame = new JFrame("FarmacieMiglioriConNoi");
@@ -49,37 +51,67 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        dbms_Azienda = new DBMS("database","Marco", "12345");
+        dbms_Azienda = new DBMS("dbms_azienda","Marco", "12345");
+        dbms_Farmacia = new DBMS("dbms_farmacia","Marco", "12345");
 
         //INIZIALIZZAZIONE DEL CARD LAYOUT ALL'INTERNO DEL MAIN PANEL
         mainPanel = new JPanel(cardLayout);
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
-        schermataAutenticazionePanel = new JPanel(new BorderLayout(0,50));
+        schermataAutenticazionePanel = new JPanel(new BorderLayout());
+        schermataAutenticazionePanel.setBorder(new EmptyBorder(50, 0, 50, 0));
+
         schermataRegistrazionePanel = new JPanel(new BorderLayout());
-        schermataLoginPanel = new JPanel(new GridBagLayout());
+        schermataRegistrazionePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+        schermataLoginPanel = new JPanel(new BorderLayout());
+        schermataLoginPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
+        schermataRecuperoCredenzialiPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
         schermataFarmacistaPanel= new JPanel(new BorderLayout());
+        schermataFarmacistaPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataListaOrdiniPanel = new JPanel(new BorderLayout());
+        schermataListaOrdiniPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataModificaOrdinePanel = new JPanel(new BorderLayout());
+        schermataModificaOrdinePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataModificaPrenotazioneAutomaticaPanel = new JPanel(new BorderLayout());
+        schermataModificaPrenotazioneAutomaticaPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataPrenotazionePanel = new JPanel(new BorderLayout());
+        schermataPrenotazionePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataRiepilogoOrdinePanel = new JPanel(new BorderLayout());
+        schermataRiepilogoOrdinePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataScortePanel = new JPanel(new BorderLayout());
+        schermataScortePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataVisualizzaDettaglioOrdinePanel = new JPanel(new BorderLayout());
+        schermataVisualizzaDettaglioOrdinePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
         schermataCorrierePanel = new JPanel(new BorderLayout());
+        schermataCorrierePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataConsegnePanel = new JPanel(new BorderLayout());
+        schermataConsegnePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'IMPIEGATO
         schermataImpiegatoAziendaPanel = new JPanel(new BorderLayout());
+        schermataImpiegatoAziendaPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
         schermataSegnalazioniPanel = new JPanel(new BorderLayout());
+        schermataSegnalazioniPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //FINE
 
 
@@ -150,12 +182,12 @@ public class Main {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //IMPOSTA IL LAYOUT INIZIALE COME BORDER
         mainFrame.setLayout(new BorderLayout());
-        //AGGIUNGE AL FRAME LA CARD LAYOUT CONTENENTE TUTTE LE SCHERMATE
-        mainFrame.add(mainPanel, BorderLayout.CENTER);
         //IMPOSTA CHE QUANDO VIENE APERTO IL PROGRAMMA, VIENE SUBITO MOSTRATO A FINESTRA INTERA
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         //IMPOSTA LA MINIMA GRANDEZZA A CUI SI PUò RIDIMENSIONARE LA FINESTRA A 1080x720
         mainFrame.setMinimumSize(new Dimension(1080, 720));
+        //AGGIUNGE AL FRAME LA CARD LAYOUT CONTENENTE TUTTE LE SCHERMATE
+        mainFrame.add(mainPanel, BorderLayout.CENTER);
         //RENDE VISIBILE IL FRAME, LA PRIMA SCHERMATA MOSTRATA SARà LA SCHERMATA AUTENTICAZIONE
         mainFrame.setVisible(true);
     }
