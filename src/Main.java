@@ -52,20 +52,20 @@ public class Main {
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
         schermataAutenticazionePanel = new JPanel(new BorderLayout(0,50));
-        schermataRegistrazionePanel = new JPanel(new GridBagLayout());
+        schermataRegistrazionePanel = new JPanel(new BorderLayout());
         schermataLoginPanel = new JPanel(new GridBagLayout());
-        schermataRecuperoCredenzialiPanel = new JPanel(new GridBagLayout());
+        schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
-        schermataFarmacistaPanel= new JPanel(new GridBagLayout());
-        schermataListaOrdiniPanel = new JPanel(new GridBagLayout());
-        schermataModificaOrdinePanel = new JPanel(new GridBagLayout());
-        schermataModificaPrenotazioneAutomaticaPanel = new JPanel(new GridBagLayout());
-        schermataPrenotazionePanel = new JPanel(new GridBagLayout());
-        schermataRiepilogoOrdinePanel = new JPanel(new GridBagLayout());
-        schermataScortePanel = new JPanel(new GridBagLayout());
-        schermataVisualizzaDettaglioOrdinePanel = new JPanel(new GridBagLayout());
+        schermataFarmacistaPanel= new JPanel(new BorderLayout());
+        schermataListaOrdiniPanel = new JPanel(new BorderLayout());
+        schermataModificaOrdinePanel = new JPanel(new BorderLayout());
+        schermataModificaPrenotazioneAutomaticaPanel = new JPanel(new BorderLayout());
+        schermataPrenotazionePanel = new JPanel(new BorderLayout());
+        schermataRiepilogoOrdinePanel = new JPanel(new BorderLayout());
+        schermataScortePanel = new JPanel(new BorderLayout());
+        schermataVisualizzaDettaglioOrdinePanel = new JPanel(new BorderLayout());
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
@@ -74,8 +74,8 @@ public class Main {
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE ALL'IMPIEGATO
-        schermataImpiegatoAziendaPanel = new JPanel(new GridBagLayout());
-        schermataSegnalazioniPanel = new JPanel(new GridBagLayout());
+        schermataImpiegatoAziendaPanel = new JPanel(new BorderLayout());
+        schermataSegnalazioniPanel = new JPanel(new BorderLayout());
         //FINE
 
 
