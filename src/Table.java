@@ -10,17 +10,15 @@ public class Table extends JPanel{
     private ResultSet rs;
 
 
-
-    public Table(int rows, int column, String headers[], ResultSet rs) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public Table(String headers[],ResultSet rs) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         this.rs = rs;
         this.n = Main.dbms_Azienda.getResultSetRows(rs);
         this.m = Main.dbms_Azienda.getResultSetColumns(rs);
         this.headers = headers;
         this.setLayout(new GridBagLayout());
-        createTable_checkBox();
     }
 
-    private void createTable_checkBox() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void createTable_checkBox() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         GridBagConstraints gbc = new GridBagConstraints();
         for(int i = 0; i < m ; i++){
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -38,7 +36,7 @@ public class Table extends JPanel{
                 gbc.ipady = 20;
                 gbc.gridx = j;
                 gbc.gridy = i;
-                this.add(new JLabel("" + this.rs.getString(j + 1)),gbc);
+                this.add(new JLabel("" + rs.getString(j + 1)),gbc);
             }
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
@@ -46,7 +44,7 @@ public class Table extends JPanel{
             gbc.gridx = m - 1;
             gbc.gridy = i;
             this.add(new JCheckBox("Consegnato"), gbc);
-            this.rs.next();
+            rs.next();
         }
     }
 
