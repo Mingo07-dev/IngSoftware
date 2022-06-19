@@ -1,8 +1,10 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import javax.swing.*;
 
 public class Main {
+    public static DBMS dbms_Azienda;
 
     //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
     public static JFrame mainFrame = new JFrame("FarmacieMiglioriConNoi");
@@ -46,7 +48,9 @@ public class Main {
     public static CardLayout cardLayout = new CardLayout();
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        dbms_Azienda = new DBMS("database","Marco", "12345");
+
         //INIZIALIZZAZIONE DEL CARD LAYOUT ALL'INTERNO DEL MAIN PANEL
         mainPanel = new JPanel(cardLayout);
 
