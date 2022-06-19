@@ -48,4 +48,7 @@ public class Table extends JPanel{
         }
     }
 
+
+    //LISTENERS
+
 }
