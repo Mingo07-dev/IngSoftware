@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class SchermataFarmacista  {
     public SchermataFarmacista() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         String hed[] = {"farmacia", "indirizzo", "telefono","ordine", "stato"};
-        Table tabella = new Table(5,5,hed);
+        Table tabella = new Table(5,5,hed, Main.dbms_Azienda.getAll());
         JScrollPane scroll = new JScrollPane(tabella);
         Main.schermataFarmacistaPanel.add(scroll,BorderLayout.CENTER);
     }

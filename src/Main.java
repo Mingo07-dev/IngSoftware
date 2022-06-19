@@ -49,7 +49,7 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        dbms_Azienda = new DBMS("database","Marco", "12345");
+        dbms_Azienda = new DBMS("test","root", "booba123");
 
         //INIZIALIZZAZIONE DEL CARD LAYOUT ALL'INTERNO DEL MAIN PANEL
         mainPanel = new JPanel(cardLayout);
