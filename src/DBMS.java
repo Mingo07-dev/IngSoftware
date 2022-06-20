@@ -1,5 +1,12 @@
 import java.sql.*;
 import java.time.LocalDate;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
 
 public class DBMS {
 
@@ -13,13 +20,17 @@ public class DBMS {
     private int rows;
     private int columns;
 
+
+
+
     public DBMS(String databaseName,String username, String password) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         this.databaseName = databaseName;
         this.username = username;
         this.password = password;
-        this.url = "jdbc:mysql://localhost:3306/" + databaseName;
+        this.url = "jdbc:mysql://localhost:3306/+" + "user=root&password=12345a.";
         Class.forName("com.mysql.cj.jdbc.Driver");
-        this.connection = DriverManager.getConnection(url, username, password);
+        this.connection = DriverManager.getConnection(url);
+        this.stmt = this.connection.createStatement();
     };
 
 

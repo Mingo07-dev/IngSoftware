@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+
 public class Main {
     public static DBMS dbms_Azienda;
     public static DBMS dbms_Farmacia;
@@ -51,8 +52,8 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
-        dbms_Azienda = new DBMS("dbms_azienda","Marco", "12345");
-        dbms_Farmacia = new DBMS("dbms_farmacia","Marco", "12345");
+        dbms_Azienda = new DBMS("dbms_azienda","root", "12345a.");
+        dbms_Farmacia = new DBMS("dbms_farmacia","root", "12345a.");
 
         //INIZIALIZZAZIONE DEL CARD LAYOUT ALL'INTERNO DEL MAIN PANEL
         mainPanel = new JPanel(cardLayout);
