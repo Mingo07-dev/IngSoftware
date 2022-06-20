@@ -71,7 +71,7 @@ public class Main {
 
         schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
         schermataRecuperoCredenzialiPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
-        //FINE.
+        //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
         schermataFarmacistaPanel= new JPanel(new BorderLayout());
