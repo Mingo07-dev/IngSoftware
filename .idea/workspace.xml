@@ -5,9 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_29.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/DBMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/DBMS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaPrenotazioneAutomatica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaPrenotazioneAutomatica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataPrenotazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataPrenotazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRiepilogoOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRiepilogoOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataScorte.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataScorte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioni.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioni.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataVisualizzaDettaglioOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataVisualizzaDettaglioOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Table.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/resources/logo.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +83,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/Marco/Downloads/mysql-connector-java-8.0.29.jar",
-    "project.structure.last.edited": "Libraries",
+    "last_opened_file_path": "C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mysql-connector-java-8.0.29.jar",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.lookFeel"
