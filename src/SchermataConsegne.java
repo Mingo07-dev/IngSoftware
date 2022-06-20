@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
 
 public class SchermataConsegne {
-    public SchermataConsegne(){
+    public SchermataConsegne() throws FileNotFoundException {
 
         JPanel schermataConsegneNorthPanel = new JPanel(new BorderLayout());
-        Image image = new Image("res/logo.jpg",150,70);
+        Image image = new Image("logo.jpg",150,70);
 
         schermataConsegneNorthPanel.add(image, BorderLayout.WEST);
 

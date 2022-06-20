@@ -5,10 +5,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/SchermataLogin$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/farmaciemiglioriconnoi.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/farmaciemiglioriconnoi1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/logo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AlertMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/AlertMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/Button.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DBMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/DBMS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/Image.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nomechevuoi.jar" beforeDir="false" afterPath="$PROJECT_DIR$/nomechevuoi.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataAutenticazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataConsegne.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataConsegne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataCorriere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataFarmacista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataImpiegatoAzienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataImpiegatoAzienda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataListaOrdini.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataListaOrdini.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataLogin$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataLogin$CorriereButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataLogin$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataLogin$FarmacistaButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataLogin$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataLogin$ImpiegatoAziendaActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataModificaOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataModificaOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataModificaPrenotazioneAutomatica.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataModificaPrenotazioneAutomatica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataPrenotazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataPrenotazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataRecuperoCredenziali.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataRecuperoCredenziali.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataRegistrazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataRegistrazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataRiepilogoOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataRiepilogoOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataScorte.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataScorte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataSegnalazioni.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataSegnalazioni.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SchermataVisualizzaDettaglioOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/SchermataVisualizzaDettaglioOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/Table.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nomechevuoi.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/DBMS.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/DBMS.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Image.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Image.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$CorriereButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$FarmacistaButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin$ImpiegatoAziendaActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaPrenotazioneAutomatica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaPrenotazioneAutomatica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataPrenotazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataPrenotazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRiepilogoOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRiepilogoOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataScorte.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataScorte.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioni.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioni.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataVisualizzaDettaglioOrdine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataVisualizzaDettaglioOrdine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Table.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/res/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataAutenticazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataConsegne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataConsegne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/res/logo.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,17 +113,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marco/Documents/GitHub/IngSoftware&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Marco/Documents/GitHub/IngSoftware/src/lib/mysql-connector-java-8.0.29.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

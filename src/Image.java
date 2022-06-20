@@ -2,6 +2,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -12,10 +14,11 @@ public class Image extends JLabel {
     private int targetWidth;
     private int targetHeight;
 
-    public Image(String imageUrl, int targetWidth, int targetHeight ){
+    public Image(String imageUrl, int targetWidth, int targetHeight ) throws FileNotFoundException {
         this.targetHeight = targetHeight;
         this.targetWidth = targetWidth;
-        this.imageStream = this.getClass().getResourceAsStream(imageUrl);
+        this.imageStream = this.getClass().getResourceAsStream("resources/"+imageUrl);
+
         try {
             assert this.imageStream != null;
             this.image = ImageIO.read(this.imageStream);

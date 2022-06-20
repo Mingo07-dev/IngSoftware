@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -15,12 +16,12 @@ public class SchermataAutenticazione {
     public static Button buttonSchermataRegistrazione;
     public static Button buttonSchermataRecuperoCredenziali;
 
-    public SchermataAutenticazione()  {
+    public SchermataAutenticazione() throws FileNotFoundException {
         //dichiara i constraints, ovvero i dettagli e le caratteristiche che dovremo poi impostare
         //per ogni elemento che aggiungeremo nella gridbag, in pratica nella schermata
 
         //CREA L'IMMAGINE LOGO
-        Image picLabel = new Image("res/logo.jpg",400,200);
+        Image picLabel = new Image("logo.jpg",400,200);
 
         JPanel borderView = new JPanel(new BorderLayout(0,100));
         JPanel border = new JPanel(new BorderLayout(315,0));
