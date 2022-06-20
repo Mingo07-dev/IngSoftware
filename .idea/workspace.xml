@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="MainProject:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added" />
+    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_29.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nuovo documento di testo.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,14 +60,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_opened_file_path": "C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mysql-connector-java-8.0.29.jar",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RunManager">
