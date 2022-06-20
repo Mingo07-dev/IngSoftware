@@ -18,7 +18,7 @@ public class DBMS {
         this.username = username;
         this.password = password;
         this.url = "jdbc:mysql://localhost:3306/" + databaseName;
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        Class.forName("com.mysql.cj.jdbc.Driver");
         this.connection = DriverManager.getConnection(url, username, password);
     };
 
