@@ -70,7 +70,7 @@ public class SchermataRegistrazione {
 
 
         //PARTE SUD DELLA SCHERMATA
-        Button registrazioneButton = new Button("SchermataRegistrazione", "REGISTRATI", 200,50);
+        Button registrazioneButton = new Button("REGISTRATI", 200,50);
         registrazioneButton.changeFontButton("Arial",1,20);
         JPanel registrazioneButtonPanel = new JPanel(new FlowLayout());
         registrazioneButtonPanel.add(registrazioneButton);
