@@ -12,9 +12,9 @@ public class AlertMessage {
     //EXAMPLE: AlertMessage alert = new AlertMessage("OK", "Intelligente chi ha scritto");
     //         alert.createListenerButtonOk();
 
-    private JButton button_Conferma = new JButton();
-    private JButton button_Annulla = new JButton();
-    private JButton buttonOk = new JButton();
+    public static JButton button_Conferma = new JButton();
+    public static  JButton button_Annulla = new JButton();
+    public static  JButton buttonOk = new JButton();
     private JFrame frame = new JFrame("Messaggio");
     
     public AlertMessage(String buttonName_Left, String buttonName_Right, String text){
@@ -150,6 +150,19 @@ public class AlertMessage {
             SchermataRegistrazione.recapitoTelefonico = SchermataRegistrazione.recapitoTelefonicoField.getText();
             frame.dispose();
             JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
+        });
+    }
+
+    public void createListenerButtonConfermaLogOut(){
+        button_Conferma.addActionListener(e -> {
+            Main.cardLayout.show(Main.mainPanel, "SchermataLogin");
+            frame.dispose();
+        });
+    }
+
+    public void createListenerButtonAnnullaLogOut( ){
+        button_Annulla.addActionListener(e -> {
+            frame.dispose();
         });
     }
 }

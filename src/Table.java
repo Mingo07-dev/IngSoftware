@@ -220,14 +220,21 @@ public class Table extends JPanel{
 
 
     //LISTENERS
+    //esempio:
+    //button.addActionListener(e -> {
+    //            QUELLO CHE DEVE FARE IL BOTTONE
+    //        });
     public void addListener(Button button, int listenerType){
         switch(listenerType){
             case 1:
-                //esempio:
-                //button.addActionListener(e -> {
-                //            QUELLO CHE DEVE FARE IL BOTTONE
-                //        });
-                break;
+                button.addActionListener(e -> {
+                    try {
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.elenco_consegne SET Stato_consegna = '1' WHERE dbms_azienda.elenco_consegne.Id_ordine = '"+ this.rs.getString("Id_ordine")+"';");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    Main.cardLayout.show(Main.mainPanel, "SchermataConsegne");
+                });
             case 2:
 
                 break;

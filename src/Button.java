@@ -84,13 +84,7 @@ public class Button extends JButton {
             ResultSet queryResult2 = null;
             try {
                 queryResult1 = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-            } catch (InstantiationException ex) {
-                ex.printStackTrace();
-            } catch (IllegalAccessException ex) {
-                ex.printStackTrace();
-            } catch (SQLException ex) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
 
@@ -105,13 +99,7 @@ public class Button extends JButton {
                     }
                     try {
                         queryResult2 = Main.dbms_Azienda.getData("SELECT dbms_azienda.utente.Password FROM dbms_azienda.utente WHERE dbms_azienda.utente.Email = '" + email + "' AND dbms_azienda.utente.Password = '" + SchermataLogin.passwordField.getText() + "';");
-                    } catch (ClassNotFoundException ex) {
-                        ex.printStackTrace();
-                    } catch (InstantiationException ex) {
-                        ex.printStackTrace();
-                    } catch (IllegalAccessException ex) {
-                        ex.printStackTrace();
-                    } catch (SQLException ex) {
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
                     if(queryResult2.next() != false){
@@ -127,13 +115,7 @@ public class Button extends JButton {
 
                         try {
                             result = Main.dbms_Azienda.getData("SELECT Mansione FROM dbms_azienda.utente WHERE Email = '" + email + "' AND password = '" + password + "';");
-                        } catch (ClassNotFoundException ex) {
-                            ex.printStackTrace();
-                        } catch (InstantiationException ex) {
-                            ex.printStackTrace();
-                        } catch (IllegalAccessException ex) {
-                            ex.printStackTrace();
-                        } catch (SQLException ex) {
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                             ex.printStackTrace();
                         }
 
@@ -147,10 +129,12 @@ public class Button extends JButton {
                         }
                         //SE COMBACIA CAMBIA SCHERMATA
                         Main.cardLayout.show(Main.mainPanel, "Schermata" + mansione);
+                        SchermataLogin.emailField.setText("Email");
+                        SchermataLogin.passwordField.setText("Password");
 
                         //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
                         //tornare indietro tramite apposito bottone
-                        Button.lastView = "Schermata" + mansione;
+                        Button.lastView = "" + this.currentView;
                     } else {
                         JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Password errata");
                     }
@@ -166,12 +150,31 @@ public class Button extends JButton {
 
     public void createListenerButtonHome(){
         this.addActionListener(e -> {
-            //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, SchermataRegistrazione.mansione);
+            ResultSet queryResult = null;
+            try {
+                queryResult = Main.dbms_Azienda.getData("SELECT dbms_azienda.utente.mansione FROM dbms_azienda.utente WHERE dbms_azienda.utente.email = '" + SchermataLogin.emailField.getText() + "';");
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                ex.printStackTrace();
+            }
+            String mansione = "";
 
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
+            try {
+                queryResult.first();
+                mansione = queryResult.getString(1);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+            Main.cardLayout.show(Main.mainPanel, "Schermata" + mansione);
+
             Button.lastView = "" + this.currentView;
+        });
+    }
+
+    public void createListenerButtonLogOut(){
+        this.addActionListener(e -> {
+            AlertMessage confirm = new AlertMessage("Conferma", "Annulla", "Sei sicuro di voler effettuare il Log out?");
+            confirm.createListenerButtonConfermaLogOut();
         });
     }
 
