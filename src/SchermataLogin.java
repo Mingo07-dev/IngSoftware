@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 
 public class SchermataLogin {
 
-    public static String mansione;
     public SchermataLogin() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -39,6 +38,9 @@ public class SchermataLogin {
 
         mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
+
+        JPanel mainCenterPanel = new JPanel();
+        mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.PAGE_AXIS));
 
 
         //CREA IL BOTTONE LOGIN
