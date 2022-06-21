@@ -22,6 +22,8 @@ public class SchermataLogin {
 
 
     private static void createMansioneMenu(){
+
+        //MENU A CASCATA PER SELEZIONARE LA MANSIONE
         JMenuBar menuBar = new JMenuBar();
         JMenu mansioneButtonMenu = new JMenu("Mansione");
         JRadioButtonMenuItem buttonFarmacista = new JRadioButtonMenuItem("Farmacista");
@@ -37,11 +39,10 @@ public class SchermataLogin {
         menuBar.add(mansioneButtonMenu);
         JPanel pannello = new JPanel(new FlowLayout());
         pannello.add(menuBar);
-
         buttonFarmacista.addActionListener(new FarmacistaButtonActionListener());
         buttonCorriere.addActionListener(new CorriereButtonActionListener());
         buttonImpiegatoAzienda.addActionListener(new ImpiegatoAziendaActionListener());
-
+        //FINE MENU A CASCATA
 
         Main.schermataLoginPanel.add(pannello,BorderLayout.NORTH);
     }
