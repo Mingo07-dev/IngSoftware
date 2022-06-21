@@ -9,7 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added" />
+    <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/src/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/utente.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataAutenticazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataConsegne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataConsegne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/logo.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +62,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
+  }
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

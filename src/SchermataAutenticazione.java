@@ -23,7 +23,7 @@ public class SchermataAutenticazione {
         JPanel mainPanel = new JPanel(new BorderLayout(0,125));
 
         //CREA L'IMMAGINE LOGO
-        Image picLabel = new Image("logo.jpg",400,200);
+        Image picLabel = new Image("logo.png",200,200);
         //FINE IMMAGINE LOGO
         JPanel mainNorthPanel = new JPanel(new FlowLayout());
         mainNorthPanel.add(picLabel);

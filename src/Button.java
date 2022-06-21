@@ -75,7 +75,7 @@ public class Button extends JButton {
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {
             //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
+            Main.cardLayout.show(Main.mainPanel, SchermataRegistrazione.mansione);
 
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
@@ -86,7 +86,7 @@ public class Button extends JButton {
     public void createListenerButtonHome(){
         this.addActionListener(e -> {
             //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, SchermataLogin.mansione);
+            Main.cardLayout.show(Main.mainPanel, SchermataRegistrazione.mansione);
 
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone

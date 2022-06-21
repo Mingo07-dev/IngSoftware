@@ -13,7 +13,7 @@ public class SchermataLogin {
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
 
         //CREA L'IMMAGINE
-        Image picLabel = new Image("logo.jpg",200,100);
+        Image picLabel = new Image("logo.png",200,100);
         //FINE
 
         mainNorthPanel.add(picLabel, BorderLayout.WEST);

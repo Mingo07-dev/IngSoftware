@@ -12,7 +12,7 @@ public class SchermataCorriere {
     public SchermataCorriere() throws FileNotFoundException {
 
         JPanel schermataCorriereNorthPanel = new JPanel(new BorderLayout());
-        Image image = new Image("logo.jpg",150,70);
+        Image image = new Image("logo.png",150,70);
 
         schermataCorriereNorthPanel.add(image, BorderLayout.WEST);
 
