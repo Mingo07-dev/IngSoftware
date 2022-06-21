@@ -2,65 +2,50 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 
 public class SchermataLogin {
 
     public static String mansione;
-    public SchermataLogin(){
+    public SchermataLogin() throws FileNotFoundException {
 
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-        //CREA IL MENU A TENDINA
-        createMansioneMenu();
+        JPanel mainNorthPanel = new JPanel(new BorderLayout());
+
+        //CREA L'IMMAGINE
+        Image picLabel = new Image("logo.jpg",200,100);
         //FINE
+
+        mainNorthPanel.add(picLabel, BorderLayout.WEST);
+
+        JPanel mainUserOptionsPanel = new JPanel(new FlowLayout());
+
+        //CREA IL BOTTONE TORNA INDIETRO
+        Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,30);
+        buttonTornaIndietro.changeFontButton("Arial", 1,15);
+        buttonTornaIndietro.createListenerButtonGoBack();
+        //FINE
+
+        mainUserOptionsPanel.add(buttonTornaIndietro);
+
+        //CREA IL BOTTONE TORNA ALLA HOME
+        Button buttonHome = new Button("SchermataLogin","Home",150,30);
+        buttonHome.changeFontButton("Arial", 1,15);
+        buttonHome.createListenerButtonHome();
+        //FINE
+
+        mainUserOptionsPanel.add(buttonHome);
+
+        mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
+        mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
+
 
         //CREA IL BOTTONE LOGIN
-        Button buttoneLogin = new Button("SchermataLogin","LOGIN",150,150);
-        buttoneLogin.createListenerButtonLogin();
-        Main.schermataLoginPanel.add(buttoneLogin,BorderLayout.SOUTH);
+        Button buttonLogin = new Button("SchermataLogin","LOGIN",150,150);
+        buttonLogin.createListenerButtonLogin();
+        Main.schermataLoginPanel.add(buttonLogin,BorderLayout.SOUTH);
         //FINE
     }
-
-
-    private static void createMansioneMenu(){
-
-        //MENU A CASCATA PER SELEZIONARE LA MANSIONE
-        JMenuBar menuBar = new JMenuBar();
-        JMenu mansioneButtonMenu = new JMenu("Mansione");
-        JRadioButtonMenuItem buttonFarmacista = new JRadioButtonMenuItem("Farmacista");
-        JRadioButtonMenuItem buttonCorriere = new JRadioButtonMenuItem("Corriere");
-        JRadioButtonMenuItem buttonImpiegatoAzienda = new JRadioButtonMenuItem("Impiegato Azienda");
-        ButtonGroup group = new ButtonGroup();
-        group.add(buttonFarmacista);
-        group.add(buttonCorriere);
-        group.add(buttonImpiegatoAzienda);
-        mansioneButtonMenu.add(buttonFarmacista);
-        mansioneButtonMenu.add(buttonCorriere);
-        mansioneButtonMenu.add(buttonImpiegatoAzienda);
-        menuBar.add(mansioneButtonMenu);
-        JPanel pannello = new JPanel(new FlowLayout());
-        pannello.add(menuBar);
-        buttonFarmacista.addActionListener(new FarmacistaButtonActionListener());
-        buttonCorriere.addActionListener(new CorriereButtonActionListener());
-        buttonImpiegatoAzienda.addActionListener(new ImpiegatoAziendaActionListener());
-        //FINE MENU A CASCATA
-
-        Main.schermataLoginPanel.add(pannello,BorderLayout.NORTH);
-    }
-
-    private static class FarmacistaButtonActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            mansione = "SchermataFarmacista";
-        }
-    }
-    private static class CorriereButtonActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            mansione = "SchermataCorriere";
-        }
-    }
-    private static class ImpiegatoAziendaActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            mansione = "SchermataImpiegatoAzienda";
-        }
-    }
-
+    
 }
