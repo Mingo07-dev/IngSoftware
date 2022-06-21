@@ -13,7 +13,7 @@ public class SchermataLogin {
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
 
         //CREA L'IMMAGINE
-        Image picLabel = new Image("logo.png",200,100);
+        Image picLabel = new Image("logo.png",100,100);
         //FINE
 
         mainNorthPanel.add(picLabel, BorderLayout.WEST);
@@ -21,7 +21,7 @@ public class SchermataLogin {
         JPanel mainUserOptionsPanel = new JPanel(new FlowLayout());
 
         //CREA IL BOTTONE TORNA INDIETRO
-        Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,30);
+        Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,50);
         buttonTornaIndietro.changeFontButton("Arial", 1,15);
         buttonTornaIndietro.createListenerButtonGoBack();
         //FINE
@@ -29,7 +29,7 @@ public class SchermataLogin {
         mainUserOptionsPanel.add(buttonTornaIndietro);
 
         //CREA IL BOTTONE TORNA ALLA HOME
-        Button buttonHome = new Button("SchermataLogin","Home",150,30);
+        Button buttonHome = new Button("SchermataLogin","Home",150,50);
         buttonHome.changeFontButton("Arial", 1,15);
         buttonHome.createListenerButtonHome();
         //FINE
@@ -39,15 +39,40 @@ public class SchermataLogin {
         mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
+        JPanel centerBox = new JPanel(new FlowLayout());
         JPanel mainCenterPanel = new JPanel();
-        mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.PAGE_AXIS));
+        mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.Y_AXIS));
+
+        Image utente = new Image("utente.png", 200,200);
+
+        utente.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainCenterPanel.add(utente);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
+
+        JTextField emailField = new JTextField(30);
+        emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainCenterPanel.add(emailField);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
+
+        JTextField passwordField = new JTextField(20);
+        passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainCenterPanel.add(passwordField);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
 
         //CREA IL BOTTONE LOGIN
-        Button buttonLogin = new Button("SchermataLogin","LOGIN",150,150);
+        Button buttonLogin = new Button("SchermataLogin","Login",150,50);
+        buttonLogin.changeFontButton("Arial", 1, 25);
         buttonLogin.createListenerButtonLogin();
-        Main.schermataLoginPanel.add(buttonLogin,BorderLayout.SOUTH);
         //FINE
+
+        buttonLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainCenterPanel.add(buttonLogin);
+
+        centerBox.add(mainCenterPanel);
+        mainPanel.add(centerBox, BorderLayout.CENTER);
+
+        Main.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
     }
     
 }
