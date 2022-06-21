@@ -3,11 +3,40 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SchermataRegistrazione {
 
     public static String mansione;
     private static JMenu mansioneButtonMenu;
+    private static Button registrazioneButton;
+
+    public static JLabel campoErrato;
+
+    public static TextField emailText;
+    public static TextField passwordText;
+    public static TextField confirmPasswordText;
+
+    private static final Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+@(.+)$");
+    private static Matcher emailMatcher;
+
+    private static final Pattern passwordPattern = Pattern.compile("^[A-Za-z0-9](.+)[A-Za-z0-9]$");
+    private static Matcher passwordMatcher;
+
+    private static String mail;
+    private static boolean mansioneSelected = false;
+    public  static ResultSet mailResultSet;
+
+    public static TextField nomeFarmaciaField;
+    public static TextField indirizzoFarmaciaField;
+    public static TextField recapitoTelefonicoField;
+    public static String nomeFarmacia;
+    public static String indirizzoFarmacia;
+    public static String recapitoTelefonico;
+
 
     public SchermataRegistrazione() throws FileNotFoundException {
         JPanel fullView = new JPanel(new BorderLayout(0,20));
@@ -38,7 +67,7 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        TextField emailText = new TextField(30, "Email", 150, 30);
+        emailText = new TextField(30, "Email", 150, 30);
         emailText.setPreferredSize(new Dimension(150,30));
         emailText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(emailText);
@@ -51,7 +80,7 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        TextField passwordText = new TextField(30, "Password", 150, 30);
+        passwordText = new TextField(30, "Password", 150, 30);
         passwordText.setPreferredSize(new Dimension(150,30));
         passwordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(passwordText);
@@ -59,7 +88,7 @@ public class SchermataRegistrazione {
 
 
 
-        TextField confirmPasswordText = new TextField(30, "Confirm Password", 150, 30);
+        confirmPasswordText = new TextField(30, "Confirm Password", 150, 30);
         confirmPasswordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(confirmPasswordText);
 
@@ -70,12 +99,12 @@ public class SchermataRegistrazione {
 
 
         //PARTE SUD DELLA SCHERMATA
-        Button registrazioneButton = new Button("REGISTRATI", 200,50);
+        registrazioneButton = new Button("REGISTRATI", 200,50);
         registrazioneButton.changeFontButton("Arial",1,20);
         JPanel registrazioneButtonPanel = new JPanel(new FlowLayout());
         registrazioneButtonPanel.add(registrazioneButton);
-
-        JLabel campoErrato = new JLabel("");
+        createListenerButtonRegistrati();
+        campoErrato = new JLabel("");
         campoErrato.setForeground(Color.red);
         sudView.add(campoErrato, BorderLayout.NORTH);
         sudView.add(registrazioneButtonPanel,BorderLayout.SOUTH);
@@ -85,6 +114,86 @@ public class SchermataRegistrazione {
         fullView.add(centerView,BorderLayout.CENTER);
         fullView.add(sudView,BorderLayout.SOUTH);
         Main.schermataRegistrazionePanel.add(fullView,BorderLayout.CENTER);
+    }
+
+    public void createListenerButtonRegistrati( ){
+        registrazioneButton.addActionListener(e -> {
+            //CONTROLLA SE LA MANSIONE è STATA SELEZIONATA O NO
+            if(!mansioneSelected){
+                campoErrato.setText("");
+                campoErrato.setText("NON è STATA SELEZIONATA NESSUNA MANSIONE");
+            }
+            else{
+                //PRENDE I DATI DAI CAMPI DI TESTO E CONTROLLA CHE SIANO IDONEI E CHE LE PASSWORD COINCIDANO
+                if(!passwordText.getText().equals(confirmPasswordText.getText())) {
+                    campoErrato.setText("");
+                    campoErrato.setText("LE PASSWORD NON COINCIDONO");
+                }
+                else
+                {
+                    emailMatcher = emailPattern.matcher(emailText.getText());
+                    passwordMatcher = passwordPattern.matcher(passwordText.getText());
+                    //SE IL CAMPO EMAIL NON è IDONEO MOSTRA LA SCRITTA IN ROSSO
+                    if(!emailMatcher.matches()){
+                        campoErrato.setText("");
+                        campoErrato.setText("CAMPO EMAIL NON VALIDO, SONO AMMESSI SOLO CARATTERI E NUMERI PRIMA DELLA CHIOCCIOLA");
+                    }
+                    else{
+                        //SE IL CAMPO PASSWORD NON è IDONEO MOSTRA LA SCRITTA IN ROSSO
+                        if(!passwordMatcher.matches()){
+                            campoErrato.setText("");
+                            campoErrato.setText("CAMPO PASSWORD NON VALIDO, SONO AMMESSI SOLO CARATTERI E NUMERI ED è RICHIESTO ALMENO UN PUNTO");
+                        }
+                        else{
+                            //SE I CAMPI EMAIL E PASSWORD SONO IDONEI CERCA NEL DATABASE SE ESISTE GIà UN UTENTE CON LA STESSA MAIL
+                            //PRENDE LA MAIL DAL DATABASE, SE è NULL L'UTENTE NON SI è ANCORA REGISTRATO
+                            campoErrato.setText("");
+
+                            try {
+                                mailResultSet = Main.dbms_Azienda.getData("SELECT Email FROM dbms_azienda.utente WHERE Email = '" + emailText.getText() + "';");
+                                mailResultSet.first();
+                                mail = mailResultSet.getString(1);
+                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                                     SQLException ex) {
+                                ex.printStackTrace();
+                            }
+
+                            //FINE RICERCA NEL DATABASE
+                            if(emailText.getText().equals(mail)){
+                                //SE L'UTENTE è GIà REGISTRATO ALLORA MOSTRA UN ALLERT
+                                JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE GIà REGISTRATO");
+                            }
+                            else{
+                                //SE L'UTENTE NON è REGISTRATO LO REGISTRA
+                                if(mansione.equals("SchermataFarmacista"))
+                                {
+                                    nomeFarmaciaField = new TextField(15, "Nome Farmacia", 50, 30);
+                                    indirizzoFarmaciaField = new TextField(20, "Indirizzo", 50, 30);
+                                    recapitoTelefonicoField = new TextField(7, "Telefono", 50, 30);
+                                    AlertMessage datiAggiuntivi = new AlertMessage();
+                                    try {
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ emailText.getText() +"', '"+ passwordText.getText() +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
+                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                                             SQLException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+                                else{
+                                    try {
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '0');");
+                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                                             SQLException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+        });
     }
 
     private static JPanel createMansioneMenu(){
@@ -117,18 +226,22 @@ public class SchermataRegistrazione {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataFarmacista";
             mansioneButtonMenu.setText("Farmacista");
+            mansioneSelected = true;
         }
     }
     private static class CorriereButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataCorriere";
             mansioneButtonMenu.setText("Corriere");
+            mansioneSelected = true;
         }
     }
     private static class ImpiegatoAziendaActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataImpiegatoAzienda";
             mansioneButtonMenu.setText("Impiegato");
+            mansioneSelected = true;
         }
     }
 }
+

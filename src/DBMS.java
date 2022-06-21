@@ -19,6 +19,7 @@ public class DBMS {
     private Statement stmt;
     private int rows;
     private int columns;
+    private PreparedStatement ps;
 
 
 
@@ -64,5 +65,12 @@ public class DBMS {
 
         return this.resultSet;
     }
+
+    public void setData(String query) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        this.ps = this.connection.prepareStatement(query);
+        this.ps.executeQuery();
+    }
+
+
 
 }
