@@ -68,7 +68,7 @@ public class DBMS {
 
     public void setData(String query) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
         this.ps = this.connection.prepareStatement(query);
-        this.ps.executeQuery();
+        this.ps.executeUpdate();
     }
 
 

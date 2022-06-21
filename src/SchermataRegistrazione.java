@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class SchermataRegistrazione {
 
-    public static String mansione;
+    public static String mansione= "";
     private static JMenu mansioneButtonMenu;
     private static Button registrazioneButton;
 
@@ -28,7 +28,7 @@ public class SchermataRegistrazione {
 
     private static String mail;
     private static boolean mansioneSelected = false;
-    public  static ResultSet mailResultSet;
+    //public  static ResultSet mailResultSet;
 
     public static TextField nomeFarmaciaField;
     public static TextField indirizzoFarmaciaField;
@@ -36,6 +36,7 @@ public class SchermataRegistrazione {
     public static String nomeFarmacia;
     public static String indirizzoFarmacia;
     public static String recapitoTelefonico;
+    public static String mansioneString;
 
 
     public SchermataRegistrazione() throws FileNotFoundException {
@@ -148,15 +149,32 @@ public class SchermataRegistrazione {
                             //SE I CAMPI EMAIL E PASSWORD SONO IDONEI CERCA NEL DATABASE SE ESISTE GIà UN UTENTE CON LA STESSA MAIL
                             //PRENDE LA MAIL DAL DATABASE, SE è NULL L'UTENTE NON SI è ANCORA REGISTRATO
                             campoErrato.setText("");
-
+                            ResultSet mailResultSet = null;
                             try {
-                                mailResultSet = Main.dbms_Azienda.getData("SELECT Email FROM dbms_azienda.utente WHERE Email = '" + emailText.getText() + "';");
-                                mailResultSet.first();
-                                mail = mailResultSet.getString(1);
-                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                                     SQLException ex) {
+                                mailResultSet = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataRegistrazione.emailText.getText() + "';");
+                            } catch (ClassNotFoundException ex) {
+                                ex.printStackTrace();
+                            } catch (InstantiationException ex) {
+                                ex.printStackTrace();
+                            } catch (IllegalAccessException ex) {
+                                ex.printStackTrace();
+                            } catch (SQLException ex) {
                                 ex.printStackTrace();
                             }
+
+                            try {
+                                if (mailResultSet.next() != false) {
+                                    try {
+                                        mailResultSet.first();
+                                        mail = mailResultSet.getString(1);
+                                    } catch (SQLException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+                            } catch (SQLException ex) {
+                                ex.printStackTrace();
+                            }
+
 
                             //FINE RICERCA NEL DATABASE
                             if(emailText.getText().equals(mail)){
@@ -165,7 +183,7 @@ public class SchermataRegistrazione {
                             }
                             else{
                                 //SE L'UTENTE NON è REGISTRATO LO REGISTRA
-                                if(mansione.equals("SchermataFarmacista"))
+                                if(mansioneString.equals("Farmacista"))
                                 {
                                     nomeFarmaciaField = new TextField(15, "Nome Farmacia", 50, 30);
                                     indirizzoFarmaciaField = new TextField(20, "Indirizzo", 50, 30);
@@ -173,16 +191,26 @@ public class SchermataRegistrazione {
                                     AlertMessage datiAggiuntivi = new AlertMessage();
                                     try {
                                         Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ emailText.getText() +"', '"+ passwordText.getText() +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
-                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                                             SQLException ex) {
+                                    } catch (ClassNotFoundException ex) {
+                                        ex.printStackTrace();
+                                    } catch (InstantiationException ex) {
+                                        ex.printStackTrace();
+                                    } catch (IllegalAccessException ex) {
+                                        ex.printStackTrace();
+                                    } catch (SQLException ex) {
                                         ex.printStackTrace();
                                     }
                                 }
                                 else{
                                     try {
-                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '0');");
-                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                                             SQLException ex) {
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"', '0');");
+                                    } catch (ClassNotFoundException ex) {
+                                        ex.printStackTrace();
+                                    } catch (InstantiationException ex) {
+                                        ex.printStackTrace();
+                                    } catch (IllegalAccessException ex) {
+                                        ex.printStackTrace();
+                                    } catch (SQLException ex) {
                                         ex.printStackTrace();
                                     }
                                     JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
@@ -225,6 +253,7 @@ public class SchermataRegistrazione {
     private static class FarmacistaButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataFarmacista";
+            mansioneString = "Farmacista";
             mansioneButtonMenu.setText("Farmacista");
             mansioneSelected = true;
         }
@@ -232,14 +261,16 @@ public class SchermataRegistrazione {
     private static class CorriereButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataCorriere";
-            mansioneButtonMenu.setText("Corriere");
+            mansioneString = "Corriere";
+            mansioneButtonMenu.setText(mansioneString);
             mansioneSelected = true;
         }
     }
     private static class ImpiegatoAziendaActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataImpiegatoAzienda";
-            mansioneButtonMenu.setText("Impiegato");
+            mansioneString = "Impiegato";
+            mansioneButtonMenu.setText(mansioneString);
             mansioneSelected = true;
         }
     }
