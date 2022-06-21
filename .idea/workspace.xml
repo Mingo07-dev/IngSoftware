@@ -11,9 +11,25 @@
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Button.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$CorriereButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$FarmacistaButtonActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$ImpiegatoAziendaActionListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlertMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlertMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Button.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataConsegne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataConsegne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchermataRecuperoCredenziali.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataRecuperoCredenziali.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataRegistrazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataRegistrazione.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

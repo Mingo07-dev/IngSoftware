@@ -15,7 +15,7 @@ public class SchermataCorriere {
 
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
 
-        Image image = new Image("logo.png",150,100);
+        Image image = new Image("logo.png",100,100);
 
         mainNorthPanel.add(image, BorderLayout.WEST);
 

@@ -53,7 +53,7 @@ public class SchermataConsegne {
         }
         try {
             if(queryResult.next() != false) {
-                queryResult.first();
+                //queryResult.first();
                 try {
                     tableConsegne = new Table(headers, queryResult);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
@@ -64,17 +64,19 @@ public class SchermataConsegne {
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                sp.add(tableConsegne);
+                Main.schermataConsegnePanel.add(tableConsegne, BorderLayout.CENTER);
+                //sp.add(tableConsegne);
             } else {
-                sp.add(resultLabel);
+                Main.schermataConsegnePanel.add(resultLabel, BorderLayout.CENTER);
+                //sp.add(resultLabel);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        mainPanel.add(sp, BorderLayout.CENTER);
+        //mainPanel.add(sp, BorderLayout.CENTER);
 
-        Main.schermataConsegnePanel.add(mainPanel, BorderLayout.CENTER);
+        //Main.schermataConsegnePanel.add(mainPanel, BorderLayout.CENTER);
 
     }
 }

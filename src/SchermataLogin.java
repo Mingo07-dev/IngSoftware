@@ -3,11 +3,16 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class SchermataLogin {
 
     public static TextField emailField;
     public static TextField passwordField;
+    private static Button buttonLogin;
+    public static String email;
+    public static String mansione;
 
     public SchermataLogin() throws FileNotFoundException {
 
@@ -26,7 +31,7 @@ public class SchermataLogin {
         //CREA IL BOTTONE TORNA INDIETRO
         Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,50);
         buttonTornaIndietro.changeFontButton("Arial", 1,15);
-        buttonTornaIndietro.createListenerButtonGoBack();
+        buttonTornaIndietro.createListenerButtonGoBackAutentication();
         //FINE
 
         mainUserOptionsPanel.add(buttonTornaIndietro);
@@ -45,7 +50,7 @@ public class SchermataLogin {
         mainCenterPanel.add(utente);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
-        emailField = new TextField(30, "Email", 150,30);
+        emailField = new TextField(30, "Mail", 150,30);
         emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(emailField);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
@@ -57,9 +62,9 @@ public class SchermataLogin {
 
 
         //CREA IL BOTTONE LOGIN
-        Button buttonLogin = new Button("SchermataLogin","Login",150,50);
+        buttonLogin = new Button("SchermataLogin","Login",150,50);
         buttonLogin.changeFontButton("Arial", 1, 25);
-        buttonLogin.createListenerButtonLogin();
+        createListenerButtonLogin();
         //FINE
 
         buttonLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -69,6 +74,84 @@ public class SchermataLogin {
         mainPanel.add(centerBox, BorderLayout.CENTER);
 
         Main.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
+    }
+
+    public void createListenerButtonLogin(){
+        buttonLogin.addActionListener(e -> {
+            //PRENDE I DATI DAI CAMPI DI TESTO
+
+            //PRENDE I DATI DAL DATABASE
+            ResultSet queryResult1 = null;
+            ResultSet queryResult2 = null;
+            try {
+                queryResult1 = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                ex.printStackTrace();
+            }
+
+            try {
+                if(queryResult1.next() != false){
+                    email = null;
+                    try {
+                        queryResult1.first();
+                        email = queryResult1.getString(1);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        queryResult2 = Main.dbms_Azienda.getData("SELECT dbms_azienda.utente.Password FROM dbms_azienda.utente WHERE dbms_azienda.utente.Email = '" + email + "' AND dbms_azienda.utente.Password = '" + SchermataLogin.passwordField.getText() + "';");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    if(queryResult2.next() != false){
+                        String password = null;
+                        try {
+                            queryResult2.first();
+                            password = queryResult2.getString(1);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+
+                        ResultSet result = null;
+
+                        try {
+                            result = Main.dbms_Azienda.getData("SELECT Mansione FROM dbms_azienda.utente WHERE Email = '" + email + "' AND password = '" + password + "';");
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
+
+                        mansione = "";
+
+                        try {
+                            result.first();
+                            mansione = result.getString(1);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        //SE COMBACIA CAMBIA SCHERMATA
+                        try {
+                            Main.dbms_Azienda.setData("UPDATE `dbms_azienda`.`utente` SET `Stato` = '1' WHERE (`Email` = '"+email+"');;");
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        Main.cardLayout.show(Main.mainPanel, "Schermata" + mansione);
+                        SchermataLogin.emailField.setText("Mail");
+                        SchermataLogin.passwordField.setText("Password");
+
+                        //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+                        //tornare indietro tramite apposito bottone
+                        Button.lastView = "SchermataLogin";
+                    } else {
+                        JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Password errata");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        });
     }
     
 }

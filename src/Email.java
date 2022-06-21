@@ -36,8 +36,8 @@
                 );
                 message.setSubject("Recupero Credenziali");
                 message.setText("Ecco le tue credenziali di accesso a 'Farmacie Migliori Con Noi': " +
-                        "Mail: " + endToThisMail +
-                        "Password: " + password_toSend);
+                        "\nMail: " + endToThisMail +
+                        "\nPassword: " + password_toSend);
 
                 Transport.send(message);
 

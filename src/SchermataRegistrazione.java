@@ -23,7 +23,7 @@ public class SchermataRegistrazione {
     private static final Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+@(.+)$");
     private static Matcher emailMatcher;
 
-    private static final Pattern passwordPattern = Pattern.compile("^[A-Za-z0-9](.+)[A-Za-z0-9]$");
+    private static final Pattern passwordPattern = Pattern.compile("^[A-Za-z0-9]$");
     private static Matcher passwordMatcher;
 
     private static String mail;
@@ -47,9 +47,9 @@ public class SchermataRegistrazione {
 
         //PARTE NORD DELLA SCHERMATA
         Image logo = new Image("logo.png",100,100);
-        Button GoBack = new Button("SchermataRegistrazione","TornaIndietro",150,50);
+        Button GoBack = new Button("SchermataRegistrazione","Torna Indietro",150,50);
         GoBack.changeFontButton("Arial",1,15);
-        GoBack.createListenerButtonGoBack();
+        GoBack.createListenerButtonGoBackAutentication();
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(GoBack);
         northView.add(logo,BorderLayout.WEST);
@@ -107,7 +107,9 @@ public class SchermataRegistrazione {
         createListenerButtonRegistrati();
         campoErrato = new JLabel("");
         campoErrato.setForeground(Color.red);
-        sudView.add(campoErrato, BorderLayout.NORTH);
+        JPanel sudCenterView = new JPanel(new FlowLayout());
+        sudCenterView.add(campoErrato, BorderLayout.CENTER);
+        sudView.add(sudCenterView, BorderLayout.NORTH);
         sudView.add(registrazioneButtonPanel,BorderLayout.SOUTH);
         //FINE PARTE SUD DELLA SCHERMATA
 
@@ -143,7 +145,7 @@ public class SchermataRegistrazione {
                         //SE IL CAMPO PASSWORD NON è IDONEO MOSTRA LA SCRITTA IN ROSSO
                         if(!passwordMatcher.matches()){
                             campoErrato.setText("");
-                            campoErrato.setText("CAMPO PASSWORD NON VALIDO, SONO AMMESSI SOLO CARATTERI E NUMERI ED è RICHIESTO ALMENO UN PUNTO");
+                            campoErrato.setText("CAMPO PASSWORD NON VALIDO, SONO AMMESSI SOLO CARATTERI E NUMERI");
                         }
                         else{
                             //SE I CAMPI EMAIL E PASSWORD SONO IDONEI CERCA NEL DATABASE SE ESISTE GIà UN UTENTE CON LA STESSA MAIL
@@ -180,7 +182,7 @@ public class SchermataRegistrazione {
                                 if(mansioneString.equals("Farmacista"))
                                 {
                                     nomeFarmaciaField = new TextField(15, "Nome Farmacia", 50, 30);
-                                    indirizzoFarmaciaField = new TextField(20, "Indirizzo", 50, 30);
+                                    indirizzoFarmaciaField = new TextField(20, "Indirizzo, 0", 50, 30);
                                     recapitoTelefonicoField = new TextField(7, "Telefono", 50, 30);
                                     AlertMessage datiAggiuntivi = new AlertMessage();
                                     try {
@@ -188,6 +190,9 @@ public class SchermataRegistrazione {
                                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                                         ex.printStackTrace();
                                     }
+                                    emailText.setText("Mail");
+                                    passwordText.setText("Password");
+                                    confirmPasswordText.setText("Conferma Password");
                                 }
                                 else{
                                     try {
@@ -196,15 +201,15 @@ public class SchermataRegistrazione {
                                         ex.printStackTrace();
                                     }
                                     JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
+                                    emailText.setText("Mail");
+                                    passwordText.setText("Password");
+                                    confirmPasswordText.setText("Conferma Password");
                                 }
                             }
                         }
                     }
                 }
             }
-            emailText.setText("Mail");
-            passwordText.setText("Password");
-            confirmPasswordText.setText("Conferma Password");
         });
     }
 
