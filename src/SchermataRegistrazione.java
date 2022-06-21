@@ -40,7 +40,7 @@ public class SchermataRegistrazione {
 
 
         //JPanel emailPanel = new JPanel(new FlowLayout());
-        JTextField emailText = new JTextField(30);
+        TextField emailText = new TextField(30, "Email", 150, 30);
         emailText.setPreferredSize(new Dimension(150,30));
         //emailPanel.add(emailText);
         emailText.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -54,7 +54,7 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
         //JPanel passwordPanel = new JPanel(new FlowLayout());
-        JTextField passwordText = new JTextField(30);
+        TextField passwordText = new TextField(30, "Password", 150, 30);
         passwordText.setPreferredSize(new Dimension(150,30));
         //passwordPanel.add(passwordText);
         passwordText.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -63,8 +63,7 @@ public class SchermataRegistrazione {
 
 
         //JPanel confirmPasswordPanel = new JPanel(new FlowLayout());
-        JTextField confirmPasswordText = new JTextField(30);
-        confirmPasswordText.setPreferredSize(new Dimension(150,30));
+        TextField confirmPasswordText = new TextField(30, "Confirm Password", 150, 30);
         //confirmPasswordPanel.add(confirmPasswordText);
         confirmPasswordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(confirmPasswordText);

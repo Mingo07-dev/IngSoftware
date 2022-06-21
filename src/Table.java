@@ -211,25 +211,7 @@ public class Table extends JPanel{
             gbc.gridy = i +1 ;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            /*JTextField quantities = new JTextField();
-            this.add(button, gbc);
-            addListener(button, listener);*/
-            /*public static void main(String[] args) {
-            NumberFormat format = NumberFormat.getInstance();
-            NumberFormatter formatter = new NumberFormatter(format);
-            formatter.setValueClass(Integer.class);
-            formatter.setMinimum(0);
-            formatter.setMaximum(Integer.MAX_VALUE);
-            formatter.setAllowsInvalid(false);
-            // If you want the value to be committed on each keystroke instead of focus lost
-            formatter.setCommitsOnValidEdit(true);
-            JFormattedTextField field = new JFormattedTextField(formatter);
 
-            JOptionPane.showMessageDialog(null, field);
-
-            // getValue() always returns something valid
-            System.out.println(field.getValue());
-            }*/
             rs.next();
         }
     }
