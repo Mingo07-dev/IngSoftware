@@ -7,7 +7,7 @@
 
     public class Email {
 
-        public Email(){
+        public Email(String endToThisMail, String password_toSend){
 
             final String username = "farmaciemiglioriconnoi@gmail.com";
             final String password = "rryoyiydlhijojeo";
@@ -32,12 +32,12 @@
                 message.setFrom(new InternetAddress("farmaciemiglioriconnoi@gmail.com"));
                 message.setRecipients(
                         Message.RecipientType.TO,
-                        InternetAddress.parse("mcsajeva7@gmail.com")
+                        InternetAddress.parse(endToThisMail)
                 );
                 message.setSubject("Recupero Credenziali");
                 message.setText("Ecco le tue credenziali di accesso a 'Farmacie Migliori Con Noi': " +
-                        "Mail: " + "mail@gmail.com" +
-                        "Password: " + "password");
+                        "Mail: " + endToThisMail +
+                        "Password: " + password_toSend);
 
                 Transport.send(message);
 

@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import javax.mail.MessagingException;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -53,7 +52,7 @@ public class Main {
     public static CardLayout cardLayout = new CardLayout();
 
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, FileNotFoundException, MessagingException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, FileNotFoundException {
         dbms_Azienda = new DBMS("dbms_azienda","root", "booba123");
         dbms_Farmacia = new DBMS("dbms_farmacia","root", "booba123");
 
