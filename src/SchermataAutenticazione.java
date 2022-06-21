@@ -20,15 +20,17 @@ public class SchermataAutenticazione {
         //dichiara i constraints, ovvero i dettagli e le caratteristiche che dovremo poi impostare
         //per ogni elemento che aggiungeremo nella gridbag, in pratica nella schermata
 
-        JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel mainPanel = new JPanel(new BorderLayout(0,125));
 
         //CREA L'IMMAGINE LOGO
         Image picLabel = new Image("logo.jpg",400,200);
         //FINE IMMAGINE LOGO
-
-        mainPanel.add(picLabel, BorderLayout.NORTH);
+        JPanel mainNorthPanel = new JPanel(new FlowLayout());
+        mainNorthPanel.add(picLabel);
+        mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
         JPanel mainCenterPanel = new JPanel();
-        mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.Y_AXIS));
+        mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.PAGE_AXIS));
+
 
         // BOTTONE LOGIN
         buttonSchermataLogin = new Button("SchermataAutenticazione",  "Login", 300,50);
@@ -36,7 +38,9 @@ public class SchermataAutenticazione {
         buttonSchermataLogin.createListenerButtonChangeView("SchermataLogin");
         //FINE BOTTONE LOGIN
 
+        buttonSchermataLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(buttonSchermataLogin);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
         //BOTTONE REGISTRAZIONE
         buttonSchermataRegistrazione = new Button("SchermataAutenticazione",  "Registrazione", 300,50);
@@ -44,7 +48,9 @@ public class SchermataAutenticazione {
         buttonSchermataRegistrazione.createListenerButtonChangeView("SchermataRegistrazione");
         //FINE BOTTONE REGISTRAZIONE
 
+        buttonSchermataRegistrazione.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(buttonSchermataRegistrazione);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
         //BOTTONE RECUPERO CREDENZIALI
         buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione",  "Recupero Credenziali", 300,50);
@@ -52,6 +58,7 @@ public class SchermataAutenticazione {
         buttonSchermataRecuperoCredenziali.createListenerButtonChangeView("SchermataRecuperoCredenziali");
         //FINE BOTTONE RECUPERO CREDENZIALI
 
+        buttonSchermataRecuperoCredenziali.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(buttonSchermataRecuperoCredenziali);
 
         mainPanel.add(mainCenterPanel, BorderLayout.CENTER);
