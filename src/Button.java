@@ -175,6 +175,7 @@ public class Button extends JButton {
         this.addActionListener(e -> {
             AlertMessage confirm = new AlertMessage("Conferma", "Annulla", "Sei sicuro di voler effettuare il Log out?");
             confirm.createListenerButtonConfermaLogOut();
+            confirm.createListenerButtonAnnullaLogOut();
         });
     }
 

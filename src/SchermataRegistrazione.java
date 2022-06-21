@@ -68,7 +68,7 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        emailText = new TextField(30, "Email", 150, 30);
+        emailText = new TextField(30, "Mail", 150, 30);
         emailText.setPreferredSize(new Dimension(150,30));
         emailText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(emailText);
@@ -202,7 +202,9 @@ public class SchermataRegistrazione {
                     }
                 }
             }
-
+            emailText.setText("Mail");
+            passwordText.setText("Password");
+            confirmPasswordText.setText("Conferma Password");
         });
     }
 

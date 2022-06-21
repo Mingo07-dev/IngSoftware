@@ -31,13 +31,6 @@ public class SchermataLogin {
 
         mainUserOptionsPanel.add(buttonTornaIndietro);
 
-        //CREA IL BOTTONE TORNA ALLA HOME
-        Button buttonHome = new Button("SchermataLogin","Home",150,50);
-        buttonHome.changeFontButton("Arial", 1,15);
-        buttonHome.createListenerButtonHome();
-        //FINE
-
-        mainUserOptionsPanel.add(buttonHome);
 
         mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);

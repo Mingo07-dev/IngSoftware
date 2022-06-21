@@ -155,8 +155,9 @@ public class AlertMessage {
 
     public void createListenerButtonConfermaLogOut(){
         button_Conferma.addActionListener(e -> {
-            Main.cardLayout.show(Main.mainPanel, "SchermataLogin");
+            Main.cardLayout.show(Main.mainPanel, "SchermataAutenticazione");
             frame.dispose();
+            JOptionPane.showMessageDialog(Main.mainFrame, "Logout Effettuato");
         });
     }
 
