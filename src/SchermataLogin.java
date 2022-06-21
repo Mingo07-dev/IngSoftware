@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 
 public class SchermataLogin {
 
+    public static JTextField emailField;
+    public static JTextField passwordField;
+
     public SchermataLogin() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -49,12 +52,12 @@ public class SchermataLogin {
         mainCenterPanel.add(utente);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
-        JTextField emailField = new JTextField(30);
+        emailField = new JTextField(30);
         emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(emailField);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
-        JTextField passwordField = new JTextField(20);
+        passwordField = new JTextField(20);
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(passwordField);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));

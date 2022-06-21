@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 
 //QUESTA CLASSE CONTIENE I METODI PER LA CREAZIONE DI OGNI TIPO DI BOTTONE
 public class Button extends JButton {
@@ -75,20 +78,89 @@ public class Button extends JButton {
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {
             //PRENDE I DATI DAI CAMPI DI TESTO
-            //SchermataLogin.nometextField.getText();
+
             //PRENDE I DATI DAL DATABASE
+            ResultSet queryResult1 = null;
+            ResultSet queryResult2 = null;
+            try {
+                queryResult1 = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
+            } catch (ClassNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (InstantiationException ex) {
+                ex.printStackTrace();
+            } catch (IllegalAccessException ex) {
+                ex.printStackTrace();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
 
-            //CONFRONTA I DATI
+            try {
+                if(queryResult1.next() != false){
+                    String email = null;
+                    try {
+                        queryResult1.first();
+                        email = queryResult1.getString(1);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    try {
+                        queryResult2 = Main.dbms_Azienda.getData("SELECT dbms_azienda.utente.Password FROM dbms_azienda.utente WHERE dbms_azienda.utente.Email = '" + email + "' AND dbms_azienda.utente.Password = '" + SchermataLogin.passwordField.getText() + "';");
+                    } catch (ClassNotFoundException ex) {
+                        ex.printStackTrace();
+                    } catch (InstantiationException ex) {
+                        ex.printStackTrace();
+                    } catch (IllegalAccessException ex) {
+                        ex.printStackTrace();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    if(queryResult2.next() != false){
+                        String password = null;
+                        try {
+                            queryResult2.first();
+                            password = queryResult2.getString(1);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
 
-            //SE COMBACIA CAMBIA SCHERMATA
-            Main.cardLayout.show(Main.mainPanel, SchermataRegistrazione.mansione);
+                        ResultSet result = null;
 
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
-            Button.lastView = "" + SchermataRegistrazione.mansione;
+                        try {
+                            result = Main.dbms_Azienda.getData("SELECT Mansione FROM dbms_azienda.utente WHERE Email = '" + email + "' AND password = '" + password + "';");
+                        } catch (ClassNotFoundException ex) {
+                            ex.printStackTrace();
+                        } catch (InstantiationException ex) {
+                            ex.printStackTrace();
+                        } catch (IllegalAccessException ex) {
+                            ex.printStackTrace();
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
 
-            // SE NON COMBACIANO MOSTRA ALLERT
-            //JOptionPane.showMessageDialog(Main.mainFrame, "Email e/o password sono errati o non ti sei registrato");
+                        String mansione = "";
+
+                        try {
+                            result.first();
+                            mansione = result.getString(1);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        //SE COMBACIA CAMBIA SCHERMATA
+                        Main.cardLayout.show(Main.mainPanel, "Schermata" + mansione);
+
+                        //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+                        //tornare indietro tramite apposito bottone
+                        Button.lastView = "Schermata" + mansione;
+                    } else {
+                        JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Password errata");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
         });
     }
 
