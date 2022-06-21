@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 public class SchermataRegistrazione {
 
     public static String mansione;
+    private static JMenu mansioneButtonMenu;
 
     public SchermataRegistrazione() throws FileNotFoundException {
         JPanel fullView = new JPanel(new BorderLayout(0,20));
@@ -18,6 +19,7 @@ public class SchermataRegistrazione {
         Image logo = new Image("logo.png",100,100);
         Button GoBack = new Button("SchermataRegistrazione","TornaIndietro",150,50);
         GoBack.changeFontButton("Arial",1,15);
+        GoBack.createListenerButtonGoBack();
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(GoBack);
         northView.add(logo,BorderLayout.WEST);
@@ -36,10 +38,8 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        //JPanel emailPanel = new JPanel(new FlowLayout());
         TextField emailText = new TextField(30, "Email", 150, 30);
         emailText.setPreferredSize(new Dimension(150,30));
-        //emailPanel.add(emailText);
         emailText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(emailText);
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
@@ -50,18 +50,16 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(menuMansione);
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
-        //JPanel passwordPanel = new JPanel(new FlowLayout());
+
         TextField passwordText = new TextField(30, "Password", 150, 30);
         passwordText.setPreferredSize(new Dimension(150,30));
-        //passwordPanel.add(passwordText);
         passwordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(passwordText);
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        //JPanel confirmPasswordPanel = new JPanel(new FlowLayout());
+
         TextField confirmPasswordText = new TextField(30, "Confirm Password", 150, 30);
-        //confirmPasswordPanel.add(confirmPasswordText);
         confirmPasswordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(confirmPasswordText);
 
@@ -72,11 +70,15 @@ public class SchermataRegistrazione {
 
 
         //PARTE SUD DELLA SCHERMATA
-        Button loginButton = new Button("SchermataRegistrazione", "LOGIN", 200,50);
-        loginButton.changeFontButton("Arial",1,20);
-        JPanel loginPanel = new JPanel(new FlowLayout());
-        loginPanel.add(loginButton);
-        sudView.add(loginPanel);
+        Button registrazioneButton = new Button("SchermataRegistrazione", "REGISTRATI", 200,50);
+        registrazioneButton.changeFontButton("Arial",1,20);
+        JPanel registrazioneButtonPanel = new JPanel(new FlowLayout());
+        registrazioneButtonPanel.add(registrazioneButton);
+
+        JLabel campoErrato = new JLabel("");
+        campoErrato.setForeground(Color.red);
+        sudView.add(campoErrato, BorderLayout.NORTH);
+        sudView.add(registrazioneButtonPanel,BorderLayout.SOUTH);
         //FINE PARTE SUD DELLA SCHERMATA
 
         fullView.add(northView,BorderLayout.NORTH);
@@ -89,7 +91,7 @@ public class SchermataRegistrazione {
 
         //MENU A CASCATA PER SELEZIONARE LA MANSIONE
         JMenuBar menuBar = new JMenuBar();
-        JMenu mansioneButtonMenu = new JMenu("Mansione");
+        mansioneButtonMenu = new JMenu("Mansione");
         JRadioButtonMenuItem buttonFarmacista = new JRadioButtonMenuItem("Farmacista");
         JRadioButtonMenuItem buttonCorriere = new JRadioButtonMenuItem("Corriere");
         JRadioButtonMenuItem buttonImpiegatoAzienda = new JRadioButtonMenuItem("Impiegato Azienda");
@@ -114,16 +116,19 @@ public class SchermataRegistrazione {
     private static class FarmacistaButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataFarmacista";
+            mansioneButtonMenu.setText("Farmacista");
         }
     }
     private static class CorriereButtonActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataCorriere";
+            mansioneButtonMenu.setText("Corriere");
         }
     }
     private static class ImpiegatoAziendaActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataImpiegatoAzienda";
+            mansioneButtonMenu.setText("Impiegato");
         }
     }
 }
