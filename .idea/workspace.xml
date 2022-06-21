@@ -10,13 +10,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/src/Email.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$CorriereButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$CorriereButtonActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$FarmacistaButtonActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$FarmacistaButtonActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$ImpiegatoAziendaActionListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$ImpiegatoAziendaActionListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBMS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchermataRegistrazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataRegistrazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataRecuperoCredenziali.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchermataRecuperoCredenziali.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +57,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "project.structure.last.edited": "Modules",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RunManager">
