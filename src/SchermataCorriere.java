@@ -11,28 +11,34 @@ import java.io.InputStream;
 public class SchermataCorriere {
     public SchermataCorriere() throws FileNotFoundException {
 
-        JPanel schermataCorriereNorthPanel = new JPanel(new BorderLayout());
-        Image image = new Image("logo.png",150,70);
+        JPanel mainPanel = new JPanel(new BorderLayout(0,200));
 
-        schermataCorriereNorthPanel.add(image, BorderLayout.WEST);
+        JPanel mainNorthPanel = new JPanel(new BorderLayout());
+
+        Image image = new Image("logo.png",150,100);
+
+        mainNorthPanel.add(image, BorderLayout.WEST);
 
         // BOTTONE LOG OUT E IMMAGINE DEL LOGO HANNO LA STESSA DIMENSIONE PER ORA
-        Button bottoneLogOut = new Button("SchermataCorriere","Log out", 150, 70);
+        Button bottoneLogOut = new Button("SchermataCorriere","Log out", 150, 30);
+        bottoneLogOut.changeFontButton("Arial", 1,15);
+        bottoneLogOut.createListenerButtonLogOut();
 
-        schermataCorriereNorthPanel.add(bottoneLogOut, BorderLayout.EAST);
+        mainNorthPanel.add(bottoneLogOut, BorderLayout.EAST);
 
-        //DA CAMBIARE IN BOX LAYOUT QUANDO SI DOVRANNO INTRODURRE GLI ALTRI PULSANTI
-        JPanel schermataCorriereCenterPanel = new JPanel(new FlowLayout());
-        Button bottoneVisualizzaElencoConsegne = new Button("SchermataCorriere", "Visualizza Elenco Consegne", 400,50);
-        bottoneVisualizzaElencoConsegne.changeFontButton("Arial", 1,25);
-        bottoneVisualizzaElencoConsegne.createListenerButtonChangeView("SchermataConsegne");
-
-        schermataCorriereCenterPanel.add(bottoneVisualizzaElencoConsegne);
-
-        Main.schermataCorrierePanel.add(schermataCorriereNorthPanel, BorderLayout.NORTH);
-        Main.schermataCorrierePanel.add(schermataCorriereCenterPanel, BorderLayout.CENTER);
+        JPanel mainCenterFlow = new JPanel(new FlowLayout());
 
 
+        Button buttonVisualizzaElencoConsegne = new Button("SchermataCorriere", "Visualizza Elenco Consegne", 400,50);
+        buttonVisualizzaElencoConsegne.changeFontButton("Arial", 1,15);
+        buttonVisualizzaElencoConsegne.createListenerButtonChangeView("SchermataConsegne");
+
+        mainCenterFlow.add(buttonVisualizzaElencoConsegne);
+
+        mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
+        mainPanel.add(mainCenterFlow, BorderLayout.CENTER);
+
+        Main.schermataCorrierePanel.add(mainPanel, BorderLayout.CENTER);
     }
 
 }

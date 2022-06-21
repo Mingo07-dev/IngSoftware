@@ -152,13 +152,7 @@ public class SchermataRegistrazione {
                             ResultSet mailResultSet = null;
                             try {
                                 mailResultSet = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataRegistrazione.emailText.getText() + "';");
-                            } catch (ClassNotFoundException ex) {
-                                ex.printStackTrace();
-                            } catch (InstantiationException ex) {
-                                ex.printStackTrace();
-                            } catch (IllegalAccessException ex) {
-                                ex.printStackTrace();
-                            } catch (SQLException ex) {
+                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                                 ex.printStackTrace();
                             }
 
@@ -191,26 +185,14 @@ public class SchermataRegistrazione {
                                     AlertMessage datiAggiuntivi = new AlertMessage();
                                     try {
                                         Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ emailText.getText() +"', '"+ passwordText.getText() +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
-                                    } catch (ClassNotFoundException ex) {
-                                        ex.printStackTrace();
-                                    } catch (InstantiationException ex) {
-                                        ex.printStackTrace();
-                                    } catch (IllegalAccessException ex) {
-                                        ex.printStackTrace();
-                                    } catch (SQLException ex) {
+                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                                         ex.printStackTrace();
                                     }
                                 }
                                 else{
                                     try {
                                         Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"', '0');");
-                                    } catch (ClassNotFoundException ex) {
-                                        ex.printStackTrace();
-                                    } catch (InstantiationException ex) {
-                                        ex.printStackTrace();
-                                    } catch (IllegalAccessException ex) {
-                                        ex.printStackTrace();
-                                    } catch (SQLException ex) {
+                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                                         ex.printStackTrace();
                                     }
                                     JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
