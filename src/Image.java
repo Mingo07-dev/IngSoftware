@@ -28,7 +28,7 @@ public class Image extends JLabel {
         }
 
         this.setIcon(new ImageIcon(resizedImage));
-        this.setSize(125, 63);
+        //this.setPreferredSize(new Dimension(125, 63));
     }
 
     BufferedImage resizeImage() throws IOException {
