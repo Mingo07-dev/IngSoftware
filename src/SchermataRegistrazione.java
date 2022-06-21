@@ -18,11 +18,8 @@ public class SchermataRegistrazione {
         Image logo = new Image("logo.png",100,100);
         Button GoBack = new Button("SchermataRegistrazione","TornaIndietro",150,50);
         GoBack.changeFontButton("Arial",1,15);
-        Button Home = new Button("SchermataRegistrazione","Home",150,50);
-        Home.changeFontButton("Arial",1,15);
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(GoBack);
-        buttonsPanel.add(Home);
         northView.add(logo,BorderLayout.WEST);
         northView.add(buttonsPanel,BorderLayout.EAST);
         //FINE PARTE NORD DELLA SCHERMATA

@@ -74,12 +74,21 @@ public class Button extends JButton {
 
     public void createListenerButtonLogin(){
         this.addActionListener(e -> {
-            //mostra la nuova schermata
+            //PRENDE I DATI DAI CAMPI DI TESTO
+            //SchermataLogin.nometextField.getText();
+            //PRENDE I DATI DAL DATABASE
+
+            //CONFRONTA I DATI
+
+            //SE COMBACIA CAMBIA SCHERMATA
             Main.cardLayout.show(Main.mainPanel, SchermataRegistrazione.mansione);
 
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
+            Button.lastView = "" + SchermataRegistrazione.mansione;
+
+            // SE NON COMBACIANO MOSTRA ALLERT
+            //JOptionPane.showMessageDialog(Main.mainFrame, "Email e/o password sono errati o non ti sei registrato");
         });
     }
 
