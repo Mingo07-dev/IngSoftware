@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,11 +13,23 @@ import java.net.URL;
 
 public class SchermataAutenticazione {
 
+    public static JPanel schermataRegistrazionePanel;
+    public static JPanel schermataLoginPanel;
+    public static JPanel schermataRecuperoCredenzialiPanel;
+
     public static Button buttonSchermataLogin;
     public static Button buttonSchermataRegistrazione;
     public static Button buttonSchermataRecuperoCredenziali;
 
     public SchermataAutenticazione() throws FileNotFoundException {
+        schermataRegistrazionePanel = new JPanel(new BorderLayout());
+        schermataRegistrazionePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+        schermataLoginPanel = new JPanel(new BorderLayout());
+        schermataLoginPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+        schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
+        schermataRecuperoCredenzialiPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //dichiara i constraints, ovvero i dettagli e le caratteristiche che dovremo poi impostare
         //per ogni elemento che aggiungeremo nella gridbag, in pratica nella schermata
 
@@ -35,7 +48,7 @@ public class SchermataAutenticazione {
         // BOTTONE LOGIN
         buttonSchermataLogin = new Button("SchermataAutenticazione",  "Login", 300,50);
         buttonSchermataLogin.changeFontButton("Arial",1, 25);
-        buttonSchermataLogin.createListenerButtonChangeView("SchermataLogin");
+        buttonSchermataLogin.createListenerButtonsAutenticazioneLogin("SchermataLogin");
         //FINE BOTTONE LOGIN
 
         buttonSchermataLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -45,7 +58,7 @@ public class SchermataAutenticazione {
         //BOTTONE REGISTRAZIONE
         buttonSchermataRegistrazione = new Button("SchermataAutenticazione",  "Registrazione", 300,50);
         buttonSchermataRegistrazione.changeFontButton("Arial",1, 25);
-        buttonSchermataRegistrazione.createListenerButtonChangeView("SchermataRegistrazione");
+        buttonSchermataRegistrazione.createListenerButtonsAutenticazioneRegistrazione("SchermataRegistrazione");
         //FINE BOTTONE REGISTRAZIONE
 
         buttonSchermataRegistrazione.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -55,7 +68,7 @@ public class SchermataAutenticazione {
         //BOTTONE RECUPERO CREDENZIALI
         buttonSchermataRecuperoCredenziali = new Button("SchermataAutenticazione",  "Recupero Credenziali", 300,50);
         buttonSchermataRecuperoCredenziali.changeFontButton("Arial",1, 25);
-        buttonSchermataRecuperoCredenziali.createListenerButtonChangeView("SchermataRecuperoCredenziali");
+        buttonSchermataRecuperoCredenziali.createListenerButtonsAutenticazioneRecuperoCredenziali("SchermataRecuperoCredenziali");
         //FINE BOTTONE RECUPERO CREDENZIALI
 
         buttonSchermataRecuperoCredenziali.setAlignmentX(Component.CENTER_ALIGNMENT);

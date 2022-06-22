@@ -33,7 +33,7 @@ public class SchermataLogin {
         //CREA IL BOTTONE TORNA INDIETRO
         Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,50);
         buttonTornaIndietro.changeFontButton("Arial", 1,15);
-        buttonTornaIndietro.createListenerButtonGoBackAutentication();
+        buttonTornaIndietro.createListenerButtonGoBack();
         //FINE
 
         mainUserOptionsPanel.add(buttonTornaIndietro);
@@ -82,7 +82,7 @@ public class SchermataLogin {
         centerBox.add(mainCenterPanel);
         mainPanel.add(centerBox, BorderLayout.CENTER);
 
-        Main.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
+        SchermataAutenticazione.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
     }
 
     public void createListenerButtonLogin(){
@@ -151,10 +151,10 @@ public class SchermataLogin {
                         //tornare indietro tramite apposito bottone
                         Button.lastView = "SchermataLogin";
                     } else {
-                        JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Password errata");
+                        JOptionPane.showMessageDialog(SchermataAutenticazione.schermataLoginPanel, "Password errata");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
+                    JOptionPane.showMessageDialog(SchermataAutenticazione.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();

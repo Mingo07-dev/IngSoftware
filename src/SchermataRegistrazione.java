@@ -49,7 +49,7 @@ public class SchermataRegistrazione {
         Image logo = new Image("logo.png",100,100);
         Button GoBack = new Button("SchermataRegistrazione","Torna Indietro",150,50);
         GoBack.changeFontButton("Arial",1,15);
-        GoBack.createListenerButtonGoBackAutentication();
+        GoBack.createListenerButtonGoBack();
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(GoBack);
         northView.add(logo,BorderLayout.WEST);
@@ -122,7 +122,7 @@ public class SchermataRegistrazione {
         fullView.add(northView,BorderLayout.NORTH);
         fullView.add(centerView,BorderLayout.CENTER);
         fullView.add(sudView,BorderLayout.SOUTH);
-        Main.schermataRegistrazionePanel.add(fullView,BorderLayout.CENTER);
+        SchermataAutenticazione.schermataRegistrazionePanel.add(fullView,BorderLayout.CENTER);
     }
 
     public void createListenerButtonRegistrati( ){

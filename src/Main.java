@@ -15,9 +15,7 @@ public class Main {
 
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
     public static JPanel schermataAutenticazionePanel;
-    public static JPanel schermataRegistrazionePanel;
-    public static JPanel schermataLoginPanel;
-    public static JPanel schermataRecuperoCredenzialiPanel;
+
     //FINE
 
 
@@ -63,14 +61,7 @@ public class Main {
         schermataAutenticazionePanel = new JPanel(new BorderLayout());
         schermataAutenticazionePanel.setBorder(new EmptyBorder(50, 0, 50, 0));
 
-        schermataRegistrazionePanel = new JPanel(new BorderLayout());
-        schermataRegistrazionePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
-        schermataLoginPanel = new JPanel(new BorderLayout());
-        schermataLoginPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
-
-        schermataRecuperoCredenzialiPanel = new JPanel(new BorderLayout());
-        schermataRecuperoCredenzialiPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //FINE
 
         //INIZIALIZZAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
@@ -120,9 +111,6 @@ public class Main {
 
         //AGGIUNTA DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO NEL CARD LAYOUT
         mainPanel.add(schermataAutenticazionePanel,"SchermataAutenticazione");
-        mainPanel.add(schermataRegistrazionePanel, "SchermataRegistrazione");
-        mainPanel.add(schermataLoginPanel, "SchermataLogin");
-        mainPanel.add(schermataRecuperoCredenzialiPanel,"SchermataRecuperoCredenziali");
         //FINE
 
         //AGGIUNTA DELLE SCHERMATE RELATIVE AL FARMACISTA NEL CARD LAYOUT

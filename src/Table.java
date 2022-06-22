@@ -1,6 +1,8 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -231,7 +233,16 @@ public class Table extends JPanel{
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
-                    Main.cardLayout.show(Main.mainPanel, "SchermataConsegne");
+                    //AGGIORNA TABELLA
+                    Main.schermataConsegnePanel.removeAll();
+                    try {
+                        SchermataConsegne schermataConsegne = new SchermataConsegne();
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataConsegnePanel.repaint();
+                    Main.mainFrame.setVisible(true);
+
                 });
             case 2:
 

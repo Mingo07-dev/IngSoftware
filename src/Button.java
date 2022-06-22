@@ -1,8 +1,10 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.xml.validation.Schema;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -52,12 +54,58 @@ public class Button extends JButton {
 
     //CREAZIONE DEI LISTENERS
 
+    public void createListenerButtonsAutenticazioneLogin(String viewToShow ) throws FileNotFoundException{
+        this.addActionListener(e -> {
+            Main.mainPanel.add(SchermataAutenticazione.schermataLoginPanel, "SchermataLogin");
+            try {
+                SchermataLogin schermataLogin = new SchermataLogin();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+    public void createListenerButtonsAutenticazioneRegistrazione(String viewToShow ) throws FileNotFoundException{
+        this.addActionListener(e -> {
+            Main.mainPanel.add(SchermataAutenticazione.schermataRegistrazionePanel, "SchermataRegistrazione");
+            try {
+                SchermataRegistrazione schermataRegistrazione= new SchermataRegistrazione();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+    public void createListenerButtonsAutenticazioneRecuperoCredenziali(String viewToShow ) throws FileNotFoundException{
+        this.addActionListener(e -> {
+        Main.mainPanel.add(SchermataAutenticazione.schermataRecuperoCredenzialiPanel,"SchermataRecuperoCredenziali");
+        try {
+            SchermataAutenticazione schermataAutenticazione = new SchermataAutenticazione();
+        } catch (FileNotFoundException ex) {
+            throw new RuntimeException(ex);
+        }
+        //mostra la nuova schermata
+        Main.cardLayout.show(Main.mainPanel, viewToShow);
+        //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+        //tornare indietro tramite apposito bottone
+        Button.lastView = "" + this.currentView;
+    });
+        }
+
+
+
     public void createListenerButtonChangeView(String viewToShow ){
         this.addActionListener(e -> {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, viewToShow);
-
-
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
             Button.lastView = "" + this.currentView;
@@ -75,24 +123,6 @@ public class Button extends JButton {
             Button.lastView = "" + this.currentView;
         });
     }
-
-    public void createListenerButtonGoBackAutentication(){
-        this.addActionListener(e -> {
-            //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, Button.lastView);
-            SchermataRegistrazione.emailText.setText("Mail");
-            SchermataRegistrazione.passwordText.setText("Password");
-            SchermataRegistrazione.confirmPasswordText.setText("Conferma Password");
-            SchermataLogin.emailField.setText("Mail");
-            SchermataLogin.passwordField.setText("Password");
-            SchermataRegistrazione.campoErrato.setText("");
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
-        });
-    }
-
-
 
     public void createListenerButtonHome(){
         this.addActionListener(e -> {
