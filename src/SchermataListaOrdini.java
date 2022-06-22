@@ -58,10 +58,11 @@ public class SchermataListaOrdini {
                 }
                 /*
                 try {
-                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine");
+                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine", 2,);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
+
 
                  */
                 sp = new JScrollPane(tableConsegne);

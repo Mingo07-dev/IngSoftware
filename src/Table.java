@@ -246,6 +246,7 @@ public class Table extends JPanel{
 
                 });
             case 2:
+                //BOTTONE VISUALIZZA DETTAGLIO ORDINE
                 button.addActionListener(e -> {
                     try {
                         Id_ordine = rs1.getInt(1);
