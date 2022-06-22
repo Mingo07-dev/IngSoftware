@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class SchermataConsegne {
+    public static int id_Ordine;
     public SchermataConsegne() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -124,12 +125,13 @@ public class SchermataConsegne {
         try {
             if (queryResult.next() != false) {
                 try {
+                    id_Ordine = queryResult.getInt(1);
                     tableConsegne = new Table(headers, queryResult);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_oneButton("Carica", 1);
+                    tableConsegne.fillTable_oneButton("Carica", 3);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

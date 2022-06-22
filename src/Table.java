@@ -225,8 +225,7 @@ public class Table extends JPanel{
     //LISTENERS
     public void addListener(Button button, int listenerType, ResultSet rs1){
         switch(listenerType){
-            //BOTTONE CONFERMA CONSEGNA
-            case 1:
+            case 1://BOTTONE CONFERMA CONSEGNA
                 button.addActionListener(e -> {
                     try {
                         rs1.first();
@@ -245,8 +244,7 @@ public class Table extends JPanel{
                     Main.mainFrame.setVisible(true);
 
                 });
-            case 2:
-                //BOTTONE VISUALIZZA DETTAGLIO ORDINE
+            case 2: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
                 button.addActionListener(e -> {
                     try {
                         Id_ordine = rs1.getInt(1);
@@ -255,8 +253,11 @@ public class Table extends JPanel{
                     }
                     Main.cardLayout.show(Main.schermataVisualizzaDettaglioOrdinePanel, "SchermataVisualizzaDettaglioOrdine");
                 });
-            case 3:
-
+            case 3: //BOTTONE CARICO SCORTE
+                button.addActionListener(e -> {
+                    Main.cardLayout.show(Main.mainPanel, "SchermataCaricoScorte");
+                    Button.lastView = "SchermataFarmacista";
+                });
                 break;
             case 4:
 
