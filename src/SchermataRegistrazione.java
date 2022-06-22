@@ -23,7 +23,7 @@ public class SchermataRegistrazione {
     private static final Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+@(.+)$");
     private static Matcher emailMatcher;
 
-    private static final Pattern passwordPattern = Pattern.compile("^[A-Za-z0-9]$");
+    private static final Pattern passwordPattern = Pattern.compile("^[A-Za-z0-9](.+)$");
     private static Matcher passwordMatcher;
 
     private static String mail;

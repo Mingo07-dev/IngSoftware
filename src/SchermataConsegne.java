@@ -47,7 +47,7 @@ public class SchermataConsegne {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Id_ordine, Indirizzo_postale, Recapito_telefonico, Data_consegna, Nome_farmacia FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "' AND dbms_azienda.elenco_consegne.Stato_consegna = '0';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

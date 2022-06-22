@@ -93,7 +93,7 @@ public class Table extends JPanel{
             Button button = new Button(buttonName,150,25);
             bordo.add(button);
             this.add(bordo, gbc);
-            addListener(button, listener);
+            addListener(button, listener, rs);
             rs.next();
         }
     }
@@ -132,7 +132,7 @@ public class Table extends JPanel{
             Button button_One = new Button(rs.getString(k + 1),150,25);
             bordo.add(button_One);
             this.add(bordo, gbc);
-            addListener(button_One, listener_One);
+            addListener(button_One, listener_One, rs);
 
             for(int j = 0; j < m - 1 ; j++){
                 gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -156,7 +156,7 @@ public class Table extends JPanel{
             Button button_Two = new Button(buttonName_Two,150,25);
             bordo2.add(button_Two);
             this.add(bordo2, gbc);
-            addListener(button_Two, listener_Two);
+            addListener(button_Two, listener_Two,rs);
 
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
@@ -168,7 +168,7 @@ public class Table extends JPanel{
             Button button_Three = new Button(buttonName_Three,150,25);
             bordo3.add(button_Three);
             this.add(bordo3, gbc);
-            addListener(button_Three, listener_Three);
+            addListener(button_Three, listener_Three, rs);
 
             rs.next();
         }
@@ -224,12 +224,13 @@ public class Table extends JPanel{
     //button.addActionListener(e -> {
     //            QUELLO CHE DEVE FARE IL BOTTONE
     //        });
-    public void addListener(Button button, int listenerType){
+    public void addListener(Button button, int listenerType, ResultSet rs1){
         switch(listenerType){
             case 1:
                 button.addActionListener(e -> {
                     try {
-                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.elenco_consegne SET Stato_consegna = '1' WHERE dbms_azienda.elenco_consegne.Id_ordine = '"+ this.rs.getString("Id_ordine")+"';");
+                        rs1.first();
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.elenco_consegne SET Stato_consegna = '1' WHERE dbms_azienda.elenco_consegne.Id_ordine = '"+ rs1.getInt("Id_ordine")+"';");
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
