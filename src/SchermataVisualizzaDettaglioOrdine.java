@@ -39,6 +39,7 @@ public class SchermataVisualizzaDettaglioOrdine {
 
         String headers[] = {"Farmaco", "Principio attivo", "Quantità", "Data di scadenza"};
         JScrollPane sp = new JScrollPane();
+        JLabel resultLabel = new JLabel("Nessun Ordine");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
@@ -60,6 +61,8 @@ public class SchermataVisualizzaDettaglioOrdine {
                     e.printStackTrace();
                 }
                 sp = new JScrollPane(tableConsegne);
+            } else {
+                sp = new JScrollPane(resultLabel);
             }
         } catch (SQLException e) {
             e.printStackTrace();

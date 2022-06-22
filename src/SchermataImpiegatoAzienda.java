@@ -24,7 +24,7 @@ public class SchermataImpiegatoAzienda {
         JPanel mainCenterFlow = new JPanel(new FlowLayout());
 
 
-        Button buttonVisualizzaElencoSegnalazioni = new Button("SchermataCorriere", "Visualizza Elenco Segnalazioni", 400,50);
+        Button buttonVisualizzaElencoSegnalazioni = new Button("SchermataImpiegatoAzienda", "Visualizza Elenco Segnalazioni", 400,50);
         buttonVisualizzaElencoSegnalazioni.changeFontButton("Arial", 1,15);
         buttonVisualizzaElencoSegnalazioni.createListenerButtonChangeView("SchermataSegnalazioni");
 

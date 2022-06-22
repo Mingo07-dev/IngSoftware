@@ -126,9 +126,9 @@ public class Button extends JButton {
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
+
             Main.schermataRecuperoCredenzialiPanel.repaint();
             Main.mainFrame.setVisible(true);
-
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, Button.lastView);
 
@@ -173,6 +173,36 @@ public class Button extends JButton {
             else {
                 frame.dispose();
             }
+        });
+    }
+
+    public void createListenerButtonAggiorna(String viewToShow, int n ){
+        this.addActionListener(e -> {
+
+            //UPDATE dbms_azienda SET Quantita = REPLACE(Quantita, arrayVecchio[i], array[i]) WHERE Id_ordine = id_ordine ;
+            try {
+                for(int i = 1; i < n-1; i++){
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +";");
+                    //Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +" AND Nome_farmaco = 'nome' AND Data_scadenza = 'data';");
+                }
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                ex.printStackTrace();
+            }
+
+
+            Main.schermataModificaOrdinePanel.removeAll();
+            try {
+                SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataModificaOrdinePanel.repaint();
+            Main.mainFrame.setVisible(true);
+
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
         });
     }
 

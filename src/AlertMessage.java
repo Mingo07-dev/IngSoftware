@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.print.attribute.standard.MediaSize;
 import javax.swing.*;
 
 public class AlertMessage {
@@ -27,15 +28,23 @@ public class AlertMessage {
                 //se è 1 significa che è stato premuto il secondo bottone e cosi via
                 frame.dispose(); per chiudere
             }*/
+    public static TextField nomeFarmaciaField;
+    public static TextField indirizzoFarmaciaField;
+    public static TextField recapitoTelefonicoField;
 
     public static  JButton buttonOk = new JButton();
     private JFrame frame = new JFrame("Messaggio");
 
-    public AlertMessage(){
+    public AlertMessage(String email, String password){
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        SchermataRegistrazione.indirizzoFarmaciaField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        SchermataRegistrazione.nomeFarmaciaField.setAlignmentX(Component.CENTER_ALIGNMENT);
-        SchermataRegistrazione.recapitoTelefonicoField.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        nomeFarmaciaField = new TextField(15, "Nome Farmacia", 50, 30);
+        indirizzoFarmaciaField = new TextField(20, "Indirizzo, 0", 50, 30);
+        recapitoTelefonicoField = new TextField(10, "Telefono", 50, 30);
+
+        indirizzoFarmaciaField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nomeFarmaciaField.setAlignmentX(Component.CENTER_ALIGNMENT);
+        recapitoTelefonicoField.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         //pannello che contiene il testo
         JPanel panel_Text = new JPanel();
@@ -49,11 +58,11 @@ public class AlertMessage {
 
         JPanel boxCenterPanel = new JPanel();
         boxCenterPanel.setLayout(new BoxLayout(boxCenterPanel, BoxLayout.PAGE_AXIS));
-        boxCenterPanel.add(SchermataRegistrazione.nomeFarmaciaField);
+        boxCenterPanel.add(nomeFarmaciaField);
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,5)));
-        boxCenterPanel.add(SchermataRegistrazione.indirizzoFarmaciaField);
+        boxCenterPanel.add(indirizzoFarmaciaField);
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,5)));
-        boxCenterPanel.add(SchermataRegistrazione.recapitoTelefonicoField);
+        boxCenterPanel.add(recapitoTelefonicoField);
         JPanel boxFlow = new JPanel(new FlowLayout());
         boxFlow.add(boxCenterPanel);
         frame.getContentPane().add(boxFlow, BorderLayout.CENTER);
@@ -65,7 +74,7 @@ public class AlertMessage {
 
         //bottone ok
         buttonOk.setText("OK");
-        createListenerButtonOkRegistrazione();
+        createListenerButtonOkRegistrazione(email, password);
         panel.add(buttonOk);
 
 
@@ -76,15 +85,21 @@ public class AlertMessage {
     }
 
 
-    public void createListenerButtonOkRegistrazione( ){
+    public void createListenerButtonOkRegistrazione(String email, String password ){
         buttonOk.addActionListener(e -> {
-            Pattern phoneNumberPattern = Pattern.compile("^[0-9]$");
+            Pattern phoneNumberPattern = Pattern.compile("^[0-9](.+)$");
             Matcher phoneNumberMatcher;
-            phoneNumberMatcher = phoneNumberPattern.matcher(SchermataRegistrazione.recapitoTelefonicoField.getText());
+            phoneNumberMatcher = phoneNumberPattern.matcher(recapitoTelefonicoField.getText());
             if(phoneNumberMatcher.matches()) {
-                SchermataRegistrazione.nomeFarmacia = SchermataRegistrazione.nomeFarmaciaField.getText();
-                SchermataRegistrazione.indirizzoFarmacia = SchermataRegistrazione.indirizzoFarmaciaField.getText();
-                SchermataRegistrazione.recapitoTelefonico = SchermataRegistrazione.recapitoTelefonicoField.getText();
+                String nomeFarmacia = nomeFarmaciaField.getText();
+                String indirizzoFarmacia = indirizzoFarmaciaField.getText();
+                int recapitoTelefonico =Integer.parseInt(recapitoTelefonicoField.getText());
+                try {
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                    ex.printStackTrace();
+                }
+
                 frame.dispose();
                 JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
             }

@@ -39,7 +39,7 @@ public class SchermataModificaOrdine {
 
         String headers[] = {"Farmaco", "Principio attivo", "Data di scadenza", "Quantità attuale", "Modifica Quantità"};
         JScrollPane sp = new JScrollPane();
-        JLabel resultLabel = new JLabel("Nessuna segnalazione");
+        JLabel resultLabel = new JLabel("Nessuna Ordine");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
@@ -74,7 +74,7 @@ public class SchermataModificaOrdine {
 
         Button buttonAggiorna = new Button("Aggiorna", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
-
+            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine",tableConsegne.n);
 
         mainSouthPanel.add(buttonAggiorna);
 

@@ -11,10 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Table extends JPanel{
-    private int n;
+    public int n = 0;
     private int m;
     public static int[] intArray;
     private int[] intArrayLocal;
+    public static int[] intArrayOldData;
+    private int[] intArrayOldDataLocal;
     private int cont;
     private String headers[];
     private ResultSet rs;
@@ -26,11 +28,17 @@ public class Table extends JPanel{
         this.rs = rs;
         this.n = Main.dbms_Azienda.getResultSetRows(rs);
         this.m = Main.dbms_Azienda.getResultSetColumns(rs);
-        this.intArrayLocal = new int[this.n];
 
+        this.intArrayLocal = new int[this.n];
         for (int i:this.intArrayLocal
              ) {
             this.intArrayLocal[i] = 0;
+        }
+
+        this.intArrayOldDataLocal = new int[this.n];
+        for (int i:this.intArrayOldDataLocal
+        ) {
+            this.intArrayOldDataLocal[i] = 0;
         }
         this.headers = headers;
         this.setLayout(new GridBagLayout());
@@ -208,6 +216,7 @@ public class Table extends JPanel{
         }
         cont = 0;
         intArray = intArrayLocal;
+        intArrayOldData = intArrayOldDataLocal;
         for(int i = 0; i < n ; i++){
 
             for(int j = 0; j < m; j++){
@@ -228,6 +237,7 @@ public class Table extends JPanel{
             gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
+            intArrayOldData[cont] = Integer.parseInt(rs.getString(4));
             TextField textField = new TextField(10,"0", 150,25);
             textField.addFocusListener(new FocusListener() {
                 @Override
@@ -237,7 +247,6 @@ public class Table extends JPanel{
                 @Override
                 public void focusLost(FocusEvent e) {
                     intArray[cont] = Integer.parseInt(textField.getText());
-                    System.out.println(intArray[cont]);
                     cont++;
                 }
             });
@@ -264,7 +273,7 @@ public class Table extends JPanel{
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
-                    //AGGIORNA TABELLA
+                    //AGGIORNA TABELLA CONSEGNE
                     Main.schermataConsegnePanel.removeAll();
                     try {
                         SchermataConsegne schermataConsegne = new SchermataConsegne();

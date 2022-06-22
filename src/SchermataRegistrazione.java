@@ -28,18 +28,13 @@ public class SchermataRegistrazione {
 
     private static String mail;
     private static boolean mansioneSelected = false;
-    //public  static ResultSet mailResultSet;
 
-    public static TextField nomeFarmaciaField;
-    public static TextField indirizzoFarmaciaField;
-    public static TextField recapitoTelefonicoField;
-    public static String nomeFarmacia;
-    public static String indirizzoFarmacia;
-    public static String recapitoTelefonico;
-    public static String mansioneString;
+    private static String mansioneString;
 
 
     public SchermataRegistrazione() throws FileNotFoundException {
+        mansioneSelected = false;
+
         JPanel fullView = new JPanel(new BorderLayout(0,20));
         JPanel northView = new JPanel(new BorderLayout());
         JPanel centerView = new JPanel(new BorderLayout());
@@ -187,15 +182,7 @@ public class SchermataRegistrazione {
                                 //SE L'UTENTE NON è REGISTRATO LO REGISTRA
                                 if(mansioneString.equals("Farmacista"))
                                 {
-                                    nomeFarmaciaField = new TextField(15, "Nome Farmacia", 50, 30);
-                                    indirizzoFarmaciaField = new TextField(20, "Indirizzo, 0", 50, 30);
-                                    recapitoTelefonicoField = new TextField(7, "Telefono", 50, 30);
-                                    AlertMessage datiAggiuntivi = new AlertMessage();
-                                    try {
-                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ emailText.getText() +"', '"+ passwordText.getText() +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
-                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                                        ex.printStackTrace();
-                                    }
+                                    AlertMessage datiAggiuntivi = new AlertMessage(emailText.getText(), passwordText.getText());
                                     emailText.setText("Mail");
                                     passwordText.setText("Password");
                                     confirmPasswordText.setText("Conferma Password");

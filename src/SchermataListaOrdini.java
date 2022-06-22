@@ -42,7 +42,7 @@ public class SchermataListaOrdini {
 
         String headers[] = {"Id ordine", "Data consegna ordine", "Modifica Ordine", "Annulla Ordine"};
         JScrollPane sp = new JScrollPane();
-        JLabel resultLabel = new JLabel("Nessuna segnalazione");
+        JLabel resultLabel = new JLabel("Nessun Ordine");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
