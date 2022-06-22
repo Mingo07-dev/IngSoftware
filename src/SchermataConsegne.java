@@ -39,7 +39,7 @@ public class SchermataConsegne {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Nome farmacia", "Indirizzo", "Recapito Telefonico", "Stato Consegna", "Conferma Consegna"};
+        String headers[] = {"Indirizzo", "Recapito Telefonico", "Nome farmacia", "Conferma Consegna"};
         LocalDate date = LocalDate.now();
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessuna consegna prevista");
@@ -47,7 +47,7 @@ public class SchermataConsegne {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Id_ordine, Indirizzo_postale, Recapito_telefonico, Data_consegna, Nome_farmacia FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "' AND dbms_azienda.elenco_consegne.Stato_consegna = '0';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Id_ordine, Indirizzo_postale, Recapito_telefonico, Nome_farmacia, Data_consegna FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "' AND dbms_azienda.elenco_consegne.Stato_consegna = '0';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -64,19 +64,19 @@ public class SchermataConsegne {
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                Main.schermataConsegnePanel.add(tableConsegne, BorderLayout.CENTER);
-                //sp.add(tableConsegne);
+                //Main.schermataConsegnePanel.add(tableConsegne, BorderLayout.CENTER);
+                sp = new JScrollPane(tableConsegne);
             } else {
-                Main.schermataConsegnePanel.add(resultLabel, BorderLayout.CENTER);
-                //sp.add(resultLabel);
+                //Main.schermataConsegnePanel.add(resultLabel, BorderLayout.CENTER);
+                sp = new JScrollPane(resultLabel);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        //mainPanel.add(sp, BorderLayout.CENTER);
+        mainPanel.add(sp, BorderLayout.CENTER);
 
-        //Main.schermataConsegnePanel.add(mainPanel, BorderLayout.CENTER);
+        Main.schermataConsegnePanel.add(mainPanel, BorderLayout.CENTER);
 
     }
 }

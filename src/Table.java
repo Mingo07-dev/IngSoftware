@@ -72,7 +72,7 @@ public class Table extends JPanel{
         }
 
         for(int i = 0; i < n ; i++){
-            for(int j = 0; j < m - 1 ; j++){
+            for(int j = 0; j < m - 2 ; j++){
                 gbc.fill = GridBagConstraints.HORIZONTAL;
                 gbc.ipadx = 20;
                 gbc.ipady = 20;
@@ -86,7 +86,7 @@ public class Table extends JPanel{
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
             gbc.ipady = 20;
-            gbc.gridx = m - 1;
+            gbc.gridx = m - 2;
             gbc.gridy = i +1 ;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
