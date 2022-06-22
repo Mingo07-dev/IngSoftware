@@ -72,8 +72,8 @@ public class SchermataConsegne {
         }
 
         mainPanel.add(sp, BorderLayout.CENTER);
-
         Main.schermataConsegnePanel.add(mainPanel, BorderLayout.CENTER);
 
     }
+
 }

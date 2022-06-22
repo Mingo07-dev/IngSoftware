@@ -41,21 +41,30 @@ public class SchermataFarmacista  {
         //BOTTONI SINISTRA
         Button prenotaFarmaci = new Button("SchermataFarmacista",  "Prenota Farmaci", 300,50);
         prenotaFarmaci.changeFontButton("Arial",1, 25);
+        prenotaFarmaci.createListenerButtonChangeView("SchermataPrenotazione");
+
         Button modificaPrenotazioneAutomatica = new Button("SchermataFarmacista",  "Modifica Prenotazione Automatica", 300,50);
         modificaPrenotazioneAutomatica.changeFontButton("Arial",1, 25);
+        modificaPrenotazioneAutomatica.createListenerButtonChangeView("SchermataModificaPrenotazioneAutomatica");
+
         boxLeft.add(prenotaFarmaci);
         boxLeft.add(modificaPrenotazioneAutomatica);
         //BOTTONI CENTRALI
         Button caricoScorte = new Button("SchermataFarmacista",  "Carico Scorte", 300,50);
         caricoScorte.changeFontButton("Arial",1, 25);
+        caricoScorte.createListenerButtonChangeView("SchermataCaricoScorte");
+
         Button controlloScorte = new Button("SchermataFarmacista",  "Controllo Scorte", 300,50);
         controlloScorte.changeFontButton("Arial",1, 25);
+        controlloScorte.createListenerButtonChangeView("SchermataScorte");
+
         boxCenter.add(caricoScorte);
         boxCenter.add(controlloScorte);
 
         //BOTTONE DI DESTRA
         Button visualizzaListaOrdini = new Button("SchermataFarmacista",  "Visualizza Lista Ordini", 300,50);
         visualizzaListaOrdini.changeFontButton("Arial",1, 25);
+        controlloScorte.createListenerButtonChangeView("SchermataListaOrdini");
         mainCenterEASTFlow.add(visualizzaListaOrdini);
 
         mainCenterBorder.add(boxLeft,BorderLayout.WEST);

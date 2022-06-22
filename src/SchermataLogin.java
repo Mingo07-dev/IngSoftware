@@ -14,7 +14,7 @@ public class SchermataLogin {
     public static PasswordField passwordField;
     private static Button buttonLogin;
     public static String email;
-    public static String mansione;
+    public static String mansione = "";
 
     public SchermataLogin() throws FileNotFoundException {
 

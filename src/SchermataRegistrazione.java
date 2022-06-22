@@ -264,7 +264,7 @@ public class SchermataRegistrazione {
     private static class ImpiegatoAziendaActionListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             mansione = "SchermataImpiegatoAzienda";
-            mansioneString = "Impiegato";
+            mansioneString = "ImpiegatoAzienda";
             mansioneButtonMenu.setText(mansioneString);
             mansioneSelected = true;
         }
