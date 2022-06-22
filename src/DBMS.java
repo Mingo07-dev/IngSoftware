@@ -71,6 +71,12 @@ public class DBMS {
         this.ps.executeUpdate();
     }
 
+    public void createView(String query) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
+        this.connection.setCatalog("dbms_azienda");
+        this.ps = this.connection.prepareStatement(query);
+        this.ps.execute();
+    }
+
 
 
 }

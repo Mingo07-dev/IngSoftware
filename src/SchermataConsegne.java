@@ -39,7 +39,7 @@ public class SchermataConsegne {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Indirizzo", "Recapito Telefonico", "Nome farmacia", "Conferma Consegna"};
+        String headers[] = {"Nome farmacia", "Indirizzo", "Recapito Telefonico", "Id Ordine", "Conferma Consegna"};
         LocalDate date = LocalDate.now();
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessuna consegna prevista");
@@ -47,7 +47,7 @@ public class SchermataConsegne {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Id_ordine, Indirizzo_postale, Recapito_telefonico, Nome_farmacia, Data_consegna FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "' AND dbms_azienda.elenco_consegne.Stato_consegna = '0';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmacia, Indirizzo_postale, Recapito_telefonico, Id_ordine FROM dbms_azienda.elenco_consegne WHERE dbms_azienda.elenco_consegne.Data_consegna = '" + date + "' AND dbms_azienda.elenco_consegne.Stato_consegna = '0';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
