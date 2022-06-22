@@ -53,7 +53,6 @@ public class SchermataConsegne {
         }
         try {
             if(queryResult.next() != false) {
-                //queryResult.first();
                 try {
                     tableConsegne = new Table(headers, queryResult);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
@@ -64,10 +63,8 @@ public class SchermataConsegne {
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                //Main.schermataConsegnePanel.add(tableConsegne, BorderLayout.CENTER);
                 sp = new JScrollPane(tableConsegne);
             } else {
-                //Main.schermataConsegnePanel.add(resultLabel, BorderLayout.CENTER);
                 sp = new JScrollPane(resultLabel);
             }
         } catch (SQLException e) {
