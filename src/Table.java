@@ -13,6 +13,7 @@ public class Table extends JPanel{
     private ResultSet rs;
     private Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     private Border borderHeader = BorderFactory.createLineBorder(Color.BLACK, 8);
+    public static int Id_ordine = 0;
 
 
     public Table(String headers[],ResultSet rs) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -245,8 +246,14 @@ public class Table extends JPanel{
 
                 });
             case 2:
-
-                break;
+                button.addActionListener(e -> {
+                    try {
+                        Id_ordine = rs1.getInt(1);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    Main.cardLayout.show(Main.schermataVisualizzaDettaglioOrdinePanel, "SchermataVisualizzaDettaglioOrdine");
+                });
             case 3:
 
                 break;
