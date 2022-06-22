@@ -19,7 +19,6 @@ public class SchermataCorriere {
 
         mainNorthPanel.add(image, BorderLayout.WEST);
 
-        // BOTTONE LOG OUT E IMMAGINE DEL LOGO HANNO LA STESSA DIMENSIONE PER ORA
         Button bottoneLogOut = new Button("SchermataCorriere","Log out", 150, 30);
         bottoneLogOut.changeFontButton("Arial", 1,15);
         bottoneLogOut.createListenerButtonLogOut();

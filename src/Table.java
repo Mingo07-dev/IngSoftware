@@ -49,7 +49,7 @@ public class Table extends JPanel{
                 gbc.gridy = i + 1;
                 JPanel bordoData = new JPanel(new FlowLayout());
                 bordoData.setBorder(border);
-                bordoData.add(new JLabel("" + rs.getString(j + 2)));
+                bordoData.add(new JLabel("" + rs.getString(j + 1)));
                 this.add(bordoData, gbc);
             }
             rs.next();
