@@ -54,57 +54,30 @@ public class Button extends JButton {
 
     //CREAZIONE DEI LISTENERS
 
-    public void createListenerButtonsAutenticazioneLogin(String viewToShow ) throws FileNotFoundException{
-        this.addActionListener(e -> {
-            Main.mainPanel.add(SchermataAutenticazione.schermataLoginPanel, "SchermataLogin");
-            try {
-                SchermataLogin schermataLogin = new SchermataLogin();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-            //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, viewToShow);
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
-        });
-    }
-    public void createListenerButtonsAutenticazioneRegistrazione(String viewToShow ) throws FileNotFoundException{
-        this.addActionListener(e -> {
-            Main.mainPanel.add(SchermataAutenticazione.schermataRegistrazionePanel, "SchermataRegistrazione");
-            try {
-                SchermataRegistrazione schermataRegistrazione= new SchermataRegistrazione();
-            } catch (FileNotFoundException ex) {
-                throw new RuntimeException(ex);
-            }
-            //mostra la nuova schermata
-            Main.cardLayout.show(Main.mainPanel, viewToShow);
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
-        });
-    }
-    public void createListenerButtonsAutenticazioneRecuperoCredenziali(String viewToShow ) throws FileNotFoundException{
-        this.addActionListener(e -> {
-        Main.mainPanel.add(SchermataAutenticazione.schermataRecuperoCredenzialiPanel,"SchermataRecuperoCredenziali");
-        try {
-            SchermataAutenticazione schermataAutenticazione = new SchermataAutenticazione();
-        } catch (FileNotFoundException ex) {
-            throw new RuntimeException(ex);
-        }
-        //mostra la nuova schermata
-        Main.cardLayout.show(Main.mainPanel, viewToShow);
-        //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-        //tornare indietro tramite apposito bottone
-        Button.lastView = "" + this.currentView;
-    });
-        }
-
-
-
     public void createListenerButtonChangeView(String viewToShow ){
         this.addActionListener(e -> {
             //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
+    public void createListenerButtonConsegne(String viewToShow ){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
+            if(SchermataLogin.mansione.equals("Farmacista")){
+                Main.schermataConsegnePanel.removeAll();
+                try {
+                    SchermataConsegne.aggiornaTabellaFarmacista();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Main.schermataConsegnePanel.repaint();
+                Main.mainFrame.setVisible(true);
+            }
             Main.cardLayout.show(Main.mainPanel, viewToShow);
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
@@ -115,6 +88,47 @@ public class Button extends JButton {
 
     public void createListenerButtonGoBack(){
         this.addActionListener(e -> {
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, Button.lastView);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
+    public void createListenerButtonGoBackAutenticazione(){
+        this.addActionListener(e -> {
+            //RICARICA LOGIN
+            Main.schermataLoginPanel.removeAll();
+            try {
+                SchermataLogin schermataLogin = new SchermataLogin();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataLoginPanel.repaint();
+            Main.mainFrame.setVisible(true);
+
+            //RICARICA REGISTRAZIONE
+            Main.schermataRegistrazionePanel.removeAll();
+            try {
+                SchermataRegistrazione schermataRegistrazione = new SchermataRegistrazione();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataRegistrazionePanel.repaint();
+            Main.mainFrame.setVisible(true);
+
+            //RICARICA RECUPERO CREDENZIALI
+            Main.schermataRecuperoCredenzialiPanel.removeAll();
+            try {
+                SchermataRecuperoCredenziali schermataRecuperoCredenziali = new SchermataRecuperoCredenziali();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataRecuperoCredenzialiPanel.repaint();
+            Main.mainFrame.setVisible(true);
+
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, Button.lastView);
 

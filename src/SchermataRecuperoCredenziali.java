@@ -20,7 +20,7 @@ public class SchermataRecuperoCredenziali {
         Image logo = new Image("logo.png",100,100);
         Button GoBack = new Button("SchermataRegistrazione","Torna Indietro",150,50);
         GoBack.changeFontButton("Arial",1,15);
-        GoBack.createListenerButtonGoBack();
+        GoBack.createListenerButtonGoBackAutenticazione();
         JPanel buttonsPanel = new JPanel(new FlowLayout());
         buttonsPanel.add(GoBack);
         northView.add(logo,BorderLayout.WEST);
@@ -62,7 +62,7 @@ public class SchermataRecuperoCredenziali {
 
         fullView.add(northView,BorderLayout.NORTH);
         fullView.add(sudView,BorderLayout.CENTER);
-        SchermataAutenticazione.schermataRecuperoCredenzialiPanel.add(fullView,BorderLayout.CENTER);
+        Main.schermataRecuperoCredenzialiPanel.add(fullView,BorderLayout.CENTER);
     }
 
     public void createListenerButtonRecuperaCredenziali(){

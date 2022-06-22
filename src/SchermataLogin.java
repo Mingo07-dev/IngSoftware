@@ -14,7 +14,8 @@ public class SchermataLogin {
     public static PasswordField passwordField;
     private static Button buttonLogin;
     public static String email;
-    public static String mansione;
+    public static String nomeFarmacia;
+    public static String mansione = "";
 
     public SchermataLogin() throws FileNotFoundException {
 
@@ -33,7 +34,7 @@ public class SchermataLogin {
         //CREA IL BOTTONE TORNA INDIETRO
         Button buttonTornaIndietro = new Button("SchermataLogin", "Torna Indietro", 150,50);
         buttonTornaIndietro.changeFontButton("Arial", 1,15);
-        buttonTornaIndietro.createListenerButtonGoBack();
+        buttonTornaIndietro.createListenerButtonGoBackAutenticazione();
         //FINE
 
         mainUserOptionsPanel.add(buttonTornaIndietro);
@@ -82,7 +83,7 @@ public class SchermataLogin {
         centerBox.add(mainCenterPanel);
         mainPanel.add(centerBox, BorderLayout.CENTER);
 
-        SchermataAutenticazione.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
+        Main.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
     }
 
     public void createListenerButtonLogin(){
@@ -93,7 +94,7 @@ public class SchermataLogin {
             ResultSet queryResult1 = null;
             ResultSet queryResult2 = null;
             try {
-                queryResult1 = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
+                queryResult1 = Main.dbms_Azienda.getData("SELECT email, Nome_farmacia from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
@@ -104,6 +105,7 @@ public class SchermataLogin {
                     try {
                         queryResult1.first();
                         email = queryResult1.getString(1);
+                        nomeFarmacia = queryResult1.getString(2);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -151,10 +153,10 @@ public class SchermataLogin {
                         //tornare indietro tramite apposito bottone
                         Button.lastView = "SchermataLogin";
                     } else {
-                        JOptionPane.showMessageDialog(SchermataAutenticazione.schermataLoginPanel, "Password errata");
+                        JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Password errata");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(SchermataAutenticazione.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
+                    JOptionPane.showMessageDialog(Main.schermataLoginPanel, "Non esiste alcun account associato a questa Email");
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
