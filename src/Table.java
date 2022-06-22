@@ -13,7 +13,6 @@ public class Table extends JPanel{
     private ResultSet rs;
     private Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
     private Border borderHeader = BorderFactory.createLineBorder(Color.BLACK, 8);
-    public static int Id_ordine = 0;
 
 
     public Table(String headers[],ResultSet rs) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -181,7 +180,7 @@ public class Table extends JPanel{
 
 
     //RIEMPE LA TABELLA CON I DATI PRESI DAL DATABASE E UN CAMPO DI INSERIMENTO TESTO
-    public void fillTable_oneEditText(String buttonName, int listener) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void fillTable_oneEditText() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         GridBagConstraints gbc = new GridBagConstraints();
         for(int i = 0; i < this.headers.length ; i++){
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -204,7 +203,7 @@ public class Table extends JPanel{
                 gbc.gridy = i + 1;
                 JPanel bordoData = new JPanel(new FlowLayout());
                 bordoData.setBorder(border);
-                bordoData.add(new JLabel("" + rs.getString(j + 2)));
+                bordoData.add(new JLabel("" + rs.getString(j + 1)));
                 this.add(bordoData, gbc);
             }
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -214,7 +213,8 @@ public class Table extends JPanel{
             gbc.gridy = i +1 ;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-
+            TextField textField = new TextField(10,"0", 150,25);
+            bordo.add(textField, gbc);
             rs.next();
         }
     }
@@ -244,23 +244,44 @@ public class Table extends JPanel{
                     Main.mainFrame.setVisible(true);
 
                 });
+
             case 2: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
                 button.addActionListener(e -> {
-                    try {
-                        Id_ordine = rs1.getInt(1);
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
-                    }
                     Main.cardLayout.show(Main.schermataVisualizzaDettaglioOrdinePanel, "SchermataVisualizzaDettaglioOrdine");
+                    Button.lastView = "SchermataListaOrdini";
                 });
+                break;
             case 3: //BOTTONE CARICO SCORTE
                 button.addActionListener(e -> {
                     Main.cardLayout.show(Main.mainPanel, "SchermataCaricoScorte");
                     Button.lastView = "SchermataFarmacista";
                 });
                 break;
-            case 4:
+            case 4: //BOTTONE MODIFICA ORDINE
+                button.addActionListener(e -> {
+                    Main.cardLayout.show(Main.schermataModificaOrdinePanel, "SchermataModificaOrdine");
+                    Button.lastView = "SchermataListaOrdini";
+                });
+                break;
+            case 5:
+                button.addActionListener(e -> {
+                    try {
+                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"');");
+                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.dettaglio_ordine WHERE (Id_ordine = '"+ SchermataListaOrdini.Id_ordine + "');");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //AGGIORNA TABELLA
+                    Main.schermataListaOrdiniPanel.removeAll();
+                    try {
+                        SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataListaOrdiniPanel.repaint();
+                    Main.mainFrame.setVisible(true);
 
+                });
                 break;
         }
     }

@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataListaOrdini {
+    public static int Id_ordine = 0;
+
     public SchermataListaOrdini() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -52,19 +54,16 @@ public class SchermataListaOrdini {
         try {
             if(queryResult.next() != false) {
                 try {
+                    Id_ordine = queryResult.getInt(1);
                     tableConsegne = new Table(headers, queryResult);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-                /*
                 try {
-                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine", 2,);
+                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine", 2,4,5);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
-
-
-                 */
                 sp = new JScrollPane(tableConsegne);
             } else {
                 sp = new JScrollPane(resultLabel);
@@ -75,6 +74,6 @@ public class SchermataListaOrdini {
 
         mainPanel.add(sp, BorderLayout.CENTER);
 
-        Main.schermataSegnalazioniPanel.add(mainPanel, BorderLayout.CENTER);
+        Main.schermataListaOrdiniPanel.add(mainPanel, BorderLayout.CENTER);
     }
 }
