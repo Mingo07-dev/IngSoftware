@@ -58,6 +58,27 @@ public class Button extends JButton {
         this.addActionListener(e -> {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
+    public void createListenerButtonConsegne(String viewToShow ){
+        this.addActionListener(e -> {
+            //mostra la nuova schermata
+            if(SchermataLogin.mansione.equals("Farmacista")){
+                Main.schermataConsegnePanel.removeAll();
+                try {
+                    SchermataConsegne.aggiornaTabellaFarmacista();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Main.schermataConsegnePanel.repaint();
+                Main.mainFrame.setVisible(true);
+            }
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
             Button.lastView = "" + this.currentView;

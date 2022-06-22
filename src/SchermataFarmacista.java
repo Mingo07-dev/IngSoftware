@@ -52,7 +52,7 @@ public class SchermataFarmacista  {
         //BOTTONI CENTRALI
         Button caricoScorte = new Button("SchermataFarmacista",  "Carico Scorte", 300,50);
         caricoScorte.changeFontButton("Arial",1, 25);
-        caricoScorte.createListenerButtonChangeView("SchermataCaricoScorte");
+        caricoScorte.createListenerButtonConsegne("SchermataConsegne");
 
         Button controlloScorte = new Button("SchermataFarmacista",  "Controllo Scorte", 300,50);
         controlloScorte.changeFontButton("Arial",1, 25);

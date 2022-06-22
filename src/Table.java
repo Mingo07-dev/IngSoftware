@@ -56,6 +56,8 @@ public class Table extends JPanel{
         }
     }
 
+
+
     //RIEMPE LA TABELLA CON I DATI PRESI DAL DATABASE E UN BOTTONE
     public void fillTable_oneButton(String buttonName, int listener) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         GridBagConstraints gbc = new GridBagConstraints();

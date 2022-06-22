@@ -14,6 +14,7 @@ public class SchermataLogin {
     public static PasswordField passwordField;
     private static Button buttonLogin;
     public static String email;
+    public static String nomeFarmacia;
     public static String mansione = "";
 
     public SchermataLogin() throws FileNotFoundException {
@@ -93,7 +94,7 @@ public class SchermataLogin {
             ResultSet queryResult1 = null;
             ResultSet queryResult2 = null;
             try {
-                queryResult1 = Main.dbms_Azienda.getData("SELECT email from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
+                queryResult1 = Main.dbms_Azienda.getData("SELECT email, Nome_farmacia from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
@@ -104,6 +105,7 @@ public class SchermataLogin {
                     try {
                         queryResult1.first();
                         email = queryResult1.getString(1);
+                        nomeFarmacia = queryResult1.getString(2);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
