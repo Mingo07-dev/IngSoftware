@@ -220,12 +220,9 @@ public class Table extends JPanel{
 
 
     //LISTENERS
-    //esempio:
-    //button.addActionListener(e -> {
-    //            QUELLO CHE DEVE FARE IL BOTTONE
-    //        });
     public void addListener(Button button, int listenerType, ResultSet rs1){
         switch(listenerType){
+            //BOTTONE CONFERMA CONSEGNA
             case 1:
                 button.addActionListener(e -> {
                     try {

@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +11,7 @@ import java.sql.SQLException;
 public class SchermataLogin {
 
     public static TextField emailField;
-    public static TextField passwordField;
+    public static PasswordField passwordField;
     private static Button buttonLogin;
     public static String email;
     public static String mansione;
@@ -53,11 +55,18 @@ public class SchermataLogin {
         emailField = new TextField(30, "Mail", 150,30);
         emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(emailField);
-        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,40)));
 
-        passwordField = new TextField(20, "Password", 150,30);
+        passwordField = new PasswordField(20, 150,30);
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(passwordField);
+        mainCenterPanel.add(Box.createRigidArea(new Dimension(0,20)));
+
+        JCheckBox mostraPassword = new JCheckBox("Mostra Password");
+        PasswordField.addListenerCheckboxMostraPassword(mostraPassword,passwordField);
+
+        mostraPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
+        mainCenterPanel.add(mostraPassword);
         mainCenterPanel.add(Box.createRigidArea(new Dimension(0,60)));
 
 

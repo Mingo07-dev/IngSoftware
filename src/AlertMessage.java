@@ -9,7 +9,6 @@ import javax.swing.*;
 
 public class AlertMessage {
 
-    //POTREBBE TORNARE UTILE QUESTA RIGA:
     /*Frame frame = new Frame();
             Object[] options = {"Conferma",
                     "No, grazie"};
@@ -19,7 +18,7 @@ public class AlertMessage {
                     JOptionPane.YES_NO_OPTION, //da cambiare se si vogliono più opzioni o meno
                     JOptionPane.QUESTION_MESSAGE, //per cambiare l'iconcina
                     null, //lasciare sempre cosi
-                    options,  //the titles of buttons
+                    options,
                     options[0]); //puntatore alla prima opzione
             if(n == 0){
                 //se è 0 significa che è stato premuto il primo bottone

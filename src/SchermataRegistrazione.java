@@ -17,8 +17,8 @@ public class SchermataRegistrazione {
     public static JLabel campoErrato;
 
     public static TextField emailText;
-    public static TextField passwordText;
-    public static TextField confirmPasswordText;
+    public static PasswordField passwordText;
+    public static PasswordField confirmPasswordText;
 
     private static final Pattern emailPattern = Pattern.compile("^[A-Za-z0-9]+@(.+)$");
     private static Matcher emailMatcher;
@@ -81,7 +81,7 @@ public class SchermataRegistrazione {
         boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
 
 
-        passwordText = new TextField(30, "Password", 150, 30);
+        passwordText = new PasswordField(30, 150, 30);
         passwordText.setPreferredSize(new Dimension(150,30));
         passwordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(passwordText);
@@ -89,9 +89,15 @@ public class SchermataRegistrazione {
 
 
 
-        confirmPasswordText = new TextField(30, "Confirm Password", 150, 30);
+        confirmPasswordText = new PasswordField(30, 150, 30);
         confirmPasswordText.setAlignmentX(Component.CENTER_ALIGNMENT);
         boxCenterPanel.add(confirmPasswordText);
+        boxCenterPanel.add(Box.createRigidArea(new Dimension(0,10)));
+
+        JCheckBox mostraPassword = new JCheckBox("Mostra Password");
+        PasswordField.addListenerCheckboxMostraPasswordEConfirmPassword(mostraPassword,passwordText,confirmPasswordText);
+        mostraPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
+        boxCenterPanel.add(mostraPassword);
 
         JPanel boxFlowLayout = new JPanel(new FlowLayout());
         boxFlowLayout.add(boxCenterPanel);

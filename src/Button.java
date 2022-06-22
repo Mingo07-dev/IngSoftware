@@ -85,6 +85,7 @@ public class Button extends JButton {
             SchermataRegistrazione.confirmPasswordText.setText("Conferma Password");
             SchermataLogin.emailField.setText("Mail");
             SchermataLogin.passwordField.setText("Password");
+            SchermataRegistrazione.campoErrato.setText("");
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
             Button.lastView = "" + this.currentView;
@@ -111,8 +112,8 @@ public class Button extends JButton {
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
-                    options,  //the titles of buttons
-                    options[0]); //default button title
+                    options,
+                    options[0]);
             if(n == 0){
                 try {
                     Main.dbms_Azienda.setData("UPDATE `dbms_azienda`.`utente` SET `Stato` = '0' WHERE (`Email` = '"+SchermataLogin.email+"');;");
