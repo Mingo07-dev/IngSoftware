@@ -78,6 +78,15 @@ public class SchermataConsegne {
 
     }
 
+
+
+
+
+
+
+
+
+    //SCHERMATA CONSEGNE DEL FARMACISTA
     public static void aggiornaTabellaFarmacista() throws FileNotFoundException {
         JPanel mainPanel = new JPanel(new BorderLayout());
 
@@ -131,7 +140,7 @@ public class SchermataConsegne {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_oneButton("Carica", 3);
+                    tableConsegne.fillTable_oneButton("Carica", 2);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

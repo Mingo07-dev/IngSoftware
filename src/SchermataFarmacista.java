@@ -36,7 +36,7 @@ public class SchermataFarmacista  {
         JPanel boxCenter = new JPanel();
         boxCenter.setLayout(new BoxLayout(boxCenter, BoxLayout.PAGE_AXIS));
         //FLOW A DESTRA
-        JPanel mainCenterEASTFlow = new JPanel();
+        JPanel mainCenterEASTFlow = new JPanel(new FlowLayout());
 
         //BOTTONI SINISTRA
         Button prenotaFarmaci = new Button("SchermataFarmacista",  "Prenota Farmaci", 300,50);
@@ -64,7 +64,7 @@ public class SchermataFarmacista  {
         //BOTTONE DI DESTRA
         Button visualizzaListaOrdini = new Button("SchermataFarmacista",  "Visualizza Lista Ordini", 300,50);
         visualizzaListaOrdini.changeFontButton("Arial",1, 25);
-        controlloScorte.createListenerButtonChangeView("SchermataListaOrdini");
+        visualizzaListaOrdini.createListenerButtonChangeView("SchermataListaOrdini");
         mainCenterEASTFlow.add(visualizzaListaOrdini);
 
         mainCenterBorder.add(boxLeft,BorderLayout.WEST);

@@ -39,12 +39,11 @@ public class SchermataVisualizzaDettaglioOrdine {
 
         String headers[] = {"Farmaco", "Principio attivo", "Quantità", "Data di scadenza"};
         JScrollPane sp = new JScrollPane();
-        JLabel resultLabel = new JLabel("Nessuna segnalazione");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Quantita, Data_scadenza FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +";");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Quantita, Data_scadenza FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -61,8 +60,6 @@ public class SchermataVisualizzaDettaglioOrdine {
                     e.printStackTrace();
                 }
                 sp = new JScrollPane(tableConsegne);
-            } else {
-                sp = new JScrollPane(resultLabel);
             }
         } catch (SQLException e) {
             e.printStackTrace();

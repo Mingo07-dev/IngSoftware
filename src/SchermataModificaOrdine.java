@@ -44,7 +44,7 @@ public class SchermataModificaOrdine {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Data_scadenza, Quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +";");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Data_scadenza, Quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -74,6 +74,7 @@ public class SchermataModificaOrdine {
 
         Button buttonAggiorna = new Button("Aggiorna", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
+
 
         mainSouthPanel.add(buttonAggiorna);
 

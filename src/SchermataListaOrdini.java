@@ -60,7 +60,7 @@ public class SchermataListaOrdini {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine", 2,4,5);
+                    tableConsegne.fillTable_threeButton(queryResult.getString(1), "Modifica ordine", "Annulla Ordine", 3,4,5);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

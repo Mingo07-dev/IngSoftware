@@ -1,7 +1,11 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +13,9 @@ import java.sql.SQLException;
 public class Table extends JPanel{
     private int n;
     private int m;
+    public static int[] intArray;
+    private int[] intArrayLocal;
+    private int cont;
     private String headers[];
     private ResultSet rs;
     private Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
@@ -19,6 +26,12 @@ public class Table extends JPanel{
         this.rs = rs;
         this.n = Main.dbms_Azienda.getResultSetRows(rs);
         this.m = Main.dbms_Azienda.getResultSetColumns(rs);
+        this.intArrayLocal = new int[this.n];
+
+        for (int i:this.intArrayLocal
+             ) {
+            this.intArrayLocal[i] = 0;
+        }
         this.headers = headers;
         this.setLayout(new GridBagLayout());
     }
@@ -193,9 +206,11 @@ public class Table extends JPanel{
             bordo.add(new JLabel("" + this.headers[i]));
             this.add(bordo, gbc);
         }
-
+        cont = 0;
+        intArray = intArrayLocal;
         for(int i = 0; i < n ; i++){
-            for(int j = 0; j < m - 1 ; j++){
+
+            for(int j = 0; j < m; j++){
                 gbc.fill = GridBagConstraints.HORIZONTAL;
                 gbc.ipadx = 20;
                 gbc.ipady = 20;
@@ -209,14 +224,30 @@ public class Table extends JPanel{
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
             gbc.ipady = 20;
-            gbc.gridx = m - 1;
-            gbc.gridy = i +1 ;
+            gbc.gridx = m;
+            gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             TextField textField = new TextField(10,"0", 150,25);
+            textField.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    intArray[cont] = Integer.parseInt(textField.getText());
+                    System.out.println(intArray[cont]);
+                    cont++;
+                }
+            });
             bordo.add(textField, gbc);
+            this.add(bordo, gbc);
+
+
             rs.next();
         }
+        cont = 0;
     }
 
 
@@ -245,25 +276,25 @@ public class Table extends JPanel{
 
                 });
 
-            case 2: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
-                button.addActionListener(e -> {
-                    Main.cardLayout.show(Main.schermataVisualizzaDettaglioOrdinePanel, "SchermataVisualizzaDettaglioOrdine");
-                    Button.lastView = "SchermataListaOrdini";
-                });
-                break;
-            case 3: //BOTTONE CARICO SCORTE
+            case 2: //BOTTONE CARICO SCORTE
                 button.addActionListener(e -> {
                     Main.cardLayout.show(Main.mainPanel, "SchermataCaricoScorte");
                     Button.lastView = "SchermataFarmacista";
                 });
                 break;
-            case 4: //BOTTONE MODIFICA ORDINE
+            case 3: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
                 button.addActionListener(e -> {
-                    Main.cardLayout.show(Main.schermataModificaOrdinePanel, "SchermataModificaOrdine");
+                    Main.cardLayout.show(Main.mainPanel, "SchermataVisualizzaDettaglioOrdine");
                     Button.lastView = "SchermataListaOrdini";
                 });
                 break;
-            case 5:
+            case 4: //BOTTONE MODIFICA ORDINE
+                button.addActionListener(e -> {
+                    Main.cardLayout.show(Main.mainPanel, "SchermataModificaOrdine");
+                    Button.lastView = "SchermataListaOrdini";
+                });
+                break;
+            case 5: //BOTTONE ANNULLA ORDINE
                 button.addActionListener(e -> {
                     try {
                         Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"');");
