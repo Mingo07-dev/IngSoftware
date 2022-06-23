@@ -41,7 +41,8 @@ public class Main {
 
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE ALL'IMPEGATO
     public static JPanel schermataImpiegatoAziendaPanel;
-    public static JPanel schermataSegnalazioniPanel;
+    public static JPanel schermataSegnalazioniRisoltePanel;
+    public static JPanel schermataSegnalazioniIrrisoltePanel;
     //FINE
 
 
@@ -112,8 +113,11 @@ public class Main {
         schermataImpiegatoAziendaPanel = new JPanel(new BorderLayout());
         schermataImpiegatoAziendaPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
-        schermataSegnalazioniPanel = new JPanel(new BorderLayout());
-        schermataSegnalazioniPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+        schermataSegnalazioniRisoltePanel = new JPanel(new BorderLayout());
+        schermataSegnalazioniRisoltePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
+
+        schermataSegnalazioniIrrisoltePanel = new JPanel(new BorderLayout());
+        schermataSegnalazioniIrrisoltePanel.setBorder(new EmptyBorder(25, 25, 25, 25));
         //FINE
 
 
@@ -143,7 +147,8 @@ public class Main {
 
         //AGGIUNTA DELLE SCHERMATE RELATIVE ALL'IMPIEGATO NEL CARD LAYOUT
         mainPanel.add(schermataImpiegatoAziendaPanel, "SchermataImpiegatoAzienda");
-        mainPanel.add(schermataSegnalazioniPanel,"SchermataSegnalazioni");
+        mainPanel.add(schermataSegnalazioniRisoltePanel,"SchermataSegnalazioniRisolte");
+        mainPanel.add(schermataSegnalazioniIrrisoltePanel,"SchermataSegnalazioniIrrisolte");
         //FINE
 
 
@@ -173,7 +178,8 @@ public class Main {
 
         //CREAZIONE DELLE SCHERMATE RELATIVE ALL'IMPIEGATO
         SchermataImpiegatoAzienda schermataImpiegatoAzienda = new SchermataImpiegatoAzienda();
-        SchermataSegnalazioni schermataSegnalazioni = new SchermataSegnalazioni();
+        SchermataSegnalazioniRisolte schermataSegnalazioniRisolte = new SchermataSegnalazioniRisolte();
+        SchermataSegnalazioniIrrisolte schermataSegnalazioniIrrisolte = new SchermataSegnalazioniIrrisolte();
         //FINE
 
 

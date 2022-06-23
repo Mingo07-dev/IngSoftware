@@ -43,7 +43,7 @@ public class SchermataLogin {
         mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        JPanel centerBox = new JPanel(new FlowLayout());
+        JPanel centerFlow = new JPanel(new FlowLayout());
         JPanel mainCenterPanel = new JPanel();
         mainCenterPanel.setLayout(new BoxLayout(mainCenterPanel, BoxLayout.Y_AXIS));
 
@@ -80,8 +80,8 @@ public class SchermataLogin {
         buttonLogin.setAlignmentX(Component.CENTER_ALIGNMENT);
         mainCenterPanel.add(buttonLogin);
 
-        centerBox.add(mainCenterPanel);
-        mainPanel.add(centerBox, BorderLayout.CENTER);
+        centerFlow.add(mainCenterPanel);
+        mainPanel.add(centerFlow, BorderLayout.CENTER);
 
         Main.schermataLoginPanel.add(mainPanel, BorderLayout.CENTER);
     }

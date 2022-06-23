@@ -23,12 +23,25 @@ public class SchermataImpiegatoAzienda {
 
         JPanel mainCenterFlow = new JPanel(new FlowLayout());
 
+        JPanel mainCenterBox = new JPanel();
+        mainCenterBox.setLayout(new BoxLayout(mainCenterBox, BoxLayout.PAGE_AXIS));
 
-        Button buttonVisualizzaElencoSegnalazioni = new Button("SchermataImpiegatoAzienda", "Visualizza Elenco Segnalazioni", 400,50);
-        buttonVisualizzaElencoSegnalazioni.changeFontButton("Arial", 1,15);
-        buttonVisualizzaElencoSegnalazioni.createListenerButtonChangeView("SchermataSegnalazioni");
 
-        mainCenterFlow.add(buttonVisualizzaElencoSegnalazioni);
+        Button buttonSegnalazioniRisolte = new Button("SchermataImpiegatoAzienda", "Segnalazioni Risolte", 300,50);
+        buttonSegnalazioniRisolte.changeFontButton("Arial", 1,25);
+        buttonSegnalazioniRisolte.createListenerButtonChangeView("SchermataSegnalazioniRisolte");
+        buttonSegnalazioniRisolte.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        mainCenterBox.add(buttonSegnalazioniRisolte);
+        mainCenterBox.add(Box.createRigidArea(new Dimension(0,20)));
+
+        Button buttonSegnalazioniIrrisolte = new Button("SchermataImpiegatoAzienda", "Segnalazioni Irrisolte", 300,50);
+        buttonSegnalazioniIrrisolte.changeFontButton("Arial", 1,25);
+        buttonSegnalazioniIrrisolte.createListenerButtonChangeView("SchermataSegnalazioniIrrisolte");
+        buttonSegnalazioniIrrisolte.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        mainCenterBox.add(buttonSegnalazioniIrrisolte);
+        mainCenterFlow.add(mainCenterBox);
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
         mainPanel.add(mainCenterFlow, BorderLayout.CENTER);

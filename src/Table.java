@@ -430,6 +430,25 @@ public class Table extends JPanel{
 
                 });
                 break;
+            case 6://BOTTONE AGGIORNA SEGNALAZIONE
+                button.addActionListener(e -> {
+                    try {
+                        rs1.first();
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.schermata_segnalazione SET Stato_segnalazione = '1' WHERE dbms_azienda.schermata_segnalazione.Id_ordine = '" + rs1.getInt("Id_ordine") + "';");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //AGGIORNA TABELLA CONSEGNE
+                    Main.schermataSegnalazioniIrrisoltePanel.removeAll();
+                    try {
+                        SchermataSegnalazioniIrrisolte schermataSegnalazioniIrrisolte = new SchermataSegnalazioniIrrisolte();
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataSegnalazioniIrrisoltePanel.repaint();
+                    Main.mainFrame.setVisible(true);
+                });
+                break;
         }
     }
 
