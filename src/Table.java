@@ -352,7 +352,6 @@ public class Table extends JPanel{
                 button.addActionListener(e -> {
                     try {
                         Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ button.getId_ordine() +"');");
-                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.dettaglio_ordine WHERE (Id_ordine = '"+ button.getId_ordine() + "');");
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
