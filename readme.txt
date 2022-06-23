@@ -34,12 +34,12 @@ Farmacista:
      -Controllo Scorte CAMBIARE QUERY-> Filtrare per Nome Farmacia
 
      -Scarica Scorte DA FARE
-
-
+     
 
 
 
 Aggiuntivi:
+     -Notifica mancato caricamento scorte DA FARE
      -Caduta DBMS DA FARE
      -Pren Automatica DA FARE
      -Aggiunta produzione DA FARE
