@@ -218,6 +218,34 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonAggiornaPrenotazioneAutomatica(String viewToShow, int n){
+        this.addActionListener(e -> {
+
+            int[] intarray = Table.getIntArray();
+            int[] intArrayOld = Table.getIntArrayOldData();
+            String[] stringNome = Table.getStringNome();
+            try {
+                for(int i = 0; i < n; i++){
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Farmaco = '"+stringNome[i]+"';");
+                }
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                ex.printStackTrace();
+            }
+
+
+            Main.schermataModificaPrenotazioneAutomaticaPanel.removeAll();
+            try {
+                SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataModificaPrenotazioneAutomaticaPanel.repaint();
+            Main.mainFrame.setVisible(true);
+
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+        });
+    }
+
 
     public int getId_ordine() {
         return Id_ordine;
