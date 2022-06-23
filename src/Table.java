@@ -293,6 +293,15 @@ public class Table extends JPanel{
                 break;
             case 3: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
                 button.addActionListener(e -> {
+                    Main.schermataVisualizzaDettaglioOrdinePanel.removeAll();
+                    try {
+                        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine();
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataVisualizzaDettaglioOrdinePanel.repaint();
+                    Main.mainFrame.setVisible(true);
+
                     Main.cardLayout.show(Main.mainPanel, "SchermataVisualizzaDettaglioOrdine");
                     Button.lastView = "SchermataListaOrdini";
                 });
