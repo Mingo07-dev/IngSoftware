@@ -3,10 +3,12 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.xml.crypto.Data;
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.FileNotFoundException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -19,8 +21,8 @@ public class Table extends JPanel{
     private int[] intArrayOldDataLocal;
     public static String[] stringNome;
     private String[] stringNomeLocal;
-    public static String[] stringData;
-    private String[] stringDataLocal;
+    public static Date[] stringData;
+    private Date[] stringDataLocal;
     private int cont;
     private String headers[];
     private ResultSet rs;
@@ -45,11 +47,11 @@ public class Table extends JPanel{
             this.intArrayOldDataLocal[i] = 0;
         }
 
-        this.stringDataLocal = new String[this.n];
+        this.stringDataLocal = new Date[this.n];
         int l = 0;
-        for (String i:this.stringDataLocal
+        for (Date i:this.stringDataLocal
         ) {
-            this.stringDataLocal[l++] = "0";
+            this.stringDataLocal[l++] = Date.valueOf("2022-12-12");
         }
         l=0;
 
@@ -235,10 +237,7 @@ public class Table extends JPanel{
             this.add(bordo, gbc);
         }
         cont = 0;
-        intArray = intArrayLocal;
-        intArrayOldData = intArrayOldDataLocal;
-        stringNome = stringNomeLocal;
-        stringData = stringDataLocal;
+
         for(int i = 0; i < n ; i++){
 
             for(int j = 0; j < m; j++){
@@ -259,10 +258,10 @@ public class Table extends JPanel{
             gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            stringData[cont] = rs.getString(3);
-            stringNome[cont] = rs.getString(1);
-            intArrayOldData[cont] = Integer.parseInt(rs.getString(4));
-            TextField textField = new TextField(10,"0", 150,25);
+            stringDataLocal[cont] = rs.getDate(3);
+            stringNomeLocal[cont] = rs.getString(1);
+            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(4));
+            TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
                 @Override
                 public void focusGained(FocusEvent e) {
@@ -270,16 +269,21 @@ public class Table extends JPanel{
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    intArray[cont] = Integer.parseInt(textField.getText());
-                    cont++;
+                    intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+
                 }
             });
             bordo.add(textField, gbc);
             this.add(bordo, gbc);
 
-
+            cont++;
             rs.next();
         }
+        intArray = intArrayLocal;
+        intArrayOldData = intArrayOldDataLocal;
+        stringNome = stringNomeLocal;
+        stringData = stringDataLocal;
+
         cont = 0;
     }
 
@@ -357,5 +361,21 @@ public class Table extends JPanel{
                 });
                 break;
         }
+    }
+
+    public static int[] getIntArray() {
+        return intArray;
+    }
+
+    public static int[] getIntArrayOldData() {
+        return intArrayOldData;
+    }
+
+    public static String[] getStringNome() {
+        return stringNome;
+    }
+
+    public static Date[] getStringData() {
+        return stringData;
     }
 }

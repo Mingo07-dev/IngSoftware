@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -179,11 +180,21 @@ public class Button extends JButton {
     public void createListenerButtonAggiorna(String viewToShow, int n ){
         this.addActionListener(e -> {
 
+            int[] intarray = Table.getIntArray();
+            int[] intArrayOld = Table.getIntArrayOldData();
+            String[] stringNome = Table.getStringNome();
+            Date[] stringDate = Table.getStringData();
+            for(int i=0;i<n;i++){
+                System.out.println("dato nuovo:"+intarray[i]);
+                System.out.println("dato vecchio:"+intArrayOld[i]);
+                System.out.println("nome:"+stringNome[i]);
+                System.out.println("data:"+stringDate[i]);
+            }
             //UPDATE dbms_azienda SET Quantita = REPLACE(Quantita, arrayVecchio[i], array[i]) WHERE Id_ordine = id_ordine ;
             try {
                 for(int i = 1; i < n-1; i++){
                     //Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +";");
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +" AND Nome_farmaco = '"+Table.stringNome[i]+"' AND Data_scadenza = '"+Table.stringData[i]+"';");
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
