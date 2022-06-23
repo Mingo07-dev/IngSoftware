@@ -17,6 +17,10 @@ public class Table extends JPanel{
     private int[] intArrayLocal;
     public static int[] intArrayOldData;
     private int[] intArrayOldDataLocal;
+    public static String[] stringNome;
+    private String[] stringNomeLocal;
+    public static String[] stringData;
+    private String[] stringDataLocal;
     private int cont;
     private String headers[];
     private ResultSet rs;
@@ -40,6 +44,22 @@ public class Table extends JPanel{
         ) {
             this.intArrayOldDataLocal[i] = 0;
         }
+
+        this.stringDataLocal = new String[this.n];
+        int l = 0;
+        for (String i:this.stringDataLocal
+        ) {
+            this.stringDataLocal[l++] = "0";
+        }
+        l=0;
+
+        this.stringNomeLocal = new String[this.n];
+        for (String i:this.stringNomeLocal
+        ) {
+            this.stringNomeLocal[l++] = "0";
+        }
+        l=0;
+
         this.headers = headers;
         this.setLayout(new GridBagLayout());
     }
@@ -217,6 +237,8 @@ public class Table extends JPanel{
         cont = 0;
         intArray = intArrayLocal;
         intArrayOldData = intArrayOldDataLocal;
+        stringNome = stringNomeLocal;
+        stringData = stringDataLocal;
         for(int i = 0; i < n ; i++){
 
             for(int j = 0; j < m; j++){
@@ -237,6 +259,8 @@ public class Table extends JPanel{
             gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
+            stringData[cont] = rs.getString(3);
+            stringNome[cont] = rs.getString(1);
             intArrayOldData[cont] = Integer.parseInt(rs.getString(4));
             TextField textField = new TextField(10,"0", 150,25);
             textField.addFocusListener(new FocusListener() {
