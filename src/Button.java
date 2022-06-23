@@ -17,6 +17,7 @@ public class Button extends JButton {
     private JPanel viewToAddOn;
     private final int width;
     private final int height;
+
     public int Id_ordine;
 
     //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
@@ -195,17 +196,9 @@ public class Button extends JButton {
             int[] intArrayOld = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
             Date[] stringDate = Table.getStringData();
-            for(int i=0;i<n;i++){
-                System.out.println("dato nuovo:"+intarray[i]);
-                System.out.println("dato vecchio:"+intArrayOld[i]);
-                System.out.println("nome:"+stringNome[i]);
-                System.out.println("data:"+stringDate[i]);
-            }
-            //UPDATE dbms_azienda SET Quantita = REPLACE(Quantita, arrayVecchio[i], array[i]) WHERE Id_ordine = id_ordine ;
             try {
-                for(int i = 1; i < n + 1; i++){
-                    //Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +";");
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ Id_ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
+                for(int i = 0; i < n; i++){
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ SchermataModificaOrdine.Id_Ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
@@ -214,7 +207,7 @@ public class Button extends JButton {
 
             Main.schermataModificaOrdinePanel.removeAll();
             try {
-                SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(Id_ordine);
+                SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(SchermataModificaOrdine.Id_Ordine);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -222,10 +215,11 @@ public class Button extends JButton {
             Main.mainFrame.setVisible(true);
 
             Main.cardLayout.show(Main.mainPanel, viewToShow);
-            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
-            //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
         });
     }
 
+
+    public int getId_ordine() {
+        return Id_ordine;
+    }
 }
