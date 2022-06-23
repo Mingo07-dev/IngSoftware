@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataVisualizzaDettaglioOrdine {
-    public SchermataVisualizzaDettaglioOrdine() throws FileNotFoundException {
+    public SchermataVisualizzaDettaglioOrdine(int Id_ordine) throws FileNotFoundException {
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
@@ -44,7 +44,7 @@ public class SchermataVisualizzaDettaglioOrdine {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Quantita, Data_scadenza FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Quantita, Data_scadenza FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ Id_ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

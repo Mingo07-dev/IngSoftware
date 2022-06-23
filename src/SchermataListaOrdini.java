@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataListaOrdini {
-    public static int Id_ordine = 0;
 
     public SchermataListaOrdini() throws FileNotFoundException {
 
@@ -54,7 +53,6 @@ public class SchermataListaOrdini {
         try {
             if(queryResult.next() != false) {
                 try {
-                    Id_ordine = queryResult.getInt(1);
                     tableConsegne = new Table(headers, queryResult);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();

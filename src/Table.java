@@ -174,7 +174,7 @@ public class Table extends JPanel{
             gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            Button button_One = new Button(rs.getString(k + 1),150,25);
+            Button button_One = new Button(rs.getString(k + 1),150,25, rs.getInt(1));
             bordo.add(button_One);
             this.add(bordo, gbc);
             addListener(button_One, listener_One, rs);
@@ -190,7 +190,6 @@ public class Table extends JPanel{
                 bordoData.add(new JLabel("" + rs.getString(j + 2)));
                 this.add(bordoData, gbc);
             }
-
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
             gbc.ipady = 20;
@@ -323,7 +322,7 @@ public class Table extends JPanel{
                 button.addActionListener(e -> {
                     Main.schermataVisualizzaDettaglioOrdinePanel.removeAll();
                     try {
-                        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine();
+                        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine(button.Id_ordine);
                     } catch (FileNotFoundException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -336,6 +335,15 @@ public class Table extends JPanel{
                 break;
             case 4: //BOTTONE MODIFICA ORDINE
                 button.addActionListener(e -> {
+                    Main.schermataModificaOrdinePanel.removeAll();
+                    try {
+                        SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(button.Id_ordine);
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataModificaOrdinePanel.repaint();
+                    Main.mainFrame.setVisible(true);
+
                     Main.cardLayout.show(Main.mainPanel, "SchermataModificaOrdine");
                     Button.lastView = "SchermataListaOrdini";
                 });
@@ -343,8 +351,8 @@ public class Table extends JPanel{
             case 5: //BOTTONE ANNULLA ORDINE
                 button.addActionListener(e -> {
                     try {
-                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"');");
-                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.dettaglio_ordine WHERE (Id_ordine = '"+ SchermataListaOrdini.Id_ordine + "');");
+                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ button.Id_ordine +"');");
+                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.dettaglio_ordine WHERE (Id_ordine = '"+ button.Id_ordine + "');");
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataModificaOrdine {
-    public SchermataModificaOrdine() throws FileNotFoundException {
+    public SchermataModificaOrdine(int Id_ordine) throws FileNotFoundException {
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
@@ -44,7 +44,7 @@ public class SchermataModificaOrdine {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Data_scadenza, Quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmaco, Principio_attivo, Data_scadenza, Quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ Id_ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -74,8 +74,11 @@ public class SchermataModificaOrdine {
 
         Button buttonAggiorna = new Button("Aggiorna", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
-            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine",tableConsegne.n);
-
+        if(tableConsegne != null) {
+            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", tableConsegne.n);
+        } else{
+            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", 0);
+        }
         mainSouthPanel.add(buttonAggiorna);
 
         mainPanel.add(mainSouthPanel, BorderLayout.SOUTH);

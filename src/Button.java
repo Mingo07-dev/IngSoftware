@@ -17,6 +17,7 @@ public class Button extends JButton {
     private JPanel viewToAddOn;
     private final int width;
     private final int height;
+    public int Id_ordine;
 
     //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
     public static String lastView = "SchermataAutenticazione";
@@ -35,6 +36,16 @@ public class Button extends JButton {
     Button(String buttonName, int width, int height){
         this.width = width;
         this.height = height;
+
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+        this.setText(buttonName);
+        this.setPreferredSize(new Dimension(width,  height));
+    };
+
+    Button(String buttonName, int width, int height, int Id_ordine){
+        this.width = width;
+        this.height = height;
+        this.Id_ordine = Id_ordine;
 
         //dichiara il bottone e lo inizializza con una dimensione da noi scelta
         this.setText(buttonName);
@@ -177,7 +188,7 @@ public class Button extends JButton {
         });
     }
 
-    public void createListenerButtonAggiorna(String viewToShow, int n ){
+    public void createListenerButtonAggiorna(String viewToShow, int n){
         this.addActionListener(e -> {
 
             int[] intarray = Table.getIntArray();
@@ -192,9 +203,9 @@ public class Button extends JButton {
             }
             //UPDATE dbms_azienda SET Quantita = REPLACE(Quantita, arrayVecchio[i], array[i]) WHERE Id_ordine = id_ordine ;
             try {
-                for(int i = 1; i < n-1; i++){
+                for(int i = 1; i < n + 1; i++){
                     //Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+Table.intArrayOldData[i]+"', '"+Table.intArray[i]+"') WHERE Id_ordine = "+ SchermataListaOrdini.Id_ordine +";");
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ SchermataListaOrdini.Id_ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ Id_ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
@@ -203,7 +214,7 @@ public class Button extends JButton {
 
             Main.schermataModificaOrdinePanel.removeAll();
             try {
-                SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine();
+                SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(Id_ordine);
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }

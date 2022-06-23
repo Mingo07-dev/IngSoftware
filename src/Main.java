@@ -158,12 +158,12 @@ public class Main {
         //CREAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
         SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
         SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
-        SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine();
+        SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(0);
         SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
         SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
         SchermataRiepilogoOrdine schermataRiepilogoOrdine = new SchermataRiepilogoOrdine();
         SchermataScorte schermataScorte = new SchermataScorte();
-        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine();
+        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine(0);
         //FINE
 
         //CREAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
