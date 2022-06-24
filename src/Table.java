@@ -434,7 +434,7 @@ public class Table extends JPanel{
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
-                    //AGGIORNA TABELLA CONSEGNE
+                    //AGGIORNA TABELLA SEGNALAZIONI IRRISOLTE
                     Main.schermataSegnalazioniIrrisoltePanel.removeAll();
                     try {
                         SchermataSegnalazioniIrrisolte schermataSegnalazioniIrrisolte = new SchermataSegnalazioniIrrisolte();
@@ -442,6 +442,15 @@ public class Table extends JPanel{
                         throw new RuntimeException(ex);
                     }
                     Main.schermataSegnalazioniIrrisoltePanel.repaint();
+                    Main.mainFrame.setVisible(true);
+                    //AGGIORNA TABELLA SEGNALAZIONI RISOLTE
+                    Main.schermataSegnalazioniRisoltePanel.removeAll();
+                    try {
+                        SchermataSegnalazioniRisolte schermataSegnalazioniRisolte = new SchermataSegnalazioniRisolte();
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataSegnalazioniRisoltePanel.repaint();
                     Main.mainFrame.setVisible(true);
                 });
                 break;
