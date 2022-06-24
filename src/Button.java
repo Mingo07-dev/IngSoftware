@@ -78,6 +78,25 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonChangeViewSchermataScorte(String viewToShow ){
+        this.addActionListener(e -> {
+            Main.schermataScortePanel.removeAll();
+            try {
+                SchermataScorte schermataScorte = new SchermataScorte();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataScortePanel.repaint();
+            Main.mainFrame.setVisible(true);
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
     public void createListenerButtonConsegne(String viewToShow ){
         this.addActionListener(e -> {
             //mostra la nuova schermata

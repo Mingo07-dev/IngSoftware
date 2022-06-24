@@ -9,10 +9,7 @@ Corriere:
 
 
 Impiegato:
-     -Lista Segnalazioni Irrisolte(
-Visualizza irrisolte DA FARE
-Cambia in risolta DA FARE)
-     - Visualizza risolte DA CAMBIARE ALCUNE COSE
+	FINITO
 
 
 
@@ -29,9 +26,9 @@ Farmacista:
 		Modifica, FINITO
 		Dettaglio FINITO
 
-     -Mod Pren Automatica DA FARE
+     -Mod Pren Automatica FINITO
 
-     -Controllo Scorte CAMBIARE QUERY-> Filtrare per Nome Farmacia
+     -Controllo Scorte FINITO
 
      -Scarica Scorte DA FARE
      
