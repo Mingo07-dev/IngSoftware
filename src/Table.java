@@ -374,7 +374,7 @@ public class Table extends JPanel{
             case 2: //BOTTONE CARICO SCORTE
                 button.addActionListener(e -> {
                     Main.cardLayout.show(Main.mainPanel, "SchermataCaricoScorte");
-                    Button.lastView = "SchermataFarmacista";
+                    Button.lastView = "SchermataCorriere";
                 });
                 break;
             case 3: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
