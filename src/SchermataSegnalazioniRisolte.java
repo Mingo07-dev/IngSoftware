@@ -38,14 +38,14 @@ public class SchermataSegnalazioniRisolte {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Nome farmacia", "Recapito Telefonico", "Id Ordine", "Data"};
+        String headers[] = {"Nome farmacia", "Recapito Telefonico", "Id Ordine"};
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessuna segnalazione");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmacia, Recapito_telefonico, Id_ordine, Data_segnalazione FROM dbms_azienda.schermata_segnalazione WHERE dbms_azienda.schermata_segnalazione.Stato_segnalazione = '1';");
+            queryResult = Main.dbms_Azienda.getData("SELECT Nome_farmacia, Recapito_telefonico, Id_ordine FROM dbms_azienda.schermata_segnalazione WHERE dbms_azienda.schermata_segnalazione.Stato_segnalazione = '1';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

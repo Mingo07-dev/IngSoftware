@@ -17,6 +17,7 @@ public class SchermataLogin {
     public static String nomeFarmacia;
     public static String mansione = "";
 
+
     public SchermataLogin() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -94,7 +95,7 @@ public class SchermataLogin {
             ResultSet queryResult1 = null;
             ResultSet queryResult2 = null;
             try {
-                queryResult1 = Main.dbms_Azienda.getData("SELECT email, Nome_farmacia from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
+                queryResult1 = Main.dbms_Azienda.getData("SELECT email, mansione from dbms_azienda.utente WHERE email = '" + SchermataLogin.emailField.getText() + "';");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
@@ -105,7 +106,8 @@ public class SchermataLogin {
                     try {
                         queryResult1.first();
                         email = queryResult1.getString(1);
-                        nomeFarmacia = queryResult1.getString(2);
+                        mansione = queryResult1.getString(2);
+                        //nomeFarmacia = queryResult1.getString(2);
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -124,21 +126,22 @@ public class SchermataLogin {
                         }
 
                         ResultSet result = null;
+                        if(mansione.equals("Farmacista")){
+                            try {
+                                result = Main.dbms_Azienda.getData("SELECT nome_farmacia FROM dbms_azienda.farmacista WHERE Email = '" + email + "' AND password = '" + password + "';");
+                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                                ex.printStackTrace();
+                            }
 
-                        try {
-                            result = Main.dbms_Azienda.getData("SELECT Mansione FROM dbms_azienda.utente WHERE Email = '" + email + "' AND password = '" + password + "';");
-                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                            ex.printStackTrace();
+                            try {
+                                result.first();
+                                nomeFarmacia = result.getString(1);
+                            } catch (SQLException ex) {
+                                ex.printStackTrace();
+                            }
                         }
 
-                        mansione = "";
 
-                        try {
-                            result.first();
-                            mansione = result.getString(1);
-                        } catch (SQLException ex) {
-                            ex.printStackTrace();
-                        }
                         //SE COMBACIA CAMBIA SCHERMATA
                         try {
                             Main.dbms_Azienda.setData("UPDATE `dbms_azienda`.`utente` SET `Stato` = '1' WHERE (`Email` = '"+email+"');;");
