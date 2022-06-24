@@ -21,6 +21,8 @@ public class Table extends JPanel{
     private String[] stringNomeLocal;
     public static Date[] stringData;
     private Date[] stringDataLocal;
+    public static String[] principioAttivo;
+    private String[] principioAttivoLocal;
     private int cont;
     private String headers[];
     private ResultSet rs;
@@ -57,6 +59,13 @@ public class Table extends JPanel{
         for (String i:this.stringNomeLocal
         ) {
             this.stringNomeLocal[l++] = "0";
+        }
+        l=0;
+
+        this.principioAttivoLocal = new String[this.n];
+        for (String i:this.principioAttivoLocal
+        ) {
+            this.principioAttivoLocal[l++] = "0";
         }
         l=0;
 
@@ -424,7 +433,9 @@ public class Table extends JPanel{
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             stringNomeLocal[cont] = rs.getString(1);
+            principioAttivoLocal[cont] = rs.getString(2);
             intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3)); // 4 -> 2
+            stringDataLocal[cont] = rs.getDate(4);
             TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
                 @Override
@@ -446,7 +457,8 @@ public class Table extends JPanel{
         intArray = intArrayLocal;
         intArrayOldData = intArrayOldDataLocal;
         stringNome = stringNomeLocal;
-        //stringData = stringDataLocal;
+        stringData = stringDataLocal;
+        principioAttivo = principioAttivoLocal;
 
         cont = 0;
     }
@@ -595,5 +607,9 @@ public class Table extends JPanel{
 
     public static Date[] getStringData() {
         return stringData;
+    }
+
+    public static String[] getPrincipioAttivo() {
+        return principioAttivo;
     }
 }

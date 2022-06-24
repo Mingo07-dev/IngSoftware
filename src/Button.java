@@ -302,6 +302,8 @@ public class Button extends JButton {
             int[] intarrayQuantitaArrivate = Table.getIntArray();
             int[] intArrayQuantitaOrdine = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
+            String[] principioAttivo = Table.getPrincipioAttivo();
+            Date[] dataScadenza = Table.getStringData();
             JFrame frame = new JFrame();
             frame.setLayout(new FlowLayout());
             JPanel ciao = new JPanel(new FlowLayout());
@@ -320,21 +322,23 @@ public class Button extends JButton {
                     null, //lasciare sempre cosi
                     options,
                     options[0]); //puntatore alla prima opzione
+            
             if(b == 0){
                 //se è 0 significa che è stato premuto il primo bottone
 
                 //AGGIORNA LE SCORTE
                 try {
                     for(int i = 0; i < n; i++){
-                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "';");
+                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
                     }
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }
+                //CAMBIARE L'ALLERT
 
                 //CONTROLLA SEGNALAZIONI
 
-                //CAMBIARE STATO CONSEGNA IN CARICATA
+                //CAMBIARE STATO CONSEGNA IN CARICATA SIA IN ELENCO CONSEGNE CHE IN LISTA ORDINI
 
                 //RICARICA LA PAGINA-> DA CAMBIARE IN TORNA INDIETRO
                 Main.schermataCaricoScortePanel.removeAll();

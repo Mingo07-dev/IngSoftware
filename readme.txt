@@ -19,9 +19,9 @@ Farmacista:
 
      -Carico Scorte:
 		-Mostra elenco consegne FATTO,
-		-Carica scorte  QUASI FATTO
+		-Carica scorte   FATTO
 
-     -ListaOrdini FINITO + DA AGGIUNGERE ALLERT 2 GIORNI ALLA CONSEGNA NO POSSIBILE AMIGO
+     -ListaOrdini FINITO
 		Annulla, FINITO
 		Modifica, FINITO
 		Dettaglio FINITO
