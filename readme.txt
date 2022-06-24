@@ -19,7 +19,7 @@ Farmacista:
 
      -Carico Scorte:
 		-Mostra elenco consegne FATTO,
-		-Carica scorte   FINENDO
+		-Carica scorte   FATTO, MANCA RIEPILOGO
 
      -ListaOrdini FINITO
 		Annulla, FINITO
