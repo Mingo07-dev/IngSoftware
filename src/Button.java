@@ -21,6 +21,7 @@ public class Button extends JButton {
     private final int height;
 
     public int Id_ordine;
+    public Date data_consegna;
 
     //lastView SERVE PER TENERE TRACCIA DELL'ULTIMA SCHERMATA VISITATA COSì DA POTER TORNARE INDIETRO
     public static String lastView = "SchermataAutenticazione";
@@ -49,6 +50,17 @@ public class Button extends JButton {
         this.width = width;
         this.height = height;
         this.Id_ordine = Id_ordine;
+
+        //dichiara il bottone e lo inizializza con una dimensione da noi scelta
+        this.setText(buttonName);
+        this.setPreferredSize(new Dimension(width,  height));
+    };
+
+    Button(String buttonName, int width, int height, int Id_ordine, Date data_consegna){
+        this.width = width;
+        this.height = height;
+        this.Id_ordine = Id_ordine;
+        this.data_consegna = data_consegna;
 
         //dichiara il bottone e lo inizializza con una dimensione da noi scelta
         this.setText(buttonName);

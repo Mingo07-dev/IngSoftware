@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -7,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class Table extends JPanel{
     public int n = 0;
@@ -211,7 +213,7 @@ public class Table extends JPanel{
             gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            Button button_One = new Button(rs.getString(k + 1),150,25, rs.getInt(1));
+            Button button_One = new Button(rs.getString(k + 1),150,25, rs.getInt(1), rs.getDate(2));
             bordo.add(button_One);
             this.add(bordo, gbc);
             addListener(button_One, listener_One, rs);
@@ -234,7 +236,7 @@ public class Table extends JPanel{
             gbc.gridy = i + 1;
             JPanel bordo2 = new JPanel(new FlowLayout());
             bordo2.setBorder(border);
-            Button button_Two = new Button(buttonName_Two,150,25, rs.getInt(1));
+            Button button_Two = new Button(buttonName_Two,150,25, rs.getInt(1), rs.getDate(2));
             bordo2.add(button_Two);
             this.add(bordo2, gbc);
             addListener(button_Two, listener_Two,rs);
@@ -246,7 +248,7 @@ public class Table extends JPanel{
             gbc.gridy = i + 1;
             JPanel bordo3 = new JPanel(new FlowLayout());
             bordo3.setBorder(border);
-            Button button_Three = new Button(buttonName_Three,150,25, rs.getInt(1));
+            Button button_Three = new Button(buttonName_Three,150,25, rs.getInt(1),rs.getDate(2));
             bordo3.add(button_Three);
             this.add(bordo3, gbc);
             addListener(button_Three, listener_Three, rs);
@@ -505,36 +507,47 @@ public class Table extends JPanel{
                 break;
             case 4: //BOTTONE MODIFICA ORDINE
                 button.addActionListener(e -> {
-                    Main.schermataModificaOrdinePanel.removeAll();
-                    try {
-                        SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(button.getId_ordine());
-                    } catch (FileNotFoundException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    Main.schermataModificaOrdinePanel.repaint();
-                    Main.mainFrame.setVisible(true);
+                    LocalDate data_consegna = button.data_consegna.toLocalDate();
+                    LocalDate data_di_oggi = LocalDate.now();
+                    if(data_consegna.minusDays(2).compareTo(data_di_oggi) <= 0){
+                        JOptionPane.showMessageDialog(Main.mainFrame, "Impossibile eseguire l'operazione, data di consegna inferiore a due giorni.");
+                    } else {
+                        Main.schermataModificaOrdinePanel.removeAll();
+                        try {
+                            SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(button.getId_ordine());
+                        } catch (FileNotFoundException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        Main.schermataModificaOrdinePanel.repaint();
+                        Main.mainFrame.setVisible(true);
 
-                    Main.cardLayout.show(Main.mainPanel, "SchermataModificaOrdine");
-                    Button.lastView = "SchermataListaOrdini";
+                        Main.cardLayout.show(Main.mainPanel, "SchermataModificaOrdine");
+                        Button.lastView = "SchermataListaOrdini";
+                    }
                 });
                 break;
             case 5: //BOTTONE ANNULLA ORDINE
                 button.addActionListener(e -> {
-                    try {
-                        Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '"+ button.getId_ordine() +"');");
-                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                        ex.printStackTrace();
+                    LocalDate data_consegna = button.data_consegna.toLocalDate();
+                    LocalDate data_di_oggi = LocalDate.now();
+                    if(data_consegna.minusDays(2).compareTo(data_di_oggi) <= 0){
+                        JOptionPane.showMessageDialog(Main.mainFrame, "Impossibile eseguire l'operazione, data di consegna inferiore a due giorni.");
+                    } else {
+                        try {
+                            Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '" + button.getId_ordine() + "');");
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        //AGGIORNA TABELLA
+                        Main.schermataListaOrdiniPanel.removeAll();
+                        try {
+                            SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
+                        } catch (FileNotFoundException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        Main.schermataListaOrdiniPanel.repaint();
+                        Main.mainFrame.setVisible(true);
                     }
-                    //AGGIORNA TABELLA
-                    Main.schermataListaOrdiniPanel.removeAll();
-                    try {
-                        SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
-                    } catch (FileNotFoundException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    Main.schermataListaOrdiniPanel.repaint();
-                    Main.mainFrame.setVisible(true);
-
                 });
                 break;
             case 6://BOTTONE AGGIORNA SEGNALAZIONE
