@@ -38,7 +38,7 @@ public class SchermataScorte {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Nome_farmaco", "Principio_attivo", "Quantita_disponibile", "Scadenza_farmaco"};
+        String headers[] = {"Nome farmaco", "Principio attivo", "Quantita disponibile", "Scadenza farmaco"};
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Scorte vuote");
         ResultSet queryResult = null;
