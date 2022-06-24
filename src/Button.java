@@ -359,6 +359,35 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonAggiornaScaricoScorte(String viewToShow, int n){
+        this.addActionListener(e -> {
+
+            int[] intarray = Table.getIntArray();
+            int[] intArrayOld = Table.getIntArrayOldData();
+            String[] stringNome = Table.getStringNome();
+            Date[] stringDate = Table.getStringData();
+            try {
+                for(int i = 0; i < n; i++){
+                    Main.dbms_Azienda.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + (intArrayOld[i] - intarray[i]) + "') WHERE nome_Farmacia = '" + SchermataLogin.nomeFarmacia + "' AND nome_farmaco = '" + stringNome[i] + "' AND scadenza_farmaco = '" + stringDate[i] + "';");
+                }
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                ex.printStackTrace();
+            }
+
+
+            Main.schermataScortePanel.removeAll();
+            try {
+                SchermataScorte schermataScorte = new SchermataScorte();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataScortePanel.repaint();
+            Main.mainFrame.setVisible(true);
+
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+        });
+    }
+
 
     public int getId_ordine() {
         return Id_ordine;

@@ -305,9 +305,9 @@ public class Table extends JPanel{
             gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            stringDataLocal[cont] = rs.getDate(3);
+            stringDataLocal[cont] = rs.getDate(4);
             stringNomeLocal[cont] = rs.getString(1);
-            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(4));
+            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3));
             TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
                 @Override
@@ -462,7 +462,6 @@ public class Table extends JPanel{
 
         cont = 0;
     }
-
 
 
     //LISTENERS

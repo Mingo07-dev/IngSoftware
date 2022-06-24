@@ -38,7 +38,7 @@ public class SchermataScorte {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Nome farmaco", "Principio attivo", "Quantita disponibile", "Scadenza farmaco"};
+        String headers[] = {"Nome farmaco", "Principio attivo", "Quantita disponibile", "Scadenza farmaco", "Quantità da scaricare"};
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Scorte vuote");
         ResultSet queryResult = null;
@@ -57,7 +57,7 @@ public class SchermataScorte {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_onlyData();
+                    tableConsegne.fillTable_oneEditText();
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -70,6 +70,20 @@ public class SchermataScorte {
         }
 
         mainPanel.add(sp, BorderLayout.CENTER);
+
+        JPanel mainSouthPanel = new JPanel(new FlowLayout());
+
+        Button buttonScaricaScorte = new Button("Scarica scorte", 150, 30);
+        buttonScaricaScorte.changeFontButton("Arial", 1, 15);
+        if(tableConsegne != null) {
+            buttonScaricaScorte.createListenerButtonAggiornaScaricoScorte("SchermataScorte", tableConsegne.n);
+        } else{
+            buttonScaricaScorte.createListenerButtonAggiornaScaricoScorte("SchermataScorte", 0);
+        }
+
+        mainSouthPanel.add(buttonScaricaScorte);
+
+        mainPanel.add(mainSouthPanel, BorderLayout.SOUTH);
 
         Main.schermataScortePanel.add(mainPanel, BorderLayout.CENTER);
     }
