@@ -37,6 +37,6 @@ Farmacista:
 
 Aggiuntivi:
      	-Notifica mancato caricamento scorte DA FARE
-     	-Caduta DBMS DA FARE
+     	-Caduta DBMS QUASI FINITA
      	-Pren Automatica DA FARE
      	-Aggiunta produzione DA FARE
