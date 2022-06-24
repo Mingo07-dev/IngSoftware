@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.sql.Connection;
@@ -7,6 +9,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import static java.lang.System.exit;
 
 public class DBMS {
 
@@ -20,19 +26,128 @@ public class DBMS {
     private int rows;
     private int columns;
     private PreparedStatement ps;
-
+    private static Timer timer;
+    private static boolean connectionLosed = false;
+    Frame frameAttendi = new Frame();
+    JDialog dialog;
+    private static boolean dialogClosed = false;
 
 
 
     public DBMS(String databaseName,String username, String password) throws ClassNotFoundException, InstantiationException, IllegalAccessException, SQLException {
-        this.databaseName = databaseName;
-        this.username = username;
-        this.password = password;
-        this.url = "jdbc:mysql://localhost:3306/+";
+        DBMS.databaseName = databaseName;
+        DBMS.username = username;
+        DBMS.password = password;
+        url = "jdbc:mysql://localhost:3306/+";
         Class.forName("com.mysql.cj.jdbc.Driver");
-        this.connection = DriverManager.getConnection(url,username,password);
-        this.stmt = this.connection.createStatement();
+        try {
+            connection = DriverManager.getConnection(url,username,password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        this.stmt = connection.createStatement();
+
+        checkConnection();
     };
+
+    private void checkConnection(){
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                boolean bool;
+                try {
+                    bool = connection.isValid(2);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                if(bool){
+                    System.out.println("CONNESSIONE STABILE");
+                }
+                else{
+                    if(!connectionLosed){
+                        System.out.println("CONNESSIONE SCADUTA");
+                        connectionLosed = true;
+                        db_Caduto();
+                        timer.cancel();
+                    }
+                }
+            }
+        }, 5, 4000);
+    }
+
+    private void db_Caduto(){
+        Frame frame = new Frame();
+        Object[] options = {"Ricarica",
+                "Esci"};
+        int n = JOptionPane.showOptionDialog(frame,
+                "La connessione ai server è scaduta," +
+                        "vuoi provare a riconnetterti?",
+                "Cercasi DBMS",  //titolo
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.ERROR_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if(n == 0){
+            frame.dispose();
+            tentativoRiconnessione();
+        }
+        else {
+            exit(1);
+        }
+    }
+    private void tentativoRiconnessione(){
+
+        riconettiDB();
+    }
+
+    private void riconettiDB(){
+        /*final JOptionPane optionPane = new JOptionPane("Tentativo di riconnessione in corso\n        ATTENDERE", JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        dialog = new JDialog();
+        dialog.setTitle("Attenti");
+        dialog.setModal(true);
+        dialog.setLocationRelativeTo(null);
+        dialog.setContentPane(optionPane);
+
+        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+        dialog.pack();
+        dialog.setVisible(true);*/
+        frameAttendi = new Frame();
+        JOptionPane.showMessageDialog(Main.mainFrame, "Tentativo di riconnessione in corso\n          Premi 'OK' e ATTENDI", "CERCHIAMO IL DBMS", JOptionPane.WARNING_MESSAGE);
+
+        Timer timer1 = new Timer();
+        timer1.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                boolean bool;
+
+                try {
+                    System.out.println("ECCOMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                    connection = DriverManager.getConnection(url,username,password);
+                    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
+                try {
+                    bool = DBMS.connection.isValid(1);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                if(bool) {
+                    System.out.println("ECCOMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                    connectionLosed = false;
+                    //dialog.dispose();
+                    JFrame frame = new JFrame();
+                    JOptionPane.showMessageDialog(frame, "Connessione Ristabilita");
+                    timer1.cancel();
+                    timer = new Timer();
+                    checkConnection();
+                }
+            }
+        }, 3, 2000);
+    }
 
 
     public int getResultSetRows(ResultSet rs){
