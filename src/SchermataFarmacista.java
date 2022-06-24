@@ -56,7 +56,7 @@ public class SchermataFarmacista  {
 
         Button controlloScorte = new Button("SchermataFarmacista",  "Controllo Scorte", 300,50);
         controlloScorte.changeFontButton("Arial",1, 25);
-        controlloScorte.createListenerButtonChangeView("SchermataScorte");
+        controlloScorte.createListenerButtonChangeViewSchermataScorte("SchermataScorte");
 
         boxCenter.add(caricoScorte);
         boxCenter.add(controlloScorte);
