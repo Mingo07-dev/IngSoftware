@@ -226,7 +226,7 @@ public class Button extends JButton {
             String[] stringNome = Table.getStringNome();
             try {
                 for(int i = 0; i < n; i++){
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Farmaco = '"+stringNome[i]+"';");
+                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE nome_farmaco = '"+stringNome[i]+"';");
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
