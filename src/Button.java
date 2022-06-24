@@ -265,7 +265,7 @@ public class Button extends JButton {
         });
     }
 
-    public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n){
+    public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n, int id_ordine){
         this.addActionListener(e -> {
 
             int[] intarray = Table.getIntArray();
@@ -296,7 +296,7 @@ public class Button extends JButton {
 
                 Main.schermataCaricoScortePanel.removeAll();
                 try {
-                    SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte();
+                    SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(id_ordine);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }

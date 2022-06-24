@@ -5,7 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataCaricoScorte {
-    public SchermataCaricoScorte() throws FileNotFoundException {
+    public static int Id_Ordine;
+    public SchermataCaricoScorte(int Id_ordine) throws FileNotFoundException {
+        this.Id_Ordine = Id_ordine;
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
@@ -36,7 +38,7 @@ public class SchermataCaricoScorte {
         mainNorthPanel.add(mainUserOptionsPanel, BorderLayout.EAST);
 
         JPanel mainNorthLabelPanel = new JPanel(new FlowLayout());
-        JLabel orderLabel = new JLabel("Ordine numero: " + SchermataConsegne.id_Ordine);
+        JLabel orderLabel = new JLabel("Ordine numero: " + this.Id_Ordine);
 
         mainNorthLabelPanel.add(orderLabel);
 
@@ -51,7 +53,7 @@ public class SchermataCaricoScorte {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ SchermataConsegne.id_Ordine +"';");
+            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ this.Id_Ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -82,9 +84,9 @@ public class SchermataCaricoScorte {
         Button buttonAggiorna = new Button("Carica Scorte", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
         if(tableConsegne != null) {
-            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataCaricoScorte", tableConsegne.n);
+            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataCaricoScorte", tableConsegne.n,this.Id_Ordine);
         } else{
-            buttonAggiorna.createListenerButtonAggiorna("SchermataCaricoScorte", 0);
+            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataCaricoScorte", 0,0);
         }
         mainSouthPanel.add(buttonAggiorna);
 

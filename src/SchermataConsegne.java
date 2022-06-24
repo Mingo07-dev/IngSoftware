@@ -140,7 +140,7 @@ public class SchermataConsegne {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_oneButton("Carica", 2);
+                    tableConsegne.fillTable_oneButtonCaricoScorte("Carica", 2);
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

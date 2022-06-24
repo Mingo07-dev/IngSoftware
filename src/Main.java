@@ -167,7 +167,7 @@ public class Main {
 
         //CREAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
         SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
-        SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte();
+        SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(0);
         SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
         SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(0);
         SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();

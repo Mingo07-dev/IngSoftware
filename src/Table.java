@@ -138,6 +138,47 @@ public class Table extends JPanel{
             rs.next();
         }
     }
+    //RIEMPE LA TABELLA CON I DATI PRESI DAL DATABASE E UN BOTTONE
+    public void fillTable_oneButtonCaricoScorte(String buttonName, int listener) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        GridBagConstraints gbc = new GridBagConstraints();
+        for(int i = 0; i < this.headers.length ; i++){
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.ipadx = 20;
+            gbc.ipady = 20;
+            gbc.gridx = i;
+            gbc.gridy = 0;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(borderHeader);
+            bordo.add(new JLabel("" + this.headers[i]));
+            this.add(bordo, gbc);
+        }
+
+        for(int i = 0; i < n ; i++){
+            for(int j = 0; j < m ; j++){
+                gbc.fill = GridBagConstraints.HORIZONTAL;
+                gbc.ipadx = 20;
+                gbc.ipady = 20;
+                gbc.gridx = j;
+                gbc.gridy = i + 1;
+                JPanel bordoData = new JPanel(new FlowLayout());
+                bordoData.setBorder(border);
+                bordoData.add(new JLabel("" + rs.getString(j + 1)));
+                this.add(bordoData, gbc);
+            }
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.ipadx = 20;
+            gbc.ipady = 20;
+            gbc.gridx = m;
+            gbc.gridy = i +1 ;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(border);
+            Button button = new Button(buttonName,150,25, rs.getInt(1));
+            bordo.add(button);
+            this.add(bordo, gbc);
+            addListener(button, listener, rs);
+            rs.next();
+        }
+    }
 
 
 
@@ -373,8 +414,16 @@ public class Table extends JPanel{
 
             case 2: //BOTTONE CARICO SCORTE
                 button.addActionListener(e -> {
+                    Main.schermataCaricoScortePanel.removeAll();
+                    try {
+                        SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(button.getId_ordine());
+                    } catch (FileNotFoundException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Main.schermataCaricoScortePanel.repaint();
+                    Main.mainFrame.setVisible(true);
                     Main.cardLayout.show(Main.mainPanel, "SchermataCaricoScorte");
-                    Button.lastView = "SchermataCorriere";
+                    Button.lastView = "SchermataConsegne";
                 });
                 break;
             case 3: //BOTTONE VISUALIZZA DETTAGLIO ORDINE
