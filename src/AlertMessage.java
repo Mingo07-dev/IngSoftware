@@ -95,7 +95,11 @@ public class AlertMessage {
                 String indirizzoFarmacia = indirizzoFarmaciaField.getText();
                 int recapitoTelefonico =Integer.parseInt(recapitoTelefonicoField.getText());
                 try {
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Indirizzo_farmacia`, `Nome_farmacia`, `Recapito_telefonico`, `Stato`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista', '"+ indirizzoFarmacia +"', '"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '0');");
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista', '0');");
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmacista` (`Email`, `Password`, `Mansione`, `Nome_farmacia`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista','"+ nomeFarmacia +"');");
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmacia` (`Nome_farmacia`, `Recapito_telefonico`, `Indirizzo_farmacia`) VALUES ('"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '"+ indirizzoFarmacia +"');");
+
+
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }

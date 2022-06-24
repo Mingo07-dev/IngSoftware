@@ -187,9 +187,22 @@ public class SchermataRegistrazione {
                                     passwordText.setText("Password");
                                     confirmPasswordText.setText("Conferma Password");
                                 }
-                                else{
+                                else if(mansioneString.equals("Corriere")){
                                     try {
                                         Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"', '0');");
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`corriere` (`Email`, `Password`, `Mansione`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"');");
+                                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                    JOptionPane.showMessageDialog(Main.mainFrame, "UTENTE REGISTRATO CON SUCCESSO");
+                                    emailText.setText("Mail");
+                                    passwordText.setText("Password");
+                                    confirmPasswordText.setText("Conferma Password");
+                                }
+                                else {
+                                    try {
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"', '0');");
+                                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`impiegato_azienda` (`Email`, `Password`, `Mansione`) VALUES ('" + emailText.getText() + "', '" + passwordText.getText() + "', '"+ mansioneString +"');");
                                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                                         ex.printStackTrace();
                                     }
