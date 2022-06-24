@@ -1,3 +1,5 @@
+
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.xml.validation.Schema;
@@ -72,6 +74,23 @@ public class Button extends JButton {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, viewToShow);
 
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+    public void createListenerButtonChangeViewListaOrdini(String viewToShow ){
+        this.addActionListener(e -> {
+            Main.schermataListaOrdiniPanel.removeAll();
+            try {
+                SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataListaOrdiniPanel.repaint();
+            Main.mainFrame.setVisible(true);
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
             Button.lastView = "" + this.currentView;
@@ -268,11 +287,15 @@ public class Button extends JButton {
     public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n, int id_ordine){
         this.addActionListener(e -> {
 
-            int[] intarray = Table.getIntArray();
-            int[] intArrayOld = Table.getIntArrayOldData();
+            int[] intarrayQuantitaArrivate = Table.getIntArray();
+            int[] intArrayQuantitaOrdine = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
-            Frame frame = new Frame();
-
+            JFrame frame = new JFrame();
+            frame.setLayout(new FlowLayout());
+            JPanel ciao = new JPanel(new FlowLayout());
+            JLabel f = new JLabel("ciao");
+            ciao.add(f);
+            frame.add(ciao);
             // COSTRUIRE IN QUESTO FRAME IL MOCK UP RIEPILOGO ORDINE
 
             Object[] options = {"Conferma",
@@ -288,14 +311,20 @@ public class Button extends JButton {
             if(b == 0){
                 //se è 0 significa che è stato premuto il primo bottone
 
+                //AGGIORNA LE SCORTE
                 try {
                     for(int i = 0; i < n; i++){
-                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + intArrayOld[i] + intarray[i] + "') WHERE nome_farmaco = '" + stringNome[i] + "';");
+                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "';");
                     }
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }
 
+                //CONTROLLA SEGNALAZIONI
+
+                //CAMBIARE STATO CONSEGNA IN CARICATA
+
+                //RICARICA LA PAGINA-> DA CAMBIARE IN TORNA INDIETRO
                 Main.schermataCaricoScortePanel.removeAll();
                 try {
                     SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(id_ordine);

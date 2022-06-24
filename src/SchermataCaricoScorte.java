@@ -46,14 +46,14 @@ public class SchermataCaricoScorte {
 
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
-        String headers[] = {"Nome Farmaco", "Quantità prenotate", "Quantità ricevute"};
+        String headers[] = {"Nome Farmaco","Principio Attivo", "Quantità prenotate", "Scadenza", "Quantità ricevute"};
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessuna ordine");
         ResultSet queryResult = null;
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, quantita FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ this.Id_Ordine +"';");
+            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco,principio_attivo, quantita, data_scadenza FROM dbms_azienda.dettaglio_ordine WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ this.Id_Ordine +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

@@ -421,9 +421,8 @@ public class Table extends JPanel{
             gbc.gridy = i +1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            //stringDataLocal[cont] = rs.getDate(3);
             stringNomeLocal[cont] = rs.getString(1);
-            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(2)); // 4 -> 2
+            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3)); // 4 -> 2
             TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
                 @Override

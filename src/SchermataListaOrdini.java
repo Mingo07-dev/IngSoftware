@@ -46,7 +46,7 @@ public class SchermataListaOrdini {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.lista_ordini;");
+            queryResult = Main.dbms_Azienda.getData("SELECT id_ordine, data_consegna_ordine  FROM dbms_azienda.lista_ordini WHERE nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"' AND stato_ordine = '0';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

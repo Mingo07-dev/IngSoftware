@@ -64,7 +64,7 @@ public class SchermataFarmacista  {
         //BOTTONE DI DESTRA
         Button visualizzaListaOrdini = new Button("SchermataFarmacista",  "Visualizza Lista Ordini", 300,50);
         visualizzaListaOrdini.changeFontButton("Arial",1, 25);
-        visualizzaListaOrdini.createListenerButtonChangeView("SchermataListaOrdini");
+        visualizzaListaOrdini.createListenerButtonChangeViewListaOrdini("SchermataListaOrdini");
         mainCenterEASTFlow.add(visualizzaListaOrdini);
 
         mainCenterBorder.add(boxLeft,BorderLayout.WEST);
