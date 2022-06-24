@@ -23,6 +23,7 @@ public class Main {
 
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE AL FARMACISTA
     public static JPanel schermataFarmacistaPanel;
+    public static JPanel schermataCaricoScortePanel;
     public static JPanel schermataListaOrdiniPanel;
     public static JPanel schermataModificaOrdinePanel;
     public static JPanel schermataModificaPrenotazioneAutomaticaPanel;
@@ -78,6 +79,9 @@ public class Main {
         schermataFarmacistaPanel= new JPanel(new BorderLayout());
         schermataFarmacistaPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
+        schermataCaricoScortePanel = new JPanel(new BorderLayout());
+        schermataCaricoScortePanel.setBorder(new EmptyBorder(25,25,25,25));
+
         schermataListaOrdiniPanel = new JPanel(new BorderLayout());
         schermataListaOrdiniPanel.setBorder(new EmptyBorder(25, 25, 25, 25));
 
@@ -131,6 +135,7 @@ public class Main {
 
         //AGGIUNTA DELLE SCHERMATE RELATIVE AL FARMACISTA NEL CARD LAYOUT
         mainPanel.add(schermataFarmacistaPanel,"SchermataFarmacista");
+        mainPanel.add(schermataCaricoScortePanel, "SchermataCaricoScorte");
         mainPanel.add(schermataListaOrdiniPanel,"SchermataListaOrdini");
         mainPanel.add(schermataModificaOrdinePanel,"SchermataModificaOrdine");
         mainPanel.add(schermataModificaPrenotazioneAutomaticaPanel, "SchermataModificaPrenotazioneAutomatica");
@@ -162,6 +167,7 @@ public class Main {
 
         //CREAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
         SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
+        SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte();
         SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
         SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(0);
         SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();

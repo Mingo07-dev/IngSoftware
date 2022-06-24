@@ -246,6 +246,53 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n){
+        this.addActionListener(e -> {
+
+            int[] intarray = Table.getIntArray();
+            int[] intArrayOld = Table.getIntArrayOldData();
+            String[] stringNome = Table.getStringNome();
+            Frame frame = new Frame();
+            Object[] options = {"Conferma",
+                    "No, grazie"};
+            String strings[] = {"hello", "whats'up", "how are you", "hi again", "poieroew", "aweiorèpaw", "èwoerèpwa", "èpwoaerèapweo", "èeaworèw", "èqwprawe"};
+            int b = JOptionPane.showOptionDialog(frame,
+                    "Sei sicuro di voler effettuare il caricamento delle seguenti scorte?",
+                    "Carico scorte",  //titolo
+                    JOptionPane.YES_NO_OPTION, //da cambiare se si vogliono più opzioni o meno
+                    JOptionPane.QUESTION_MESSAGE, //per cambiare l'iconcina
+                    null, //lasciare sempre cosi
+                    strings,
+                    options[0]); //puntatore alla prima opzione
+            if(b == 0){
+                //se è 0 significa che è stato premuto il primo bottone
+
+                try {
+                    for(int i = 0; i < n; i++){
+                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + intarray[i] + "') WHERE nome_farmaco = '" + stringNome[i] + "';");
+                    }
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                    ex.printStackTrace();
+                }
+
+                Main.schermataCaricoScortePanel.removeAll();
+                try {
+                    SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte();
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Main.schermataCaricoScortePanel.repaint();
+                Main.mainFrame.setVisible(true);
+
+                Main.cardLayout.show(Main.mainPanel, viewToShow);
+            }
+            else {
+                //se è 1 significa che è stato premuto il secondo bottone e cosi via
+                frame.dispose();
+            }
+        });
+    }
+
 
     public int getId_ordine() {
         return Id_ordine;
