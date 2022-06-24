@@ -1,5 +1,3 @@
-
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.xml.transform.Result;
@@ -300,6 +298,7 @@ public class Button extends JButton {
     public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n, int id_ordine){
         this.addActionListener(e -> {
 
+            int recapitoTelefonico = 0;
             int[] intarrayQuantitaArrivate = Table.getIntArray();
             int[] intArrayQuantitaOrdine = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
@@ -345,34 +344,61 @@ public class Button extends JButton {
                             Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
                         }
                         else{
-
                             Main.dbms_Farmacia.setData("INSERT INTO `dbms_farmacia`.`elenco_scorte` (`nome_farmaco`, `principio_attivo`, `quantita_disponibile`, `scadenza_farmaco`, `nome_Farmacia`) VALUES ('" + stringNome[i] + "', '"+ principioAttivo[i] +"', '" + intarrayQuantitaArrivate[i] + "', '"+ dataScadenza[i]+"', '"+ SchermataLogin.nomeFarmacia +"');");
                         }
                     }
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }
-                //CONTROLLA SEGNALAZIONI
-
 
                 //CAMBIA STATO CONSEGNA IN CARICATA SIA IN ELENCO CONSEGNE CHE IN LISTA ORDINI
                 try {
-                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.lista_ordini SET stato_ordine = 1 WHERE id_ordine = '"+ SchermataCaricoScorte.Id_Ordine +"';");
-                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.elenco_consegne SET stato_consegna = 1 WHERE id_ordine = '"+ SchermataCaricoScorte.Id_Ordine +"';");
+                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.lista_ordini SET stato_ordine = 2 WHERE id_ordine = '"+ id_ordine +"';");
+                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.elenco_consegne SET stato_consegna = 2 WHERE id_ordine = '"+ id_ordine +"';");
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                //RICARICA LA PAGINA E POI TORNA INDIETRO
-                Main.schermataCaricoScortePanel.removeAll();
+
+
+
+                ResultSet controllo;
                 try {
-                    SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(id_ordine);
+                    controllo = Main.dbms_Farmacia.getData("SELECT recapito_telefonico FROM dbms_azienda.elenco_consegne WHERE id_ordine = '"+ id_ordine +"';");
+                    controllo.next();
+                    recapitoTelefonico = controllo.getInt(1);
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                //CONTROLLA SEGNALAZIONI
+                boolean Segnalazione = false;
+                for(int i = 0; i < n; i++){
+                    if(intArrayQuantitaOrdine[i] != intarrayQuantitaArrivate[i]){
+                        Segnalazione = true;
+                    }
+                }
+                if (Segnalazione) {
+                    try {
+                        Main.dbms_Farmacia.setData("INSERT INTO `dbms_azienda`.`schermata_segnalazione` (`nome_farmacia`, `recapito_telefonico`, `Id_ordine`, `stato_segnalazione`) VALUES ('"+SchermataLogin.nomeFarmacia+"', '"+recapitoTelefonico+"', '"+ id_ordine +"', '0');");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
+                             SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                    Segnalazione = false;
+                }
+
+
+
+                //AGGIORNA LA SCHEMATA CONSEGNE E CI TORNA
+                Main.schermataConsegnePanel.removeAll();
+                try {
+                    SchermataConsegne.aggiornaTabellaFarmacista();
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
-                Main.schermataCaricoScortePanel.repaint();
+                Main.schermataConsegnePanel.repaint();
                 Main.mainFrame.setVisible(true);
-
-                Main.cardLayout.show(Main.mainPanel, viewToShow);
+                Main.cardLayout.show(Main.mainPanel, "SchermataConsegne");
             }
             else {
                 //se è 1 significa che è stato premuto il secondo bottone

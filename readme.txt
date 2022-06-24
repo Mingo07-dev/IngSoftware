@@ -19,7 +19,7 @@ Farmacista:
 
      -Carico Scorte:
 		-Mostra elenco consegne FATTO,
-		-Carica scorte   FATTO
+		-Carica scorte   FINENDO
 
      -ListaOrdini FINITO
 		Annulla, FINITO
@@ -30,13 +30,13 @@ Farmacista:
 
      -Controllo Scorte FINITO
 
-     -Scarica Scorte DA FARE
+     -Scarica Scorte FINITO
      
 
 
 
 Aggiuntivi:
-     -Notifica mancato caricamento scorte DA FARE
-     -Caduta DBMS DA FARE
-     -Pren Automatica DA FARE
-     -Aggiunta produzione DA FARE
+     	-Notifica mancato caricamento scorte DA FARE
+     	-Caduta DBMS DA FARE
+     	-Pren Automatica DA FARE
+     	-Aggiunta produzione DA FARE
