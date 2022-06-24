@@ -65,7 +65,7 @@ public class SchermataCaricoScorte {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_oneEditText();
+                    tableConsegne.fillTable_oneEditTextCaricoScorte();
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }
