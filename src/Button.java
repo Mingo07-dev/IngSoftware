@@ -2,6 +2,7 @@
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.xml.transform.Result;
 import javax.xml.validation.Schema;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -311,36 +312,57 @@ public class Button extends JButton {
             ciao.add(f);
             frame.add(ciao);
             // COSTRUIRE IN QUESTO FRAME IL MOCK UP RIEPILOGO ORDINE
+            StringBuilder message = new StringBuilder();
+
+            message.append("Sei sicuro di voler effettuare il caricamento delle seguenti scorte?\n");
+            for(int i = 0; i < n; i++) {
+                message.append("Farmaco:    Principio Attivo:   Quantità Prenotate:    Scadenza:    Quantità Selezionate");
+                for(int j=0; j < 5; j++){
+                    //message.append();
+                }
+            }
 
             Object[] options = {"Conferma",
                     "No, grazie"};
             int b = JOptionPane.showOptionDialog(frame,
-                    "Sei sicuro di voler effettuare il caricamento delle seguenti scorte?",
+                    message,
                     "Carico scorte",  //titolo
                     JOptionPane.YES_NO_OPTION, //da cambiare se si vogliono più opzioni o meno
                     JOptionPane.QUESTION_MESSAGE, //per cambiare l'iconcina
                     null, //lasciare sempre cosi
                     options,
                     options[0]); //puntatore alla prima opzione
-            
+
             if(b == 0){
                 //se è 0 significa che è stato premuto il primo bottone
 
                 //AGGIORNA LE SCORTE
                 try {
+                    ResultSet controllo;
                     for(int i = 0; i < n; i++){
-                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
+                        controllo = Main.dbms_Farmacia.getData("SELECT nome_farmaco FROM dbms_farmacia.elenco_scorte WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
+                        if(controllo.next()){
+                            Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
+                        }
+                        else{
+
+                            Main.dbms_Farmacia.setData("INSERT INTO `dbms_farmacia`.`elenco_scorte` (`nome_farmaco`, `principio_attivo`, `quantita_disponibile`, `scadenza_farmaco`, `nome_Farmacia`) VALUES ('" + stringNome[i] + "', '"+ principioAttivo[i] +"', '" + intarrayQuantitaArrivate[i] + "', '"+ dataScadenza[i]+"', '"+ SchermataLogin.nomeFarmacia +"');");
+                        }
                     }
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }
-                //CAMBIARE L'ALLERT
-
                 //CONTROLLA SEGNALAZIONI
 
-                //CAMBIARE STATO CONSEGNA IN CARICATA SIA IN ELENCO CONSEGNE CHE IN LISTA ORDINI
 
-                //RICARICA LA PAGINA-> DA CAMBIARE IN TORNA INDIETRO
+                //CAMBIA STATO CONSEGNA IN CARICATA SIA IN ELENCO CONSEGNE CHE IN LISTA ORDINI
+                try {
+                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.lista_ordini SET stato_ordine = 1 WHERE id_ordine = '"+ SchermataCaricoScorte.Id_Ordine +"';");
+                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.elenco_consegne SET stato_consegna = 1 WHERE id_ordine = '"+ SchermataCaricoScorte.Id_Ordine +"';");
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                //RICARICA LA PAGINA E POI TORNA INDIETRO
                 Main.schermataCaricoScortePanel.removeAll();
                 try {
                     SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(id_ordine);
@@ -353,7 +375,7 @@ public class Button extends JButton {
                 Main.cardLayout.show(Main.mainPanel, viewToShow);
             }
             else {
-                //se è 1 significa che è stato premuto il secondo bottone e cosi via
+                //se è 1 significa che è stato premuto il secondo bottone
                 frame.dispose();
             }
         });

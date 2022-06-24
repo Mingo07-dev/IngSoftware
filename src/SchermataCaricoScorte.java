@@ -84,9 +84,9 @@ public class SchermataCaricoScorte {
         Button buttonAggiorna = new Button("Carica Scorte", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
         if(tableConsegne != null) {
-            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataCaricoScorte", tableConsegne.n,this.Id_Ordine);
+            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataConsegne", tableConsegne.n,this.Id_Ordine);
         } else{
-            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataCaricoScorte", 0,0);
+            buttonAggiorna.createListenerButtonAggiornaCaricoScorte("SchermataConsegne", 0,0);
         }
         mainSouthPanel.add(buttonAggiorna);
 

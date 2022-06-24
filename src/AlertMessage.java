@@ -85,6 +85,10 @@ public class AlertMessage {
     }
 
 
+
+
+
+
     public void createListenerButtonOkRegistrazione(String email, String password ){
         buttonOk.addActionListener(e -> {
             Pattern phoneNumberPattern = Pattern.compile("^[0-9](.+)$");
