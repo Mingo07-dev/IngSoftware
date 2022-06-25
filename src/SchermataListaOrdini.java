@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataListaOrdini {
-
+    Table tableConsegne = null;
     public SchermataListaOrdini() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -43,7 +44,7 @@ public class SchermataListaOrdini {
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessun Ordine");
         ResultSet queryResult = null;
-        Table tableConsegne = null;
+        tableConsegne = null;
 
         try {
             queryResult = Main.dbms_Azienda.getData("SELECT id_ordine, data_consegna_ordine  FROM dbms_azienda.lista_ordini WHERE nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"' AND stato_ordine = '0';");
@@ -71,7 +72,57 @@ public class SchermataListaOrdini {
         }
 
         mainPanel.add(sp, BorderLayout.CENTER);
+        JPanel ricerca = new JPanel();
+        JTextField ricercaField = new JTextField("Ricerca");
+        ricercaField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ricercaField.setText("");
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        ricercaField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if(!ricercaField.getText().equals(""))
+                        Ricerca.searchInTableText(ricercaField.getText(), tableConsegne.n, tableConsegne);
+                    else{
+                        Ricerca.restoreTable(tableConsegne.n, tableConsegne,ricercaField);
+                    }
+                }
+            }
+        });
+        /*ricercaField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                Ricerca.searchInTableText(ricercaField.getText(),tableConsegne.n,tableConsegne);
+
+            }
+        });*/
+        ricerca.add(ricercaField);
+        Main.schermataListaOrdiniPanel.add(ricerca,BorderLayout.SOUTH);
         Main.schermataListaOrdiniPanel.add(mainPanel, BorderLayout.CENTER);
     }
 }
