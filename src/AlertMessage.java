@@ -93,14 +93,6 @@ public class AlertMessage {
 
     public AlertMessage(int id_Ordine, int n, int[] intarrayQuantitaArrivate, int[] intArrayQuantitaOrdine, String[] stringNome, String[] principioAttivo, Date[] dataScadenza){
 
-        /*
-        intarrayQuantitaArrivate = Table.getIntArray();
-        intArrayQuantitaOrdine = Table.getIntArrayOldData();
-        stringNome = Table.getStringNome();
-        principioAttivo = Table.getPrincipioAttivo();
-        dataScadenza = Table.getStringData();
-        */
-
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JLabel riepilogoOrdine = new JLabel("Riepilogo ordine: " + id_Ordine);
@@ -130,7 +122,7 @@ public class AlertMessage {
             gbc.ipadx = 20;
             gbc.ipady = 20;
             gbc.gridx = 0;
-            gbc.gridy = i;
+            gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             bordo.add(new JLabel("" + stringNome[i]));
@@ -141,7 +133,7 @@ public class AlertMessage {
             gbc.ipadx = 20;
             gbc.ipady = 20;
             gbc.gridx = 1;
-            gbc.gridy = i;
+            gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             bordo.add(new JLabel("" + principioAttivo[i]));
@@ -152,7 +144,7 @@ public class AlertMessage {
             gbc.ipadx = 20;
             gbc.ipady = 20;
             gbc.gridx = 2;
-            gbc.gridy = i;
+            gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             bordo.add(new JLabel("" + dataScadenza[i]));
@@ -163,7 +155,7 @@ public class AlertMessage {
             gbc.ipadx = 20;
             gbc.ipady = 20;
             gbc.gridx = 3;
-            gbc.gridy = i;
+            gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             bordo.add(new JLabel("" + intArrayQuantitaOrdine[i]));
@@ -174,7 +166,7 @@ public class AlertMessage {
             gbc.ipadx = 20;
             gbc.ipady = 20;
             gbc.gridx = 4;
-            gbc.gridy = i;
+            gbc.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
             bordo.add(new JLabel("" + intarrayQuantitaArrivate[i]));
@@ -247,7 +239,7 @@ public class AlertMessage {
                 for(int i = 0; i < n; i++){
                     controllo = Main.dbms_Farmacia.getData("SELECT nome_farmaco FROM dbms_farmacia.elenco_scorte WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
                     if(controllo.next()){
-                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
+                        Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + (intArrayQuantitaOrdine[i] + intarrayQuantitaArrivate[i]) + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
                     }
                     else{
                         Main.dbms_Farmacia.setData("INSERT INTO `dbms_farmacia`.`elenco_scorte` (`nome_farmaco`, `principio_attivo`, `quantita_disponibile`, `scadenza_farmaco`, `nome_Farmacia`) VALUES ('" + stringNome[i] + "', '"+ principioAttivo[i] +"', '" + intarrayQuantitaArrivate[i] + "', '"+ dataScadenza[i]+"', '"+ SchermataLogin.nomeFarmacia +"');");

@@ -434,7 +434,7 @@ public class Table extends JPanel{
             bordo.setBorder(border);
             stringNomeLocal[cont] = rs.getString(1);
             principioAttivoLocal[cont] = rs.getString(2);
-            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3)); // 4 -> 2
+            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3));
             stringDataLocal[cont] = rs.getDate(4);
             TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
