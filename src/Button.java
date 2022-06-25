@@ -298,6 +298,9 @@ public class Button extends JButton {
     public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n, int id_ordine){
         this.addActionListener(e -> {
 
+            AlertMessage riepilogo = new AlertMessage(id_ordine, n, Table.getIntArray(), Table.getIntArrayOldData(), Table.getStringNome(), Table.getPrincipioAttivo(), Table.getStringData());
+
+            /*
             int recapitoTelefonico = 0;
             int[] intarrayQuantitaArrivate = Table.getIntArray();
             int[] intArrayQuantitaOrdine = Table.getIntArrayOldData();
@@ -404,6 +407,7 @@ public class Button extends JButton {
                 //se è 1 significa che è stato premuto il secondo bottone
                 frame.dispose();
             }
+            */
         });
     }
 
