@@ -122,7 +122,7 @@ public class SchermataListaOrdini {
             }
         });*/
         ricerca.add(ricercaField);
-        Main.schermataListaOrdiniPanel.add(ricerca,BorderLayout.SOUTH);
+        mainNorthPanel.add(ricerca, BorderLayout.CENTER);
         Main.schermataListaOrdiniPanel.add(mainPanel, BorderLayout.CENTER);
     }
 }
