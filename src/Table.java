@@ -749,7 +749,7 @@ public class Table extends JPanel{
                 break;
         }
     }
-
+    //GETTER
     public static int[] getIntArray() {
         return intArray;
     }
@@ -769,4 +769,25 @@ public class Table extends JPanel{
     public static String[] getPrincipioAttivo() {
         return principioAttivo;
     }
+    //SETTER
+    public static void setIntArray(int[] array) {
+        intArray = array;
+    }
+
+    public static void setIntArrayOldData(int[] array) {
+        intArrayOldData = array;
+    }
+
+    public static void setStringNome(String[] array) {
+        stringNome = array;
+    }
+
+    public static void setStringData(Date[] array) {
+        stringData = array;
+    }
+
+    public static void setPrincipioAttivo(String[] array) {
+        principioAttivo = array;
+    }
+
 }

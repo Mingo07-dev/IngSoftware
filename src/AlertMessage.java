@@ -603,7 +603,16 @@ public class AlertMessage {
                 ex.printStackTrace();
                 // elenco consegne, lista ordini e dettaglio ordine
             }
+            
+            //SVUOTA ARRAY
+            Table.setIntArrayOldData(svuotaArrayInt());
+            Table.setIntArray(svuotaArrayInt());
+            Table.setStringNome(svuotaArrayString());
+            Table.setPrincipioAttivo(svuotaArrayString());
+            Table.setStringData(svuotaArrayDate());
+
             frame.dispose();
+
             Main.schermataPrenotazionePanel.removeAll();
             try {
                 SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
@@ -679,6 +688,12 @@ public class AlertMessage {
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
+            //SVUOTA ARRAY
+            Table.setIntArrayOldData(svuotaArrayInt());
+            Table.setIntArray(svuotaArrayInt());
+            Table.setStringNome(svuotaArrayString());
+            Table.setPrincipioAttivo(svuotaArrayString());
+            Table.setStringData(svuotaArrayDate());
 
             Main.schermataPrenotazionePanel.removeAll();
             try {
@@ -722,5 +737,17 @@ public class AlertMessage {
             recapitoTelefonico = queryResult.getString(1);
         }
         return recapitoTelefonico;
+    }
+    public int[] svuotaArrayInt(){
+        int[] array = new int[0];
+        return array;
+    }
+    public String[] svuotaArrayString(){
+        String[] array = new String[0];
+        return array;
+    }
+    public Date[] svuotaArrayDate(){
+        Date[] array = new Date[0];
+        return array;
     }
 }
