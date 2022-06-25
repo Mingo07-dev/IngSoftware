@@ -11,10 +11,12 @@ public class PrenotazioneAutomatica {
     }
     public static void prenotazioneAutomatica(){
         ResultSet queryResult = null;
-        /*try {
-            queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.prenotazione_automatica WHERE dbms_azienda.dettaglio_ordine.Id_ordine = '"+ this.Id_Ordine +"';");
+        try {
+            queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.prenotazione_automatica;");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
-        }*/
+        }
+
+
     }
 }
