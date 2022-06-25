@@ -5,7 +5,7 @@
 
     public class Email {
 
-        public Email(String endToThisMail, String password_toSend){
+        public static void sendEmail(String endToThisMail, String password_toSend){
 
             final String username = "farmaciemiglioriconnoi@gmail.com";
             final String password = "rryoyiydlhijojeo";

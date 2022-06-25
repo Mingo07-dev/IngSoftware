@@ -91,7 +91,7 @@ public class SchermataRecuperoCredenziali {
 
             if(emailText.getText().equals(mail)){
                 Frame frame = new Frame();
-                Email em = new Email(mail,password);
+                Email.sendEmail(mail,password);
                 JOptionPane.showMessageDialog(frame, "TI ABBIAMO INVIATO UNA EMAIL CONTENENTE" +
                         "\nLE TUE CREDENZIALI ALLA MAIL FORNITA");
             }
