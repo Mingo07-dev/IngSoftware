@@ -333,17 +333,21 @@ public class Button extends JButton {
     public void createListenerButtonPrenota(String viewToShow, int n){
         this.addActionListener(e -> {
 
-            int[] quantitaOrdinate = Table.getIntArray();
+
+            int[] preQuantitaOrdinate = Table.getIntArray();
+
             int[] quantitaDisponibili = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
             String[] principioAttivo = Table.getPrincipioAttivo();
             Date[] dateScadenza = Table.getStringData();
 
+            //TOGLI ZERI
+            int[] quantitaOrdinate = togliZeri(preQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
 
             //CONTROLLO DATA DI SCADENZA INFERIORE A 2 MESI
             boolean scadenza = false;
 
-            for(int i = 0; i < n; i++){
+            for(int i = 0; i < quantitaOrdinate.length; i++){
                 if(dateScadenza[i].toLocalDate().compareTo(LocalDate.now().plusMonths(2)) < 0){
                     scadenza = true;
                 }
@@ -358,13 +362,13 @@ public class Button extends JButton {
             //CONTROLLO DISPONIBILITà FARMACI
 
                 // INIZIALIZZO UN ARRAY CHE REGISTRERà L'INDICE DEI FARMACI NON INTERAMENTE DISPONIBILI
-            int qualeFarmacoNonEDisponibile[] = new int[n];
+            int qualeFarmacoNonEDisponibile[] = new int[quantitaOrdinate.length];
             for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
                 qualeFarmacoNonEDisponibile[i] = 0;
             }
                 //IDENTIFICO SE CI SONO E QUALI SONO I FARMACI CHE NON SONO INTERAMENTE DISPONIBILI
             boolean nonDisponibile = false;
-            for(int i = 0; i < n; i++){
+            for(int i = 0; i < quantitaOrdinate.length; i++){
                 if(quantitaDisponibili[i] < quantitaOrdinate[i]){
                     qualeFarmacoNonEDisponibile[i] = 1;
                     nonDisponibile = true;
@@ -372,7 +376,7 @@ public class Button extends JButton {
             }
 
             if(nonDisponibile == false){
-                AlertMessage tuttoDisponibile = new AlertMessage(n, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
+                AlertMessage tuttoDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
             } else {
                 int counter = 0;
                 for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
@@ -380,7 +384,7 @@ public class Button extends JButton {
                         counter++;
                     }
                 }
-                int[] nuoveQuantitaOrdinate = new int[n];
+                int[] nuoveQuantitaOrdinate = new int[quantitaOrdinate.length];
                 for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
                     if(qualeFarmacoNonEDisponibile[i] == 1){
                         nuoveQuantitaOrdinate[i] = quantitaDisponibili[i];
@@ -415,12 +419,128 @@ public class Button extends JButton {
                     }
                 }
                 // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
-                AlertMessage tuttoQuasiDisponibile = new AlertMessage(n, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
+                AlertMessage tuttoQuasiDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
             }
         });
     }
 
     public int getId_ordine() {
         return Id_ordine;
+    }
+
+    public int[] togliZeri(int[] array, int[] arrayInt, String[] arrayString1, String[] arrayString2, Date[] arrayDate){
+        int[] arrayPartenza = array;
+
+        int[] zeri = new int[array.length];
+
+        int counter = 0;
+
+        for(int i = 0; i < zeri.length; i++){
+            if(arrayPartenza[i] == 0){
+                zeri[i] = 1;
+                counter++;
+            }
+        }
+
+
+        int[] arrayRisultante;
+
+        if(counter > 0) {
+
+            arrayInt = removeElementsFromArrayInt(zeri, arrayInt);
+            arrayString1 = removeElementsFromArrayString(zeri, arrayString1);
+            arrayString2 = removeElementsFromArrayString(zeri, arrayString2);
+            arrayDate = removeElementsFromArrayDate(zeri, arrayDate);
+
+            arrayRisultante = new int[array.length - counter];
+            int k = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (zeri[i] != 1) {
+                    arrayRisultante[k] = array[i];
+                    k++;
+                }
+            }
+        } else{
+            arrayRisultante = arrayPartenza;
+        }
+        return arrayRisultante;
+    }
+
+    public int[] removeElementsFromArrayInt(int[] zeros, int[] arrayPartenza){
+        int[] zeri = zeros;
+        int counter = 0;
+        for(int i = 0; i < zeri.length; i++){
+            if(zeri[i] == 1){
+                counter++;
+            }
+        }
+
+        int[] arrayRisultante;
+
+        if(counter > 0){
+            arrayRisultante = new int[arrayPartenza.length - counter];
+            int k = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] != 1){
+                    arrayRisultante[k] = arrayPartenza[i];
+                    k++;
+                }
+            }
+        } else {
+            arrayRisultante = arrayPartenza;
+        }
+        return arrayRisultante;
+    }
+
+    public String[] removeElementsFromArrayString(int[] zeros, String[] arrayPartenza){
+        int[] zeri = zeros;
+        int counter = 0;
+        for(int i = 0; i < zeri.length; i++){
+            if(zeri[i] == 1){
+                counter++;
+            }
+        }
+
+        String[] arrayRisultante;
+
+        if(counter > 0){
+            arrayRisultante = new String[arrayPartenza.length - counter];
+            int k = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] != 1){
+                    arrayRisultante[k] = arrayPartenza[i];
+                    k++;
+                }
+            }
+        } else {
+            arrayRisultante = arrayPartenza;
+        }
+        return arrayRisultante;
+    }
+
+    public Date[] removeElementsFromArrayDate(int[] zeros, Date[] arrayPartenza){
+        int[] zeri = zeros;
+        int counter = 0;
+        for(int i = 0; i < zeri.length; i++){
+            if(zeri[i] == 1){
+                counter++;
+            }
+        }
+
+        Date[] arrayRisultante;
+
+        if(counter > 0){
+            arrayRisultante = new Date[arrayPartenza.length - counter];
+            int k = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] != 1){
+                    arrayRisultante[k] = arrayPartenza[i];
+                    k++;
+                }
+            }
+        } else {
+            arrayRisultante = arrayPartenza;
+        }
+        return arrayRisultante;
     }
 }
