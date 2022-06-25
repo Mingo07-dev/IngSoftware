@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class TimeScheduler
 {
     //SCHEDULA UN'AZIONE DA COMPIERE IN UN CERTO ORARIO
-    public static void scheduleTaskHour(){
+    public TimeScheduler(int hour){
         Timer timer = new Timer();
 
         timer.schedule(new TimerTask() {
@@ -18,14 +18,14 @@ public class TimeScheduler
             @Override
             public void run() {
 
-                Time startTime = new Time(20,0,0);
+                Time startTime = new Time(hour,0,0);
                 LocalTime startTimeLocal = startTime.toLocalTime();
-                Time startTimeMax = new Time(21,0,0);
+                Time startTimeMax = new Time(hour+1,0,0);
                 LocalTime startTimeMaxLocal = startTimeMax.toLocalTime();
 
                 LocalTime nowTime = LocalTime.now();
                 if(nowTime.compareTo(startTimeLocal) > 0 && nowTime.compareTo(startTimeMaxLocal) < 0 && checkDone == false){
-                    System.out.println("ciao");
+                    NotificaMancatoCaricamentoScorte.notificaMancatoCaricamentoScorte();
                     checkDone = true;
                 }
                 else if(checkDone == true && nowTime.compareTo(startTimeLocal) < 0 && nowTime.compareTo(startTimeMaxLocal) > 0){
@@ -35,7 +35,7 @@ public class TimeScheduler
         }, 0, 1000);
     }
 
-    public static void scheduleTaskDays(){
+    public TimeScheduler(int day, int task){
         Timer timer = new Timer();
 
         timer.schedule(new TimerTask() {
@@ -44,12 +44,19 @@ public class TimeScheduler
             public void run() {
 
                 Date startDate = new Date();
-                startDate.setDate(25);
+                startDate.setDate(day);
                 LocalDate dateStart = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
                 LocalDate dateNow = LocalDate.now();
                 if(dateNow.compareTo(dateStart) == 0 && checkDone == false){
-                    System.out.println("fatto");
+                    switch (task){
+                        case 1:
+                            AggiuntaProduzione.aggiuntaProduzioneAzienda();
+                            break;
+                        case 2:
+                            PrenotazioneAutomatica.prenotazioneAutomatica();
+                            break;
+                    }
                     checkDone = true;
                 }
                 else if(checkDone == true && dateNow.compareTo(dateStart) != 0){

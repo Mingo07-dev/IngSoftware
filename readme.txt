@@ -1,5 +1,5 @@
 Autenticazione:
-      FINITO
+      FINITO login-> aggiungere se stato farmacista = 2 mostra avviso, chiama l'azienda, ci sono delle scorte che non hai caricato
 Corriere:
       FINITO
 Impiegato:
@@ -23,8 +23,10 @@ Farmacista:
 	-Scarica Scorte FINITO controllare quantità < 0 non deve scaricare, se = 0, cancella riga
     
 Aggiuntivi:
-     	-Notifica mancato caricamento scorte DA FARE
-     	-Caduta DBMS FINITO
-     	-Pren Automatica DA FARE
-     	-Aggiunta produzione DA FARE
 	-Ricerca FINITO
+	-Caduta DBMS FINITO
+
+     	-Notifica mancato caricamento scorte DA FARE
+
+     	-Pren Automatica DA FARE (cambiare data al giorno dell'esame)
+     	-Aggiunta produzione DA FARE (cambiare data al giorno dell'esame)

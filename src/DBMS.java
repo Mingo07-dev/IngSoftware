@@ -67,7 +67,6 @@ public class DBMS {
                 else{
                     if(!connectionLosed){
                         System.out.println("CONNESSIONE SCADUTA");
-                        Main.mainFrame.setEnabled(false);
                         connectionLosed = true;
                         db_Caduto();
                         timer.cancel();
@@ -92,21 +91,17 @@ public class DBMS {
                 options[0]);
         if(n == 0){
             frame.dispose();
-            tentativoRiconnessione();
+            riconettiDB();
         }
         else {
             exit(1);
         }
     }
-    private void tentativoRiconnessione(){
-
-        riconettiDB();
-    }
 
     private void riconettiDB(){
         frameAttendi = new Frame();
         JOptionPane.showMessageDialog(Main.mainFrame, "Tentativo di riconnessione in corso\n          Premi 'OK' e ATTENDI", "CERCHIAMO IL DBMS", JOptionPane.WARNING_MESSAGE);
-
+        Main.mainFrame.setEnabled(false);
         Timer timer1 = new Timer();
         timer1.schedule(new TimerTask() {
             @Override
@@ -131,6 +126,7 @@ public class DBMS {
                     //dialog.dispose();
                     JFrame frame = new JFrame();
                     JOptionPane.showMessageDialog(frame, "Connessione Ristabilita");
+
                     timer1.cancel();
                     timer = new Timer();
                     checkConnection();
