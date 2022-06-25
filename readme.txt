@@ -5,7 +5,7 @@ Corriere:
 Impiegato:
 	FINITO
 Farmacista:
-      -Prenota Farmaci FINITO da aggiungere la ricerca e fix se farmaco 0 non mette nell'ordine
+      -Prenota Farmaci FINITO da aggiungere la ricerca
 
       -Carico Scorte:  FINITO
 		-Mostra elenco consegne FATTO,
@@ -29,4 +29,4 @@ Aggiuntivi:
      	-Notifica mancato caricamento scorte DA FARE
 
      	-Pren Automatica DA FARE (cambiare data al giorno dell'esame)
-     	-Aggiunta produzione DA FARE (cambiare data al giorno dell'esame)
+     	-Aggiunta produzione FINITO (cambiare data al giorno dell'esame)

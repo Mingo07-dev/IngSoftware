@@ -41,7 +41,7 @@ public class SchermataFarmacista  {
         //BOTTONI SINISTRA
         Button prenotaFarmaci = new Button("SchermataFarmacista",  "Prenota Farmaci", 300,50);
         prenotaFarmaci.changeFontButton("Arial",1, 25);
-        prenotaFarmaci.createListenerButtonChangeView("SchermataPrenotazione");
+        prenotaFarmaci.createListenerButtonChangeViewPrenotazione("SchermataPrenotazione");
 
         Button modificaPrenotazioneAutomatica = new Button("SchermataFarmacista",  "Modifica Prenotazione Automatica", 300,50);
         modificaPrenotazioneAutomatica.changeFontButton("Arial",1, 25);

@@ -91,6 +91,28 @@ public class Button extends JButton {
             Button.lastView = "" + this.currentView;
         });
     }
+
+
+    public void createListenerButtonChangeViewPrenotazione(String viewToShow ){
+        this.addActionListener(e -> {
+            Main.schermataPrenotazionePanel.removeAll();
+            try {
+                SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataPrenotazionePanel.repaint();
+            Main.mainFrame.setVisible(true);
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
+
     public void createListenerButtonChangeViewListaOrdini(String viewToShow ){
         this.addActionListener(e -> {
             Main.schermataListaOrdiniPanel.removeAll();

@@ -10,7 +10,7 @@ public class AggiuntaProduzione {
     private static String[] principioAttivo= {"p1","p2","p3","p4"};
     private static int[] quantita = {2000,1000,5000,5000};
     public AggiuntaProduzione(){
-        TimeScheduler task = new TimeScheduler(25, 1);
+        TimeScheduler task = new TimeScheduler(24, 1);
     }
     public static void aggiuntaProduzioneAzienda() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         Date dateNow = Date.from(Instant.now());
