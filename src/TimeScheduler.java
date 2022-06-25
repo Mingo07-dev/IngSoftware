@@ -51,7 +51,12 @@ public class TimeScheduler
                 if(dateNow.compareTo(dateStart) == 0 && checkDone == false){
                     switch (task){
                         case 1:
-                            AggiuntaProduzione.aggiuntaProduzioneAzienda();
+                            try {
+                                AggiuntaProduzione.aggiuntaProduzioneAzienda();
+                            } catch (SQLException | ClassNotFoundException | InstantiationException |
+                                     IllegalAccessException e) {
+                                throw new RuntimeException(e);
+                            }
                             break;
                         case 2:
                             PrenotazioneAutomatica.prenotazioneAutomatica();
