@@ -603,6 +603,7 @@ public class AlertMessage {
                 ex.printStackTrace();
                 // elenco consegne, lista ordini e dettaglio ordine
             }
+            frame.dispose();
             Main.schermataPrenotazionePanel.removeAll();
             try {
                 SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
