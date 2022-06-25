@@ -103,16 +103,6 @@ public class DBMS {
     }
 
     private void riconettiDB(){
-        /*final JOptionPane optionPane = new JOptionPane("Tentativo di riconnessione in corso\n        ATTENDERE", JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
-        dialog = new JDialog();
-        dialog.setTitle("Attenti");
-        dialog.setModal(true);
-        dialog.setLocationRelativeTo(null);
-        dialog.setContentPane(optionPane);
-
-        dialog.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-        dialog.pack();
-        dialog.setVisible(true);*/
         frameAttendi = new Frame();
         JOptionPane.showMessageDialog(Main.mainFrame, "Tentativo di riconnessione in corso\n          Premi 'OK' e ATTENDI", "CERCHIAMO IL DBMS", JOptionPane.WARNING_MESSAGE);
 
@@ -123,11 +113,10 @@ public class DBMS {
                 boolean bool;
 
                 try {
-                    System.out.println("ECCOMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
                     connection = DriverManager.getConnection(url,username,password);
-                    System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa");
                 } catch (SQLException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("CONNESSIONE ANCORA NON RIPRISTINATA");
+                    //throw new RuntimeException(e);
                 }
 
                 try {
@@ -136,7 +125,6 @@ public class DBMS {
                     throw new RuntimeException(e);
                 }
                 if(bool) {
-                    System.out.println("ECCOMIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
                     connectionLosed = false;
                     //dialog.dispose();
                     JFrame frame = new JFrame();
