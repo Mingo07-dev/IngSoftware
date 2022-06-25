@@ -67,6 +67,7 @@ public class DBMS {
                 else{
                     if(!connectionLosed){
                         System.out.println("CONNESSIONE SCADUTA");
+                        Main.mainFrame.setEnabled(false);
                         connectionLosed = true;
                         db_Caduto();
                         timer.cancel();
@@ -125,6 +126,7 @@ public class DBMS {
                     throw new RuntimeException(e);
                 }
                 if(bool) {
+                    Main.mainFrame.setEnabled(true);
                     connectionLosed = false;
                     //dialog.dispose();
                     JFrame frame = new JFrame();

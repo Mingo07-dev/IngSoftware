@@ -190,7 +190,7 @@ public class Main {
 
 
 
-
+        TimeScheduler.scheduleTaskDays();
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

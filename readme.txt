@@ -5,7 +5,7 @@ Corriere:
 Impiegato:
 	FINITO
 Farmacista:
-      -Prenota Farmaci DA FARE
+      -Prenota Farmaci FINITO da aggiungere la ricerca e fix se farmaco 0 non mette nell'ordine
 
       -Carico Scorte:  FINITO
 		-Mostra elenco consegne FATTO,
@@ -16,11 +16,11 @@ Farmacista:
 		Modifica, FINITO
 		Dettaglio FINITO
 
-      -Mod Pren Automatica FINITO
+      -Mod Pren Automatica FINITO deve cambiare anche se cambio un solo farmaco alla volta
 
       -Controllo Scorte FINITO
 
-	-Scarica Scorte FINITO
+	-Scarica Scorte FINITO controllare quantità < 0 non deve scaricare, se = 0, cancella riga
     
 Aggiuntivi:
      	-Notifica mancato caricamento scorte DA FARE

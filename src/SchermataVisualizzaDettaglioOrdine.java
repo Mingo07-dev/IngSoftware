@@ -19,7 +19,7 @@ public class SchermataVisualizzaDettaglioOrdine {
 
         Button bottoneTornaIndietro = new Button("SchermataVisualizzaDettaglioOrdine","Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1,15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataListaOrdini");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 

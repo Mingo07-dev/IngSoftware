@@ -316,7 +316,81 @@ public class Table extends JPanel{
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    if (!textField.getText().equals("")) {
+                        intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    }
+                    else{
+                        intArrayLocal[textField.contatore] = 0;
+                    }
+
+                }
+            });
+            bordo.add(textField, gbc);
+            this.add(bordo, gbc);
+
+            cont++;
+            rs.next();
+        }
+        intArray = intArrayLocal;
+        intArrayOldData = intArrayOldDataLocal;
+        stringNome = stringNomeLocal;
+        stringData = stringDataLocal;
+
+        cont = 0;
+    }
+
+    public void fillTable_oneEditTextModificaOrdine() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        GridBagConstraints gbc = new GridBagConstraints();
+        for(int i = 0; i < this.headers.length ; i++){
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.ipadx = 20;
+            gbc.ipady = 20;
+            gbc.gridx = i;
+            gbc.gridy = 0;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(borderHeader);
+            bordo.add(new JLabel("" + this.headers[i]));
+            this.add(bordo, gbc);
+        }
+        cont = 0;
+
+        for(int i = 0; i < n ; i++){
+
+            for(int j = 0; j < m; j++){
+                gbc.fill = GridBagConstraints.HORIZONTAL;
+                gbc.ipadx = 20;
+                gbc.ipady = 20;
+                gbc.gridx = j;
+                gbc.gridy = i + 1;
+                JPanel bordoData = new JPanel(new FlowLayout());
+                bordoData.setBorder(border);
+                bordoData.add(new JLabel("" + rs.getString(j + 1)));
+                this.add(bordoData, gbc);
+            }
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+            gbc.ipadx = 20;
+            gbc.ipady = 20;
+            gbc.gridx = m;
+            gbc.gridy = i +1;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(border);
+            stringDataLocal[cont] = rs.getDate(3);
+            stringNomeLocal[cont] = rs.getString(1);
+            intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(4));
+            TextField textField = new TextField(10,"0", 150,25,cont);
+            textField.addFocusListener(new FocusListener() {
+                @Override
+                public void focusGained(FocusEvent e) {
+                }
+
+                @Override
+                public void focusLost(FocusEvent e) {
+                    if (!textField.getText().equals("")) {
+                        intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    }
+                    else{
+                        intArrayLocal[textField.contatore] = 0;
+                    }
 
                 }
             });
@@ -379,7 +453,12 @@ public class Table extends JPanel{
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    if (!textField.getText().equals("") || !textField.getText().equals("0") ) {
+                        intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    }
+                    else{
+                        intArrayLocal[textField.contatore] = 0;
+                    }
 
                 }
             });
@@ -444,7 +523,12 @@ public class Table extends JPanel{
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    if (!textField.getText().equals("")) {
+                        intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    }
+                    else{
+                        intArrayLocal[textField.contatore] = 0;
+                    }
 
                 }
             });
@@ -511,7 +595,12 @@ public class Table extends JPanel{
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    if (!textField.getText().equals("")) {
+                        intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
+                    }
+                    else{
+                        intArrayLocal[textField.contatore] = 0;
+                    }
 
                 }
             });
@@ -613,6 +702,8 @@ public class Table extends JPanel{
                     } else {
                         try {
                             Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.lista_ordini WHERE (Id_ordine = '" + button.getId_ordine() + "');");
+                            Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.elenco_consegne WHERE (Id_ordine = '" + button.getId_ordine() + "');");
+                            Main.dbms_Azienda.setData("DELETE FROM dbms_azienda.dettaglio_ordine WHERE (Id_ordine = '" + button.getId_ordine() + "');");
                         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                             ex.printStackTrace();
                         }

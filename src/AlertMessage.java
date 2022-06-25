@@ -679,6 +679,7 @@ public class AlertMessage {
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
+            frame.dispose();
             Main.schermataPrenotazionePanel.repaint();
             Main.mainFrame.setVisible(true);
 

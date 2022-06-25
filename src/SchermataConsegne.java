@@ -20,7 +20,7 @@ public class SchermataConsegne {
 
         Button bottoneTornaIndietro = new Button("SchermataConsegne","Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1,15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataCorriere");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 
@@ -99,7 +99,7 @@ public class SchermataConsegne {
 
         Button bottoneTornaIndietro = new Button("SchermataConsegne", "Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1, 15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataFarmacista");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 

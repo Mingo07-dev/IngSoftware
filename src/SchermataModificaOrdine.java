@@ -19,7 +19,7 @@ public class SchermataModificaOrdine {
 
         Button bottoneTornaIndietro = new Button("SchermataModificaOrdine","Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1,15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataListaOrdini");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 
@@ -58,7 +58,7 @@ public class SchermataModificaOrdine {
                     e.printStackTrace();
                 }
                 try {
-                    tableConsegne.fillTable_oneEditText();
+                    tableConsegne.fillTable_oneEditTextModificaOrdine();
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
                 }

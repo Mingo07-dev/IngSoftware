@@ -44,16 +44,15 @@ public class TimeScheduler
             public void run() {
 
                 Date startDate = new Date();
-                startDate.setDate(1);
+                startDate.setDate(25);
                 LocalDate dateStart = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
                 LocalDate dateNow = LocalDate.now();
-                System.out.println("controllo");
                 if(dateNow.compareTo(dateStart) == 0 && checkDone == false){
                     System.out.println("fatto");
                     checkDone = true;
                 }
-                else if(checkDone == true && dateNow.compareTo(dateStart) == 0){
+                else if(checkDone == true && dateNow.compareTo(dateStart) != 0){
                     checkDone = false;
                 }
             }

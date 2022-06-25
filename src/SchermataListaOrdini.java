@@ -20,7 +20,7 @@ public class SchermataListaOrdini {
 
         Button bottoneTornaIndietro = new Button("SchermataListaOrdini","Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1,15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataFarmacista");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 
@@ -73,7 +73,8 @@ public class SchermataListaOrdini {
 
         mainPanel.add(sp, BorderLayout.CENTER);
         JPanel ricerca = new JPanel();
-        JTextField ricercaField = new JTextField("Ricerca");
+        JTextField ricercaField = new JTextField("Ricerca Ex:'2022-06-20'");
+        ricercaField.setPreferredSize(new Dimension(150,30));
         ricercaField.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

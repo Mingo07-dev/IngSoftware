@@ -149,14 +149,13 @@ public class Button extends JButton {
     }
 
 
-    public void createListenerButtonGoBack(){
+    public void createListenerButtonGoBack(String viewToShow){
         this.addActionListener(e -> {
             //mostra la nuova schermata
             Main.cardLayout.show(Main.mainPanel, Button.lastView);
 
             //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
             //tornare indietro tramite apposito bottone
-            Button.lastView = "" + this.currentView;
         });
     }
 

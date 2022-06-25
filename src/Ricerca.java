@@ -6,7 +6,7 @@ public class Ricerca {
 
     public static void restoreTable(int n,Table table,JTextField ricercaField){
         int dim = (n+1)*4;
-        ricercaField.setText("Ricerca");
+        ricercaField.setText("Ricerca Ex:'2022-06-20'");
         for(int i = 4; i < dim; i++){
             table.getComponent(i).setVisible(true);
         }

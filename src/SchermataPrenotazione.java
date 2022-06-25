@@ -17,7 +17,7 @@ public class SchermataPrenotazione {
 
         Button bottoneTornaIndietro = new Button("SchermataPrenotazione","Torna Indietro", 150, 30);
         bottoneTornaIndietro.changeFontButton("Arial", 1,15);
-        bottoneTornaIndietro.createListenerButtonGoBack();
+        bottoneTornaIndietro.createListenerButtonGoBack("SchermataFarmacista");
 
         mainUserOptionsPanel.add(bottoneTornaIndietro);
 
