@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 //QUESTA CLASSE CONTIENE I METODI PER LA CREAZIONE DI OGNI TIPO DI BOTTONE
 public class Button extends JButton {
@@ -297,117 +298,7 @@ public class Button extends JButton {
 
     public void createListenerButtonAggiornaCaricoScorte(String viewToShow, int n, int id_ordine){
         this.addActionListener(e -> {
-
             AlertMessage riepilogo = new AlertMessage(id_ordine, n, Table.getIntArray(), Table.getIntArrayOldData(), Table.getStringNome(), Table.getPrincipioAttivo(), Table.getStringData());
-
-            /*
-            int recapitoTelefonico = 0;
-            int[] intarrayQuantitaArrivate = Table.getIntArray();
-            int[] intArrayQuantitaOrdine = Table.getIntArrayOldData();
-            String[] stringNome = Table.getStringNome();
-            String[] principioAttivo = Table.getPrincipioAttivo();
-            Date[] dataScadenza = Table.getStringData();
-            JFrame frame = new JFrame();
-            frame.setLayout(new FlowLayout());
-            JPanel ciao = new JPanel(new FlowLayout());
-            JLabel f = new JLabel("ciao");
-            ciao.add(f);
-            frame.add(ciao);
-            // COSTRUIRE IN QUESTO FRAME IL MOCK UP RIEPILOGO ORDINE
-            StringBuilder message = new StringBuilder();
-
-            message.append("Sei sicuro di voler effettuare il caricamento delle seguenti scorte?\n");
-            for(int i = 0; i < n; i++) {
-                message.append("Farmaco:    Principio Attivo:   Quantità Prenotate:    Scadenza:    Quantità Selezionate");
-                for(int j=0; j < 5; j++){
-                    //message.append();
-                }
-            }
-
-            Object[] options = {"Conferma",
-                    "No, grazie"};
-            int b = JOptionPane.showOptionDialog(frame,
-                    message,
-                    "Carico scorte",  //titolo
-                    JOptionPane.YES_NO_OPTION, //da cambiare se si vogliono più opzioni o meno
-                    JOptionPane.QUESTION_MESSAGE, //per cambiare l'iconcina
-                    null, //lasciare sempre cosi
-                    options,
-                    options[0]); //puntatore alla prima opzione
-
-            if(b == 0){
-                //se è 0 significa che è stato premuto il primo bottone
-
-                //AGGIORNA LE SCORTE
-                try {
-                    ResultSet controllo;
-                    for(int i = 0; i < n; i++){
-                        controllo = Main.dbms_Farmacia.getData("SELECT nome_farmaco FROM dbms_farmacia.elenco_scorte WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
-                        if(controllo.next()){
-                            Main.dbms_Farmacia.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = quantita_disponibile + '" + intarrayQuantitaArrivate[i] + "' WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '"+ principioAttivo[i] +"' AND scadenza_farmaco = '"+ dataScadenza[i]+"' AND nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
-                        }
-                        else{
-                            Main.dbms_Farmacia.setData("INSERT INTO `dbms_farmacia`.`elenco_scorte` (`nome_farmaco`, `principio_attivo`, `quantita_disponibile`, `scadenza_farmaco`, `nome_Farmacia`) VALUES ('" + stringNome[i] + "', '"+ principioAttivo[i] +"', '" + intarrayQuantitaArrivate[i] + "', '"+ dataScadenza[i]+"', '"+ SchermataLogin.nomeFarmacia +"');");
-                        }
-                    }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-
-                //CAMBIA STATO CONSEGNA IN CARICATA SIA IN ELENCO CONSEGNE CHE IN LISTA ORDINI
-                try {
-                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.lista_ordini SET stato_ordine = 2 WHERE id_ordine = '"+ id_ordine +"';");
-                    Main.dbms_Farmacia.setData("UPDATE dbms_azienda.elenco_consegne SET stato_consegna = 2 WHERE id_ordine = '"+ id_ordine +"';");
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-
-
-                ResultSet controllo;
-                try {
-                    controllo = Main.dbms_Farmacia.getData("SELECT recapito_telefonico FROM dbms_azienda.elenco_consegne WHERE id_ordine = '"+ id_ordine +"';");
-                    controllo.next();
-                    recapitoTelefonico = controllo.getInt(1);
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                //CONTROLLA SEGNALAZIONI
-                boolean Segnalazione = false;
-                for(int i = 0; i < n; i++){
-                    if(intArrayQuantitaOrdine[i] != intarrayQuantitaArrivate[i]){
-                        Segnalazione = true;
-                    }
-                }
-                if (Segnalazione) {
-                    try {
-                        Main.dbms_Farmacia.setData("INSERT INTO `dbms_azienda`.`schermata_segnalazione` (`nome_farmacia`, `recapito_telefonico`, `Id_ordine`, `stato_segnalazione`) VALUES ('"+SchermataLogin.nomeFarmacia+"', '"+recapitoTelefonico+"', '"+ id_ordine +"', '0');");
-                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException |
-                             SQLException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                    Segnalazione = false;
-                }
-
-
-
-                //AGGIORNA LA SCHEMATA CONSEGNE E CI TORNA
-                Main.schermataConsegnePanel.removeAll();
-                try {
-                    SchermataConsegne.aggiornaTabellaFarmacista();
-                } catch (FileNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Main.schermataConsegnePanel.repaint();
-                Main.mainFrame.setVisible(true);
-                Main.cardLayout.show(Main.mainPanel, "SchermataConsegne");
-            }
-            else {
-                //se è 1 significa che è stato premuto il secondo bottone
-                frame.dispose();
-            }
-            */
         });
     }
 
@@ -440,6 +331,95 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonPrenota(String viewToShow, int n){
+        this.addActionListener(e -> {
+
+            int[] quantitaOrdinate = Table.getIntArray();
+            int[] quantitaDisponibili = Table.getIntArrayOldData();
+            String[] stringNome = Table.getStringNome();
+            String[] principioAttivo = Table.getPrincipioAttivo();
+            Date[] dateScadenza = Table.getStringData();
+
+
+            //CONTROLLO DATA DI SCADENZA INFERIORE A 2 MESI
+            boolean scadenza = false;
+
+            for(int i = 0; i < n; i++){
+                if(dateScadenza[i].toLocalDate().compareTo(LocalDate.now().plusMonths(2)) < 0){
+                    scadenza = true;
+                }
+            }
+
+            if(scadenza){
+                JOptionPane.showMessageDialog(Main.mainFrame, "Attenzione: Nell'ordine corrente sono presenti farmaci con data di scadenza inferiore a 2 mesi.");
+                scadenza = false;
+            }
+            // FINE
+
+            //CONTROLLO DISPONIBILITà FARMACI
+
+                // INIZIALIZZO UN ARRAY CHE REGISTRERà L'INDICE DEI FARMACI NON INTERAMENTE DISPONIBILI
+            int qualeFarmacoNonEDisponibile[] = new int[n];
+            for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                qualeFarmacoNonEDisponibile[i] = 0;
+            }
+                //IDENTIFICO SE CI SONO E QUALI SONO I FARMACI CHE NON SONO INTERAMENTE DISPONIBILI
+            boolean nonDisponibile = false;
+            for(int i = 0; i < n; i++){
+                if(quantitaDisponibili[i] < quantitaOrdinate[i]){
+                    qualeFarmacoNonEDisponibile[i] = 1;
+                    nonDisponibile = true;
+                }
+            }
+
+            if(nonDisponibile == false){
+                AlertMessage tuttoDisponibile = new AlertMessage(n, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
+            } else {
+                int counter = 0;
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 1){
+                        counter++;
+                    }
+                }
+                int[] nuoveQuantitaOrdinate = new int[n];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 1){
+                        nuoveQuantitaOrdinate[i] = quantitaDisponibili[i];
+                    } else {
+                        nuoveQuantitaOrdinate[i] = quantitaOrdinate[i];
+                    }
+                }
+
+
+                int k = 0;
+                String[] nomeFarmaciResidui = new String[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 1){
+                        nomeFarmaciResidui[k] = stringNome[i];
+                        k++;
+                    }
+                }
+                k = 0;
+                String[] nomePrincipioAttivoFarmaciResidui = new String[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 1){
+                        nomePrincipioAttivoFarmaciResidui[k] = principioAttivo[i];
+                        k++;
+                    }
+                }
+                k = 0;
+                int[] quantitaResidue = new int[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 1){
+                        quantitaResidue[k] = quantitaOrdinate[i] - quantitaDisponibili[i];
+                        k++;
+                    }
+                }
+                // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
+                AlertMessage tuttoQuasiDisponibile = new AlertMessage(n, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
+            }
+        });
+    }
 
     public int getId_ordine() {
         return Id_ordine;
