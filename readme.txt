@@ -27,3 +27,4 @@ Aggiuntivi:
      	-Caduta DBMS FINITO
      	-Pren Automatica DA FARE
      	-Aggiunta produzione DA FARE
+	-Ricerca FINITO
