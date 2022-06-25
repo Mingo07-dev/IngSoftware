@@ -335,14 +335,18 @@ public class Button extends JButton {
 
 
             int[] preQuantitaOrdinate = Table.getIntArray();
-
-            int[] quantitaDisponibili = Table.getIntArrayOldData();
-            String[] stringNome = Table.getStringNome();
-            String[] principioAttivo = Table.getPrincipioAttivo();
-            Date[] dateScadenza = Table.getStringData();
+            int[] preQuantitaDisponibili = Table.getIntArrayOldData();
+            String[] preStringNome = Table.getStringNome();
+            String[] prePrincipioAttivo = Table.getPrincipioAttivo();
+            Date[] preDateScadenza = Table.getStringData();
 
             //TOGLI ZERI
-            int[] quantitaOrdinate = togliZeri(preQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
+            int[] zeros = trovaZeri(preQuantitaOrdinate);
+            int[] quantitaOrdinate = removeZerosFromArrayInt(preQuantitaOrdinate);
+            int[] quantitaDisponibili = removeZerosFromArrayInt(preQuantitaDisponibili);
+            String[] stringNome = removeZerosFromArrayString(zeros, preStringNome);
+            String[] principioAttivo = removeZerosFromArrayString(zeros, prePrincipioAttivo);
+            Date[] dateScadenza = removeZerosFromArrayDate(zeros, preDateScadenza);
 
             //CONTROLLO DATA DI SCADENZA INFERIORE A 2 MESI
             boolean scadenza = false;
@@ -428,56 +432,34 @@ public class Button extends JButton {
         return Id_ordine;
     }
 
-    public int[] togliZeri(int[] array, int[] arrayInt, String[] arrayString1, String[] arrayString2, Date[] arrayDate){
-        int[] arrayPartenza = array;
-
+    public int[] trovaZeri(int[] array){
         int[] zeri = new int[array.length];
-
-        int counter = 0;
-
         for(int i = 0; i < zeri.length; i++){
-            if(arrayPartenza[i] == 0){
+            if(array[i] == 0){
                 zeri[i] = 1;
-                counter++;
             }
         }
-
-
-        int[] arrayRisultante;
-
-        if(counter > 0) {
-
-            arrayInt = removeElementsFromArrayInt(zeri, arrayInt);
-            arrayString1 = removeElementsFromArrayString(zeri, arrayString1);
-            arrayString2 = removeElementsFromArrayString(zeri, arrayString2);
-            arrayDate = removeElementsFromArrayDate(zeri, arrayDate);
-
-            arrayRisultante = new int[array.length - counter];
-            int k = 0;
-            for (int i = 0; i < array.length; i++) {
-                if (zeri[i] != 1) {
-                    arrayRisultante[k] = array[i];
-                    k++;
-                }
-            }
-        } else{
-            arrayRisultante = arrayPartenza;
-        }
-        return arrayRisultante;
+        return zeri;
     }
 
-    public int[] removeElementsFromArrayInt(int[] zeros, int[] arrayPartenza){
-        int[] zeri = zeros;
-        int counter = 0;
+    public int[] removeZerosFromArrayInt(int[] arrayPartenza){
+        int[] zeri = trovaZeri(arrayPartenza);
+        boolean flag = false;
         for(int i = 0; i < zeri.length; i++){
             if(zeri[i] == 1){
-                counter++;
+                flag = true;
             }
         }
 
         int[] arrayRisultante;
 
-        if(counter > 0){
+        if(flag){
+            int counter = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] == 1){
+                    counter++;
+                }
+            }
             arrayRisultante = new int[arrayPartenza.length - counter];
             int k = 0;
             for(int i = 0; i < zeri.length; i++){
@@ -492,18 +474,24 @@ public class Button extends JButton {
         return arrayRisultante;
     }
 
-    public String[] removeElementsFromArrayString(int[] zeros, String[] arrayPartenza){
+    public String[] removeZerosFromArrayString(int[] zeros, String[] arrayPartenza){
         int[] zeri = zeros;
-        int counter = 0;
+        boolean flag = false;
         for(int i = 0; i < zeri.length; i++){
             if(zeri[i] == 1){
-                counter++;
+                flag = true;
             }
         }
 
         String[] arrayRisultante;
 
-        if(counter > 0){
+        if(flag){
+            int counter = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] == 1){
+                    counter++;
+                }
+            }
             arrayRisultante = new String[arrayPartenza.length - counter];
             int k = 0;
             for(int i = 0; i < zeri.length; i++){
@@ -512,24 +500,30 @@ public class Button extends JButton {
                     k++;
                 }
             }
-        } else {
+        } else{
             arrayRisultante = arrayPartenza;
         }
         return arrayRisultante;
     }
 
-    public Date[] removeElementsFromArrayDate(int[] zeros, Date[] arrayPartenza){
+    public Date[] removeZerosFromArrayDate(int[] zeros, Date[] arrayPartenza){
         int[] zeri = zeros;
-        int counter = 0;
+        boolean flag = false;
         for(int i = 0; i < zeri.length; i++){
             if(zeri[i] == 1){
-                counter++;
+                flag = true;
             }
         }
 
         Date[] arrayRisultante;
 
-        if(counter > 0){
+        if(flag){
+            int counter = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] == 1){
+                    counter++;
+                }
+            }
             arrayRisultante = new Date[arrayPartenza.length - counter];
             int k = 0;
             for(int i = 0; i < zeri.length; i++){
@@ -538,9 +532,10 @@ public class Button extends JButton {
                     k++;
                 }
             }
-        } else {
+        } else{
             arrayRisultante = arrayPartenza;
         }
         return arrayRisultante;
     }
+
 }
