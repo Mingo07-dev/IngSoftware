@@ -205,7 +205,10 @@ public class AlertMessage {
     public AlertMessage(int n, int[] intArrayQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
-
+        JPanel mainNorthPanel = new JPanel(new BorderLayout());
+        JLabel message = new JLabel("Riepilogo prenotazione");
+        mainNorthPanel.add(message, BorderLayout.CENTER);
+        mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
         JPanel mainCenterPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         String[] headers = {"Nome farmaco", "Principio attivo", "Data di scadenza", "Quantità richiesta"};
@@ -300,9 +303,12 @@ public class AlertMessage {
     public AlertMessage(int n, int m, int[] intArrayNuoveQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, int[] intArrayQuantitaResidue, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
+        JPanel mainNorthPanel = new JPanel(new BorderLayout());
+        JLabel message = new JLabel("Le scorte richieste non sono interamente disponibili, vuoi effettuare due ordini nel seguente modo? Riepilogo prenotazione");
+        mainNorthPanel.add(message, BorderLayout.CENTER);
+        mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
         JPanel mainCenterPanelFlow1 = new JPanel(new FlowLayout());
-        JPanel mainCenterPanelFlow2 = new JPanel(new FlowLayout());
 
         JPanel mainCenterPanelBox = new JPanel();
         mainCenterPanelBox.setLayout(new BoxLayout(mainCenterPanelBox, BoxLayout.PAGE_AXIS));
