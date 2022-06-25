@@ -1,25 +1,15 @@
 Autenticazione:
       FINITO
-
-
-
 Corriere:
       FINITO
-
-
-
 Impiegato:
 	FINITO
-
-
-
-
 Farmacista:
       -Prenota Farmaci DA FARE
 
-      -Carico Scorte:
+      -Carico Scorte:  FINITO
 		-Mostra elenco consegne FATTO,
-		-Carica scorte   FATTO, MANCA RIEPILOGO
+		-Carica scorte   FATTO
 
       -ListaOrdini FINITO
 		Annulla, FINITO
@@ -31,10 +21,7 @@ Farmacista:
       -Controllo Scorte FINITO
 
 	-Scarica Scorte FINITO
-     
-
-
-
+    
 Aggiuntivi:
      	-Notifica mancato caricamento scorte DA FARE
      	-Caduta DBMS QUASI FINITA
