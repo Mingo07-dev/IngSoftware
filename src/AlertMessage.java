@@ -136,7 +136,7 @@ public class AlertMessage {
             bordo.add(new JLabel("" + stringNome[i]));
             mainCenterPanel.add(bordo, gbc);
         }
-        for(int i = 0; i < principioAttivo.length; i++){
+        for(int i = 0; i < n; i++){
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
             gbc.ipady = 20;
