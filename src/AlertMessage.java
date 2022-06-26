@@ -579,7 +579,7 @@ public class AlertMessage {
                 int nuovoIdOrdine = 1;
                 LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
                 String indirizzoFarmacia = "";
-                String recapitoTelefonicoFarmacia = "";
+                int recapitoTelefonicoFarmacia = 0;
 
                 try {
                     nuovoIdOrdine = generaIdOrdine();
@@ -646,7 +646,7 @@ public class AlertMessage {
                 int nuovoIdOrdine = 1;
                 LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
                 String indirizzoFarmacia = "";
-                String recapitoTelefonicoFarmacia = "";
+                int recapitoTelefonicoFarmacia = 0;
 
                 try {
                     nuovoIdOrdine = generaIdOrdine();
@@ -738,12 +738,12 @@ public class AlertMessage {
         return indirizzoFarmacia;
     }
 
-    public String getRecapitoTelefonicoFarmacia() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public int getRecapitoTelefonicoFarmacia() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         ResultSet queryResult;
-        String recapitoTelefonico = "";
+        int recapitoTelefonico = 0;
         queryResult = Main.dbms_Azienda.getData("SELECT dbms_azienda.farmacie.recapito_telefonico FROM dbms_azienda.farmacie WHERE dbms_azienda.farmacie.nome_farmacia = '" + SchermataLogin.nomeFarmacia + "';");
         if(queryResult.next()){
-            recapitoTelefonico = queryResult.getString(1);
+            recapitoTelefonico = queryResult.getInt(1);
         }
         return recapitoTelefonico;
     }
