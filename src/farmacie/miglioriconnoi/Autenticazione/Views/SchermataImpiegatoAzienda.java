@@ -1,4 +1,4 @@
-package farmacie.miglioriconnoi.Autenticazione;
+package farmacie.miglioriconnoi.Autenticazione.Views;
 
 
 import farmacie.miglioriconnoi.Common.Button;
