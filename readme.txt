@@ -1,5 +1,5 @@
 Autenticazione:
-      FINITO
+      FINITO   Se chiude il programma setta stato utente 0
 Corriere:
       FINITO
 Impiegato:
@@ -20,11 +20,11 @@ Farmacista:
 
       -Controllo Scorte FINITO
 
-	-Scarica Scorte FINITO controllare quantità < 0 non deve scaricare, se = 0, cancella riga
+	-Scarica Scorte FINITO
     
 Aggiuntivi: FINITI
 	-Ricerca FINITO
 	-Caduta DBMS FINITO
      	-Notifica mancato caricamento scorte FINITO
-     	-Pren Automatica FINITO (cambiare data al giorno dell'esame)
-     	-Aggiunta produzione FINITO (cambiare data al giorno dell'esame)
+     	-Pren Automatica FINITO                      <---      aggiungere il for
+     	-Aggiunta produzione FINITO   
