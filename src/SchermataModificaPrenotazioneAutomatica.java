@@ -55,6 +55,7 @@ public class SchermataModificaPrenotazioneAutomatica {
                     e.printStackTrace();
                 }
                 try {
+                    // NEL LISTENER LA PRIMA VOLTA CHE VIENE PREMUTO IL BOTTONE intarray, intArrayOld e stringNome vengono presi da Prenotazione (prova con sout)
                     tableConsegne.fillTable_oneEditTextPrenotazioneAutomatica();
                 } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException e) {
                     e.printStackTrace();
