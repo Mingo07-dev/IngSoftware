@@ -5,7 +5,7 @@ Corriere:
 Impiegato:
 	FINITO
 Farmacista:
-      -Prenota Farmaci FINITO da aggiungere la ricerca e sistemare la prenotazione separata
+      -Prenota Farmaci FINITO da aggiungere la ricerca
 
       -Carico Scorte:  FINITO
 		-Mostra elenco consegne FINITO,
