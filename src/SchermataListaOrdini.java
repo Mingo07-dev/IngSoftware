@@ -73,7 +73,7 @@ public class SchermataListaOrdini {
 
         mainPanel.add(sp, BorderLayout.CENTER);
         JPanel ricerca = new JPanel();
-        JTextField ricercaField = new JTextField("Ricerca Ex:'2022-06-20'");
+        JTextField ricercaField = new JTextField("Ricerca Ex: '2022-06-20'");
         ricercaField.setPreferredSize(new Dimension(150,30));
         ricercaField.addMouseListener(new MouseListener() {
             @Override

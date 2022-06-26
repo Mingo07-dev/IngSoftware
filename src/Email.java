@@ -5,7 +5,7 @@
 
     public class Email {
 
-        public static void sendEmail(String endToThisMail, String password_toSend){
+        public static void sendEmail(String sendToThisMail, String password_toSend){
 
             final String username = "farmaciemiglioriconnoi@gmail.com";
             final String password = "rryoyiydlhijojeo";
@@ -30,16 +30,14 @@
                 message.setFrom(new InternetAddress("farmaciemiglioriconnoi@gmail.com"));
                 message.setRecipients(
                         Message.RecipientType.TO,
-                        InternetAddress.parse(endToThisMail)
+                        InternetAddress.parse(sendToThisMail)
                 );
                 message.setSubject("Recupero Credenziali");
                 message.setText("Ecco le tue credenziali di accesso a 'Farmacie Migliori Con Noi': " +
-                        "\nMail: " + endToThisMail +
+                        "\nMail: " + sendToThisMail +
                         "\nPassword: " + password_toSend);
 
                 Transport.send(message);
-
-                System.out.println("Done");
 
             } catch (MessagingException e) {
                 e.printStackTrace();

@@ -5,11 +5,11 @@ Corriere:
 Impiegato:
 	FINITO
 Farmacista:
-      -Prenota Farmaci FINITO da aggiungere la ricerca
+      -Prenota Farmaci FINITO da aggiungere la ricerca e sistemare la prenotazione separata
 
       -Carico Scorte:  FINITO
-		-Mostra elenco consegne FATTO,
-		-Carica scorte   FATTO
+		-Mostra elenco consegne FINITO,
+		-Carica scorte   FINITO
 
       -ListaOrdini FINITO
 		Annulla, FINITO
@@ -22,11 +22,9 @@ Farmacista:
 
 	-Scarica Scorte FINITO controllare quantità < 0 non deve scaricare, se = 0, cancella riga
     
-Aggiuntivi:
+Aggiuntivi: FINITI
 	-Ricerca FINITO
 	-Caduta DBMS FINITO
-
-     	-Notifica mancato caricamento scorte DA FARE
-
+     	-Notifica mancato caricamento scorte FINITO
      	-Pren Automatica FINITO (cambiare data al giorno dell'esame)
      	-Aggiunta produzione FINITO (cambiare data al giorno dell'esame)
