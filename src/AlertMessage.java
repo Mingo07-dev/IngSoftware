@@ -202,12 +202,14 @@ public class AlertMessage {
         frame.setVisible(true);
     }
     // RIEPILOGO PRENOTAZIONE TUTTO DISPONIBILE
-    public AlertMessage(int n, int[] intArrayQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza){
+    public AlertMessage(int n, int[] intArrayQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, LocalDate dataConsegna){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
         JLabel message = new JLabel("Riepilogo prenotazione");
         mainNorthPanel.add(message, BorderLayout.CENTER);
+        JLabel labelDataConsegna = new JLabel("Data consegna ordine: " + dataConsegna);
+        mainNorthPanel.add(labelDataConsegna, BorderLayout.SOUTH);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
         JPanel mainCenterPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -276,7 +278,7 @@ public class AlertMessage {
 
         buttonOk.setText("Conferma");
         buttonOk.setFont(new Font("Arial", 1,15));
-        createListenereButtonOkPrenotazione(n, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayQuantitaOrdinate);
+        createListenereButtonOkPrenotazione(n, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayQuantitaOrdinate, dataConsegna);
 
         buttonAnnulla.setText("Annulla");
         buttonAnnulla.setFont(new Font("Arial", 1,15));
@@ -300,12 +302,14 @@ public class AlertMessage {
     }
 
     // RIEPILOGO PRENOTAZIONE NON TUTTO DISPONIBILE
-    public AlertMessage(int n, int m, int[] intArrayNuoveQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, int[] intArrayQuantitaResidue, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui){
+    public AlertMessage(int n, int m, int[] intArrayNuoveQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, int[] intArrayQuantitaResidue, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, LocalDate nuovaDataConsegna, LocalDate nuovaDataConsegnaReisua, LocalDate nuovaDataScadenzaResidua){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
         JLabel message = new JLabel("Le scorte richieste non sono interamente disponibili, vuoi effettuare due ordini nel seguente modo? Riepilogo prenotazione");
         mainNorthPanel.add(message, BorderLayout.CENTER);
+        JLabel dataConsegna = new JLabel("Data consegna primo ordine: " + nuovaDataConsegna + "| Data consegna secondo ordine: " + nuovaDataConsegnaReisua);
+        mainNorthPanel.add(dataConsegna, BorderLayout.SOUTH);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
         JPanel mainCenterPanelFlow1 = new JPanel(new FlowLayout());
@@ -393,13 +397,16 @@ public class AlertMessage {
             mainCenterPanelBox1.add(bordo, gbc1);
         }
 
+
+
+
         sp1 = new JScrollPane(mainCenterPanelBox1);
         mainCenterPanelFlow1.add(sp1);
 
         JScrollPane sp2;
         JPanel mainCenterPanelBox2 = new JPanel(new GridBagLayout());
         GridBagConstraints gbc2 = new GridBagConstraints();
-        String[] headers2 = {"Nome farmaco", "Principio attivo", "Quantità richiesta"};
+        String[] headers2 = {"Nome farmaco", "Principio attivo", "Data scadenza","Quantità richiesta"};
 
         for(int i = 0; i < headers2.length; i++){
             gbc2.fill = GridBagConstraints.HORIZONTAL;
@@ -435,11 +442,26 @@ public class AlertMessage {
             bordo.add(new JLabel("" + principioAttivoFarmaciResidui[i]));
             mainCenterPanelBox2.add(bordo, gbc2);
         }
+
+
         for(int i = 0; i < m; i++){
             gbc2.fill = GridBagConstraints.HORIZONTAL;
             gbc2.ipadx = 20;
             gbc2.ipady = 20;
             gbc2.gridx = 2;
+            gbc2.gridy = i + 1;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(border);
+            bordo.add(new JLabel("" + nuovaDataScadenzaResidua));
+            mainCenterPanelBox2.add(bordo, gbc2);
+        }
+
+
+        for(int i = 0; i < m; i++){
+            gbc2.fill = GridBagConstraints.HORIZONTAL;
+            gbc2.ipadx = 20;
+            gbc2.ipady = 20;
+            gbc2.gridx = 3;
             gbc2.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
@@ -454,9 +476,10 @@ public class AlertMessage {
 
         mainPanel.add(sp3, BorderLayout.CENTER);
 
+
         buttonOk.setText("Conferma");
         buttonOk.setFont(new Font("Arial", 1,15));
-        createListenereButtonOkPrenotazioneParziale(n, m, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayNuoveQuantitaOrdinate, nomeFarmaciResidui, principioAttivoFarmaciResidui, intArrayQuantitaResidue);
+        createListenereButtonOkPrenotazioneParziale(n, m, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayNuoveQuantitaOrdinate, nomeFarmaciResidui, principioAttivoFarmaciResidui, intArrayQuantitaResidue, nuovaDataConsegna, nuovaDataConsegnaReisua, nuovaDataScadenzaResidua);
 
         buttonAnnulla.setText("Annulla");
         buttonAnnulla.setFont(new Font("Arial", 1,15));
@@ -578,7 +601,7 @@ public class AlertMessage {
         });
     }
 
-    public void createListenereButtonOkPrenotazione(int n, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] quantitaOrdinate) {
+    public void createListenereButtonOkPrenotazione(int n, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] quantitaOrdinate, LocalDate nuovaDataConsegna) {
         ActionListener AL = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -600,7 +623,6 @@ public class AlertMessage {
                         ex.printStackTrace();
                     }
                     int nuovoIdOrdine = 1;
-                    LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
                     String indirizzoFarmacia = "";
                     int recapitoTelefonicoFarmacia = 0;
 
@@ -649,7 +671,7 @@ public class AlertMessage {
         buttonOk.addActionListener(AL);
     }
 
-    public void createListenereButtonOkPrenotazioneParziale(int n, int m, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] nuoveQuantitaOrdinate, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, int[] quantitaResidue){
+    public void createListenereButtonOkPrenotazioneParziale(int n, int m, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] nuoveQuantitaOrdinate, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, int[] quantitaResidue, LocalDate nuovaDataConsegna, LocalDate nuovaDataConsegnaResidua, LocalDate nuovaDataScadenzaResidua){
         ActionListener ALP = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -669,7 +691,6 @@ public class AlertMessage {
                             ex.printStackTrace();
                         }
                         int nuovoIdOrdine = 1;
-                        LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
                         String indirizzoFarmacia = "";
                         int recapitoTelefonicoFarmacia = 0;
 
@@ -718,8 +739,6 @@ public class AlertMessage {
                         ex.printStackTrace();
                     }
 
-                    LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(2);
-                    LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusDays(3).plusMonths(3);
 
                     try {
                         //AGGIORNA LISTA ORDINI

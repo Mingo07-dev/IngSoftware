@@ -398,7 +398,8 @@ public class Button extends JButton {
             }
 
             if(nonDisponibile == false){
-                AlertMessage tuttoDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
+                LocalDate dataConsegna = LocalDate.now().plusDays(3);
+                AlertMessage tuttoDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, dataConsegna);
             } else {
                 int counter = 0;
                 for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
@@ -465,9 +466,12 @@ public class Button extends JButton {
                     }
                 }
                 p = 0;
+                LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
+                LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(2);
+                LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusDays(3).plusMonths(3);
 
                 // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
-                AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
+                AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui, nuovaDataConsegna,nuovaDataConsegnaResidua, nuovaDataScadenzaResidua);
             }
         });
     }
