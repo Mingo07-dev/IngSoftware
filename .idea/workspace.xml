@@ -10,9 +10,131 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataAutenticazione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataCorriere.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataFarmacista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataImpiegatoAzienda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataRecuperoCredenziali.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataRegistrazione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Image.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/PasswordField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Table.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/TextField.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/SchermataCaricoScorte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/SchermataConsegne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/AggiuntaProduzione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/SchermataScorte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/PrenotazioneAutomatica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataListaOrdini.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaOrdine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaPrenotazioneAutomatica.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataPrenotazione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataVisualizzaDettaglioOrdine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneSegnalazioni/SchermataSegnalazioniIrrisolte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneSegnalazioni/SchermataSegnalazioniRisolte.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/DBMS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/Email.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/Ricerca.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/TimeScheduler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/resources/utente.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DBMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DBMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MainProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AggiuntaProduzione.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/AlertMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Button.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/DBMS$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/DBMS$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/DBMS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Email$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Email.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/NotificaMancatoCaricamentoScorte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/PasswordField$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/PasswordField$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/PasswordField$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/PasswordField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/PrenotazioneAutomatica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Ricerca.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataAutenticazione.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCaricoScorte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataConsegne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataCorriere.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataFarmacista.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataImpiegatoAzienda.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataListaOrdini.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataLogin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaOrdine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataModificaPrenotazioneAutomatica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataPrenotazione.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRecuperoCredenziali.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$CorriereButtonActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$FarmacistaButtonActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione$ImpiegatoAziendaActionListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRegistrazione.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataRiepilogoOrdine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataScorte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioniIrrisolte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataSegnalazioniRisolte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/SchermataVisualizzaDettaglioOrdine.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/Table.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TextField$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TextField$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TextField.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TimeScheduler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TimeScheduler$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/TimeScheduler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MainProject/resources/utente.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AggiuntaProduzione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlertMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Button.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DBMS.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Email.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NotificaMancatoCaricamentoScorte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PasswordField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PrenotazioneAutomatica.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ricerca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataAutenticazione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCaricoScorte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataConsegne.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataCorriere.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataFarmacista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataImpiegatoAzienda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataListaOrdini.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataModificaOrdine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataModificaPrenotazioneAutomatica.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataPrenotazione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataRecuperoCredenziali.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataRegistrazione.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataRiepilogoOrdine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataScorte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataSegnalazioniIrrisolte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataSegnalazioniRisolte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SchermataVisualizzaDettaglioOrdine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Table.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TextField.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TimeScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/utente.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,10 +161,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/DBMS.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Main.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/SchermataFarmacista.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Table.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,23 +174,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mail.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mail.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+    <configuration name="farmacie.miglioriconnoi.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="farmacie.miglioriconnoi.Main" />
       <module name="MainProject" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -79,7 +200,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.farmacie.miglioriconnoi.Main" />
       </list>
     </recent_temporary>
   </component>
