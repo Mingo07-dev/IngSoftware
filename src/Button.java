@@ -361,11 +361,10 @@ public class Button extends JButton {
             String[] preStringNome = Table.getStringNome();
             String[] prePrincipioAttivo = Table.getPrincipioAttivo();
             Date[] preDateScadenza = Table.getStringData();
-
             //TOGLI ZERI
             int[] zeros = trovaZeri(preQuantitaOrdinate);
-            int[] quantitaOrdinate = removeZerosFromArrayInt(preQuantitaOrdinate);
-            int[] quantitaDisponibili = removeZerosFromArrayInt(preQuantitaDisponibili);
+            int[] quantitaOrdinate = removeZerosFromArrayInt2(zeros, preQuantitaOrdinate);
+            int[] quantitaDisponibili = removeZerosFromArrayInt2(zeros, preQuantitaDisponibili);
             String[] stringNome = removeZerosFromArrayString(zeros, preStringNome);
             String[] principioAttivo = removeZerosFromArrayString(zeros, prePrincipioAttivo);
             Date[] dateScadenza = removeZerosFromArrayDate(zeros, preDateScadenza);
@@ -388,13 +387,10 @@ public class Button extends JButton {
             //CONTROLLO DISPONIBILITà FARMACI
 
                 // INIZIALIZZO UN ARRAY CHE REGISTRERà L'INDICE DEI FARMACI NON INTERAMENTE DISPONIBILI
-            int qualeFarmacoNonEDisponibile[] = new int[quantitaOrdinate.length];
-            for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
-                qualeFarmacoNonEDisponibile[i] = 0;
-            }
+            int[] qualeFarmacoNonEDisponibile = new int[quantitaOrdinate.length];
                 //IDENTIFICO SE CI SONO E QUALI SONO I FARMACI CHE NON SONO INTERAMENTE DISPONIBILI
             boolean nonDisponibile = false;
-            for(int i = 0; i < quantitaOrdinate.length; i++){
+            for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
                 if(quantitaDisponibili[i] < quantitaOrdinate[i]){
                     qualeFarmacoNonEDisponibile[i] = 1;
                     nonDisponibile = true;
@@ -410,15 +406,15 @@ public class Button extends JButton {
                         counter++;
                     }
                 }
-                int[] nuoveQuantitaOrdinate = new int[quantitaOrdinate.length];
+                int[] nuoveQuantitaOrdinate = new int[counter];
+                int p = 0;
                 for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
-                    if(qualeFarmacoNonEDisponibile[i] == 1){
-                        nuoveQuantitaOrdinate[i] = quantitaDisponibili[i];
-                    } else {
-                        nuoveQuantitaOrdinate[i] = quantitaOrdinate[i];
+                    if(qualeFarmacoNonEDisponibile[i] == 0){
+                        nuoveQuantitaOrdinate[p] = quantitaOrdinate[i];
+                        p++;
                     }
                 }
-
+                p = 0;
 
                 int k = 0;
                 String[] nomeFarmaciResidui = new String[counter];
@@ -444,8 +440,34 @@ public class Button extends JButton {
                         k++;
                     }
                 }
+
+                String[] nuoveStringNome = new String[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 0){
+                        nuoveStringNome[p] = stringNome[i];
+                        p++;
+                    }
+                }
+                p = 0;
+                String[] nuovoPrincipioAttivo = new String[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 0){
+                        nuovoPrincipioAttivo[p] = principioAttivo[i];
+                        p++;
+                    }
+                }
+                p = 0;
+                Date[] nuovoDateScadenza = new Date[counter];
+                for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
+                    if(qualeFarmacoNonEDisponibile[i] == 0){
+                        nuovoDateScadenza[p] = dateScadenza[i];
+                        p++;
+                    }
+                }
+                p = 0;
+
                 // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
-                AlertMessage tuttoQuasiDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
+                AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
             }
         });
     }
@@ -464,7 +486,7 @@ public class Button extends JButton {
         return zeri;
     }
 
-    public int[] removeZerosFromArrayInt(int[] arrayPartenza){
+    public int[] removeZerosFromArrayInt1(int[] arrayPartenza){
         int[] zeri = trovaZeri(arrayPartenza);
         boolean flag = false;
         for(int i = 0; i < zeri.length; i++){
@@ -491,6 +513,38 @@ public class Button extends JButton {
                 }
             }
         } else {
+            arrayRisultante = arrayPartenza;
+        }
+        return arrayRisultante;
+    }
+
+    public int[] removeZerosFromArrayInt2(int[] zeros, int[] arrayPartenza){
+        int[] zeri = zeros;
+        boolean flag = false;
+        for(int i = 0; i < zeri.length; i++){
+            if(zeri[i] == 1){
+                flag = true;
+            }
+        }
+
+        int[] arrayRisultante;
+
+        if(flag){
+            int counter = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] == 1){
+                    counter++;
+                }
+            }
+            arrayRisultante = new int[arrayPartenza.length - counter];
+            int k = 0;
+            for(int i = 0; i < zeri.length; i++){
+                if(zeri[i] != 1){
+                    arrayRisultante[k] = arrayPartenza[i];
+                    k++;
+                }
+            }
+        } else{
             arrayRisultante = arrayPartenza;
         }
         return arrayRisultante;
