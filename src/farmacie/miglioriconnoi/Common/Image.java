@@ -34,7 +34,7 @@ public class Image extends JLabel {
         //this.setPreferredSize(new Dimension(125, 63));
     }
 
-    BufferedImage resizeImage() throws IOException {
+    public BufferedImage resizeImage() throws IOException {
         BufferedImage resizedImage = new BufferedImage(this.targetWidth, this.targetHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = resizedImage.createGraphics();
         graphics2D.drawImage(this.image, 0, 0, this.targetWidth, this.targetHeight, null);

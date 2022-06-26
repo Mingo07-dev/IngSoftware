@@ -387,8 +387,8 @@ public class Button extends JButton {
             Date[] preDateScadenza = Table.getStringData();
             //TOGLI ZERI
             int[] zeros = trovaZeri(preQuantitaOrdinate);
-            int[] quantitaOrdinate = removeZerosFromArrayInt2(zeros, preQuantitaOrdinate);
-            int[] quantitaDisponibili = removeZerosFromArrayInt2(zeros, preQuantitaDisponibili);
+            int[] quantitaOrdinate = removeZerosFromArrayInt(zeros, preQuantitaOrdinate);
+            int[] quantitaDisponibili = removeZerosFromArrayInt(zeros, preQuantitaDisponibili);
             String[] stringNome = removeZerosFromArrayString(zeros, preStringNome);
             String[] principioAttivo = removeZerosFromArrayString(zeros, prePrincipioAttivo);
             Date[] dateScadenza = removeZerosFromArrayDate(zeros, preDateScadenza);
@@ -514,39 +514,8 @@ public class Button extends JButton {
         return zeri;
     }
 
-    public int[] removeZerosFromArrayInt1(int[] arrayPartenza){
-        int[] zeri = trovaZeri(arrayPartenza);
-        boolean flag = false;
-        for(int i = 0; i < zeri.length; i++){
-            if(zeri[i] == 1){
-                flag = true;
-            }
-        }
 
-        int[] arrayRisultante;
-
-        if(flag){
-            int counter = 0;
-            for(int i = 0; i < zeri.length; i++){
-                if(zeri[i] == 1){
-                    counter++;
-                }
-            }
-            arrayRisultante = new int[arrayPartenza.length - counter];
-            int k = 0;
-            for(int i = 0; i < zeri.length; i++){
-                if(zeri[i] != 1){
-                    arrayRisultante[k] = arrayPartenza[i];
-                    k++;
-                }
-            }
-        } else {
-            arrayRisultante = arrayPartenza;
-        }
-        return arrayRisultante;
-    }
-
-    public int[] removeZerosFromArrayInt2(int[] zeros, int[] arrayPartenza){
+    public int[] removeZerosFromArrayInt(int[] zeros, int[] arrayPartenza){
         int[] zeri = zeros;
         boolean flag = false;
         for(int i = 0; i < zeri.length; i++){
