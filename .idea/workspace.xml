@@ -11,15 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/PrenotazioneAutomatica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/PrenotazioneAutomatica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataListaOrdini.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataListaOrdini.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataPrenotazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataPrenotazione.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/Ricerca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Utils/Ricerca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
