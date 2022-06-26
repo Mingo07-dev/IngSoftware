@@ -1,5 +1,5 @@
 Autenticazione:
-      FINITO login-> aggiungere se stato farmacista = 2 mostra avviso, chiama l'azienda, ci sono delle scorte che non hai caricato
+      FINITO
 Corriere:
       FINITO
 Impiegato:
@@ -16,7 +16,7 @@ Farmacista:
 		Modifica, FINITO
 		Dettaglio FINITO
 
-      -Mod Pren Automatica FINITO deve cambiare anche se cambio un solo farmaco alla volta
+      -Mod Pren Automatica deve cambiare anche se cambio un solo farmaco alla volta RIFARE
 
       -Controllo Scorte FINITO
 
@@ -28,5 +28,5 @@ Aggiuntivi:
 
      	-Notifica mancato caricamento scorte DA FARE
 
-     	-Pren Automatica DA FARE (cambiare data al giorno dell'esame)
+     	-Pren Automatica FINITO (cambiare data al giorno dell'esame)
      	-Aggiunta produzione FINITO (cambiare data al giorno dell'esame)

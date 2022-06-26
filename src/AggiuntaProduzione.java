@@ -18,9 +18,9 @@ public class AggiuntaProduzione {
         calendar.setTime(dateNow);
         calendar.add(Calendar.YEAR, 1);
         dateNow = (Date) calendar.getTime();
-        LocalDate a = dateNow.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate scadenza = dateNow.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         for(int i = 0; i < 4; i++){
-            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmaco` (`nome_farmaco`, `principio_attivo`, `data_scadenza`, `quantita_disponibile`) VALUES ('" + nomiFarmaci[i] + "', '"+ principioAttivo[i] +"', '" + a + "', '" + quantita[i] + "');");
+            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmaco` (`nome_farmaco`, `principio_attivo`, `data_scadenza`, `quantita_disponibile`) VALUES ('" + nomiFarmaci[i] + "', '"+ principioAttivo[i] +"', '" + scadenza + "', '" + quantita[i] + "');");
         }
     }
 }

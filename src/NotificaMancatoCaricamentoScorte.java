@@ -4,6 +4,11 @@ public class NotificaMancatoCaricamentoScorte {
     }
 
     public static void notificaMancatoCaricamentoScorte(){
-
+        if(SchermataLogin.nomeFarmacia == null){
+            TimeScheduler.checkDone = false;
+        }
+        else{
+            System.out.println("caricalescorte");
+        }
     }
 }

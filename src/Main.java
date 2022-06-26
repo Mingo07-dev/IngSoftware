@@ -190,6 +190,7 @@ public class Main {
 
 
         AggiuntaProduzione aggiuntaProduzione = new AggiuntaProduzione();
+        PrenotazioneAutomatica prenotazioneAutomatica = new PrenotazioneAutomatica();
 
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO

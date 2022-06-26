@@ -9,12 +9,12 @@ import java.util.TimerTask;
 
 public class TimeScheduler
 {
+    public static boolean checkDone = false;
     //SCHEDULA UN'AZIONE DA COMPIERE IN UN CERTO ORARIO
     public TimeScheduler(int hour){
         Timer timer = new Timer();
 
         timer.schedule(new TimerTask() {
-            boolean checkDone = false;
             @Override
             public void run() {
 
@@ -32,14 +32,14 @@ public class TimeScheduler
                     checkDone = false;
                 }
             }
-        }, 0, 1000);
+        }, 0, 60000);
     }
 
     public TimeScheduler(int day, int task){
         Timer timer = new Timer();
 
         timer.schedule(new TimerTask() {
-            boolean checkDone = false;
+            boolean checkDone1 = false;
             @Override
             public void run() {
 
@@ -48,7 +48,7 @@ public class TimeScheduler
                 LocalDate dateStart = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
                 LocalDate dateNow = LocalDate.now();
-                if(dateNow.compareTo(dateStart) == 0 && checkDone == false){
+                if(dateNow.compareTo(dateStart) == 0 && checkDone1 == false){
                     switch (task){
                         case 1:
                             try {
@@ -59,16 +59,21 @@ public class TimeScheduler
                             }
                             break;
                         case 2:
-                            PrenotazioneAutomatica.prenotazioneAutomatica();
+                            try {
+                                PrenotazioneAutomatica.prenotazioneAutomatica();
+                            } catch (SQLException | ClassNotFoundException | InstantiationException |
+                                     IllegalAccessException e) {
+                                throw new RuntimeException(e);
+                            }
                             break;
                     }
-                    checkDone = true;
+                    checkDone1 = true;
                 }
-                else if(checkDone == true && dateNow.compareTo(dateStart) != 0){
-                    checkDone = false;
+                else if(checkDone1 == true && dateNow.compareTo(dateStart) != 0){
+                    checkDone1 = false;
                 }
             }
-        }, 0, 1000);
+        }, 0, 60000);
     }
 }
 
