@@ -1,7 +1,7 @@
 package farmacie.miglioriconnoi.GestioneConsegne;
 
 
-import farmacie.miglioriconnoi.Autenticazione.Views.SchermataLogin;
+import farmacie.miglioriconnoi.Autenticazione.SchermataLogin;
 import farmacie.miglioriconnoi.Main;
 import farmacie.miglioriconnoi.Utils.TimeScheduler;
 
