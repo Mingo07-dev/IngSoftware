@@ -25,14 +25,14 @@ public class TimeScheduler
 
                 LocalTime nowTime = LocalTime.now();
                 if(nowTime.compareTo(startTimeLocal) > 0 && nowTime.compareTo(startTimeMaxLocal) < 0 && checkDone == false){
-                    NotificaMancatoCaricamentoScorte.notificaMancatoCaricamentoScorte();
                     checkDone = true;
+                    NotificaMancatoCaricamentoScorte.notificaMancatoCaricamentoScorte();
                 }
                 else if(checkDone == true && nowTime.compareTo(startTimeLocal) < 0 && nowTime.compareTo(startTimeMaxLocal) > 0){
                     checkDone = false;
                 }
             }
-        }, 0, 60000);
+        }, 0, 1000);
     }
 
     public TimeScheduler(int day, int task){
