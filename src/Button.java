@@ -330,10 +330,22 @@ public class Button extends JButton {
             int[] intArrayOld = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
             Date[] stringDate = Table.getStringData();
+
+            boolean flag = false;
+
             try {
-                for(int i = 0; i < n; i++){
-                    Main.dbms_Azienda.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + (intArrayOld[i] - intarray[i]) + "') WHERE nome_Farmacia = '" + SchermataLogin.nomeFarmacia + "' AND nome_farmaco = '" + stringNome[i] + "' AND scadenza_farmaco = '" + stringDate[i] + "';");
+                for (int i = 0; i < n; i++) {
+                    if (intArrayOld[i] > 0 && intarray[i] <= intArrayOld[i]) {
+                        Main.dbms_Azienda.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + (intArrayOld[i] - intarray[i]) + "') WHERE nome_Farmacia = '" + SchermataLogin.nomeFarmacia + "' AND nome_farmaco = '" + stringNome[i] + "' AND scadenza_farmaco = '" + stringDate[i] + "';");
+                    } else {
+                        flag = true;
+                    }
                 }
+                if(flag){
+                    JOptionPane.showMessageDialog(Main.mainFrame, "Stai cercando di rimuovere più scorte di quelle che hai, stai attento e ricontrolla");
+                    flag = false;
+                }
+                Main.dbms_Azienda.setData("DELETE FROM `dbms_farmacia`.`elenco_scorte` WHERE (`quantita_disponibile` = '0');");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
@@ -398,7 +410,8 @@ public class Button extends JButton {
             }
 
             if(nonDisponibile == false){
-                AlertMessage tuttoDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza);
+                LocalDate dataConsegna = LocalDate.now().plusDays(3);
+                AlertMessage tuttoDisponibile = new AlertMessage(quantitaOrdinate.length, quantitaOrdinate, quantitaDisponibili, stringNome, principioAttivo, dateScadenza, dataConsegna);
             } else {
                 int counter = 0;
                 for(int i = 0; i < qualeFarmacoNonEDisponibile.length; i++){
@@ -465,9 +478,12 @@ public class Button extends JButton {
                     }
                 }
                 p = 0;
+                LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
+                LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(2);
+                LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusDays(3).plusMonths(3);
 
                 // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
-                AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui);
+                AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui, nuovaDataConsegna,nuovaDataConsegnaResidua, nuovaDataScadenzaResidua);
             }
         });
     }

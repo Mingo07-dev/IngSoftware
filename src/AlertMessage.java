@@ -202,12 +202,14 @@ public class AlertMessage {
         frame.setVisible(true);
     }
     // RIEPILOGO PRENOTAZIONE TUTTO DISPONIBILE
-    public AlertMessage(int n, int[] intArrayQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza){
+    public AlertMessage(int n, int[] intArrayQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, LocalDate dataConsegna){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
         JLabel message = new JLabel("Riepilogo prenotazione");
         mainNorthPanel.add(message, BorderLayout.CENTER);
+        JLabel labelDataConsegna = new JLabel("Data consegna ordine: " + dataConsegna);
+        mainNorthPanel.add(labelDataConsegna, BorderLayout.SOUTH);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
         JPanel mainCenterPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
@@ -276,7 +278,7 @@ public class AlertMessage {
 
         buttonOk.setText("Conferma");
         buttonOk.setFont(new Font("Arial", 1,15));
-        createListenereButtonOkPrenotazione(n, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayQuantitaOrdinate);
+        createListenereButtonOkPrenotazione(n, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayQuantitaOrdinate, dataConsegna);
 
         buttonAnnulla.setText("Annulla");
         buttonAnnulla.setFont(new Font("Arial", 1,15));
@@ -300,12 +302,14 @@ public class AlertMessage {
     }
 
     // RIEPILOGO PRENOTAZIONE NON TUTTO DISPONIBILE
-    public AlertMessage(int n, int m, int[] intArrayNuoveQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, int[] intArrayQuantitaResidue, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui){
+    public AlertMessage(int n, int m, int[] intArrayNuoveQuantitaOrdinate, int[] intArrayQuantitaDisponibili, String[] stringNome, String[] principioAttivo, Date[] dataScadenza, int[] intArrayQuantitaResidue, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, LocalDate nuovaDataConsegna, LocalDate nuovaDataConsegnaReisua, LocalDate nuovaDataScadenzaResidua){
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
         JLabel message = new JLabel("Le scorte richieste non sono interamente disponibili, vuoi effettuare due ordini nel seguente modo? Riepilogo prenotazione");
         mainNorthPanel.add(message, BorderLayout.CENTER);
+        JLabel dataConsegna = new JLabel("Data consegna primo ordine: " + nuovaDataConsegna + "| Data consegna secondo ordine: " + nuovaDataConsegnaReisua);
+        mainNorthPanel.add(dataConsegna, BorderLayout.SOUTH);
         mainPanel.add(mainNorthPanel, BorderLayout.NORTH);
 
         JPanel mainCenterPanelFlow1 = new JPanel(new FlowLayout());
@@ -340,7 +344,11 @@ public class AlertMessage {
             gbc1.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            bordo.add(new JLabel("" + stringNome[i]));
+            if(stringNome[i] != null) {
+                bordo.add(new JLabel("" + stringNome[i]));
+            } else {
+                bordo.add(new JLabel("None"));
+            }
             mainCenterPanelBox1.add(bordo, gbc1);
         }
         for(int i = 0; i < n; i++){
@@ -351,7 +359,11 @@ public class AlertMessage {
             gbc1.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            bordo.add(new JLabel("" + principioAttivo[i]));
+            if(principioAttivo[i] != null) {
+                bordo.add(new JLabel("" + principioAttivo[i]));
+            } else {
+                bordo.add(new JLabel("None"));
+            }
             mainCenterPanelBox1.add(bordo, gbc1);
         }
         for(int i = 0; i < n; i++){
@@ -362,7 +374,11 @@ public class AlertMessage {
             gbc1.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            bordo.add(new JLabel("" + dataScadenza[i]));
+            if(dataScadenza[i] != null) {
+                bordo.add(new JLabel("" + dataScadenza[i]));
+            } else {
+                bordo.add(new JLabel("None"));
+            }
             mainCenterPanelBox1.add(bordo, gbc1);
         }
         for(int i = 0; i < n; i++){
@@ -373,10 +389,16 @@ public class AlertMessage {
             gbc1.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
-            //System.out.println(intArrayNuoveQuantitaOrdinate[i]);
-            bordo.add(new JLabel("" + intArrayNuoveQuantitaOrdinate[i]));
+            if(intArrayNuoveQuantitaOrdinate[i] != 0) {
+                bordo.add(new JLabel("" + intArrayNuoveQuantitaOrdinate[i]));
+            } else {
+                bordo.add(new JLabel("None"));
+            }
             mainCenterPanelBox1.add(bordo, gbc1);
         }
+
+
+
 
         sp1 = new JScrollPane(mainCenterPanelBox1);
         mainCenterPanelFlow1.add(sp1);
@@ -384,7 +406,7 @@ public class AlertMessage {
         JScrollPane sp2;
         JPanel mainCenterPanelBox2 = new JPanel(new GridBagLayout());
         GridBagConstraints gbc2 = new GridBagConstraints();
-        String[] headers2 = {"Nome farmaco", "Principio attivo", "Quantità richiesta"};
+        String[] headers2 = {"Nome farmaco", "Principio attivo", "Data scadenza","Quantità richiesta"};
 
         for(int i = 0; i < headers2.length; i++){
             gbc2.fill = GridBagConstraints.HORIZONTAL;
@@ -420,11 +442,26 @@ public class AlertMessage {
             bordo.add(new JLabel("" + principioAttivoFarmaciResidui[i]));
             mainCenterPanelBox2.add(bordo, gbc2);
         }
+
+
         for(int i = 0; i < m; i++){
             gbc2.fill = GridBagConstraints.HORIZONTAL;
             gbc2.ipadx = 20;
             gbc2.ipady = 20;
             gbc2.gridx = 2;
+            gbc2.gridy = i + 1;
+            JPanel bordo = new JPanel(new FlowLayout());
+            bordo.setBorder(border);
+            bordo.add(new JLabel("" + nuovaDataScadenzaResidua));
+            mainCenterPanelBox2.add(bordo, gbc2);
+        }
+
+
+        for(int i = 0; i < m; i++){
+            gbc2.fill = GridBagConstraints.HORIZONTAL;
+            gbc2.ipadx = 20;
+            gbc2.ipady = 20;
+            gbc2.gridx = 3;
             gbc2.gridy = i + 1;
             JPanel bordo = new JPanel(new FlowLayout());
             bordo.setBorder(border);
@@ -439,10 +476,10 @@ public class AlertMessage {
 
         mainPanel.add(sp3, BorderLayout.CENTER);
 
+
         buttonOk.setText("Conferma");
         buttonOk.setFont(new Font("Arial", 1,15));
-        System.out.println("OOOOOOOOOOOOOOOOOOOOOO");
-        createListenereButtonOkPrenotazioneParziale(n, m, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayNuoveQuantitaOrdinate, nomeFarmaciResidui, principioAttivoFarmaciResidui, intArrayQuantitaResidue);
+        createListenereButtonOkPrenotazioneParziale(n, m, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayNuoveQuantitaOrdinate, nomeFarmaciResidui, principioAttivoFarmaciResidui, intArrayQuantitaResidue, nuovaDataConsegna, nuovaDataConsegnaReisua, nuovaDataScadenzaResidua);
 
         buttonAnnulla.setText("Annulla");
         buttonAnnulla.setFont(new Font("Arial", 1,15));
@@ -564,56 +601,57 @@ public class AlertMessage {
         });
     }
 
-    public void createListenereButtonOkPrenotazione(int n, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] quantitaOrdinate) {
+    public void createListenereButtonOkPrenotazione(int n, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] quantitaOrdinate, LocalDate nuovaDataConsegna) {
         ActionListener AL = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    for (int i = 0; i < n; i++) {
-                        //AGGIORNA QUANTITà
-                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.farmaco SET quantita_disponibile = REPLACE(quantita_disponibile, '" + quantitaDisponibili[i] + "', '" + (quantitaDisponibili[i] - quantitaOrdinate[i]) + "') WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '" + principioAttivo[i] + "' AND Data_scadenza = '" + dateScadenza[i] + "';");
+                /*
+                boolean flag = false;
+                for(int i = 0; i < n; i++) {
+                    if (stringNome[i] == null || principioAttivo[i] == null || dateScadenza[i] == null || quantitaOrdinate[i] == 0) {
+                        flag = true;
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
                 }
-                int nuovoIdOrdine = 1;
-                LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
-                String indirizzoFarmacia = "";
-                int recapitoTelefonicoFarmacia = 0;
-
-                try {
-                    nuovoIdOrdine = generaIdOrdine();
-                    indirizzoFarmacia = getIndirizzoFarmacia();
-                    recapitoTelefonicoFarmacia = getRecapitoTelefonicoFarmacia();
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-
-                try {
-                    //AGGIORNA LISTA ORDINI
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdine + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                    //AGGIORNA ELENCO CONSEGNE
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdine + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-                //AGGIORNA DETTAGLIO ORDINE
-                try {
-                    for (int i = 0; i < n; i++) {
-                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdine + "', '" + stringNome[i] + "', '" + principioAttivo[i] + "', '" + quantitaOrdinate[i] + "', '" + dateScadenza[i] + "');");
+                if(!flag) {
+                 */
+                    try {
+                        for (int i = 0; i < n; i++) {
+                            //AGGIORNA QUANTITà
+                            Main.dbms_Azienda.setData("UPDATE dbms_azienda.farmaco SET quantita_disponibile = REPLACE(quantita_disponibile, '" + quantitaDisponibili[i] + "', '" + (quantitaDisponibili[i] - quantitaOrdinate[i]) + "') WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '" + principioAttivo[i] + "' AND Data_scadenza = '" + dateScadenza[i] + "';");
+                        }
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                    // elenco consegne, lista ordini e dettaglio ordine
-                }
+                    int nuovoIdOrdine = 1;
+                    String indirizzoFarmacia = "";
+                    int recapitoTelefonicoFarmacia = 0;
 
-                //SVUOTA ARRAY
-                Table.setIntArrayOldData(svuotaArrayInt());
-                Table.setIntArray(svuotaArrayInt());
-                Table.setStringNome(svuotaArrayString());
-                Table.setPrincipioAttivo(svuotaArrayString());
-                Table.setStringData(svuotaArrayDate());
+                    try {
+                        nuovoIdOrdine = generaIdOrdine();
+                        indirizzoFarmacia = getIndirizzoFarmacia();
+                        recapitoTelefonicoFarmacia = getRecapitoTelefonicoFarmacia();
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
 
+                    try {
+                        //AGGIORNA LISTA ORDINI
+                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdine + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                        //AGGIORNA ELENCO CONSEGNE
+                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdine + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //AGGIORNA DETTAGLIO ORDINE
+                    try {
+                        for (int i = 0; i < n; i++) {
+                            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdine + "', '" + stringNome[i] + "', '" + principioAttivo[i] + "', '" + quantitaOrdinate[i] + "', '" + dateScadenza[i] + "');");
+                        }
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                        // elenco consegne, lista ordini e dettaglio ordine
+                    }
+                //}
                 frame.dispose();
                 buttonOk.removeActionListener(this);
                 Main.schermataPrenotazionePanel.removeAll();
@@ -622,6 +660,8 @@ public class AlertMessage {
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
+
+
                 Main.schermataPrenotazionePanel.repaint();
                 Main.mainFrame.setVisible(true);
                 Main.cardLayout.show(Main.mainPanel, "SchermataFarmacista");
@@ -631,76 +671,92 @@ public class AlertMessage {
         buttonOk.addActionListener(AL);
     }
 
-    public void createListenereButtonOkPrenotazioneParziale(int n, int m, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] nuoveQuantitaOrdinate, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, int[] quantitaResidue){
+    public void createListenereButtonOkPrenotazioneParziale(int n, int m, String[] stringNome, String[] principioAttivo, Date[] dateScadenza, int[] quantitaDisponibili, int[] nuoveQuantitaOrdinate, String[] nomeFarmaciResidui, String[] principioAttivoFarmaciResidui, int[] quantitaResidue, LocalDate nuovaDataConsegna, LocalDate nuovaDataConsegnaResidua, LocalDate nuovaDataScadenzaResidua){
         ActionListener ALP = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    for (int i = 0; i < n; i++) {
-                        //AGGIORNA QUANTITà
-                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.farmaco SET quantita_disponibile = REPLACE(quantita_disponibile, '" + quantitaDisponibili[i] + "', '" + (quantitaDisponibili[i] - nuoveQuantitaOrdinate[i]) + "') WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '" + principioAttivo[i] + "' AND Data_scadenza = '" + dateScadenza[i] + "';");
+                boolean flag = false;
+                for(int i = 0; i < n; i++) {
+                    if (stringNome[i] == null || principioAttivo[i] == null || dateScadenza[i] == null || nuoveQuantitaOrdinate[i] == 0) {
+                        flag = true;
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
                 }
-                int nuovoIdOrdine = 1;
-                LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
-                String indirizzoFarmacia = "";
-                int recapitoTelefonicoFarmacia = 0;
+                    if (!flag) {
+                        try {
+                            for (int i = 0; i < n; i++) {
+                                //AGGIORNA QUANTITà
+                                Main.dbms_Azienda.setData("UPDATE dbms_azienda.farmaco SET quantita_disponibile = REPLACE(quantita_disponibile, '" + quantitaDisponibili[i] + "', '" + (quantitaDisponibili[i] - nuoveQuantitaOrdinate[i]) + "') WHERE nome_farmaco = '" + stringNome[i] + "' AND principio_attivo = '" + principioAttivo[i] + "' AND Data_scadenza = '" + dateScadenza[i] + "';");
+                            }
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        int nuovoIdOrdine = 1;
+                        String indirizzoFarmacia = "";
+                        int recapitoTelefonicoFarmacia = 0;
 
-                try {
-                    nuovoIdOrdine = generaIdOrdine();
-                    indirizzoFarmacia = getIndirizzoFarmacia();
-                    recapitoTelefonicoFarmacia = getRecapitoTelefonicoFarmacia();
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
+                        try {
+                            nuovoIdOrdine = generaIdOrdine();
+                            indirizzoFarmacia = getIndirizzoFarmacia();
+                            recapitoTelefonicoFarmacia = getRecapitoTelefonicoFarmacia();
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
 
-                try {
-                    //AGGIORNA LISTA ORDINI
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdine + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                    //AGGIORNA ELENCO CONSEGNE
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdine + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-                //AGGIORNA DETTAGLIO ORDINE
-                try {
-                    for (int i = 0; i < n; i++) {
-                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdine + "', '" + stringNome[i] + "', '" + principioAttivo[i] + "', '" + nuoveQuantitaOrdinate[i] + "', '" + dateScadenza[i] + "');");
+                        try {
+                            //AGGIORNA LISTA ORDINI
+                            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdine + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                            //AGGIORNA ELENCO CONSEGNE
+                            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdine + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegna + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                        //AGGIORNA DETTAGLIO ORDINE
+                        try {
+                            for (int i = 0; i < n; i++) {
+                                Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdine + "', '" + stringNome[i] + "', '" + principioAttivo[i] + "', '" + nuoveQuantitaOrdinate[i] + "', '" + dateScadenza[i] + "');");
+                            }
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            ex.printStackTrace();
+                        }
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
+                    // QUANTITA RESIDUE
 
-                // QUANTITA RESIDUE
+                    int nuovoIdOrdineResiduo = 0;
+                    String indirizzoFarmacia = "";
+                    int recapitoTelefonicoFarmacia = 0;
+                    try{
 
-                int nuovoIdOrdineResiduo = nuovoIdOrdine + 1;
-                LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(2);
-                LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusDays(3).plusMonths(3);
+                        if(!flag) {
+                            nuovoIdOrdineResiduo = generaIdOrdine() + 1;
+                        } else {
+                            nuovoIdOrdineResiduo = generaIdOrdine();
+                        }
 
-                try {
-                    //AGGIORNA LISTA ORDINI
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + nuovaDataConsegnaResidua + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                    //AGGIORNA ELENCO CONSEGNE
-                    Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegnaResidua + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-                //AGGIORNA DETTAGLIO ORDINE
-                try {
-                    for (int i = 0; i < m; i++) {
-                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + nomeFarmaciResidui[i] + "', '" + principioAttivoFarmaciResidui[i] + "', '" + quantitaResidue[i] + "', '" + nuovaDataScadenzaResidua + "');");
+
+                        indirizzoFarmacia = getIndirizzoFarmacia();
+                        recapitoTelefonicoFarmacia = getRecapitoTelefonicoFarmacia();
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex){
+                        ex.printStackTrace();
                     }
-                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
-                    ex.printStackTrace();
-                }
-                //SVUOTA ARRAY
-                Table.setIntArrayOldData(svuotaArrayInt());
-                Table.setIntArray(svuotaArrayInt());
-                Table.setStringNome(svuotaArrayString());
-                Table.setPrincipioAttivo(svuotaArrayString());
-                Table.setStringData(svuotaArrayDate());
+
+
+                    try {
+                        //AGGIORNA LISTA ORDINI
+                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`lista_ordini` (`id_ordine`, `data_consegna_ordine`, `nome_farmacia`, `stato_ordine`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + nuovaDataConsegnaResidua + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                        //AGGIORNA ELENCO CONSEGNE
+                        Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`elenco_consegne` (`id_ordine`, `indirizzo_postale`, `recapito_telefonico`, `data_consegna`, `nome_farmacia`, `stato_consegna`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + indirizzoFarmacia + "', '" + recapitoTelefonicoFarmacia + "', '" + nuovaDataConsegnaResidua + "', '" + SchermataLogin.nomeFarmacia + "', '0');");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    //AGGIORNA DETTAGLIO ORDINE
+                    try {
+                        for (int i = 0; i < m; i++) {
+                            Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`dettaglio_ordine` (`id_ordine`, `nome_farmaco`, `principio_attivo`, `quantita`, `data_scadenza`) VALUES ('" + nuovoIdOrdineResiduo + "', '" + nomeFarmaciResidui[i] + "', '" + principioAttivoFarmaciResidui[i] + "', '" + quantitaResidue[i] + "', '" + nuovaDataScadenzaResidua + "');");
+                        }
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        ex.printStackTrace();
+                    }
+
                 buttonOk.removeActionListener(this);
                 Main.schermataPrenotazionePanel.removeAll();
                 try {
