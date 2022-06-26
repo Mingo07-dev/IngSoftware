@@ -45,7 +45,7 @@ public class SchermataScorte {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, principio_attivo, quantita_disponibile, scadenza_farmaco FROM dbms_farmacia.elenco_scorte WHERE nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
+            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, principio_attivo, quantita_disponibile, scadenza_farmaco FROM dbms_farmacia.elenco_scorte WHERE nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"' AND quantita_disponibile > 0;");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }

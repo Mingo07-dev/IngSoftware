@@ -330,12 +330,22 @@ public class Button extends JButton {
             int[] intArrayOld = Table.getIntArrayOldData();
             String[] stringNome = Table.getStringNome();
             Date[] stringDate = Table.getStringData();
+
+            boolean flag = false;
+
             try {
                 for (int i = 0; i < n; i++) {
-                    if (intArrayOld[i] > 0) {
+                    if (intArrayOld[i] > 0 && intarray[i] <= intArrayOld[i]) {
                         Main.dbms_Azienda.setData("UPDATE dbms_farmacia.elenco_scorte SET quantita_disponibile = REPLACE(quantita_disponibile, '" + intArrayOld[i] + "', '" + (intArrayOld[i] - intarray[i]) + "') WHERE nome_Farmacia = '" + SchermataLogin.nomeFarmacia + "' AND nome_farmaco = '" + stringNome[i] + "' AND scadenza_farmaco = '" + stringDate[i] + "';");
+                    } else {
+                        flag = true;
                     }
                 }
+                if(flag){
+                    JOptionPane.showMessageDialog(Main.mainFrame, "Stai cercando di rimuovere più scorte di quelle che hai, stai attento e ricontrolla");
+                    flag = false;
+                }
+                Main.dbms_Azienda.setData("DELETE FROM `dbms_farmacia`.`elenco_scorte` WHERE (`quantita_disponibile` = '0');");
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
             }
