@@ -100,6 +100,7 @@ public class Button extends JButton {
     }
 
 
+
     public void createListenerButtonChangeViewPrenotazione(String viewToShow ){
         this.addActionListener(e -> {
             Main.schermataPrenotazionePanel.removeAll();

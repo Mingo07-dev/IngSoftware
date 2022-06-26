@@ -520,6 +520,51 @@ public class AlertMessage {
                 String nomeFarmacia = nomeFarmaciaField.getText();
                 String indirizzoFarmacia = indirizzoFarmaciaField.getText();
                 int recapitoTelefonico =Integer.parseInt(recapitoTelefonicoField.getText());
+
+                ResultSet farmaciaPAutomatica = null;
+                try {
+                    farmaciaPAutomatica = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.prenotazione_automatica WHERE nome_farmacia = '"+nomeFarmacia+"'");
+                    farmaciaPAutomatica.first();
+                } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    if(!farmaciaPAutomatica.next()){
+                        int n;
+                        ResultSet rs = null;
+                        try {
+                            rs = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.farmaco_non_da_banco");
+                            n = Main.dbms_Azienda.getResultSetRows(rs);
+                            rs.first();
+                        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        String nomeFarmacoNonDaBanco[] = new String[n];
+                        String principioAttivoNonDaBanco[] = new String[n];
+
+                        for(int i = 0; i < n; i++){
+                            try {
+                                nomeFarmacoNonDaBanco[i] = rs.getString(1);
+                                principioAttivoNonDaBanco[i] = rs.getString(2);
+                                rs.next();
+                            } catch (SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+                        for(int i = 0; i < n; i++){
+                            try {
+                                Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`prenotazione_automatica` (`nome_farmaco`, `principio_attivo`, `quantita`, `nome_farmacia`) VALUES ('"+ nomeFarmacoNonDaBanco[i] +"', '"+ principioAttivoNonDaBanco[i] +"', '0', '"+nomeFarmacia+"');");
+                            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                        }
+
+                    }
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
                 try {
                     Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista', '0');");
                     Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmacista` (`Email`, `Password`, `Mansione`, `Nome_farmacia`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista','"+ nomeFarmacia +"');");

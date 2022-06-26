@@ -5,19 +5,27 @@ import farmacie.miglioriconnoi.Common.Button;
 import farmacie.miglioriconnoi.Common.Image;
 import farmacie.miglioriconnoi.Common.Table;
 import farmacie.miglioriconnoi.*;
+import farmacie.miglioriconnoi.Utils.Ricerca;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataPrenotazione {
+    private Table tableConsegne;
+
     public SchermataPrenotazione() throws FileNotFoundException {
         JPanel mainPanel = new JPanel(new BorderLayout());
 
         JPanel mainNorthPanel = new JPanel(new BorderLayout());
         Image image = new Image("logo.png",100,100);
+
 
         mainNorthPanel.add(image, BorderLayout.WEST);
 
@@ -49,7 +57,7 @@ public class SchermataPrenotazione {
         JScrollPane sp = new JScrollPane();
         JLabel resultLabel = new JLabel("Nessuna Ordine");
         ResultSet queryResult = null;
-        Table tableConsegne = null;
+        tableConsegne = null;
 
         try {
             queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.farmaco;");
@@ -90,6 +98,51 @@ public class SchermataPrenotazione {
         mainSouthPanel.add(buttonAggiorna);
 
         mainPanel.add(mainSouthPanel, BorderLayout.SOUTH);
+
+
+        //RICERCA
+        JPanel ricerca = new JPanel();
+        JTextField ricercaField = new JTextField("Ricerca Ex: 'Brufen'");
+        ricercaField.setPreferredSize(new Dimension(150,30));
+        ricercaField.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                ricercaField.setText("");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        ricercaField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    if(!ricercaField.getText().equals(""))
+                        Ricerca.searchInTablePrenota(ricercaField.getText(), tableConsegne.n, tableConsegne);
+                    else{
+                        Ricerca.restoreTable(tableConsegne.n, tableConsegne,ricercaField, "Ricerca Ex: 'Brufen'");
+                    }
+                }
+            }
+        });
+        ricerca.add(ricercaField);
+        mainNorthPanel.add(ricerca, BorderLayout.CENTER);
+        //FINE RICERCA
 
         Main.schermataPrenotazionePanel.add(mainPanel, BorderLayout.CENTER);
     }

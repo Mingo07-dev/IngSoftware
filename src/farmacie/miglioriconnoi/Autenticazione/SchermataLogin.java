@@ -18,7 +18,7 @@ public class SchermataLogin {
     public static TextField emailField;
     public static PasswordField passwordField;
     private static Button buttonLogin;
-    public static String email;
+    public static String email = "";
     public static String nomeFarmacia;
     public static String mansione = "";
 

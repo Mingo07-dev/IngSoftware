@@ -204,6 +204,8 @@ public class Main {
         NotificaMancatoCaricamentoScorte notificaMancatoCaricamentoScorte = new NotificaMancatoCaricamentoScorte();
 
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
+        WindowListener WL = createWindowListener();
+        mainFrame.addWindowListener(WL);
         //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //IMPOSTA IL LAYOUT INIZIALE COME BORDER
@@ -216,6 +218,35 @@ public class Main {
         mainFrame.add(mainPanel, BorderLayout.CENTER);
         //RENDE VISIBILE IL FRAME, LA PRIMA SCHERMATA MOSTRATA SARà LA SCHERMATA AUTENTICAZIONE
         mainFrame.setVisible(true);
+    }
+
+    private static WindowListener createWindowListener(){
+        WindowListener WL = new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {
+                if(!SchermataLogin.email.equals("")){
+                    try {
+                        Main.dbms_Azienda.setData("UPDATE `dbms_azienda`.`utente` SET `stato` = '0' WHERE (`email` = '"+SchermataLogin.email+"');");
+                    } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                }
+            }
+            @Override
+            public void windowClosed(WindowEvent e) {}
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        };
+
+        return WL;
     }
 
 }

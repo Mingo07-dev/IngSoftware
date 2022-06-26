@@ -19,7 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SchermataListaOrdini {
-    Table tableConsegne = null;
+    private Table tableConsegne = null;
     public SchermataListaOrdini() throws FileNotFoundException {
 
         JPanel mainPanel = new JPanel(new BorderLayout());
@@ -119,7 +119,7 @@ public class SchermataListaOrdini {
                     if(!ricercaField.getText().equals(""))
                         Ricerca.searchInTableText(ricercaField.getText(), tableConsegne.n, tableConsegne);
                     else{
-                        Ricerca.restoreTable(tableConsegne.n, tableConsegne,ricercaField);
+                        Ricerca.restoreTable(tableConsegne.n, tableConsegne,ricercaField, "Ricerca Ex: '2022-06-20'");
                     }
                 }
             }
