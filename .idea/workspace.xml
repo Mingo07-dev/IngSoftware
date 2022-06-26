@@ -10,8 +10,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
-      <change beforePath="$PROJECT_DIR$/.idea/IngSoftware.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlAutenticazione.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlCorriere.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlFarmacista.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlImpiegatoAzienda.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlRecuperoCredenziali.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Control/ControlRegistrazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataAutenticazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataAutenticazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataCorriere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataCorriere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataFarmacista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataFarmacista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataImpiegatoAzienda.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataImpiegatoAzienda.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataRecuperoCredenziali.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataRecuperoCredenziali.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataRegistrazione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/Views/SchermataRegistrazione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/PasswordField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/PasswordField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/SchermataConsegne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/SchermataConsegne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/SchermataScorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/SchermataScorte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataListaOrdini.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataListaOrdini.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
