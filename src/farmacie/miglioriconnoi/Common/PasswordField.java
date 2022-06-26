@@ -9,6 +9,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 public class PasswordField extends JPasswordField {
+    //MOSTRA PASSWORD
+    //httpProxyPassword.setEchoChar((char) 0);
+    //NASCONDI PASSWORD
+    //httpProxyPassword.setEchoChar('*');
     public PasswordField(int maxCharacters, int preferredWidth, int preferredHeight){
         this.setColumns(maxCharacters);
         this.setText("Password");
@@ -19,19 +23,51 @@ public class PasswordField extends JPasswordField {
             public void mouseClicked(MouseEvent e) {
                 PasswordField.this.setText("");
             }
+
             @Override
-            public void mousePressed(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+
+            }
+
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+            }
+
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+            }
         });
     }
 
-    public static void addListenerCheckboxMostraPassword(ItemListener itemlistener, JCheckBox mostraPassword) {
+    public static void addListenerCheckboxMostraPassword(JCheckBox mostraPassword, PasswordField passwordField) {
+
+        ItemListener itemlistener = new ItemListener() {public void itemStateChanged(ItemEvent itemE) {
+
+            AbstractButton absB = (AbstractButton) itemE.getSource();
+
+            Color fgrnd = absB.getForeground();
+
+            Color bgrnd = absB.getBackground();
+
+            int st = itemE.getStateChange();
+
+            if (st == ItemEvent.SELECTED) {
+                passwordField.setEchoChar((char) 0);
+
+            }
+
+            if (st == ItemEvent.DESELECTED) {
+                passwordField.setEchoChar('*');
+            }
+
+        }};
         mostraPassword.addItemListener(itemlistener);
+
     }
 
     public static void addListenerCheckboxMostraPasswordEConfirmPassword(JCheckBox mostraPassword, PasswordField passwordField, PasswordField confirmPasswordFiels) {
