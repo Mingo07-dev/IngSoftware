@@ -1,8 +1,7 @@
 package farmacie.miglioriconnoi;
 
+import farmacie.miglioriconnoi.Autenticazione.Views.*;
 import farmacie.miglioriconnoi.Utils.*;
-import farmacie.miglioriconnoi.Autenticazione.*;
-import farmacie.miglioriconnoi.Common.*;
 import farmacie.miglioriconnoi.GestioneConsegne.*;
 import farmacie.miglioriconnoi.GestioneMagazzini.*;
 import farmacie.miglioriconnoi.GestionePrenotazioni.*;
@@ -10,7 +9,6 @@ import farmacie.miglioriconnoi.GestioneSegnalazioni.*;
 
 
 import java.awt.*;
-import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import javax.swing.*;
