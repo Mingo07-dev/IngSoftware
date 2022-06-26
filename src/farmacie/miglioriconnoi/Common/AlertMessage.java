@@ -809,16 +809,4 @@ public class AlertMessage {
         }
         return recapitoTelefonico;
     }
-    public int[] svuotaArrayInt(){
-        int[] array = new int[0];
-        return array;
-    }
-    public String[] svuotaArrayString(){
-        String[] array = new String[0];
-        return array;
-    }
-    public Date[] svuotaArrayDate(){
-        Date[] array = new Date[0];
-        return array;
-    }
 }
