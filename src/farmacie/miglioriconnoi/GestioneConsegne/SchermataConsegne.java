@@ -1,7 +1,7 @@
 package farmacie.miglioriconnoi.GestioneConsegne;
 
 
-import farmacie.miglioriconnoi.Autenticazione.SchermataLogin;
+import farmacie.miglioriconnoi.Autenticazione.Views.SchermataLogin;
 import farmacie.miglioriconnoi.Common.Button;
 import farmacie.miglioriconnoi.Common.Image;
 import farmacie.miglioriconnoi.Common.Table;

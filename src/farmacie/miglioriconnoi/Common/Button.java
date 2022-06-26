@@ -1,9 +1,9 @@
 package farmacie.miglioriconnoi.Common;
 
 
-import farmacie.miglioriconnoi.Autenticazione.SchermataLogin;
-import farmacie.miglioriconnoi.Autenticazione.SchermataRecuperoCredenziali;
-import farmacie.miglioriconnoi.Autenticazione.SchermataRegistrazione;
+import farmacie.miglioriconnoi.Autenticazione.Views.SchermataLogin;
+import farmacie.miglioriconnoi.Autenticazione.Views.SchermataRecuperoCredenziali;
+import farmacie.miglioriconnoi.Autenticazione.Views.SchermataRegistrazione;
 import farmacie.miglioriconnoi.GestioneConsegne.SchermataConsegne;
 import farmacie.miglioriconnoi.GestioneMagazzini.SchermataScorte;
 import farmacie.miglioriconnoi.GestionePrenotazioni.SchermataListaOrdini;
@@ -14,6 +14,7 @@ import farmacie.miglioriconnoi.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -82,6 +83,10 @@ public class Button extends JButton {
 
         this.setFont(new Font(fontName, style, size));
 
+    }
+
+    public void addListener(ActionListener listener){
+        this.addActionListener(listener);
     }
 
 
