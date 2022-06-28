@@ -639,6 +639,7 @@ public class Table extends JPanel {
                     try {
                         rs1.first();
                         Main.dbms_Azienda.setData("UPDATE dbms_azienda.elenco_consegne SET Stato_consegna = '1' WHERE dbms_azienda.elenco_consegne.Id_ordine = '"+ rs1.getInt("Id_ordine")+"';");
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.lista_ordini SET stato_ordine = '1' WHERE dbms_azienda.lista_ordini.Id_ordine = '"+ rs1.getInt("Id_ordine")+"';");
                     } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                         ex.printStackTrace();
                     }
@@ -651,7 +652,7 @@ public class Table extends JPanel {
                     }
                     Main.schermataConsegnePanel.repaint();
                     Main.mainFrame.setVisible(true);
-
+                    Main.cardLayout.show(Main.mainPanel, "SchermataConsegne");
                 });
 
             case 2: //BOTTONE CARICO SCORTE
