@@ -47,35 +47,31 @@ public class Table extends JPanel {
         this.m = Main.dbms_Azienda.getResultSetColumns(rs);
 
         this.intArrayLocal = new int[this.n];
-        for (int i:this.intArrayLocal
-             ) {
+        for(int i = 0; i < this.n; i++){
             this.intArrayLocal[i] = 0;
         }
 
         this.intArrayOldDataLocal = new int[this.n];
-        for (int i:this.intArrayOldDataLocal
-        ) {
+        for(int i = 0; i < this.n; i++){
             this.intArrayOldDataLocal[i] = 0;
         }
 
         this.stringDataLocal = new Date[this.n];
         int l = 0;
-        for (Date i:this.stringDataLocal
-        ) {
+        for(int i = 0; i < this.n; i++){
             this.stringDataLocal[l++] = Date.valueOf("2022-12-12");
         }
         l=0;
 
         this.stringNomeLocal = new String[this.n];
-        for (String i:this.stringNomeLocal
-        ) {
+        for(int i = 0; i < this.n; i++){
             this.stringNomeLocal[l++] = "0";
         }
+
         l=0;
 
         this.principioAttivoLocal = new String[this.n];
-        for (String i:this.principioAttivoLocal
-        ) {
+        for(int i = 0; i < this.n; i++){
             this.principioAttivoLocal[l++] = "0";
         }
         l=0;
@@ -83,6 +79,7 @@ public class Table extends JPanel {
         this.headers = headers;
         this.setLayout(new GridBagLayout());
     }
+
 
 
 
@@ -351,6 +348,9 @@ public class Table extends JPanel {
     }
 
     public void fillTable_oneEditTextModificaOrdine() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        for(int i = 0; i < this.n; i++){
+            this.intArrayLocal[i] = -1;
+        }
         GridBagConstraints gbc = new GridBagConstraints();
         for(int i = 0; i < this.headers.length ; i++){
             gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -400,7 +400,7 @@ public class Table extends JPanel {
                         intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
                     }
                     else{
-                        intArrayLocal[textField.contatore] = 0;
+                        intArrayLocal[textField.contatore] = -1;
                     }
 
                 }
@@ -420,8 +420,12 @@ public class Table extends JPanel {
     }
 
     public void fillTable_oneEditTextPrenotazioneAutomatica() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        for(int i = 0; i < this.n; i++){
+            this.intArrayLocal[i] = -1;
+        }
         GridBagConstraints gbc = new GridBagConstraints();
         for(int i = 0; i < this.headers.length ; i++){
+
             gbc.fill = GridBagConstraints.HORIZONTAL;
             gbc.ipadx = 20;
             gbc.ipady = 20;
@@ -435,7 +439,6 @@ public class Table extends JPanel {
         cont = 0;
 
         for(int i = 0; i < n ; i++){
-
             for(int j = 0; j < m; j++){
                 gbc.fill = GridBagConstraints.HORIZONTAL;
                 gbc.ipadx = 20;
@@ -456,6 +459,7 @@ public class Table extends JPanel {
             bordo.setBorder(border);
             stringNomeLocal[cont] = rs.getString(1);
             intArrayOldDataLocal[cont] = Integer.parseInt(rs.getString(3));
+
             TextField textField = new TextField(10,"0", 150,25,cont);
             textField.addFocusListener(new FocusListener() {
                 @Override
@@ -464,14 +468,15 @@ public class Table extends JPanel {
 
                 @Override
                 public void focusLost(FocusEvent e) {
-                    if (!textField.getText().equals("") || !textField.getText().equals("0") ) {
+                    if (!textField.getText().equals("")) {
                         intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
                     }
                     else{
-                        intArrayLocal[textField.contatore] = 0;
+                        intArrayLocal[textField.contatore] = -1;
                     }
 
                 }
+
             });
             bordo.add(textField, gbc);
             this.add(bordo, gbc);
@@ -610,7 +615,7 @@ public class Table extends JPanel {
                         intArrayLocal[textField.contatore] = Integer.parseInt(textField.getText());
                     }
                     else{
-                        intArrayLocal[textField.contatore] = 0;
+                        intArrayLocal[textField.contatore] = -1;
                     }
 
                 }

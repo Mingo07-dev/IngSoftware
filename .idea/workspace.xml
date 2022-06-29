@@ -10,9 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="df8fbf04-678a-4c1b-82d6-b22de56d344c" name="Changes" comment="mansione selection added">
+      <change afterPath="$PROJECT_DIR$/src/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/utente.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MainProject_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/MainProject_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MainProject_jar/MainProject.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MainProject_jar/MainProject.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/utente.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataFarmacista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Autenticazione/SchermataFarmacista.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/AlertMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Button.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneConsegne/NotificaMancatoCaricamentoScorte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Common/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/AggiuntaProduzione.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestioneMagazzini/AggiuntaProduzione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaOrdine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaOrdine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaPrenotazioneAutomatica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/GestionePrenotazioni/SchermataModificaPrenotazioneAutomatica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/farmacie/miglioriconnoi/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,22 +66,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mail.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Marco/Documents/GitHub/IngSoftware/lib/mail.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="farmacie.miglioriconnoi.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="farmacie.miglioriconnoi.Main" />

@@ -50,7 +50,7 @@ public class SchermataFarmacista  {
 
         Button modificaPrenotazioneAutomatica = new Button("SchermataFarmacista",  "Modifica Prenotazione Automatica", 300,50);
         modificaPrenotazioneAutomatica.changeFontButton("Arial",1, 25);
-        modificaPrenotazioneAutomatica.createListenerButtonChangeView("SchermataModificaPrenotazioneAutomatica");
+        modificaPrenotazioneAutomatica.createListenerButtonChangeViewModPrenAut("SchermataModificaPrenotazioneAutomatica");
 
         boxLeft.add(prenotaFarmaci);
         boxLeft.add(modificaPrenotazioneAutomatica);

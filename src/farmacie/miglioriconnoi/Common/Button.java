@@ -99,6 +99,44 @@ public class Button extends JButton {
         });
     }
 
+    public void createListenerButtonChangeViewConsegneCorriere(String viewToShow ){
+        this.addActionListener(e -> {
+            Main.schermataConsegnePanel.removeAll();
+            try {
+                SchermataConsegne schermataConsegne = new SchermataConsegne();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataConsegnePanel.repaint();
+            Main.mainFrame.setVisible(true);
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
+    public void createListenerButtonChangeViewModPrenAut(String viewToShow ){
+        this.addActionListener(e -> {
+            Main.schermataModificaPrenotazioneAutomaticaPanel.removeAll();
+            try {
+                SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
+            } catch (FileNotFoundException ex) {
+                throw new RuntimeException(ex);
+            }
+            Main.schermataModificaPrenotazioneAutomaticaPanel.repaint();
+            Main.mainFrame.setVisible(true);
+            //mostra la nuova schermata
+            Main.cardLayout.show(Main.mainPanel, viewToShow);
+
+            //salva il nome della schermata che abbiamo appena lasciato, per poter eventualmente
+            //tornare indietro tramite apposito bottone
+            Button.lastView = "" + this.currentView;
+        });
+    }
+
 
     public void createListenerButtonChangeViewPrenotazione(String viewToShow ){
         this.addActionListener(e -> {
@@ -267,16 +305,17 @@ public class Button extends JButton {
         });
     }
 
-    public void createListenerButtonAggiorna(String viewToShow, int n){
+    public void createListenerButtonAggiorna(String viewToShow, int n, Table table){
         this.addActionListener(e -> {
 
-            int[] intarray = Table.getIntArray();
-            int[] intArrayOld = Table.getIntArrayOldData();
-            String[] stringNome = Table.getStringNome();
-            Date[] stringDate = Table.getStringData();
+            int[] intarray = table.getIntArray();
+            int[] intArrayOld = table.getIntArrayOldData();
+            String[] stringNome = table.getStringNome();
+            Date[] stringDate = table.getStringData();
             try {
                 for(int i = 0; i < n; i++){
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ SchermataModificaOrdine.Id_Ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
+                    if(intarray[i] != -1)
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.dettaglio_ordine SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE Id_ordine = '"+ SchermataModificaOrdine.Id_Ordine +"' AND Nome_farmaco = '"+stringNome[i]+"' AND Data_scadenza = '"+stringDate[i]+"';");
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
@@ -296,15 +335,18 @@ public class Button extends JButton {
         });
     }
 
-    public void createListenerButtonAggiornaPrenotazioneAutomatica(String viewToShow, int n){
+    public void createListenerButtonAggiornaPrenotazioneAutomatica(String viewToShow, int n, Table table){
         this.addActionListener(e -> {
 
-            int[] intarray = Table.getIntArray();
-            int[] intArrayOld = Table.getIntArrayOldData();
-            String[] stringNome = Table.getStringNome();
+            int[] intarray = table.getIntArray();
+            int[] intArrayOld = table.getIntArrayOldData();
+            String[] stringNome = table.getStringNome();
             try {
                 for(int i = 0; i < n; i++){
-                    Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '"+intarray[i]+"') WHERE nome_farmaco = '"+stringNome[i]+"';");
+                    if(intarray[i] != -1){
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '"+intArrayOld[i]+"', '0') WHERE nome_farmaco = '"+stringNome[i]+"' AND nome_farmacia = '"+SchermataLogin.nomeFarmacia+"';");
+                        Main.dbms_Azienda.setData("UPDATE dbms_azienda.prenotazione_automatica SET Quantita = REPLACE(Quantita, '0', '"+intarray[i]+"') WHERE nome_farmaco = '"+stringNome[i]+"' AND nome_farmacia = '"+SchermataLogin.nomeFarmacia+"';");
+                    }
                 }
             } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                 ex.printStackTrace();
@@ -313,7 +355,7 @@ public class Button extends JButton {
 
             Main.schermataModificaPrenotazioneAutomaticaPanel.removeAll();
             try {
-                SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
+                Main.schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -486,8 +528,8 @@ public class Button extends JButton {
                 }
                 p = 0;
                 LocalDate nuovaDataConsegna = LocalDate.now().plusDays(3);
-                LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(2);
-                LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusDays(3).plusMonths(3);
+                LocalDate nuovaDataConsegnaResidua = LocalDate.now().plusDays(3).plusMonths(1);
+                LocalDate nuovaDataScadenzaResidua = LocalDate.now().plusMonths(1).plusYears(1);
 
                 // MOSTRARE UN RIEPILOGO DIVISO IN FARMACI DISPONIBILI E FARMACI NON DISPONIBILI INTERAMENTE
                 AlertMessage tuttoQuasiDisponibile = new AlertMessage(nuoveQuantitaOrdinate.length, quantitaResidue.length, nuoveQuantitaOrdinate, quantitaDisponibili, nuoveStringNome, nuovoPrincipioAttivo, nuovoDateScadenza, quantitaResidue, nomeFarmaciResidui, nomePrincipioAttivoFarmaciResidui, nuovaDataConsegna,nuovaDataConsegnaResidua, nuovaDataScadenzaResidua);

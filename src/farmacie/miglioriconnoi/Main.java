@@ -58,6 +58,36 @@ public class Main {
     //FINE
 
 
+    //CREAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
+    public static SchermataAutenticazione schermataAutenticazione;
+    public static SchermataRegistrazione schermataRegistrazione;
+    public static SchermataLogin schermataLogin;
+    public static SchermataRecuperoCredenziali schermataRecuperoCredenziali;
+    //FINE
+
+    //CREAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
+    public static SchermataFarmacista schermataFarmacista;
+    public static SchermataCaricoScorte schermataCaricoScorte;
+    public static SchermataListaOrdini schermataListaOrdini;
+    public static SchermataModificaOrdine schermataModificaOrdine;
+    public static SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica;
+    public static SchermataPrenotazione schermataPrenotazione;
+    public static SchermataScorte schermataScorte;
+    public static SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine;
+    //FINE
+
+    //CREAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
+    public static SchermataCorriere schermataCorriere;
+    public static SchermataConsegne schermataConsegne;
+    //FINE
+
+    //CREAZIONE DELLE SCHERMATE RELATIVE ALL'IMPIEGATO
+    public static SchermataImpiegatoAzienda schermataImpiegatoAzienda;
+    public static SchermataSegnalazioniRisolte schermataSegnalazioniRisolte;
+    public static SchermataSegnalazioniIrrisolte schermataSegnalazioniIrrisolte;
+    //FINE
+
+
     //PANNELLO CHE VERRà INIZIALIZZATO COME CARD LAYOUT PER CONTENERE TUTTE LE SCHERMATE
     public static JPanel mainPanel;
 
@@ -170,32 +200,32 @@ public class Main {
 
 
         //CREAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
-        SchermataAutenticazione schermataAutenticazione = new SchermataAutenticazione();
-        SchermataRegistrazione schermataRegistrazione= new SchermataRegistrazione();
-        SchermataLogin schermataLogin = new SchermataLogin();
-        SchermataRecuperoCredenziali schermataRecuperoCredenziali = new SchermataRecuperoCredenziali();
+        schermataAutenticazione = new SchermataAutenticazione();
+        schermataRegistrazione= new SchermataRegistrazione();
+        schermataLogin = new SchermataLogin();
+        schermataRecuperoCredenziali = new SchermataRecuperoCredenziali();
         //FINE
 
         //CREAZIONE DELLE SCHERMATE RELATIVE AL FARMACISTA
-        SchermataFarmacista schermataFarmacista = new SchermataFarmacista();
-        SchermataCaricoScorte schermataCaricoScorte = new SchermataCaricoScorte(0);
-        SchermataListaOrdini schermataListaOrdini = new SchermataListaOrdini();
-        SchermataModificaOrdine schermataModificaOrdine = new SchermataModificaOrdine(0);
-        SchermataModificaPrenotazioneAutomatica schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
-        SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
-        SchermataScorte schermataScorte = new SchermataScorte();
-        SchermataVisualizzaDettaglioOrdine schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine(0);
+        schermataFarmacista = new SchermataFarmacista();
+        schermataCaricoScorte = new SchermataCaricoScorte(0);
+        schermataListaOrdini = new SchermataListaOrdini();
+        schermataModificaOrdine = new SchermataModificaOrdine(0);
+        schermataModificaPrenotazioneAutomatica = new SchermataModificaPrenotazioneAutomatica();
+        schermataPrenotazione = new SchermataPrenotazione();
+        schermataScorte = new SchermataScorte();
+        schermataVisualizzaDettaglioOrdine = new SchermataVisualizzaDettaglioOrdine(0);
         //FINE
 
         //CREAZIONE DELLE SCHERMATE RELATIVE AL CORRIERE
-        SchermataCorriere schermataCorriere = new SchermataCorriere();
-        SchermataConsegne schermataConsegne = new SchermataConsegne();
+        schermataCorriere = new SchermataCorriere();
+        schermataConsegne = new SchermataConsegne();
         //FINE
 
         //CREAZIONE DELLE SCHERMATE RELATIVE ALL'IMPIEGATO
-        SchermataImpiegatoAzienda schermataImpiegatoAzienda = new SchermataImpiegatoAzienda();
-        SchermataSegnalazioniRisolte schermataSegnalazioniRisolte = new SchermataSegnalazioniRisolte();
-        SchermataSegnalazioniIrrisolte schermataSegnalazioniIrrisolte = new SchermataSegnalazioniIrrisolte();
+        schermataImpiegatoAzienda = new SchermataImpiegatoAzienda();
+        schermataSegnalazioniRisolte = new SchermataSegnalazioniRisolte();
+        schermataSegnalazioniIrrisolte = new SchermataSegnalazioniIrrisolte();
         //FINE
 
 

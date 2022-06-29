@@ -44,6 +44,7 @@ public class AlertMessage {
     public static TextField recapitoTelefonicoField;
 
     public static  JButton buttonOk = new JButton();
+    public static  JButton buttonOkParziale = new JButton();
     public static JButton buttonAnnulla = new JButton();
     private JFrame frame = new JFrame("Messaggio");
     private Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
@@ -483,8 +484,8 @@ public class AlertMessage {
         mainPanel.add(sp3, BorderLayout.CENTER);
 
 
-        buttonOk.setText("Conferma");
-        buttonOk.setFont(new Font("Arial", 1,15));
+        buttonOkParziale.setText("Conferma");
+        buttonOkParziale.setFont(new Font("Arial", 1,15));
         createListenereButtonOkPrenotazioneParziale(n, m, stringNome, principioAttivo, dataScadenza, intArrayQuantitaDisponibili, intArrayNuoveQuantitaOrdinate, nomeFarmaciResidui, principioAttivoFarmaciResidui, intArrayQuantitaResidue, nuovaDataConsegna, nuovaDataConsegnaReisua, nuovaDataScadenzaResidua);
 
         buttonAnnulla.setText("Annulla");
@@ -494,7 +495,7 @@ public class AlertMessage {
         });
 
         JPanel mainSouthPanel = new JPanel(new FlowLayout());
-        mainSouthPanel.add(buttonOk);
+        mainSouthPanel.add(buttonOkParziale);
         mainSouthPanel.add(buttonAnnulla);
 
         mainPanel.add(mainSouthPanel, BorderLayout.SOUTH);
@@ -569,6 +570,8 @@ public class AlertMessage {
                     Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`utente` (`Email`, `Password`, `Mansione`, `Stato`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista', '0');");
                     Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmacista` (`Email`, `Password`, `Mansione`, `Nome_farmacia`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista','"+ nomeFarmacia +"');");
                     Main.dbms_Azienda.setData("INSERT INTO `dbms_azienda`.`farmacie` (`Nome_farmacia`, `Recapito_telefonico`, `Indirizzo_farmacia`) VALUES ('"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '"+ indirizzoFarmacia +"');");
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_farmacia`.`farmacista` (`Email`, `Password`, `Mansione`, `Nome_farmacia`) VALUES ('"+ email +"', '"+ password +"', 'Farmacista','"+ nomeFarmacia +"');");
+                    Main.dbms_Azienda.setData("INSERT INTO `dbms_farmacia`.`farmacie` (`Nome_farmacia`, `Recapito_telefonico`, `Indirizzo_farmacia`) VALUES ('"+ nomeFarmacia +"', '"+ recapitoTelefonico +"', '"+ indirizzoFarmacia +"');");
                 } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -808,7 +811,7 @@ public class AlertMessage {
                         ex.printStackTrace();
                     }
 
-                buttonOk.removeActionListener(this);
+                buttonOkParziale.removeActionListener(this);
                 Main.schermataPrenotazionePanel.removeAll();
                 try {
                     SchermataPrenotazione schermataPrenotazione = new SchermataPrenotazione();
@@ -822,7 +825,7 @@ public class AlertMessage {
                 Main.cardLayout.show(Main.mainPanel, "SchermataFarmacista");
             }
         };
-        buttonOk.addActionListener(ALP);
+        buttonOkParziale.addActionListener(ALP);
     }
 
     public int generaIdOrdine() throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -853,17 +856,5 @@ public class AlertMessage {
             recapitoTelefonico = queryResult.getInt(1);
         }
         return recapitoTelefonico;
-    }
-    public int[] svuotaArrayInt(){
-        int[] array = new int[0];
-        return array;
-    }
-    public String[] svuotaArrayString(){
-        String[] array = new String[0];
-        return array;
-    }
-    public Date[] svuotaArrayDate(){
-        Date[] array = new Date[0];
-        return array;
     }
 }

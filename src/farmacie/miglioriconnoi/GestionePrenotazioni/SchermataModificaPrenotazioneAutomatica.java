@@ -1,6 +1,7 @@
 package farmacie.miglioriconnoi.GestionePrenotazioni;
 
 
+import farmacie.miglioriconnoi.Autenticazione.SchermataLogin;
 import farmacie.miglioriconnoi.Common.Button;
 import farmacie.miglioriconnoi.Common.Image;
 import farmacie.miglioriconnoi.Common.Table;
@@ -51,7 +52,7 @@ public class SchermataModificaPrenotazioneAutomatica {
         Table tableConsegne = null;
 
         try {
-            queryResult = Main.dbms_Azienda.getData("SELECT * FROM dbms_azienda.prenotazione_automatica;");
+            queryResult = Main.dbms_Azienda.getData("SELECT nome_farmaco, principio_attivo, quantita FROM dbms_azienda.prenotazione_automatica WHERE nome_farmacia = '"+ SchermataLogin.nomeFarmacia +"';");
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | SQLException e) {
             e.printStackTrace();
         }
@@ -80,8 +81,12 @@ public class SchermataModificaPrenotazioneAutomatica {
 
         Button buttonAggiorna = new Button("Aggiorna", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
-        buttonAggiorna.createListenerButtonAggiornaPrenotazioneAutomatica("SchermataModificaPrenotazioneAutomatica", tableConsegne.n);
-
+        if(tableConsegne == null){
+            buttonAggiorna.createListenerButtonAggiornaPrenotazioneAutomatica("SchermataModificaPrenotazioneAutomatica", 0, tableConsegne);
+        }
+        else{
+            buttonAggiorna.createListenerButtonAggiornaPrenotazioneAutomatica("SchermataModificaPrenotazioneAutomatica", tableConsegne.n, tableConsegne);
+        }
         mainSouthPanel.add(buttonAggiorna);
 
         mainPanel.add(mainSouthPanel, BorderLayout.SOUTH);

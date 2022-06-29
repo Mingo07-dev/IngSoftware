@@ -85,9 +85,9 @@ public class SchermataModificaOrdine {
         Button buttonAggiorna = new Button("Aggiorna", 150,30);
         buttonAggiorna.changeFontButton("Arial", 1, 15);
         if(tableConsegne != null) {
-            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", tableConsegne.n);
+            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", tableConsegne.n, tableConsegne);
         } else{
-            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", 0);
+            buttonAggiorna.createListenerButtonAggiorna("SchermataModificaOrdine", 0, tableConsegne);
         }
         mainSouthPanel.add(buttonAggiorna);
 

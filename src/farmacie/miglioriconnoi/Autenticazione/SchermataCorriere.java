@@ -33,7 +33,7 @@ public class SchermataCorriere {
 
         Button buttonVisualizzaElencoConsegne = new Button("SchermataCorriere", "Visualizza Elenco Consegne", 400,50);
         buttonVisualizzaElencoConsegne.changeFontButton("Arial", 1,15);
-        buttonVisualizzaElencoConsegne.createListenerButtonChangeView("SchermataConsegne");
+        buttonVisualizzaElencoConsegne.createListenerButtonChangeViewConsegneCorriere("SchermataConsegne");
 
         mainCenterFlow.add(buttonVisualizzaElencoConsegne);
 

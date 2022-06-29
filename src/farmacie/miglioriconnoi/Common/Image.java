@@ -20,7 +20,7 @@ public class Image extends JLabel {
     public Image(String imageUrl, int targetWidth, int targetHeight ) throws FileNotFoundException {
         this.targetHeight = targetHeight;
         this.targetWidth = targetWidth;
-        this.imageStream = this.getClass().getResourceAsStream("../resources/"+imageUrl);
+        this.imageStream = this.getClass().getResourceAsStream("/resources/"+imageUrl);
 
         try {
             assert this.imageStream != null;
