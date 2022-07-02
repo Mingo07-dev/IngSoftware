@@ -1,10 +1,8 @@
 package farmacie.miglioriconnoi.Utils;
 
-
-
-import farmacie.miglioriconnoi.GestioneConsegne.NotificaMancatoCaricamentoScorte;
-import farmacie.miglioriconnoi.GestioneMagazzini.AggiuntaProduzione;
-import farmacie.miglioriconnoi.GestionePrenotazioni.PrenotazioneAutomatica;
+import farmacie.miglioriconnoi.GestioneConsegne.Control.NotificaMancatoCaricamentoScorte;
+import farmacie.miglioriconnoi.GestioneMagazzini.Control.AggiuntaProduzione;
+import farmacie.miglioriconnoi.GestionePrenotazioni.Control.PrenotazioneAutomatica;
 
 import java.sql.SQLException;
 import java.sql.Time;

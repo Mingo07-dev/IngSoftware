@@ -1,7 +1,5 @@
 package farmacie.miglioriconnoi.Common;
 
-import farmacie.miglioriconnoi.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +29,6 @@ public class Image extends JLabel {
         }
 
         this.setIcon(new ImageIcon(resizedImage));
-        //this.setPreferredSize(new Dimension(125, 63));
     }
 
     BufferedImage resizeImage() throws IOException {

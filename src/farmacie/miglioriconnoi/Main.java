@@ -1,12 +1,17 @@
 package farmacie.miglioriconnoi;
 
+
+import farmacie.miglioriconnoi.Autenticazione.Views.*;
+import farmacie.miglioriconnoi.GestioneConsegne.Control.NotificaMancatoCaricamentoScorte;
+import farmacie.miglioriconnoi.GestioneConsegne.Views.SchermataCaricoScorte;
+import farmacie.miglioriconnoi.GestioneConsegne.Views.SchermataConsegne;
+import farmacie.miglioriconnoi.GestioneMagazzini.Control.AggiuntaProduzione;
+import farmacie.miglioriconnoi.GestioneMagazzini.Views.SchermataScorte;
+import farmacie.miglioriconnoi.GestionePrenotazioni.Control.PrenotazioneAutomatica;
+import farmacie.miglioriconnoi.GestionePrenotazioni.Views.*;
+import farmacie.miglioriconnoi.GestioneSegnalazioni.View.SchermataSegnalazioniIrrisolte;
+import farmacie.miglioriconnoi.GestioneSegnalazioni.View.SchermataSegnalazioniRisolte;
 import farmacie.miglioriconnoi.Utils.*;
-import farmacie.miglioriconnoi.Autenticazione.*;
-import farmacie.miglioriconnoi.Common.*;
-import farmacie.miglioriconnoi.GestioneConsegne.*;
-import farmacie.miglioriconnoi.GestioneMagazzini.*;
-import farmacie.miglioriconnoi.GestionePrenotazioni.*;
-import farmacie.miglioriconnoi.GestioneSegnalazioni.*;
 
 
 import java.awt.*;
@@ -21,7 +26,7 @@ public class Main {
     public static DBMS dbms_Azienda;
     public static DBMS dbms_Farmacia;
 
-    //CREAZIONE DEL FRAME(CIò CHE VERRà MOSTRATO A VIDEO)
+    //CREAZIONE DEL FRAME(CIÒ CHE VERRÀ MOSTRATO A VIDEO)
     public static JFrame mainFrame = new JFrame("FarmacieMiglioriConNoi");
 
     //DICHIARAZIONI DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
@@ -57,7 +62,6 @@ public class Main {
     public static JPanel schermataSegnalazioniIrrisoltePanel;
     //FINE
 
-
     //CREAZIONE DELLE SCHERMATE RELATIVE ALL'UTENTE GENERICO
     public static SchermataAutenticazione schermataAutenticazione;
     public static SchermataRegistrazione schermataRegistrazione;
@@ -88,16 +92,19 @@ public class Main {
     //FINE
 
 
-    //PANNELLO CHE VERRà INIZIALIZZATO COME CARD LAYOUT PER CONTENERE TUTTE LE SCHERMATE
+    //PANNELLO CHE VERRÀ INIZIALIZZATO COME CARD LAYOUT PER CONTENERE TUTTE LE SCHERMATE
     public static JPanel mainPanel;
 
-    // CARD LAYOUT CHE CONTERRà LE SCHERMATE
+    // CARD LAYOUT CHE CONTERRÀ LE SCHERMATE
     public static CardLayout cardLayout = new CardLayout();
+
+    public Main() throws SQLException, FileNotFoundException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+    }
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, FileNotFoundException {
-        dbms_Azienda = new DBMS("dbms_azienda","root", "booba123");
-        dbms_Farmacia = new DBMS("dbms_farmacia","root", "booba123");
+        dbms_Azienda = new DBMS("dbms_azienda","client", "123");
+        dbms_Farmacia = new DBMS("dbms_farmacia","client", "123");
 
         //INIZIALIZZAZIONE DEL CARD LAYOUT ALL'INTERNO DEL MAIN PANEL
         mainPanel = new JPanel(cardLayout);
@@ -236,17 +243,17 @@ public class Main {
         //VENGONO IMPOSTATE LE CARATTERISTICHE DEL FRAME:
         WindowListener WL = createWindowListener();
         mainFrame.addWindowListener(WL);
-        //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRà ESSERE TERMINATO
+        //QUANDO VIENE PREMUTA LA "X" DELLA SCHEDA IL PROGRAMMA DOVRÀ ESSERE TERMINATO
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //IMPOSTA IL LAYOUT INIZIALE COME BORDER
         mainFrame.setLayout(new BorderLayout());
         //IMPOSTA CHE QUANDO VIENE APERTO IL PROGRAMMA, VIENE SUBITO MOSTRATO A FINESTRA INTERA
         mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //IMPOSTA LA MINIMA GRANDEZZA A CUI SI PUò RIDIMENSIONARE LA FINESTRA A 1080x720
+        //IMPOSTA LA MINIMA GRANDEZZA A CUI SI PUÒ RIDIMENSIONARE LA FINESTRA A 1080x720
         mainFrame.setMinimumSize(new Dimension(1080, 720));
         //AGGIUNGE AL FRAME LA CARD LAYOUT CONTENENTE TUTTE LE SCHERMATE
         mainFrame.add(mainPanel, BorderLayout.CENTER);
-        //RENDE VISIBILE IL FRAME, LA PRIMA SCHERMATA MOSTRATA SARà LA SCHERMATA AUTENTICAZIONE
+        //RENDE VISIBILE IL FRAME, LA PRIMA SCHERMATA MOSTRATA SARÀ LA SCHERMATA AUTENTICAZIONE
         mainFrame.setVisible(true);
     }
 

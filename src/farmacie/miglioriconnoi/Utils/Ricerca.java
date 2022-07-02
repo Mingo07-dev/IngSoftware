@@ -1,7 +1,5 @@
 package farmacie.miglioriconnoi.Utils;
 
-
-
 import farmacie.miglioriconnoi.Common.Table;
 
 import javax.swing.*;
@@ -36,7 +34,7 @@ public class Ricerca {
                 JLabel pnl = (JLabel)componentPanel;
                 element = pnl.getText();
             }
-            if(element.equals(textSearch))
+            if(element.equals(textSearch) || element.toLowerCase().equals(textSearch))
             {
                 posizioni.addElement(i);
             }
@@ -74,7 +72,7 @@ public class Ricerca {
                 JLabel pnl = (JLabel)componentPanel;
                 element = pnl.getText();
             }
-            if(element.equals(textSearch))
+            if(element.equals(textSearch) || element.toLowerCase().equals(textSearch))
             {
                 posizioni.addElement(i);
             }
